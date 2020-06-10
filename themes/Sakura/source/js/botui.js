@@ -81,7 +81,7 @@
                             }).then(function () {
                                 botui.message.add({
                                     delay: 1500,
-                                    content: "研究的方向，是前端"
+                                    content: "现在还没有研究方向，等再学点东西看看吧😄"
                                 }).then(function () {
                                     botui.message.add({
                                         delay: 1800,

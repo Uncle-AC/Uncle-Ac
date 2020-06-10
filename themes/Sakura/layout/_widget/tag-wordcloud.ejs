@@ -5,6 +5,7 @@
         height: 300px;
     }
 </style>
+
 <div class="container" data-aos="fade-up">
     <div class="card">
         <div id="tag-wordcloud" class="card-content"></div>
@@ -18,8 +19,10 @@
     site.tags.map(function(tag) {
         tagWordArr.push({'text': tag.name, 'weight': tag.length, 'link': tag.permalink});
     });
+
     let tagWords = JSON.stringify(tagWordArr);
     %>
+
     $('#tag-wordcloud').jQCloud(<%- tagWords %>, {
         autoResize: true
     });
