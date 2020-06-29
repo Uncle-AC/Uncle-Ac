@@ -87,10 +87,10 @@ deploy:
     branch: master
   - type: baidu_url_submitter
 backup:
-  - type: git
+    type: git
+    message: 备份博客
     repository:
-      github: git@github.com:uncleacc/uncleacc.github.io.git
-    branch: backup
+      github: git@github.com:uncleacc/uncleacc.github.io.git,backup
       #  gitcafe: git@github.com:xxx/xxx.git,branchName
 feed:
   type: atom
