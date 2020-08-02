@@ -25,18 +25,24 @@ Output
     For each test case, print the number of integers between A and B inclusive which are relatively prime to N. Follow the output format below.
 Sample Input
 
-    2
-    1 10 2
-    3 15 5
+```c
+2
+1 10 2
+3 15 5
+```
 
 Sample Output
 
-    Case #1: 5
-    Case #2: 10
+```c
+Case #1: 5
+Case #2: 10
+```
 
 Hint
 
-    In the first test case, the five integers in range [1,10] which are relatively prime to 2 are {1,3,5,7,9}. 
+```c
+In the first test case, the five integers in range [1,10] which are relatively prime to 2 are {1,3,5,7,9}. 
+```
 
 题目的意思给定一个区间的左端点和右端点，再给你一个数，求在这个区间里面和这个数互质的数的个数，只要您不是初学者就应该知道这么10^15如此大区间不可能去遍历它，这时候就要用到容斥原理了，接下来是重点（。。敲黑板。。），注意看！！
 
@@ -55,30 +61,34 @@ ok，讲完了容斥的原理，接下来就能做题了，题目要求区间段
 ## 分解质因子的代码
 上面忘了说要筛掉一个区间中与k不互质的个数，首先要把k分解成质因子，首先应该知道任何一个数要不是质数，要不是可以由多个质数相乘得到，例如：10=2 * 5, 30=2 * 3 * 5 , 50=2 * 5 * 5，利用这个性质，就可以分解了
 
-    for(int i=2;i*i<=k;i++){
-        if(k%i==0){
-            p[++tail]=i;  //p就是储存质因子的数组
-            while(k%i==0) k/=i;  //把k中所有i的质因子全部除去
-        }
+```c
+for(int i=2;i*i<=k;i++){
+    if(k%i==0){
+        p[++tail]=i;  //p就是储存质因子的数组
+        while(k%i==0) k/=i;  //把k中所有i的质因子全部除去
     }
-    if(k>1) p[++tail]=k;  //最后如果大于一，则最后一个数一定是质因子，这一步可能有一点难理解，可以多想想
+}
+if(k>1) p[++tail]=k;  //最后如果大于一，则最后一个数一定是质因子，这一步可能有一点难理解，可以多想想
+```
 ## 实现容斥定理的代码
 
-    long long fun(long long x){
-        long long res=0;  //res储存的是1-x中与K不互质的数量 
-        for(int i=1;i<(1<<tail);i++){  //这里的1<<tail是指2的tail次方，表示tail个质因子有多少种组合情况 
-            long long cur=1,cnt=0;  //cur表示在当前选中的质因子中的乘积，cnt表示当前选中的数量是奇数还是偶数 
-            for(int j=0;j<tail;j++){  //这个循环是枚举tail的二进制形式 
-                if((i>>j)&1){  //这个是判断i的第j位是不是1，如果是则表示选中第j个数 
-                    cnt++;  //表示选中了几个数，每选中一个就加一 
-                    cur*=p[j+1];  //选中第j个数就用cur乘以第j个质因子数，注意质因子数组是从1开始的，所以要加一 
-                }
+```c
+long long fun(long long x){
+    long long res=0;  //res储存的是1-x中与K不互质的数量 
+    for(int i=1;i<(1<<tail);i++){  //这里的1<<tail是指2的tail次方，表示tail个质因子有多少种组合情况 
+        long long cur=1,cnt=0;  //cur表示在当前选中的质因子中的乘积，cnt表示当前选中的数量是奇数还是偶数 
+        for(int j=0;j<tail;j++){  //这个循环是枚举tail的二进制形式 
+            if((i>>j)&1){  //这个是判断i的第j位是不是1，如果是则表示选中第j个数 
+                cnt++;  //表示选中了几个数，每选中一个就加一 
+                cur*=p[j+1];  //选中第j个数就用cur乘以第j个质因子数，注意质因子数组是从1开始的，所以要加一 
             }
-            if(cnt&1) res+=x/cur;  //如果cnt是偶数就相加 
-            else res-=x/cur;  //奇数就相减 
         }
-        return x-res;  //res储存的是1-x中与K不互质的数量，所以要用x-res得到互质的数量 
+        if(cnt&1) res+=x/cur;  //如果cnt是偶数就相加 
+        else res-=x/cur;  //奇数就相减 
     }
+    return x-res;  //res储存的是1-x中与K不互质的数量，所以要用x-res得到互质的数量 
+}
+```
 
 这一段代码我觉得好难理解，尤其是我在网上查资料感觉讲的不是很详细，想了一下午，才茅塞顿开，因此我希望广大网友在这里能够少花时间，代码里的（1<<tail）
 实际上就是2^tail，表示n个质因子的组合情况数，需要说明这里面包括空集，所以循环从条件是小于而不是小于等于，然后每一个i的二进制形式每一位要不是1要不是0，而1<<tail
@@ -86,46 +96,48 @@ ok，讲完了容斥的原理，接下来就能做题了，题目要求区间段
 
 然后就结束了，贴一下AC代码吧
 
-    #include<iostream>
-    #include<stdio.h>
-    #include<algorithm>
-    using namespace std;
-    int p[1000000];
-    int tail;
-    long long fun(long long x){
-        long long res=0;
-        for(int i=1;i<(1<<tail);i++){
-            long long cur=1,cnt=0;
-            for(int j=0;j<tail;j++){
-                if((i>>j)&1){
-                    cnt++;
-                    cur*=p[j+1];
-                }
+```c
+#include<iostream>
+#include<stdio.h>
+#include<algorithm>
+using namespace std;
+int p[1000000];
+int tail;
+long long fun(long long x){
+    long long res=0;
+    for(int i=1;i<(1<<tail);i++){
+        long long cur=1,cnt=0;
+        for(int j=0;j<tail;j++){
+            if((i>>j)&1){
+                cnt++;
+                cur*=p[j+1];
             }
-            if(cnt&1) res+=x/cur;
-            else res-=x/cur;
         }
-        return x-res;
+        if(cnt&1) res+=x/cur;
+        else res-=x/cur;
     }
-    int main()
-    {
-        int t,times=0;
-        cin>>t;
-        while(t--){
-            tail=0;
-            long long l,r,k;
-            cin>>l>>r>>k;
-            for(int i=2;i*i<=k;i++){
-                if(k%i==0){
-                    p[++tail]=i;
-                    while(k%i==0) k/=i;
-                }
+    return x-res;
+}
+int main()
+{
+    int t,times=0;
+    cin>>t;
+    while(t--){
+        tail=0;
+        long long l,r,k;
+        cin>>l>>r>>k;
+        for(int i=2;i*i<=k;i++){
+            if(k%i==0){
+                p[++tail]=i;
+                while(k%i==0) k/=i;
             }
-            if(k>1) p[++tail]=k;
-            long long ans=fun(r)-fun(l-1);
-            printf("Case #%d: %lld\n",++times,ans);
         }
+        if(k>1) p[++tail]=k;
+        long long ans=fun(r)-fun(l-1);
+        printf("Case #%d: %lld\n",++times,ans);
     }
+}
+```
 
 如果有不懂的，留下评论，我会按时解答的哦
 

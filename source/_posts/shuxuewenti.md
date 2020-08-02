@@ -24,7 +24,22 @@ photos: https://cdn.jsdelivr.net/gh/uncleacc/Img/textbg/32.webp
 	}
     if(k>1) p[++tail]=k;
 ```
+## 判断是否为质数
+
+```c
+bool isp(int n){
+	if(n==1||n==0) return 0;
+	if(n==2||n==3) return 1;
+	if(n%6!=1&&n%6!=5) return 0;
+	for(int i=5;i*i<=n;i+=6){
+		if(n%i==0||n%(i+2)==0) return 0;
+	}
+	return 1;
+}
+```
+
 ## 容斥原理
+
 前言：
 1. 计算1-n中m的的倍数的数量时，直接n/m
 2. 容斥原理是在互质的数的基础上实现的

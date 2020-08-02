@@ -16,6 +16,6 @@ photos: https://cdn.jsdelivr.net/gh/uncleacc/Img/cover/9.webp
 
 [判断素数最快的方法](https://blog.csdn.net/songyunli1111/article/details/78690447/): 时间复杂度到了O(sqrt(n)/3)
 
-[矩阵快速幂](https://www.bilibili.com/video/BV1K441167eE?from=search&seid=6804066420902899426)
+[矩阵快速幂](https://www.bilibili.com/video/BV1K441167eE?from=search&seid=6804066420902899426) ： 详细讲解了矩阵快速幂
 
-[递推矩阵加速](https://www.bilibili.com/video/BV1z4411m7TF?t=797)
+[递推矩阵加速](https://www.bilibili.com/video/BV1z4411m7TF?t=797) ： 讲解了如何通过矩阵快速幂把O(N)的递推式子时间复杂度降到O(LogN)
