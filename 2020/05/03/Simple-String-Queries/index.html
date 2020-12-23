@@ -415,7 +415,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">686字</span>
+        <span class="post-count">678字</span>
       </span>
     </span>
 
@@ -442,22 +442,18 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1>题目</h1>
-<blockquote>
-<p>Simple String Queries</p>
+          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
+<p>Simple String Queries   </p>
 </blockquote>
-<p>Problem Statement</p>
+<p>Problem Statement   </p>
 <p>You are given a string S of length N</p>
 <p>consisting of lowercase English letters.</p>
 <p>Process Q queries of the following two types:</p>
 <ul>
-<li>Type 1<br>
-: change the iq-th character of S to cq. (Do nothing if the iq-th character is already cq<br>
-.)</li>
-<li>Type 2<br>
-: answer the number of different characters occurring in the substring of S between the lq-th and rq-th characters (inclusive).</li>
+<li>Type 1<br>: change the iq-th character of S to cq. (Do nothing if the iq-th character is already cq<br>.)</li>
+<li>Type 2<br>: answer the number of different characters occurring in the substring of S between the lq-th and rq-th characters (inclusive).   </li>
 </ul>
-<p>Constraints</p>
+<p>Constraints   </p>
 <ul>
 <li>N, Q, iq, lq, and rq are integers.</li>
 <li>S is a string consisting of lowercase English letters.</li>
@@ -469,45 +465,19 @@
 <li>1≤lq≤rq≤N</li>
 <li>There is at least one query of type 2 in each testcase.</li>
 </ul>
-<p>Input</p>
-<p>Input is given from Standard Input in the following format:<br>
-N<br>
-S<br>
-Q<br>
-Query1⋮<br>
-QueryQ<br>
-Here, Queryi in the 4-th through (Q+3)-th lines is one of the following:</p>
+<p>Input   </p>
+<p>Input is given from Standard Input in the following format:<br>N<br>S<br>Q<br>Query1⋮<br>QueryQ<br>Here, Queryi in the 4-th through (Q+3)-th lines is one of the following:</p>
 <p>1 iq cq</p>
 <p>2 lq rq</p>
 <p>Output</p>
 <p>For each query of type 2, print a line containing the answer.</p>
 <p>Sample Input 1</p>
-<p>7<br>
-abcdbbd<br>
-6<br>
-2 3 6<br>
-1 5 z<br>
-2 1 1<br>
-1 4 a<br>
-1 7 d<br>
-2 1 7</p>
+<p>7<br>abcdbbd<br>6<br>2 3 6<br>1 5 z<br>2 1 1<br>1 4 a<br>1 7 d<br>2 1 7   </p>
 <p>Sample Output 1</p>
-<p>3<br>
-1<br>
-5</p>
-<p>In the first query, cdbb contains three kinds of letters: b , c , and d, so we print 3<br>
-.<br>
-In the second query, S is modified to abcdzbd.<br>
-In the third query, a contains one kind of letter: a, so we print 1<br>
-.<br>
-In the fourth query, S is modified to abcazbd.<br>
-In the fifth query, S does not change and is still abcazbd.<br>
-In the sixth query, abcazbd contains five kinds of letters: a, b, c, d, and z, so we print 5<br>
-.</p>
-<h1>思路</h1>
-<p>刚做这道题就看出来要用树状数组，但是我只做过模板题，想了好久才做了出来，用一个二维的树状数组来储存当前位置之前每一个字母的数量，一维表示26个字母，二维表示数量</p>
-<h1>Code</h1>
-<pre><code>#include&lt;stdio.h&gt;
+<p>3<br>1<br>5</p>
+<p>In the first query, cdbb contains three kinds of letters: b , c , and d, so we print 3<br>.<br>In the second query, S is modified to abcdzbd.<br>In the third query, a contains one kind of letter: a, so we print 1<br>.<br>In the fourth query, S is modified to abcazbd.<br>In the fifth query, S does not change and is still abcazbd.<br>In the sixth query, abcazbd contains five kinds of letters: a, b, c, d, and z, so we print 5<br>.    </p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>刚做这道题就看出来要用树状数组，但是我只做过模板题，想了好久才做了出来，用一个二维的树状数组来储存当前位置之前每一个字母的数量，一维表示26个字母，二维表示数量</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><pre><code>#include&lt;stdio.h&gt;
 #include&lt;iostream&gt;
 #include&lt;stdlib.h&gt;
 #include&lt;string.h&gt;
@@ -519,52 +489,51 @@ const int maxn=5e5+100;
 char ch[maxn];
 int n,arr[27][maxn];
 int lowbit(int n)&#123;
-	return n&amp;-n;
+    return n&amp;-n;
 &#125;
 void update(int p,int t,int a[])&#123;
-	for(int i=p;i&lt;=n;i+=lowbit(i))&#123;
-		a[i]+=t;
-	&#125;
+    for(int i=p;i&lt;=n;i+=lowbit(i))&#123;
+        a[i]+=t;
+    &#125;
 &#125;
 ll getsum(int p,int a[])&#123;
-	ll ans=0;
-	for(int i=p;i&gt;0;i-=lowbit(i))&#123;
-		ans+=a[i];
-	&#125;
-	return ans;
+    ll ans=0;
+    for(int i=p;i&gt;0;i-=lowbit(i))&#123;
+        ans+=a[i];
+    &#125;
+    return ans;
 &#125;
 int main()
 &#123;
-	int m;
-	cin&gt;&gt;n;
-	scanf(&quot;%s&quot;,ch+1);
-	for(int i=1;i&lt;=n;i++)&#123;
-		update(i,1,arr[ch[i]-'a']); //更新当前位置存储的当前位置之前的某一个字母数量
-	&#125;
-	cin&gt;&gt;m;
-	for(int i=1;i&lt;=m;i++)&#123;
-		int t; cin&gt;&gt;t;
-		if(t==1)&#123;
-			char c;
-			int p;
-			cin&gt;&gt;p&gt;&gt;c;
-			update(p,-1,arr[ch[p]-'a']);  //将当前位置存储的字母数量减一
-			ch[p]=c; //记得更新ch数组
-			update(p,1,arr[c-'a']);
-		&#125;
-		if(t==2)&#123;
-			ll sum=0,x,y;
-			cin&gt;&gt;x&gt;&gt;y;
-			for(int i=0;i&lt;26;i++)&#123;
-				sum+=getsum(y,arr[i])-getsum(x-1,arr[i])&gt;0;  //26个字母在这个区间的数量若大于0，则表示存在这个字母，sum加一
-			&#125;
-			cout&lt;&lt;sum&lt;&lt;endl;
-		&#125;
-	&#125;
+    int m;
+    cin&gt;&gt;n;
+    scanf(&quot;%s&quot;,ch+1);
+    for(int i=1;i&lt;=n;i++)&#123;
+        update(i,1,arr[ch[i]-&#39;a&#39;]); //更新当前位置存储的当前位置之前的某一个字母数量
+    &#125;
+    cin&gt;&gt;m;
+    for(int i=1;i&lt;=m;i++)&#123;
+        int t; cin&gt;&gt;t;
+        if(t==1)&#123;
+            char c;
+            int p;
+            cin&gt;&gt;p&gt;&gt;c;
+            update(p,-1,arr[ch[p]-&#39;a&#39;]);  //将当前位置存储的字母数量减一
+            ch[p]=c; //记得更新ch数组
+            update(p,1,arr[c-&#39;a&#39;]);
+        &#125;
+        if(t==2)&#123;
+            ll sum=0,x,y;
+            cin&gt;&gt;x&gt;&gt;y;
+            for(int i=0;i&lt;26;i++)&#123;
+                sum+=getsum(y,arr[i])-getsum(x-1,arr[i])&gt;0;  //26个字母在这个区间的数量若大于0，则表示存在这个字母，sum加一
+            &#125;
+            cout&lt;&lt;sum&lt;&lt;endl;
+        &#125;
+    &#125;
     return 0;
- &#125; 
+ &#125;
 </code></pre>
-
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -768,7 +737,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

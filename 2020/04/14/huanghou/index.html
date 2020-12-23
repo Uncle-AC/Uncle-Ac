@@ -415,7 +415,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">469字</span>
+        <span class="post-count">473字</span>
       </span>
     </span>
 
@@ -442,21 +442,17 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="题目">题目</h2>
-<p>题目描述</p>
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>题目描述</p>
 <p>一个如下的 6×6 的跳棋棋盘，有六个棋子被放置在棋盘上，使得每行、每列有且只有一个，每条对角线（包括两条主对角线的所有平行线）上至多有一个棋子。</p>
 <p><img src="https://cdn.luogu.com.cn/upload/pic/60.png" alt=""></p>
 <p>上面的布局可以用序列 2 4 6 1 3 5 来描述，第 i 个数字表示在第 i 行的相应位置有一个棋子，如下：</p>
 <p>行号 1 2 3 4 5 6</p>
 <p>列号 2 4 6 1 3 5</p>
-<p>这只是棋子放置的一个解。请编一个程序找出所有棋子放置的解。<br>
-并把它们以上面的序列方法输出，解按字典顺序排列。<br>
-请输出前 333 个解。最后一行是解的总个数。</p>
+<p>这只是棋子放置的一个解。请编一个程序找出所有棋子放置的解。<br>并把它们以上面的序列方法输出，解按字典顺序排列。<br>请输出前 333 个解。最后一行是解的总个数。</p>
 <p>输入格式</p>
 <p>一行一个正整数 n，表示棋盘是 n×n 大小的。</p>
 <p>输出格式</p>
-<p>前三行为前三个解，每个解的两个数字之间用一个空格隔开。第四行只有一个数字，表示解的总数。<br>
-输入输出样例</p>
+<p>前三行为前三个解，每个解的两个数字之间用一个空格隔开。第四行只有一个数字，表示解的总数。<br>输入输出样例</p>
 <p>输入 #1</p>
 <p>6</p>
 <p>输出 #1</p>
@@ -465,39 +461,36 @@
 <p>4 1 5 2 6 3</p>
 <p>4</p>
 <p>说明/提示</p>
-<p>【数据范围】<br>
-对于 100%100%100% 的数据，6≤n≤136 \le n \le 136≤n≤13。</p>
+<p>【数据范围】<br>对于 100%100\%100% 的数据，6≤n≤136 \le n \le 136≤n≤13。</p>
 <p>题目翻译来自NOCOW。</p>
 <p>USACO Training Section 1.5</p>
-<h2 id="Code">Code</h2>
-<pre><code>#include&lt;iostream&gt;
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><pre><code>#include&lt;iostream&gt;
 #include&lt;stdio.h&gt;
 #include&lt;algorithm&gt;
 using namespace std;
 int col[20],l[100],r[100],a[100],n,cnt;
 void queen(int i)&#123;
-	if(i&gt;n)&#123;
-		if(cnt&lt;3) for(int j=1;j&lt;=n;j++) printf(&quot;%d%c&quot;,a[j],j==n?'\n':' ');
-		cnt++; return;
-	&#125;
-	for(int j=1;j&lt;=n;j++)&#123;
-		if(!col[j]&amp;&amp;!l[n-i+j]&amp;&amp;!r[i+j-1])&#123;
-			a[i]=j;
-			col[j]=1; l[n-i+j]=1; r[i+j-1]=1;
-			queen(i+1);
-			col[j]=0; l[n-i+j]=0; r[i+j-1]=0;
-		&#125;
-	&#125;
-	return ;
+    if(i&gt;n)&#123;
+        if(cnt&lt;3) for(int j=1;j&lt;=n;j++) printf(&quot;%d%c&quot;,a[j],j==n?&#39;\n&#39;:&#39; &#39;);
+        cnt++; return;
+    &#125;
+    for(int j=1;j&lt;=n;j++)&#123;
+        if(!col[j]&amp;&amp;!l[n-i+j]&amp;&amp;!r[i+j-1])&#123;
+            a[i]=j;
+            col[j]=1; l[n-i+j]=1; r[i+j-1]=1;
+            queen(i+1);
+            col[j]=0; l[n-i+j]=0; r[i+j-1]=0;
+        &#125;
+    &#125;
+    return ;
 &#125;
 int main()
 &#123;
-	cin&gt;&gt;n;
-	queen(1);
-	cout&lt;&lt;cnt&lt;&lt;endl;
+    cin&gt;&gt;n;
+    queen(1);
+    cout&lt;&lt;cnt&lt;&lt;endl;
 &#125;
 </code></pre>
-
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -701,7 +694,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

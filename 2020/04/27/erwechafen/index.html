@@ -443,20 +443,14 @@
         
         <div class="entry-content">
           <p>知道了一维差分二位差分就很好理解了，直奔主题吧</p>
-<h2 id="二维前缀和">二维前缀和</h2>
-<p>先来温习一下二维前缀和</p>
-<p>差分的思想是和前缀和有关的，一维的前缀和我们都懂求，那么二维的呢？</p>
-<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200703225128170.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FHTklORw==,size_16,color_FFFFFF,t_70" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://img-blog.csdnimg.cn/20200703225128170.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FHTklORw==,size_16,color_FFFFFF,t_70" /></a>
-<p>因为是从左到右，从上到下的遍历，当要求红色部分，(0,0)到（i,j）处的前缀和时，我们黄色部分和蓝色部分已经是已知的了，而它们重叠的部分就是绿色部分，所以把黄色和蓝色部分的结果加起来，再减去绿色部分，最后加上(i,j)处的值就是（i，j）位置的前缀和了。　所以，二维前缀和就是sum[i][j]=a[i][j]+sum[i-1][j]+sum[i][j-1]-sum[i-1][j-1]</p>
+<h2 id="二维前缀和"><a href="#二维前缀和" class="headerlink" title="二维前缀和"></a>二维前缀和</h2><p>先来温习一下二维前缀和</p>
+<p>差分的思想是和前缀和有关的，一维的前缀和我们都懂求，那么二维的呢？<br><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200703225128170.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FHTklORw==,size_16,color_FFFFFF,t_70" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://img-blog.csdnimg.cn/20200703225128170.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FHTklORw==,size_16,color_FFFFFF,t_70" /></a><br>因为是从左到右，从上到下的遍历，当要求红色部分，(0,0)到（i,j）处的前缀和时，我们黄色部分和蓝色部分已经是已知的了，而它们重叠的部分就是绿色部分，所以把黄色和蓝色部分的结果加起来，再减去绿色部分，最后加上(i,j)处的值就是（i，j）位置的前缀和了。　所以，二维前缀和就是sum[i][j]=a[i][j]+sum[i-1][j]+sum[i][j-1]-sum[i-1][j-1]</p>
 <p>而我们要求左上角是(x1,y1),右下角是(x2,y2)的矩形区间内的值处理出前缀和后也可以O(1)时间内求出来。</p>
 <a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200703225136477.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FHTklORw==,size_16,color_FFFFFF,t_70" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://img-blog.csdnimg.cn/20200703225136477.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FHTklORw==,size_16,color_FFFFFF,t_70" /></a>
 <p>我们要求紫色部分的值，我们已知的是黄色部分的值，但它多了两个蓝色部分的值，而两个蓝色部分有重叠了个绿色部分</p>
 <p>所以要求的区间内的值就是sum[x2][y2]-sum[x2][y1-1]-sum[x1-1][y2]+sum[x1-1][x1-1]</p>
-<h2 id="二维差分">二维差分</h2>
-<p>温习完二维前缀和来看看二维差分</p>
-<p>如图</p>
-<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/2020070322514598.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FHTklORw==,size_16,color_FFFFFF,t_70" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://img-blog.csdnimg.cn/2020070322514598.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FHTklORw==,size_16,color_FFFFFF,t_70" /></a>
-<p>在我们要的区间开始位置（x1,y1）处+a，根据前缀和的性质，那么它影响的就是整个黄色部分，多影响了两个蓝色部分，所以在两个蓝色部分-a消除+a的影响，而两个蓝色部分重叠的绿色部分多受了个-a的影响，所以绿色部分+a消除影响。</p>
+<h2 id="二维差分"><a href="#二维差分" class="headerlink" title="二维差分"></a>二维差分</h2><p>温习完二维前缀和来看看二维差分</p>
+<p>如图<br><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/2020070322514598.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FHTklORw==,size_16,color_FFFFFF,t_70" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://img-blog.csdnimg.cn/2020070322514598.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FHTklORw==,size_16,color_FFFFFF,t_70" /></a><br>在我们要的区间开始位置（x1,y1）处+a，根据前缀和的性质，那么它影响的就是整个黄色部分，多影响了两个蓝色部分，所以在两个蓝色部分-a消除+a的影响，而两个蓝色部分重叠的绿色部分多受了个-a的影响，所以绿色部分+a消除影响。</p>
 <p>所以就是</p>
 <ol>
 <li>dif[x1][y1]+=a</li>
@@ -669,7 +663,7 @@
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

@@ -446,9 +446,7 @@
 <p>今天有些疲倦，不想学习，就去网上学习做了一个小游戏，如果你是网友，没接触过图形库，要先安装esayx库，网上有许多，在这里不贴了，素材地址： <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1GWnLePCiLcxlJHOaBKEeaA">https://pan.baidu.com/s/1GWnLePCiLcxlJHOaBKEeaA</a> 密码：pmzq 💪</p>
 </blockquote>
 <ul>
-<li>成品视频: <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1354y1Q7iB">Here</a></li>
-</ul>
-<center>
+<li>成品视频: <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1354y1Q7iB">Here</a><center>
 <font color="black" size=4>
 希望该文章能帮助到您
 </font>
@@ -461,6 +459,9 @@
 谁能帮我测试一下下面的赏是不是出错了😘
 </font>
 </center>
+
+</li>
+</ul>
 <pre><code>/*
 1.创建一个可视化窗口
 2.显示一张背景图
@@ -580,17 +581,17 @@ void keydown(zhuzi pillar[]) &#123;
 
     char userkey = _getch();
     switch (userkey) &#123;
-    case ' ':
+    case &#39; &#39;:
         for (int i = 1; i &lt;= flybird.speed - 30; i++) &#123;
             flybird.y -= 1;
             if (hitPillar(pillar)) Gameover();
         &#125;
         CreateThread(NULL, NULL, playmusic, NULL, NULL, NULL);
         break;
-    case'z': case'Z':
+    case&#39;z&#39;: case&#39;Z&#39;:
             char c;
             while (c = _getch()) &#123;
-                if (c == 'z' || c == 'Z') break;
+                if (c == &#39;z&#39; || c == &#39;Z&#39;) break;
             &#125;
             break;
     default:
@@ -655,7 +656,6 @@ int main() &#123;
     return 0;
 &#125;
 </code></pre>
-
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -859,7 +859,7 @@ int main() &#123;
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

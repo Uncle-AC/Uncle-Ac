@@ -442,8 +442,7 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="LCA-公共祖先">LCA 公共祖先</h2>
-<p>什么是最小公共祖先，顾名思义就是俩点最近的公共祖先</p>
+          <h2 id="LCA-公共祖先"><a href="#LCA-公共祖先" class="headerlink" title="LCA 公共祖先"></a>LCA 公共祖先</h2><p>什么是最小公共祖先，顾名思义就是俩点最近的公共祖先</p>
 <a target="_blank" rel="noopener" href="https://cdn.luogu.com.cn/upload/pic/2282.png" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://cdn.luogu.com.cn/upload/pic/2282.png" /></a>
 <p>如图所示：</p>
 <ol>
@@ -452,162 +451,158 @@
 <li>3和5的最小公共祖先是1</li>
 </ol>
 <p>那么怎么求呢？</p>
-<p>先介绍两种朴素的做法，<s>也就是超时的做法🐷</s></p>
+<p>先介绍两种朴素的做法，<del>也就是超时的做法🐷</del></p>
 <p>第一种： <code>向上标记法</code></p>
 <p>想求两个点的最小公共祖先可以先从其中一个点往上找父亲结点，直到根节点，把路径标记一下，然后从另一个点开始做同样的操作，当遇到已经标记过的点的时候就停下来，这个点一定是最小公共祖先（ 每次查询时间复杂度：O(n) ）</p>
-<h3 id="CODE">CODE</h3>
-<pre><code class="language-c++">#include &lt;bits/stdc++.h&gt;
+<h3 id="CODE"><a href="#CODE" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c++">#include &lt;bits/stdc++.h&gt;
 using namespace std;
 const int MAXN=500100;
 vector&lt;int&gt; vt[MAXN];
 int fa[MAXN];
 bool vis[MAXN];
 void dfs(int u)&#123;
-	int len=vt[u].size();
-	for(int i=0;i&lt;len;i++)&#123;
-		int v=vt[u][i];
-		if(v==fa[u]) continue;
-		fa[v]=u;
-		dfs(v);
-	&#125;
+    int len=vt[u].size();
+    for(int i=0;i&lt;len;i++)&#123;
+        int v=vt[u][i];
+        if(v==fa[u]) continue;
+        fa[v]=u;
+        dfs(v);
+    &#125;
 &#125;
 int lca(int l,int r)&#123;
-	memset(vis,0,sizeof vis);
-	while(l)&#123;
-		vis[l]=1;
-		l=fa[l];
-	&#125;
-	while(!vis[r]) r=fa[r];
-	return r;
+    memset(vis,0,sizeof vis);
+    while(l)&#123;
+        vis[l]=1;
+        l=fa[l];
+    &#125;
+    while(!vis[r]) r=fa[r];
+    return r;
 &#125;
 int main()
 &#123;
-	ios::sync_with_stdio(0);
-	int n,m,s;
-	cin&gt;&gt;n&gt;&gt;m&gt;&gt;s;
-	for(int i=1;i&lt;=n-1;i++)&#123;
-		int x,y;
-		cin&gt;&gt;x&gt;&gt;y;
-		vt[x].push_back(y);
-		vt[y].push_back(x);
-	&#125;
-	dfs(s); //找到每一个点的父亲结点是谁
-	while(m--)&#123;
-		int l,r;
-		cin&gt;&gt;l&gt;&gt;r;
-		cout&lt;&lt;lca(l,r)&lt;&lt;'\n';
-	&#125;
-	return 0;
- &#125; 
+    ios::sync_with_stdio(0);
+    int n,m,s;
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;s;
+    for(int i=1;i&lt;=n-1;i++)&#123;
+        int x,y;
+        cin&gt;&gt;x&gt;&gt;y;
+        vt[x].push_back(y);
+        vt[y].push_back(x);
+    &#125;
+    dfs(s); //找到每一个点的父亲结点是谁
+    while(m--)&#123;
+        int l,r;
+        cin&gt;&gt;l&gt;&gt;r;
+        cout&lt;&lt;lca(l,r)&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
+ &#125;
 </code></pre>
 <p>第二种： <code>利用深度法</code></p>
 <p>在上面的dfs函数稍微改一下，得到每一个点到根节点的深度（从0开始），当询问两个点的lca时，我们先把深度大的那个点网上搜，直到两个点的深度相同，深度相同后，两个点一起往上搜直到两个点合并到一起，那么这个点就是lca</p>
-<h3 id="CODE-v2">CODE</h3>
-<pre><code class="language-c">#include &lt;bits/stdc++.h&gt;
+<h3 id="CODE-1"><a href="#CODE-1" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include &lt;bits/stdc++.h&gt;
 using namespace std;
 const int MAXN=500100;
 vector&lt;int&gt; vt[MAXN];
 int fa[MAXN],dep[MAXN];
 void dfs(int u,int d)&#123;
-	dep[u]=d; //处理出每一个点的深度
-	int len=vt[u].size();
-	for(int i=0;i&lt;len;i++)&#123;
-		int v=vt[u][i];
-		if(v==fa[u]) continue;
-		fa[v]=u;
-		dfs(v,d+1); //子节点深度加一
-	&#125;
+    dep[u]=d; //处理出每一个点的深度
+    int len=vt[u].size();
+    for(int i=0;i&lt;len;i++)&#123;
+        int v=vt[u][i];
+        if(v==fa[u]) continue;
+        fa[v]=u;
+        dfs(v,d+1); //子节点深度加一
+    &#125;
 &#125;
 int lca(int l,int r)&#123;
-	if(dep[l]&lt;dep[r]) swap(l,r); //保证l是深度大的那个点
-	while(dep[l]&gt;dep[r]) l=fa[l]; //从深度大的那个开始往上走
-	while(l!=r)&#123; //一起往上
-		l=fa[l];
-		r=fa[r];
-	&#125;
-	return r;
+    if(dep[l]&lt;dep[r]) swap(l,r); //保证l是深度大的那个点
+    while(dep[l]&gt;dep[r]) l=fa[l]; //从深度大的那个开始往上走
+    while(l!=r)&#123; //一起往上
+        l=fa[l];
+        r=fa[r];
+    &#125;
+    return r;
 &#125;
 int main()
 &#123;
-	ios::sync_with_stdio(0);
-	int n,m,s;
-	cin&gt;&gt;n&gt;&gt;m&gt;&gt;s;
-	for(int i=1;i&lt;=n-1;i++)&#123;
-		int x,y;
-		cin&gt;&gt;x&gt;&gt;y;
-		vt[x].push_back(y);
-		vt[y].push_back(x);
-	&#125;
-	dfs(s,0);
-	while(m--)&#123;
-		int l,r;
-		cin&gt;&gt;l&gt;&gt;r;
-		cout&lt;&lt;lca(l,r)&lt;&lt;'\n';
-	&#125;
-	return 0;
- &#125; 
+    ios::sync_with_stdio(0);
+    int n,m,s;
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;s;
+    for(int i=1;i&lt;=n-1;i++)&#123;
+        int x,y;
+        cin&gt;&gt;x&gt;&gt;y;
+        vt[x].push_back(y);
+        vt[y].push_back(x);
+    &#125;
+    dfs(s,0);
+    while(m--)&#123;
+        int l,r;
+        cin&gt;&gt;l&gt;&gt;r;
+        cout&lt;&lt;lca(l,r)&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
+ &#125;
 </code></pre>
-<h2 id="倍增找LCA">倍增找LCA</h2>
-<p>详细讲解：</p>
+<h2 id="倍增找LCA"><a href="#倍增找LCA" class="headerlink" title="倍增找LCA"></a>倍增找LCA</h2><p> 详细讲解：</p>
 <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV155411h7CG?p=2">视频</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/darlingroot/p/10597611.html">LCA博客讲解</a></p>
-<h2 id="P3379-【模板】最近公共祖先（LCA）"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3379">P3379 【模板】最近公共祖先（LCA）</a></h2>
-<pre><code class="language-c">#include &lt;bits/stdc++.h&gt;
+<h2 id="P3379-【模板】最近公共祖先（LCA）"><a href="#P3379-【模板】最近公共祖先（LCA）" class="headerlink" title="P3379 【模板】最近公共祖先（LCA）"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3379">P3379 【模板】最近公共祖先（LCA）</a></h2><pre><code class="lang-c">#include &lt;bits/stdc++.h&gt;
 using namespace std;
 const int MAXN=500010;
 vector&lt;int&gt; ve[MAXN];
 int dep[MAXN],f[MAXN][22];
 void dfs(int u, int fa, int d)&#123;  //找到每一个节点的父亲节点以及深度大小
-	f[u][0]=fa;  //每一个节点往上走2^0步就是父亲节点
-	dep[u]=d;  //深度
-	int sz=ve[u].size();  //遍历后继节点
-	for(int i=0;i&lt;sz;i++)&#123;
-		int v=ve[u][i];  
-		if(v==fa) continue;  //记住不能往回走
-		dfs(v, u, d+1);
-	&#125;
+    f[u][0]=fa;  //每一个节点往上走2^0步就是父亲节点
+    dep[u]=d;  //深度
+    int sz=ve[u].size();  //遍历后继节点
+    for(int i=0;i&lt;sz;i++)&#123;
+        int v=ve[u][i];  
+        if(v==fa) continue;  //记住不能往回走
+        dfs(v, u, d+1);
+    &#125;
 &#125;
 void bz(int n)&#123;  //预处理出每一个节点往上2^i步后到达的节点
-	for(int i=1;i&lt;22;i++)&#123;  //2^22 &gt; 4e7，能处理最大深度不超过4e7的树
-		for(int u=1;u&lt;=n;u++)&#123;
-			f[u][i]=f[f[u][i-1]][i-1];  //当前节点向上走2^i步就等于先向上走2^(i-1)再向上走2^(i-1)步
-		&#125;
-	&#125;
+    for(int i=1;i&lt;22;i++)&#123;  //2^22 &gt; 4e7，能处理最大深度不超过4e7的树
+        for(int u=1;u&lt;=n;u++)&#123;
+            f[u][i]=f[f[u][i-1]][i-1];  //当前节点向上走2^i步就等于先向上走2^(i-1)再向上走2^(i-1)步
+        &#125;
+    &#125;
 &#125;
 int lca(int x,int y)&#123;
-	if(dep[x]&lt;dep[y]) swap(x,y);  //保证x的深度大于y
-	for(int i=log2(dep[x]-dep[y]);i&gt;=0;i--)&#123;
-		if((1&lt;&lt;i)&lt;=dep[x]-dep[y]) x=f[x][i]; //注意dep[x]-dep[y]时刻在变化，也正是因为这个所以dep[x]一定最后和dep[y] 
-	&#125;
-	if(x==y) return x;
-	for(int i=log2(dep[x]);i&gt;=0;i--)&#123;  //此时两个节点的深度相同，就需要一起往上面走
-		if(f[x][i]!=f[y][i])&#123;  //一起走2^i后不能相同，因为相同了可能导致超过（最近）公共祖先！
-			x=f[x][i];
-			y=f[y][i];
-		&#125;
-	&#125;
+    if(dep[x]&lt;dep[y]) swap(x,y);  //保证x的深度大于y
+    for(int i=log2(dep[x]-dep[y]);i&gt;=0;i--)&#123;
+        if((1&lt;&lt;i)&lt;=dep[x]-dep[y]) x=f[x][i]; //注意dep[x]-dep[y]时刻在变化，也正是因为这个所以dep[x]一定最后和dep[y] 
+    &#125;
+    if(x==y) return x;
+    for(int i=log2(dep[x]);i&gt;=0;i--)&#123;  //此时两个节点的深度相同，就需要一起往上面走
+        if(f[x][i]!=f[y][i])&#123;  //一起走2^i后不能相同，因为相同了可能导致超过（最近）公共祖先！
+            x=f[x][i];
+            y=f[y][i];
+        &#125;
+    &#125;
     //走完后一定到达了最近公共祖先的子节点，因为这种方法本质上就是二分
-	return f[x][0]; //父节点就是lca
+    return f[x][0]; //父节点就是lca
 &#125;
 int main()
 &#123;
-	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-	int n,m,s;
-	cin&gt;&gt;n&gt;&gt;m&gt;&gt;s;
-	for(int i=0;i&lt;n-1;i++)&#123;
-		int a,b;
-		cin&gt;&gt;a&gt;&gt;b;
-		ve[a].push_back(b);
-		ve[b].push_back(a);
-	&#125;
-	dfs(s,0,0);  //这里很巧妙哦，假设还有一个0节点，而0是s的父亲节点，这样每一个节点往上走2^i就算走过了根节点也会是0
-	bz(n);  //预处理
-	while(m--)&#123;
-		int x,y;
-		cin&gt;&gt;x&gt;&gt;y;
-		cout&lt;&lt;lca(x,y)&lt;&lt;'\n';
-	&#125;
-	return 0;
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    int n,m,s;
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;s;
+    for(int i=0;i&lt;n-1;i++)&#123;
+        int a,b;
+        cin&gt;&gt;a&gt;&gt;b;
+        ve[a].push_back(b);
+        ve[b].push_back(a);
+    &#125;
+    dfs(s,0,0);  //这里很巧妙哦，假设还有一个0节点，而0是s的父亲节点，这样每一个节点往上走2^i就算走过了根节点也会是0
+    bz(n);  //预处理
+    while(m--)&#123;
+        int x,y;
+        cin&gt;&gt;x&gt;&gt;y;
+        cout&lt;&lt;lca(x,y)&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
 &#125;
 </code></pre>
 
@@ -814,7 +809,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

@@ -442,15 +442,14 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="Common-Subsequence">Common Subsequence</h2>
-<p>题目原型这里不贴了，只说一下题目意思</p>
+          <h2 id="Common-Subsequence"><a href="#Common-Subsequence" class="headerlink" title="Common Subsequence"></a>Common Subsequence</h2><p>题目原型这里不贴了，只说一下题目意思</p>
 <p>给你两个字符串找到里面最长的公共子串长度，当然要你找出这个子串套用这个转移方程也是能做的，这里只贴一下样例：</p>
 <blockquote>
-<pre><code class="language-tex">abcfbc         abfcab
+<pre><code class="lang-tex">abcfbc         abfcab
 programming    contest 
 abcd           mnp
 </code></pre>
-<pre><code class="language-tex">4
+<pre><code class="lang-tex">4
 2
 0
 </code></pre>
@@ -460,8 +459,7 @@ abcd           mnp
 <p>如果s1[i]!=s2[j] 则 c[i] [j]=max(c[i-1] [j],c[i] [j-1])</p>
 <a target="_blank" rel="noopener" href="http://img.51nod.com/upload/000FBEAF/08D25D565D85EFF40000000000000002.jpeg" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="http://img.51nod.com/upload/000FBEAF/08D25D565D85EFF40000000000000002.jpeg" /></a>
 <p>所以这道题用二维数组存一下，就解决了</p>
-<h3 id="CODE">CODE</h3>
-<pre><code class="language-c">#include&lt;iostream&gt;
+<h3 id="CODE"><a href="#CODE" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include&lt;iostream&gt;
 #include&lt;cstring&gt;
 #include&lt;cstdio&gt;
 using namespace std;
@@ -474,20 +472,19 @@ int main()&#123;
         for(int i=0;i&lt;=len2;i++) dp[0][i]=0;
         for(int i=0;i&lt;=len1;i++) dp[i][0]=0;
         for(int i=1;i&lt;=len1;i++)&#123;
-        	for(int j=1;j&lt;=len2;j++)&#123;
+            for(int j=1;j&lt;=len2;j++)&#123;
                 if(s1[i]==s2[j])
                     dp[i][j]=dp[i-1][j-1]+1;
                 else
                     dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
             &#125;
-		&#125;
+        &#125;
         printf(&quot;%d\n&quot;,dp[len1][len2]);
     &#125;
     return 0;
 &#125;
 </code></pre>
-<h2 id="Jumping-Cows">Jumping Cows</h2>
-<p>题意：n个数，从前往后挑，当前挑的是奇数个就往前走，挑的是偶数个就往后推，问？最远到达哪里？</p>
+<h2 id="Jumping-Cows"><a href="#Jumping-Cows" class="headerlink" title="Jumping Cows"></a>Jumping Cows</h2><p>题意：n个数，从前往后挑，当前挑的是奇数个就往前走，挑的是偶数个就往后推，问？最远到达哪里？</p>
 <blockquote>
 <p><strong>样例</strong></p>
 <pre><code>8 //8个数
@@ -499,20 +496,19 @@ int main()&#123;
 3
 5
 6
-</code></pre>
-<pre><code>17 //7-1+8-3+6
-</code></pre>
-</blockquote>
+</code></pre><pre><code>17 //7-1+8-3+6
+</code></pre></blockquote>
 <p>这道题可以贪心可以dp，贪心比较好想而且容易理解</p>
-<p><font colot=red size=3>贪心</font></p>
+<font colot=red size=3>贪心</font>
+
 <a target="_blank" rel="noopener" href="https://images0.cnblogs.com/blog/494784/201308/06211533-2df9d37b2b454daabde15f6bfce1cb89.png" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://images0.cnblogs.com/blog/494784/201308/06211533-2df9d37b2b454daabde15f6bfce1cb89.png" /></a>
 <p>如图，从1开始到4之前一直上升，4是波峰，然后到2时是波谷，到了5时又是波峰，所以最大值=4-2+5=7；</p>
 <p>还要注意的是如果到达了数列的末尾，如果此时需要加数，那当然是加上结尾一个数，因为它是结尾附近最大的数；如果是需要减数，则不需要减了，这样可以保持当前值最大。</p>
-<p><font colot=red size=3>DP</font></p>
-<p>dp[i][0] 表示 当拿到第i个药时，之前已经拿了奇数个药的最大弹跳力。</p>
-<p>dp[i][1] 表示 当拿到第i个药时，之前已经拿了偶数个药的最大弹跳力。</p>
-<h3 id="CODE-v2">CODE</h3>
-<pre><code class="language-c">#include&lt;iostream&gt;
+<font colot=red size=3>DP</font>
+
+<p> dp[i][0] 表示 当拿到第i个药时，之前已经拿了奇数个药的最大弹跳力。</p>
+<p> dp[i][1] 表示 当拿到第i个药时，之前已经拿了偶数个药的最大弹跳力。</p>
+<h3 id="CODE-1"><a href="#CODE-1" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include&lt;iostream&gt;
 #include&lt;stdio.h&gt;
 #include&lt;string.h&gt;
 using namespace std;
@@ -521,33 +517,33 @@ const int MAXN=150010;
 ll val[MAXN];
 int main()
 &#123;
-	int n;
-	cin&gt;&gt;n;
-	for(int i=1;i&lt;=n;i++) cin&gt;&gt;val[i];
-	ll maxn=-1,minn=1e9,ans=0,flag=0;
-	for(int i=1;i&lt;n;i++)&#123;
-//		cout&lt;&lt;i&lt;&lt;'\n';
-		if(val[i+1]&lt;val[i])&#123;
-			maxn=val[i]; //若当前是峰值，则开始进入波谷，并且记录下来峰值
-			int j;
-			for(j=i+1;j&lt;n;j++)&#123; //进入波谷
-				if(val[j+1]&gt;val[j])&#123; //波谷结束
-					minn=val[j]; //记录波谷值
-					ans+=maxn-minn; //加入答案
-					i=j; //更新i从下一个位置开始遍历
-					break;
-				&#125;
-			&#125;
-			if(j==n)&#123; //如果结束的时候是以递减形式结束，则不需要减值了
-				ans+=maxn;
-				flag=1; //标记
-				break;
-			&#125;
-		&#125;
-	&#125;
-	if(!flag) ans+=val[n]; //如果不是以递减形式结束需要加上最后一个值
-	cout&lt;&lt;ans&lt;&lt;'\n';
-	return 0;
+    int n;
+    cin&gt;&gt;n;
+    for(int i=1;i&lt;=n;i++) cin&gt;&gt;val[i];
+    ll maxn=-1,minn=1e9,ans=0,flag=0;
+    for(int i=1;i&lt;n;i++)&#123;
+//        cout&lt;&lt;i&lt;&lt;&#39;\n&#39;;
+        if(val[i+1]&lt;val[i])&#123;
+            maxn=val[i]; //若当前是峰值，则开始进入波谷，并且记录下来峰值
+            int j;
+            for(j=i+1;j&lt;n;j++)&#123; //进入波谷
+                if(val[j+1]&gt;val[j])&#123; //波谷结束
+                    minn=val[j]; //记录波谷值
+                    ans+=maxn-minn; //加入答案
+                    i=j; //更新i从下一个位置开始遍历
+                    break;
+                &#125;
+            &#125;
+            if(j==n)&#123; //如果结束的时候是以递减形式结束，则不需要减值了
+                ans+=maxn;
+                flag=1; //标记
+                break;
+            &#125;
+        &#125;
+    &#125;
+    if(!flag) ans+=val[n]; //如果不是以递减形式结束需要加上最后一个值
+    cout&lt;&lt;ans&lt;&lt;&#39;\n&#39;;
+    return 0;
 &#125;
 /*
 6
@@ -557,8 +553,7 @@ int main()
 <p>方程就是:</p>
 <p>dp[i][0] = max(dp[i-1][0], dp[i-1][1]- v[i]);</p>
 <p>dp[i][1] = max(dp[i-1][1], dp[i-1][0]+v[i]);</p>
-<h3 id="CODE-v3">CODE</h3>
-<pre><code class="language-c">#include &lt;iostream&gt;
+<h3 id="CODE-2"><a href="#CODE-2" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include &lt;iostream&gt;
 #include &lt;cstdio&gt;
 #include &lt;cstring&gt;
 using namespace std;
@@ -584,12 +579,9 @@ int main()
     &#125;
 &#125;
 </code></pre>
-<h2 id="饭卡">饭卡</h2>
-<p>电子科大本部食堂的饭卡有一种很诡异的设计，即在购买之前判断余额。如果购买一个商品之前，卡上的剩余金额大于或等于5元，就一定可以购买成功（即使购买后卡上余额为负），否则无法购买（即使金额足够）。所以大家都希望尽量使卡上的余额最少。<br>
-某天，食堂中有n种菜出售，每种菜可购买一次。已知每种菜的价格以及卡上的余额，问最少可使卡上的余额为多少。</p>
+<h2 id="饭卡"><a href="#饭卡" class="headerlink" title="饭卡"></a>饭卡</h2><p>电子科大本部食堂的饭卡有一种很诡异的设计，即在购买之前判断余额。如果购买一个商品之前，卡上的剩余金额大于或等于5元，就一定可以购买成功（即使购买后卡上余额为负），否则无法购买（即使金额足够）。所以大家都希望尽量使卡上的余额最少。<br>某天，食堂中有n种菜出售，每种菜可购买一次。已知每种菜的价格以及卡上的余额，问最少可使卡上的余额为多少。</p>
 <p>既然卡上有5元就可以购买任何菜品，那不如我们就用原钱数减去5始终最少保留5元去买最贵的，剩下的用一下01背包找到最大值</p>
-<h3 id="CODE-v4">CODE</h3>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<h3 id="CODE-3"><a href="#CODE-3" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include &lt;stdio.h&gt;
 #include &lt;iostream&gt;
 #include &lt;string&gt;
 #include &lt;string.h&gt;
@@ -611,27 +603,24 @@ int main()
     ios;
     int n,m;
     while(cin&gt;&gt;n&amp;&amp;n)&#123;
-    	memset(dp,0,sizeof dp);
-    	for(int i=1;i&lt;=n;i++) cin&gt;&gt;w[i];
-    	cin&gt;&gt;m;
-    	sort(w+1,w+1+n);
-    	for(int i=1;i&lt;n;i++)&#123;
-    		for(int j=m-5;j&gt;=w[i];j--)&#123;
-    			dp[j]=max(dp[j],dp[j-w[i]]+w[i]);
-			&#125;
-		&#125;
-		if(m&lt;5) cout&lt;&lt;m&lt;&lt;'\n';
-		else cout&lt;&lt;m-dp[m-5]-w[n]&lt;&lt;'\n';
-	&#125;
-	return 0;
+        memset(dp,0,sizeof dp);
+        for(int i=1;i&lt;=n;i++) cin&gt;&gt;w[i];
+        cin&gt;&gt;m;
+        sort(w+1,w+1+n);
+        for(int i=1;i&lt;n;i++)&#123;
+            for(int j=m-5;j&gt;=w[i];j--)&#123;
+                dp[j]=max(dp[j],dp[j-w[i]]+w[i]);
+            &#125;
+        &#125;
+        if(m&lt;5) cout&lt;&lt;m&lt;&lt;&#39;\n&#39;;
+        else cout&lt;&lt;m-dp[m-5]-w[n]&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
 &#125;
- 
 </code></pre>
-<h2 id="Robberies">Robberies</h2>
-<p>题意：一个小偷要抢银行，给定一个被抓的概率，以及准备抢的银行数量，然后是这些银行的金额和抢劫被抓风险，问在不被抓到的情况下最多抢到多少钱？</p>
+<h2 id="Robberies"><a href="#Robberies" class="headerlink" title="Robberies"></a>Robberies</h2><p>题意：一个小偷要抢银行，给定一个被抓的概率，以及准备抢的银行数量，然后是这些银行的金额和抢劫被抓风险，问在不被抓到的情况下最多抢到多少钱？</p>
 <p>和一般01背包一样，只不过这里的抢劫风险(背包容量是小数)，这样一来就不能做了，开始我在想咋把小数转化成整数，想了好久发现是不可行的，所以这道题要转换思路，我们要求的是在一定风险内偷盗的最大金额，现在我们转换为一定金额内的最大逃跑几率，最后从大到小遍历金额当一种金额可行时就输出并break</p>
-<h3 id="CODE-v5">CODE</h3>
-<pre><code class="language-c">#include &lt;bits/stdc++.h&gt;
+<h3 id="CODE-4"><a href="#CODE-4" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include &lt;bits/stdc++.h&gt;
 using namespace std;
 const int MAXN=1e3+10;
 double c[MAXN],dp[1000000],m;
@@ -651,10 +640,10 @@ int main()
         &#125;
         dp[0]=1; //注意初始化，当偷0金额时不用逃跑的，所以逃跑几率是1
         for(int i=1;i&lt;=n;i++)&#123;
-        	for(int j=sum;j&gt;=c[i];j--)&#123;
-            	dp[j]=max(dp[j],dp[j-w[i]]*c[i]);
-			&#125;
-		&#125;
+            for(int j=sum;j&gt;=c[i];j--)&#123;
+                dp[j]=max(dp[j],dp[j-w[i]]*c[i]);
+            &#125;
+        &#125;
         for(int i=sum;i&gt;=0;i--)&#123; //从最大金额开始遍历，找到第一个可以逃跑的
             if(dp[i]&gt;=m)&#123; 逃跑几率大于最低逃跑几率
                 cout&lt;&lt;i&lt;&lt;endl;
@@ -665,75 +654,70 @@ int main()
     return 0;
 &#125;
 </code></pre>
-<h2 id="钱币兑换问题">钱币兑换问题</h2>
-<blockquote>
+<h2 id="钱币兑换问题"><a href="#钱币兑换问题" class="headerlink" title="钱币兑换问题"></a>钱币兑换问题</h2><blockquote>
 <p>在一个国家仅有1分，2分，3分硬币，将钱N兑换成硬币有很多种兑法。请你编程序计算出共有多少种兑法。</p>
 <p>每行只有一个正整数N，N小于32768。</p>
 <p>对应每个输入，输出兑换方法数</p>
 <pre><code>2934
 12553
-</code></pre>
-<pre><code>718831
+</code></pre><pre><code>718831
 13137761
-</code></pre>
-</blockquote>
+</code></pre></blockquote>
 <p>仔细分析，N相当于容量，而硬币面值相当于重量和价值，不过要求的不是最大价值，求的是组合数，dp[i][j]表示前i种硬币组成j块钱的最大组合数，那么dp[i][j]==dp[i-1][j]+dp[i][j-i]，前一个意义：不用第i种硬币组合成为j元的组合数，后面指的是至少用了i种硬币组成j-i元的组合数，那你问dp[i-1][j]为啥不表示至少用第i-1种硬币呢？说实话我也不太清楚，感觉跟从小往大推有关系，当没有更新到时表示至少用了第i种硬币，更新过了就变成了所有组合数。。但是不知道咋证明</p>
-<pre><code class="language-c">#include&lt;bits/stdc++.h&gt;
+<pre><code class="lang-c">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int MAXN=510;
 const int INF=0x3f3f3f3f;
 int c[MAXN],w[MAXN],dp[32868];
 int main()
 &#123;
-	memset(dp,0,sizeof dp);
-	dp[0]=1;
-	for(int i=1;i&lt;=3;i++)&#123;
-		for(int j=i;j&lt;=32768;j++)&#123;
-			dp[j]=dp[j]+dp[j-i];
-		&#125;
-	&#125;
-	int n;
-	while(scanf(&quot;%d&quot;,&amp;n)!=EOF)&#123;
-		printf(&quot;%d\n&quot;,dp[n]);
-	&#125;
-	return 0;
+    memset(dp,0,sizeof dp);
+    dp[0]=1;
+    for(int i=1;i&lt;=3;i++)&#123;
+        for(int j=i;j&lt;=32768;j++)&#123;
+            dp[j]=dp[j]+dp[j-i];
+        &#125;
+    &#125;
+    int n;
+    while(scanf(&quot;%d&quot;,&amp;n)!=EOF)&#123;
+        printf(&quot;%d\n&quot;,dp[n]);
+    &#125;
+    return 0;
 &#125;
 </code></pre>
-<h2 id="CD">CD</h2>
-<p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/387630#problem/G">题目链接</a></p>
+<h2 id="CD"><a href="#CD" class="headerlink" title="CD"></a>CD</h2><p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/387630#problem/G">题目链接</a></p>
 <p>这一道题需要你记录选中了哪些数！！！挺有意思的啊，题意是给你一个数n，还有m个数，要求这m个数里面挑出一些它们的和最接近n，并输出这个和还有选中的数，注意和不能大于n。</p>
 <p>如果只要求和，那简单01背包就搞定了，但是现在要求选中的数，那就需要标记一下，每次更新时都在二维数组标记这个位置，表示这个位置更新了，最后输出时从后往前遍历，找到标记的点，具体看代码</p>
-<h3 id="CODE-v6">CODE</h3>
-<pre><code class="language-c">#include&lt;bits/stdc++.h&gt;
+<h3 id="CODE-5"><a href="#CODE-5" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int MAXN=40000;
 const int INF=0x3f3f3f3f;
 int c[MAXN],dp[40000],vis[30][MAXN];
 int main()
 &#123;
-	int n,m;
-	while(cin&gt;&gt;n&gt;&gt;m)&#123;
-		memset(vis,0,sizeof vis);
-		memset(dp,0,sizeof dp);
-		for(int i=1;i&lt;=m;i++) cin&gt;&gt;c[i];
-		for(int i=1;i&lt;=m;i++)&#123;
-			for(int j=n;j&gt;=c[i];j--)&#123; //01背包
-				if(dp[j]&lt;=dp[j-c[i]]+c[i])&#123;
-					dp[j]=dp[j-c[i]]+c[i];
-					vis[i][j]=1; //更新了就标记
-				&#125;
-			&#125;
-		&#125;
-		int j=n,tail=0;
-		for(int i=m;i&gt;=1;i--)&#123;
-			if(vis[i][j])&#123;
-				cout&lt;&lt;c[i]&lt;&lt;' ';
-				j-=c[i]; //注意这里要更新
-			&#125;
-		&#125;
-		cout&lt;&lt;&quot;sum:&quot;&lt;&lt;dp[n]&lt;&lt;'\n';
-	&#125;
-	return 0;
+    int n,m;
+    while(cin&gt;&gt;n&gt;&gt;m)&#123;
+        memset(vis,0,sizeof vis);
+        memset(dp,0,sizeof dp);
+        for(int i=1;i&lt;=m;i++) cin&gt;&gt;c[i];
+        for(int i=1;i&lt;=m;i++)&#123;
+            for(int j=n;j&gt;=c[i];j--)&#123; //01背包
+                if(dp[j]&lt;=dp[j-c[i]]+c[i])&#123;
+                    dp[j]=dp[j-c[i]]+c[i];
+                    vis[i][j]=1; //更新了就标记
+                &#125;
+            &#125;
+        &#125;
+        int j=n,tail=0;
+        for(int i=m;i&gt;=1;i--)&#123;
+            if(vis[i][j])&#123;
+                cout&lt;&lt;c[i]&lt;&lt;&#39; &#39;;
+                j-=c[i]; //注意这里要更新
+            &#125;
+        &#125;
+        cout&lt;&lt;&quot;sum:&quot;&lt;&lt;dp[n]&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
 &#125;
 </code></pre>
 
@@ -940,7 +924,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

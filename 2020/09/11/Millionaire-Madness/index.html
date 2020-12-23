@@ -445,31 +445,21 @@
           <blockquote>
 <p>计蒜客之前比赛的一道题目，记录一下</p>
 </blockquote>
-<h2 id="G-Millionaire-Madness">G Millionaire Madness</h2>
-<blockquote>
-<p>A close friend of yours, a duck with financial problems, has requested your help with a matter that will help him pay off his debts. He is the nephew of an extremely wealthy duck, who has a large vault, filled with mountains of coins. This wealthy duck has a certain coin in his possession which has a lot of sentimental value to him. Usually, it is kept under a protective glass dome on a velvet cushion.However, during a recent relocating of the coins in the vault, the special coin was accidentally moved into the vault, leading to an extremely stressful situation for your friend’s uncle. Luckily, the coin has recently been located. Unfortunately, it is completely opposite to the entrance to the vault, and due to the mountains of coins inside the vault, actually reaching the coin is no simple task.He is therefore willing to pay your friend to retrieve this coin, provided that he brings his own equipment to scale the mountains of coins. Your friend has decided he will bring a ladder, but he is still uncertain about its length. While a longer ladder means that he can scale higher cliffs, it also costs more money. He therefore wants to buy the shortest ladder such that he can reach the special coin, so that he has the largest amount of money left to pay off his debts.The vault can be represented as a rectangular grid of stacks of coins of various heights (in meters), with the entrance at the north west corner (the first height in the input, the entrance to the vault is at this height as well) and the special coin at the south east corner (the last height in the input). Your avian companion has figured out the height of the coins in each of these squares. From a stack of coins he can attempt to climb up or jump down to the stack immediately north, west, south or east of it. Because your friend cannot jump or fly (he is a very special kind of duck that even wears clothes), successfully performing a climb of n<em>n</em> meters will require him to bring a ladder of at least n<em>n</em> meters. He does not mind jumping down, no matter the height; he just lets gravity do all the work.</p>
+<h2 id="G-Millionaire-Madness"><a href="#G-Millionaire-Madness" class="headerlink" title="G Millionaire Madness"></a>G Millionaire Madness</h2><blockquote>
+<p>A close friend of yours, a duck with financial problems, has requested your help with a matter that will help him pay off his debts. He is the nephew of an extremely wealthy duck, who has a large vault, filled with mountains of coins. This wealthy duck has a certain coin in his possession which has a lot of sentimental value to him. Usually, it is kept under a protective glass dome on a velvet cushion.However, during a recent relocating of the coins in the vault, the special coin was accidentally moved into the vault, leading to an extremely stressful situation for your friend’s uncle. Luckily, the coin has recently been located. Unfortunately, it is completely opposite to the entrance to the vault, and due to the mountains of coins inside the vault, actually reaching the coin is no simple task.He is therefore willing to pay your friend to retrieve this coin, provided that he brings his own equipment to scale the mountains of coins. Your friend has decided he will bring a ladder, but he is still uncertain about its length. While a longer ladder means that he can scale higher cliffs, it also costs more money. He therefore wants to buy the shortest ladder such that he can reach the special coin, so that he has the largest amount of money left to pay off his debts.The vault can be represented as a rectangular grid of stacks of coins of various heights (in meters), with the entrance at the north west corner (the first height in the input, the entrance to the vault is at this height as well) and the special coin at the south east corner (the last height in the input). Your avian companion has figured out the height of the coins in each of these squares. From a stack of coins he can attempt to climb up or jump down to the stack immediately north, west, south or east of it. Because your friend cannot jump or fly (he is a very special kind of duck that even wears clothes), successfully performing a climb of n<em>n</em> meters will require him to bring a ladder of at least n<em>n</em> meters. He does not mind jumping down, no matter the height; he just lets gravity do all the work. </p>
 <p><strong>Input</strong></p>
-<p>The first line contains two integers: the length M<em>M</em>, and the width N<em>N</em> of the vault, satisfying 1 \leq M,N \leq 10001≤<em>M</em>,<em>N</em>≤1000.The following M<em>M</em> lines each contain N<em>N</em> integers. Each integer specifies the height of the pile of coins in the vault at the corresponding position. (The first line describes the north-most stacks from west to east; the last line describes the south-most stacks from west to east). The heights are given in meters and all heights are at least 00 and at most 10^9109 (yes, your friend’s uncle is very rich).</p>
+<p>The first line contains two integers: the length M<em>M</em>, and the width N<em>N</em> of the vault, satisfying 1 \leq M,N \leq 10001≤<em>M</em>,<em>N</em>≤1000.The following M<em>M</em> lines each contain N<em>N</em> integers. Each integer specifies the height of the pile of coins in the vault at the corresponding position. (The first line describes the north-most stacks from west to east; the last line describes the south-most stacks from west to east). The heights are given in meters and all heights are at least 00 and at most 10^9109 (yes, your friend’s uncle is very rich). </p>
 <p><strong>Output</strong></p>
 <p>Output a single line containing a single integer: the length in meters of the shortest ladder that allows you to get from the north west corner to the south east corner.</p>
-<h4 id="样例输入1">样例输入1</h4>
-<pre><code>3 3
+<h4 id="样例输入1"><a href="#样例输入1" class="headerlink" title="样例输入1"></a>样例输入1</h4><pre><code>3 3
 1 2 3
 6 5 4
 7 8 9
-</code></pre>
-<h4 id="样例输出1">样例输出1</h4>
-<pre><code>1
-</code></pre>
-<h4 id="样例输入2">样例输入2</h4>
-<pre><code>1 4
+</code></pre><h4 id="样例输出1"><a href="#样例输出1" class="headerlink" title="样例输出1"></a>样例输出1</h4><pre><code>1
+</code></pre><h4 id="样例输入2"><a href="#样例输入2" class="headerlink" title="样例输入2"></a>样例输入2</h4><pre><code>1 4
 4 3 2 1
-</code></pre>
-<h4 id="样例输出2">样例输出2</h4>
-<pre><code>0
-</code></pre>
-<h4 id="样例输入3">样例输入3</h4>
-<pre><code>7 5
+</code></pre><h4 id="样例输出2"><a href="#样例输出2" class="headerlink" title="样例输出2"></a>样例输出2</h4><pre><code>0
+</code></pre><h4 id="样例输入3"><a href="#样例输入3" class="headerlink" title="样例输入3"></a>样例输入3</h4><pre><code>7 5
 10 11 12 13 14
 11 20 16 17 16
 12 10 18 21 24
@@ -477,16 +467,11 @@
 16 18 20 20 25
 25 24 22 10 25
 26 27 28 21 25
-</code></pre>
-<h4 id="样例输出3">样例输出3</h4>
-<pre><code>3
-</code></pre>
-</blockquote>
-<h3 id="大意">大意</h3>
-<p>给定一个矩阵，从第一个点到最后一个点需要的最短梯子长度，从一个数到一个比它大的数需要一个两数之差的梯子长度，需要注意这个梯子可以反复使用，其实就是求从起点到终点的一条路径，这条路径的任意两个相邻数最大的差值最小，问这个差值是多少？</p>
-<h3 id="想法">想法</h3>
-<p>既然要求从起点到终点最短梯子长度，那可以这样想，求从起点到离终点只有一步的那个点到终点需要的梯子长度和从起点到终点所需的最短梯子长度取大的，同理继续往前推可以知道每一次递推都是由之前的那个点到起点所需最短梯子长度推过来的，因此每次都是求这个点到下一个点的最小梯子长度，如何求最短呢？肯定想到优先队列，而一层一层的往外推则是bfs，因此这道题就出来了</p>
-<pre><code class="language-c">#include &lt;bits/stdc++.h&gt; 
+</code></pre><h4 id="样例输出3"><a href="#样例输出3" class="headerlink" title="样例输出3"></a>样例输出3</h4><pre><code>3
+</code></pre></blockquote>
+<h3 id="大意"><a href="#大意" class="headerlink" title="大意"></a>大意</h3><p>给定一个矩阵，从第一个点到最后一个点需要的最短梯子长度，从一个数到一个比它大的数需要一个两数之差的梯子长度，需要注意这个梯子可以反复使用，其实就是求从起点到终点的一条路径，这条路径的任意两个相邻数最大的差值最小，问这个差值是多少？</p>
+<h3 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h3><p>既然要求从起点到终点最短梯子长度，那可以这样想，求从起点到离终点只有一步的那个点到终点需要的梯子长度和从起点到终点所需的最短梯子长度取大的，同理继续往前推可以知道每一次递推都是由之前的那个点到起点所需最短梯子长度推过来的，因此每次都是求这个点到下一个点的最小梯子长度，如何求最短呢？肯定想到优先队列，而一层一层的往外推则是bfs，因此这道题就出来了</p>
+<pre><code class="lang-c">#include &lt;bits/stdc++.h&gt; 
 #define ios ios::sync_with_stdio(0)
 using namespace std;
 struct node&#123;
@@ -528,7 +513,7 @@ int main()
         &#125;
     &#125;
     p.push(&#123;1,1,0&#125;);
-    cout&lt;&lt;bfs()&lt;&lt;'\n';
+    cout&lt;&lt;bfs()&lt;&lt;&#39;\n&#39;;
 &#125;
 </code></pre>
 
@@ -735,7 +720,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

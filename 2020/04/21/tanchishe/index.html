@@ -424,7 +424,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">8分</span>
+        <span class="post-count">9分</span>
       </span>
     </span>
 </div>
@@ -442,14 +442,10 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p>经历了几个月对C和C++的学习，已经懂得基本原理的我准备自己写一个小项目了😄<br>
-先来look look成果吧！<br>
-<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1tK4y1k7az">最后成品</a></p>
-<h1>Code</h1>
-<p>想写一个功能较为完备的贪吃蛇应该把它作为一个项目去写，而不仅仅是把所有代码写在一个文件里，这应该是程序员最基本的意识了</p>
+          <p>经历了几个月对C和C++的学习，已经懂得基本原理的我准备自己写一个小项目了:smile:<br>先来look look成果吧！<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1tK4y1k7az">最后成品</a></p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><p>想写一个功能较为完备的贪吃蛇应该把它作为一个项目去写，而不仅仅是把所有代码写在一个文件里，这应该是程序员最基本的意识了</p>
 <p>首先要创建一个结构体，因为我们要用到图形化编程，而图形界面是由一个个点组成的</p>
-<h2 id="坐标（头文件）">坐标（头文件）</h2>
-<pre><code>#ifndef MYPOINT_H
+<h2 id="坐标（头文件）"><a href="#坐标（头文件）" class="headerlink" title="坐标（头文件）"></a>坐标（头文件）</h2><pre><code>#ifndef MYPOINT_H
 #define MYPOINT_H
 //描述点的结构
 struct myPoint &#123;
@@ -457,45 +453,39 @@ struct myPoint &#123;
   int y;
 &#125;;
 #endif
-</code></pre>
-<p>接下来我们需要创建一个窗口，还是一样窗口的尺寸同样是一个常用的参量，我们也可以把它单独写在一个头文件里</p>
-<h2 id="窗口尺寸（头文件）">窗口尺寸（头文件）</h2>
-<pre><code>#pragma once      //这里pragma once 和上面的ifndef __  define __ 是一样的
+</code></pre><p>接下来我们需要创建一个窗口，还是一样窗口的尺寸同样是一个常用的参量，我们也可以把它单独写在一个头文件里</p>
+<h2 id="窗口尺寸（头文件）"><a href="#窗口尺寸（头文件）" class="headerlink" title="窗口尺寸（头文件）"></a>窗口尺寸（头文件）</h2><pre><code>#pragma once      //这里pragma once 和上面的ifndef __  define __ 是一样的
 #define width 450
 #define length 750
-</code></pre>
-<p>做贪吃蛇首先要明白贪吃蛇分几部分，第一蛇本身，第二就是食物，所以我们就分两部分来做</p>
+</code></pre><p>做贪吃蛇首先要明白贪吃蛇分几部分，第一蛇本身，第二就是食物，所以我们就分两部分来做</p>
 <p>这里需要说明的是graphics.h这个头文件编译器不是默认安装的，需要自己下载，<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1IPfb6IhnpDrYoP-7bxT4uQ">下载地址点击我</a>，密码：awr0</p>
-<h2 id="蛇-（头文件）">蛇 （头文件）</h2>
-<pre><code>//做蛇
+<h2 id="蛇-（头文件）"><a href="#蛇-（头文件）" class="headerlink" title="蛇 （头文件）"></a>蛇 （头文件）</h2><pre><code>//做蛇
 #ifndef _SNAKE_H
 #define _SNAKE_H
-#include &lt;graphics.h&gt;			//图形化函数
-#include &lt;conio.h&gt;					//按键函数
-#include &quot;Mypoint.h&quot;				//自己写的点的坐标
+#include &lt;graphics.h&gt;            //图形化函数
+#include &lt;conio.h&gt;                    //按键函数
+#include &quot;Mypoint.h&quot;                //自己写的点的坐标
 class snake &#123;
 public:
-  snake();						//构造函数
-  void drawSnake();				//画蛇
-  void moveSnake();				//移动蛇
-  void keyDown();					//按键控制蛇
+  snake();                        //构造函数
+  void drawSnake();                //画蛇
+  void moveSnake();                //移动蛇
+  void keyDown();                    //按键控制蛇
   //类的封装性
-  int&amp; getSnakeSize();			//用来修改蛇的长度接口
-  myPoint getSnakePos(int pos);	//获取蛇的pos节坐标
-  int judge();					//判断蛇是否死亡
+  int&amp; getSnakeSize();            //用来修改蛇的长度接口
+  myPoint getSnakePos(int pos);    //获取蛇的pos节坐标
+  int judge();                    //判断蛇是否死亡
 protected:
   //属性
-  myPoint snakePos[100];			//蛇最多节数
-  int snakeSize;					//当前节数
-  char position;					//方向
+  myPoint snakePos[100];            //蛇最多节数
+  int snakeSize;                    //当前节数
+  char position;                    //方向
   //把方向枚举出来
   enum snakePosition&#123;right,left,down, up&#125;;
 &#125;;
 #endif
-</code></pre>
-<p>在蛇的头文件里面我们创建了一个类，写了关于蛇的一系列操作函数，接下来我们要一一实现这些函数，千万不要害怕，其实特别简单，除了一些图形处理的函数可能你不知道以外，其他的只要学过C语言一般就能理解</p>
-<h2 id="蛇函数的实现（cpp）">蛇函数的实现（cpp）</h2>
-<pre><code>#include &quot;Snake.h&quot;
+</code></pre><p>在蛇的头文件里面我们创建了一个类，写了关于蛇的一系列操作函数，接下来我们要一一实现这些函数，千万不要害怕，其实特别简单，除了一些图形处理的函数可能你不知道以外，其他的只要学过C语言一般就能理解</p>
+<h2 id="蛇函数的实现（cpp）"><a href="#蛇函数的实现（cpp）" class="headerlink" title="蛇函数的实现（cpp）"></a>蛇函数的实现（cpp）</h2><pre><code>#include &quot;Snake.h&quot;
 #include &quot;window.h&quot;
 snake::snake() &#123;
   snakeSize = 3;
@@ -544,31 +534,31 @@ void snake::keyDown()//按键控制蛇
 &#123;
   //按键控制，72,75,77,80是小键盘的上下左右
   char useKey = 0;
-  useKey = _getch();		//conion.h
+  useKey = _getch();        //conion.h
   switch (useKey) &#123;
-  case 'w':
-  case 'W':
+  case &#39;w&#39;:
+  case &#39;W&#39;:
   case 72:
     if (position != down) &#123;
       position = up;
     &#125;
     break;
-  case 'A':
-  case 'a':
+  case &#39;A&#39;:
+  case &#39;a&#39;:
   case 75:
     if (position != right) &#123;
       position = left;
     &#125;
     break;
-  case 's':
-  case 'S':
+  case &#39;s&#39;:
+  case &#39;S&#39;:
   case 80:
     if (position != up) &#123;
       position = down;
     &#125;
     break;
-  case 'D':
-  case 'd':
+  case &#39;D&#39;:
+  case &#39;d&#39;:
   case 77:
     if (position != left) &#123;
       position = right;
@@ -576,7 +566,7 @@ void snake::keyDown()//按键控制蛇
     break;
   case 32:
     char ch;
-    while ( ch = _getch()) &#123;	//空格暂停
+    while ( ch = _getch()) &#123;    //空格暂停
       if (ch == 32) break;
     &#125;
     break;
@@ -607,10 +597,8 @@ int snake::judge()
   &#125;
   return 1;
 &#125;
-</code></pre>
-<p>实现了蛇，就该写食物了，与蛇类似，先写头文件创建类</p>
-<h2 id="食物（头文件）">食物（头文件）</h2>
-<pre><code>#ifndef _FOOD_H
+</code></pre><p>实现了蛇，就该写食物了，与蛇类似，先写头文件创建类</p>
+<h2 id="食物（头文件）"><a href="#食物（头文件）" class="headerlink" title="食物（头文件）"></a>食物（头文件）</h2><pre><code>#ifndef _FOOD_H
 #define _FOOD_H
 #include &lt;graphics.h&gt;
 #include &quot;Mypoint.h&quot;
@@ -627,14 +615,12 @@ protected:
   int foodFlag;
 &#125;;
 #endif
-</code></pre>
-<h2 id="食物实现（cpp）">食物实现（cpp）</h2>
-<pre><code>#include &quot;food.h&quot;
+</code></pre><h2 id="食物实现（cpp）"><a href="#食物实现（cpp）" class="headerlink" title="食物实现（cpp）"></a>食物实现（cpp）</h2><pre><code>#include &quot;food.h&quot;
 #include &quot;window.h&quot;
 food::food() &#123;
-  foodPos.x = rand() % (length / 10) * 10;	//食物放在以10为倍数的位置防止吃不到
+  foodPos.x = rand() % (length / 10) * 10;    //食物放在以10为倍数的位置防止吃不到
   foodPos.y = rand() % (width / 10) * 10;
-  foodFlag = 1;					//食物存在
+  foodFlag = 1;                    //食物存在
 &#125;
 void food::drawFood() &#123;
   setfillcolor(BLACK);
@@ -642,9 +628,9 @@ void food::drawFood() &#123;
 &#125;
 void food::setFoodPos() &#123;
   //食物可能生成在蛇的身上
-  foodPos.x = rand() % (length/10) * 10;	//食物放在以10为倍数的位置防止吃不到
+  foodPos.x = rand() % (length/10) * 10;    //食物放在以10为倍数的位置防止吃不到
   foodPos.y = rand() % (width/10) * 10;
-  foodFlag = 1;					//食物存在
+  foodFlag = 1;                    //食物存在
 &#125;
 int&amp; food::getFlag() &#123;
   return foodFlag;
@@ -653,10 +639,8 @@ int&amp; food::getFlag() &#123;
 myPoint food::getFoodPos() &#123;
   return foodPos;
 &#125;
-</code></pre>
-<p>这就做完了，最后只需要调用这些函数就行了</p>
-<h2 id="主函数（cpp）">主函数（cpp）</h2>
-<pre><code>#define _CRT_SECURE_NO_WARNINGS   //使用outtextxy()需要这一句
+</code></pre><p>这就做完了，最后只需要调用这些函数就行了</p>
+<h2 id="主函数（cpp）"><a href="#主函数（cpp）" class="headerlink" title="主函数（cpp）"></a>主函数（cpp）</h2><pre><code>#define _CRT_SECURE_NO_WARNINGS   //使用outtextxy()需要这一句
 #pragma comment(lib, &quot;winmm.lib&quot;) //添加背景音乐需要添加这一句
 #include &lt;iostream&gt;
 #include &lt;easyx.h&gt;   //outtextxy函数内容
@@ -666,12 +650,12 @@ myPoint food::getFoodPos() &#123;
 #include &quot;window.h&quot;
 
 using namespace std;
-HWND hwnd = NULL;			//windows 编程的知识，句柄
-int Speed = 180;			//蛇的速度
-int score = 0;				//分数
-int r = 1;				//等级
-char grade[100] = &#123; 0 &#125;;	//分数
-char Rank[10] = &#123; 0 &#125;;		//等级
+HWND hwnd = NULL;            //windows 编程的知识，句柄
+int Speed = 180;            //蛇的速度
+int score = 0;                //分数
+int r = 1;                //等级
+char grade[100] = &#123; 0 &#125;;    //分数
+char Rank[10] = &#123; 0 &#125;;        //等级
 //交互处理，写在这里
 void eatFood(snake *pSnake,food *pFood) &#123;
   //当蛇头坐标和食物坐标相等就可以吃
@@ -679,35 +663,35 @@ void eatFood(snake *pSnake,food *pFood) &#123;
   if (pSnake-&gt;getSnakePos(0).x == pFood-&gt;getFoodPos().x &amp;&amp;
     pSnake-&gt;getSnakePos(0).y == pFood-&gt;getFoodPos().y) &#123;
     //游戏引擎
-    score += 10;				//增加分数
+    score += 10;                //增加分数
     if (score % 50 == 0) &#123;
       sprintf(Rank, &quot;%d&quot;, r++);
       Speed -= (int)sqrt(300 - score);
-      setbkmode(TRANSPARENT);		//设置模式为透明
-      settextcolor(BLACK);			//设置颜色为黑色
+      setbkmode(TRANSPARENT);        //设置模式为透明
+      settextcolor(BLACK);            //设置颜色为黑色
       outtextxy((length / 2), (width / 2), &quot;UP-等级提升-当前等级：&quot;);//输出到指定位置
       outtextxy((length / 2)+20, (width / 2) + 20, Rank);
       Sleep(3000);
       cleardevice();
     &#125;
     cleardevice();
-    pSnake-&gt;getSnakeSize()++;	//蛇长度加一
-    pFood-&gt;getFlag() = 0;		//食物标志变0
+    pSnake-&gt;getSnakeSize()++;    //蛇长度加一
+    pFood-&gt;getFlag() = 0;        //食物标志变0
   &#125;
 &#125;
 void ptscore(int score) &#123;//更新分数
   sprintf(grade, &quot;%d&quot;, score); //将score转换到字符串中
-  setbkmode(TRANSPARENT);		//设置模式为透明
-  settextcolor(RED);			//设置颜色为红色
+  setbkmode(TRANSPARENT);        //设置模式为透明
+  settextcolor(RED);            //设置颜色为红色
   outtextxy((length-40), 20, &quot;分数:&quot;);//输出到指定位置
-  outtextxy((length-40), 40, grade);	//输出分数
+  outtextxy((length-40), 40, grade);    //输出分数
 &#125;
 void Up(int rank) &#123;
   if (score % 50 == 0) &#123;
     sprintf(Rank, &quot;%d&quot;, rank++);
     Speed -= (int)sqrt(300-score);
-    setbkmode(TRANSPARENT);		//设置模式为透明
-    settextcolor(BLACK);			//设置颜色为黑色
+    setbkmode(TRANSPARENT);        //设置模式为透明
+    settextcolor(BLACK);            //设置颜色为黑色
     outtextxy((length/2),(width/2) , &quot;UP-等级提升&quot;);//输出到指定位置
     outtextxy((length/2), (width/2)+20, Rank);
     Sleep(3000);
@@ -716,8 +700,8 @@ void Up(int rank) &#123;
 &#125;
 int main()
 &#123;
-  hwnd=initgraph(length, width);			//初始化长度和宽度窗口
-  setbkcolor(GREEN);						//设置背景颜色
+  hwnd=initgraph(length, width);            //初始化长度和宽度窗口
+  setbkcolor(GREEN);                        //设置背景颜色
   //cleardevice();
   PlaySound(&quot;C:\\Users\\86155\\Desktop\\学习\\C语言\\VS2019\\贪吃蛇\\背景音乐\\Ari Pulkkinen - Title Theme.wav&quot;, NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
   snake *pSnake = new snake;
@@ -725,30 +709,29 @@ int main()
   pSnake-&gt;drawSnake();//画蛇
   while (1) &#123;
     cleardevice();
-    if (pFood-&gt;getFlag() == 0) &#123;		//当食物没有时
+    if (pFood-&gt;getFlag() == 0) &#123;        //当食物没有时
       //指针指向运算符，访问结构体
-      pFood-&gt;setFoodPos();			//设置食物位置
+      pFood-&gt;setFoodPos();            //设置食物位置
     &#125;
-    pSnake-&gt;drawSnake();				//画蛇
+    pSnake-&gt;drawSnake();                //画蛇
     if (pSnake-&gt;judge()==0) &#123;
       MessageBox(hwnd, &quot;游戏结束&quot;, &quot;Game Over!!!&quot;, 0);
-      break;							//退出主循环
+      break;                            //退出主循环
     &#125;
-    pSnake-&gt;moveSnake();				//移动蛇
-    pFood-&gt;drawFood();					//画食物
-    ptscore(score);						//打印分数
-    eatFood(pSnake, pFood);				//吃食物做判断
+    pSnake-&gt;moveSnake();                //移动蛇
+    pFood-&gt;drawFood();                    //画食物
+    ptscore(score);                        //打印分数
+    eatFood(pSnake, pFood);                //吃食物做判断
     //只有存在按键才做处理
-    if (_kbhit()) &#123;						//存在按键返回1，不存在返回0
+    if (_kbhit()) &#123;                        //存在按键返回1，不存在返回0
       pSnake-&gt;keyDown();
     &#125;
-    Sleep(Speed);						//速度
+    Sleep(Speed);                        //速度
   &#125;
   closegraph();
   return 0;
 &#125;
-</code></pre>
-<p>上面的playground()函数是用来播放背景音乐的，第一个参数是音乐在电脑的路径，音乐必须是wav格式的</p>
+</code></pre><p>上面的playground()函数是用来播放背景音乐的，第一个参数是音乐在电脑的路径，音乐必须是wav格式的</p>
 <p>到这里一个贪吃蛇程序就做好了，原理非常简单，难的就是图形化处理很多函数不知道为此我给大家一个学习图形化处理函数的博客地址：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37385726/article/details/54809305">点击我</a></p>
 <blockquote>
 <p>告诉你一个秘密点击下面的赏会有惊喜哦（o w o）</p>
@@ -957,7 +940,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

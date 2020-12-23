@@ -443,54 +443,30 @@
         
         <div class="entry-content">
           <p>参考原文：<a target="_blank" rel="noopener" href="https://blog.csdn.net/GodJing007/article/details/81158288"></a></p>
-<h1>二维树状数组</h1>
-<p>我们先来讲讲怎么去表示。<br>
-数组A[][]的树状数组定义为：</p>
-<p>C[x][y] = ∑ a[i][j], 其中，<br>
-x-lowbit(x) + 1 &lt;= i &lt;= x,<br>
-y-lowbit(y) + 1 &lt;= j &lt;= y.</p>
-<p>例：举个例子来看看C[][]的组成。<br>
-设原始二维数组为：</p>
+<h1 id="二维树状数组"><a href="#二维树状数组" class="headerlink" title="二维树状数组"></a>二维树状数组</h1><p>我们先来讲讲怎么去表示。<br>数组A[][]的树状数组定义为：</p>
+<p>C[x][y] = ∑ a[i][j], 其中，<br>x-lowbit(x) + 1 &lt;= i &lt;= x,<br>y-lowbit(y) + 1 &lt;= j &lt;= y.</p>
+<p>例：举个例子来看看C[][]的组成。<br>设原始二维数组为：   </p>
 <pre><code>A[][]=&#123;&#123;a11,a12,a13,a14,a15,a16,a17,a18,a19&#125;,   
 &#123;a21,a22,a23,a24,a25,a26,a27,a28,a29&#125;,   
 &#123;a31,a32,a33,a34,a35,a36,a37,a38,a39&#125;，   
 &#123;a41,a42,a43,a44,a45,a46,a47,a48,a49&#125;&#125;;
-</code></pre>
-<p>那么它对应的二维树状数组C[][]呢？</p>
-<p>记:<br>
-B[1]={a11,a11+a12,a13,a11+a12+a13+a14,a15,a15+a16,…} 这是第一行的一维树状数组<br>
-B[2]={a21,a21+a22,a23,a21+a22+a23+a24,a25,a25+a26,…} 这是第二行的一维树状数组<br>
-B[3]={a31,a31+a32,a33,a31+a32+a33+a34,a35,a35+a36,…} 这是第三行的一维树状数组<br>
-B[4]={a41,a41+a42,a43,a41+a42+a43+a44,a45,a45+a46,…} 这是第四行的一维树状数组<br>
-那么：<br>
-C[1][1]=a11,C[1][2]=a11+a12,C[1][3]=a13,C[1][4]=a11+a12+a13+a14,c[1][5]=a15,C[1][6]=a15+a16,…<br>
-这是A[][]第一行的一维树状数组</p>
-<p>C[2][1]=a11+a21,C[2][2]=a11+a12+a21+a22,C[2][3]=a13+a23,C[2][4]=a11+a12+a13+a14+a21+a22+a23+a24,<br>
-C[2][5]=a15+a25,C[2][6]=a15+a16+a25+a26,…<br>
-这是A[][]数组第一行与第二行相加后的树状数组</p>
-<p>C[3][1]=a31,C[3][2]=a31+a32,C[3][3]=a33,C[3][4]=a31+a32+a33+a34,C[3][5]=a35,C[3][6]=a35+a36,…<br>
-这是A[][]第三行的一维树状数组</p>
-<p>C[4][1]=a11+a21+a31+a41,C[4][2]=a11+a12+a21+a22+a31+a32+a41+a42,C[4][3]=a13+a23+a33+a43,…<br>
-这是A[][]数组第一行+第二行+第三行+第四行后的树状数组</p>
+</code></pre><p>那么它对应的二维树状数组C[][]呢？</p>
+<p>记:<br>B[1]={a11,a11+a12,a13,a11+a12+a13+a14,a15,a15+a16,…} 这是第一行的一维树状数组<br>B[2]={a21,a21+a22,a23,a21+a22+a23+a24,a25,a25+a26,…} 这是第二行的一维树状数组<br>B[3]={a31,a31+a32,a33,a31+a32+a33+a34,a35,a35+a36,…} 这是第三行的一维树状数组<br>B[4]={a41,a41+a42,a43,a41+a42+a43+a44,a45,a45+a46,…} 这是第四行的一维树状数组<br>那么：<br>C[1][1]=a11,C[1][2]=a11+a12,C[1][3]=a13,C[1][4]=a11+a12+a13+a14,c[1][5]=a15,C[1][6]=a15+a16,…<br>这是A[][]第一行的一维树状数组</p>
+<p>C[2][1]=a11+a21,C[2][2]=a11+a12+a21+a22,C[2][3]=a13+a23,C[2][4]=a11+a12+a13+a14+a21+a22+a23+a24,<br>C[2][5]=a15+a25,C[2][6]=a15+a16+a25+a26,…<br>这是A[][]数组第一行与第二行相加后的树状数组   </p>
+<p>C[3][1]=a31,C[3][2]=a31+a32,C[3][3]=a33,C[3][4]=a31+a32+a33+a34,C[3][5]=a35,C[3][6]=a35+a36,…<br>这是A[][]第三行的一维树状数组   </p>
+<p>C[4][1]=a11+a21+a31+a41,C[4][2]=a11+a12+a21+a22+a31+a32+a41+a42,C[4][3]=a13+a23+a33+a43,…<br>这是A[][]数组第一行+第二行+第三行+第四行后的树状数组</p>
 <blockquote>
-<p>就是每一行都是一个树状数组，以行为元素，整个列也是一个树状数组。<br>
-（这句话请记住，这个思想会贯穿始终）<br>
-既然如此，我相信代码也很快就出来了，接下来我就来给出代码，并进行简单的解释。</p>
-</blockquote>
-<h2 id="单点修改">单点修改</h2>
-<pre><code>void add(int x,int y,int p)&#123;  
+<p>就是每一行都是一个树状数组，以行为元素，整个列也是一个树状数组。<br>（这句话请记住，这个思想会贯穿始终）<br>既然如此，我相信代码也很快就出来了，接下来我就来给出代码，并进行简单的解释。</p>
+<h2 id="单点修改"><a href="#单点修改" class="headerlink" title="单点修改"></a>单点修改</h2><pre><code>void add(int x,int y,int p)&#123;  
     while(x&lt;=n)&#123;
         for(int i=y;i&lt;=m;i+=lowbit(i))&#123;
             C[x][i]+=p;
         &#125; 
         x+=lowbit(x);
     &#125;  
-&#125;  
-</code></pre>
-<p>这个根据我刚刚说的两个树状数组（那句贯穿始终的话），就很容易理解了。<br>
-我们外围循环枚举每一行，内循环在行内进行一维树状数组的单点修改，从而实现二维树状数组的单点修改。</p>
-<h2 id="以原点为一个端点的子矩阵和">以原点为一个端点的子矩阵和</h2>
-<pre><code>int sum(int x,int y)&#123;  
+&#125;
+</code></pre><p>这个根据我刚刚说的两个树状数组（那句贯穿始终的话），就很容易理解了。<br>我们外围循环枚举每一行，内循环在行内进行一维树状数组的单点修改，从而实现二维树状数组的单点修改。</p>
+<h2 id="以原点为一个端点的子矩阵和"><a href="#以原点为一个端点的子矩阵和" class="headerlink" title="以原点为一个端点的子矩阵和"></a>以原点为一个端点的子矩阵和</h2><pre><code>int sum(int x,int y)&#123;  
     int result = 0;  
     while(x&gt;0)&#123;
         for(int i=y;i&gt;0;i-=lowbit(i))&#123;
@@ -499,57 +475,26 @@ C[2][5]=a15+a25,C[2][6]=a15+a16+a25+a26,…<br>
         x-=lowbit(x);
     &#125;  
     return result;  
-&#125;  
-</code></pre>
-<h2 id="以任意两点为左上和右下两个端点的子矩阵和">以任意两点为左上和右下两个端点的子矩阵和</h2>
-<pre><code>int ask(int x1,int y1,int x2,int y2)&#123;
+&#125;
+</code></pre><h2 id="以任意两点为左上和右下两个端点的子矩阵和"><a href="#以任意两点为左上和右下两个端点的子矩阵和" class="headerlink" title="以任意两点为左上和右下两个端点的子矩阵和"></a>以任意两点为左上和右下两个端点的子矩阵和</h2><pre><code>int ask(int x1,int y1,int x2,int y2)&#123;
     return sum(x2,y2)+sum(x1-1,y1-1)-sum(x2-1,y1)-sum(x1,y2-1);
 &#125;
-</code></pre>
-<h1>逆序对</h1>
-<p>这个借助例题来讲解<br>
-<a target="_blank" rel="noopener" href="https://vjudge.net/contest/368993#problem/B">题目</a><br>
-求冒泡排序交换了多少次，分析一下，不难看出就是求逆序对的个数，首先明白逆序对的概念给定i,j满足i &lt; j &amp;&amp; a[ i ]&gt;a[ j ]则a[ i ]和a[ j ]就是一对逆序对。<br>
-求逆序对的做法，举个例子：<br>
-给定序列<br>
-9 6 4 8 7<br>
-遍历这个数组，每次遇到一个数，就把该数所在的树状数组的位置处的数加一：<br>
-1 2 3 4 5 6 7 8 9<br>
-0 0 0 0 0 0 0 0 0<br>
-初始数组值为0，代表插入0个数，sum(n)代表小于等于该数的个数，那么大于该数的个数就是i-sum(n)</p>
+</code></pre><h1 id="逆序对"><a href="#逆序对" class="headerlink" title="逆序对"></a>逆序对</h1><p>这个借助例题来讲解<br><a target="_blank" rel="noopener" href="https://vjudge.net/contest/368993#problem/B">题目</a><br>求冒泡排序交换了多少次，分析一下，不难看出就是求逆序对的个数，首先明白逆序对的概念给定i,j满足i &lt; j &amp;&amp; a[ i ]&gt;a[ j ]则a[ i ]和a[ j ]就是一对逆序对。<br>求逆序对的做法，举个例子：<br>给定序列<br>9 6 4 8 7<br>遍历这个数组，每次遇到一个数，就把该数所在的树状数组的位置处的数加一：<br>1 2 3 4 5 6 7 8 9<br>0 0 0 0 0 0 0 0 0<br>初始数组值为0，代表插入0个数，sum(n)代表小于等于该数的个数，那么大于该数的个数就是i-sum(n) </p>
 <ol>
-<li>1 2 3 4 5 6 7 8 9<br>
-0 0 0 0 0 0 0 0 1<br>
-此时插入了一个数，sum(9)=1,1-1=0</li>
-<li>1 2 3 4 5 6 7 8 9<br>
-0 0 0 0 0 1 0 0 1<br>
-sum(6)=1 2-1=1</li>
-<li>1 2 3 4 5 6 7 8 9<br>
-0 0 0 1 0 1 0 0 1<br>
-sum(4)=1 3-1=2</li>
-<li>1 2 3 4 5 6 7 8 9<br>
-0 0 0 1 0 1 0 1 1<br>
-sum(8)=3 4-3=1</li>
-<li>1 2 3 4 5 6 7 8 9<br>
-0 0 0 1 0 1 1 1 1<br>
-sum(7)=3 5-3=2</li>
+<li>1 2 3 4 5 6 7 8 9<br>0 0 0 0 0 0 0 0 1<br>此时插入了一个数，sum(9)=1,1-1=0</li>
+<li>1 2 3 4 5 6 7 8 9<br>0 0 0 0 0 1 0 0 1<br>sum(6)=1 2-1=1</li>
+<li>1 2 3 4 5 6 7 8 9<br>0 0 0 1 0 1 0 0 1<br>sum(4)=1 3-1=2</li>
+<li>1 2 3 4 5 6 7 8 9<br>0 0 0 1 0 1 0 1 1<br>sum(8)=3 4-3=1   </li>
+<li>1 2 3 4 5 6 7 8 9<br>0 0 0 1 0 1 1 1 1<br>sum(7)=3 5-3=2 </li>
 </ol>
-<p>上面所有的得数相加就得到了最后结果：<br>
-0+1+2+1+2=6<br>
-这就是思路，思路清楚了就可以做题了，可是这道题数据很大，明显开不了这么大得树状数组，一个简单得离散化就行了，先对树状数组按照值的大小进行排序，新开一个从序号1开始的连续的数组，一一映射到树状数组，最后对序号求逆序对就行了。</p>
+</blockquote>
+<p>上面所有的得数相加就得到了最后结果：<br>0+1+2+1+2=6<br>这就是思路，思路清楚了就可以做题了，可是这道题数据很大，明显开不了这么大得树状数组，一个简单得离散化就行了，先对树状数组按照值的大小进行排序，新开一个从序号1开始的连续的数组，一一映射到树状数组，最后对序号求逆序对就行了。</p>
 <p>建立一个结构体包含val和id， val就是输入的数，id表示输入的顺序。然后按照val从小到大排序，如果val相等，那么就按照id排序。</p>
 <p>如果没有逆序的话，肯定id是跟i（表示拍好后的顺序）一直一样的，如果有逆序数，那么有的i和id是不一样的。所以，利用树状数组的特性，我们可以简单的算出逆序数的个数。</p>
 <p>如果还是不明白的话举个例子。（输入4个数）</p>
 <p>输入：9 -1 18 5</p>
 <p>输出 3.</p>
-<p>输入之后对应的结构体就会变成这样<br>
-val：9 -1 18 5<br>
-id：  1  2  3  4<br>
-排好序之后就变成了<br>
-val ：  -1 5 9 18<br>
-id：      2 4  1  3<br>
-2 4 1 3 的逆序数 也是3<br>
-之后再利用树状数组的特性就可以解决问题了</p>
+<p>输入之后对应的结构体就会变成这样<br>val：9 -1 18 5<br>id：  1  2  3  4<br>排好序之后就变成了<br>val ：  -1 5 9 18<br>id：      2 4  1  3<br>2 4 1 3 的逆序数 也是3<br>之后再利用树状数组的特性就可以解决问题了</p>
 <pre><code>#include&lt;iostream&gt;
 #include&lt;stdio.h&gt;
 #include&lt;string.h&gt;
@@ -559,59 +504,58 @@ const int maxn=500001;
 int c[maxn];
 struct Node
 &#123;
-	int v,index;
-	bool operator &lt; (const Node &amp;b) const
-	&#123;
-		return v&lt;b.v; //从小到大排序 
-	&#125;
+    int v,index;
+    bool operator &lt; (const Node &amp;b) const
+    &#123;
+        return v&lt;b.v; //从小到大排序 
+    &#125;
 &#125;node[maxn];
 int n;
 void add(int i)
 &#123;
-	while(i&lt;=n)
-	&#123;
-		c[i]++;
-		i+=i&amp;(-i);	
-	&#125;
+    while(i&lt;=n)
+    &#123;
+        c[i]++;
+        i+=i&amp;(-i);    
+    &#125;
 &#125;
 long long getsum(int i)
 &#123;
-	long long res=0;
-	while(i&gt;0)
-	&#123;
-		res+=c[i];
-		i-=i&amp;(-i);
-	&#125;
-	return res;
+    long long res=0;
+    while(i&gt;0)
+    &#123;
+        res+=c[i];
+        i-=i&amp;(-i);
+    &#125;
+    return res;
 &#125;
- 
+
 int main()
 &#123;
-	while(1)&#123;
-		cin&gt;&gt;n;
-		if(n==0) break;
-		int a;
-		memset(node,0,sizeof node);
-		memset(c,0,sizeof c);
-		for(int i=1;i&lt;=n;i++)
-		&#123;
-			scanf(&quot;%d&quot;,&amp;a);
-			node[i].index=i;
-			node[i].v=a;
-		&#125;
-		sort(node+1,node+1+n);
-		long long ans=0;
-		for(int i=1;i&lt;=n;i++)
-		&#123;
-			add(node[i].index);  //离散化结果—— 下标等效于数值
-			ans+=i-getsum(node[i].index); //得到之前有多少个比你大的数（逆序对）
-		&#125;
-		cout&lt;&lt;ans&lt;&lt;endl;
-	&#125;
-	return 0;
+    while(1)&#123;
+        cin&gt;&gt;n;
+        if(n==0) break;
+        int a;
+        memset(node,0,sizeof node);
+        memset(c,0,sizeof c);
+        for(int i=1;i&lt;=n;i++)
+        &#123;
+            scanf(&quot;%d&quot;,&amp;a);
+            node[i].index=i;
+            node[i].v=a;
+        &#125;
+        sort(node+1,node+1+n);
+        long long ans=0;
+        for(int i=1;i&lt;=n;i++)
+        &#123;
+            add(node[i].index);  //离散化结果—— 下标等效于数值
+            ans+=i-getsum(node[i].index); //得到之前有多少个比你大的数（逆序对）
+        &#125;
+        cout&lt;&lt;ans&lt;&lt;endl;
+    &#125;
+    return 0;
 &#125;
 </code></pre>
-
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -815,7 +759,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

@@ -415,7 +415,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">2.5k字</span>
+        <span class="post-count">2.1k字</span>
       </span>
     </span>
 
@@ -424,7 +424,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">10分</span>
+        <span class="post-count">8分</span>
       </span>
     </span>
 </div>
@@ -445,11 +445,8 @@
           <blockquote>
 <p>对Web有点兴趣，可能它是可视化的，给我带来的成就感更多吧🐷标签不记了，w3school上都有</p>
 </blockquote>
-<h2 id="文章转载">文章转载</h2>
-<p>原文链接：<a target="_blank" rel="noopener" href="https://www.antmoe.com/posts/fd1c8f75/index.html">Click me</a><br>
-本人也对其做了少些修改</p>
-<h2 id="元素">元素</h2>
-<p>CSS元素分为<code>块、行、行内块</code>三种元素，块元素会独占一行、行元素会紧凑着排列、而行内块就是综合两者在行内排列着块。</p>
+<h2 id="文章转载"><a href="#文章转载" class="headerlink" title="文章转载"></a>文章转载</h2><p>原文链接：<a target="_blank" rel="noopener" href="https://www.antmoe.com/posts/fd1c8f75/index.html">Click me</a><br>本人也对其做了少些修改</p>
+<h2 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h2><p>CSS元素分为<code>块、行、行内块</code>三种元素，块元素会独占一行、行元素会紧凑着排列、而行内块就是综合两者在行内排列着块。</p>
 <ul>
   行内元素特征：<br>
   <li>设置宽高无效</li>
@@ -467,313 +464,290 @@
   <li>能够识别宽高</li>
   <li>默认排列方式为从左到右</li>
 </ul>
+
 <p>以上三种元素可以通过<code>display: ???</code>属性切换类型。</p>
-<h2 id="选择器分类">选择器分类</h2>
-<ul>
+<h2 id="选择器分类"><a href="#选择器分类" class="headerlink" title="选择器分类"></a>选择器分类</h2><ul>
 <li>基本选择器:  共有 5 个基本选择器，是 CSS 选择器的最为基本的用法。</li>
 <li>层级选择器:  共有 4 个层级选择器。</li>
 <li>组合选择器：具有交集和并集两种用法，是将之前基本选择器和层级选择器进行组合。</li>
 <li>伪类选择器：允许未包含在 HTML 页面中的状态信息选定位 HTML 元素。</li>
 <li>伪元素选择器：定位所有未被包含 HTML 的实体。</li>
 </ul>
-<h2 id="基本选择器">基本选择器</h2>
-<ol>
-<li>
-<p>类型选择器（元素选择器）</p>
-<pre><code>div &#123;
-     font: 12px;
+<h2 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h2><ol>
+<li>类型选择器（元素选择器）<pre><code>   div &#123;
+        font: 12px;
+       &#125;
+</code></pre></li>
+<li>类（Class）选择器<br>类选择器前面是“ . ”，类名对应HTML中的class类 <pre><code>   .demo &#123;
+      color: lightcoral;
+      font-size: 24px;
     &#125;
-</code></pre>
-</li>
-<li>
-<p>类（Class）选择器<br>
-类选择器前面是“ . ”，类名对应HTML中的class类</p>
-<pre><code>.demo &#123;
-   color: lightcoral;
-   font-size: 24px;
- &#125;
-</code></pre>
-</li>
-<li>
-<p>ID 选择器<br>
-id选择器前面是“ # ”，<code>一个 html 文件中 id 只允许出现一次</code><br>
-<code>    #Demo &#123;       color: lightcoral;       font-size: 24px;     &#125;    </code></p>
-</li>
-<li>
-<p>通配符“ * ”，为HTML中所有元素添加样式<br>
-<code>    * &#123;       color: lightcoral;     &#125;    </code></p>
-</li>
-<li>
-<p>属性选择器</p>
+</code></pre></li>
+<li>ID 选择器<br>id选择器前面是“ # ”，<code>一个 html 文件中 id 只允许出现一次</code><pre><code>  #Demo &#123;
+    color: lightcoral;
+    font-size: 24px;
+  &#125;
+</code></pre></li>
+<li>通配符“ * ”，为HTML中所有元素添加样式<pre><code>  * &#123;
+    color: lightcoral;
+  &#125;
+</code></pre></li>
+<li><p>属性选择器</p>
 <ul>
 <li>[attr] 属性选择器：通过 HTML 元素的 attr 属性名来定位具体 HTML 元素，把所有title属性的元素全部改变。<pre><code>[title] &#123;
     color=&quot;red&quot;;
 &#125;
-</code></pre>
-</li>
+</code></pre></li>
 <li>[标签][属性]：将所有特定标签加油特定属性的元素添加样式<pre><code>a[href] &#123;color:red;&#125; //对所有加有href的a标签添加样式
-</code></pre>
-</li>
+</code></pre></li>
 <li>[标签][属性1][属性2][…]：将同时加有属性1、属性2…的特定标签添加样式<pre><code>a[href][title]  &#123;color:red;&#125;
-</code></pre>
-</li>
-<li>根据具体属性值选择<br>
-除了选择拥有某些属性的元素，还可以进一步缩小选择范围，只选择有特定属性值的元素。<pre><code>a[href=&quot;http://www.w3school.com.cn/about_us.asp&quot;] &#123;color: red;&#125;
-</code></pre>
-</li>
+</code></pre></li>
+<li>根据具体属性值选择<br>除了选择拥有某些属性的元素，还可以进一步缩小选择范围，只选择有特定属性值的元素。<pre><code>a[href=&quot;http://www.w3school.com.cn/about_us.asp&quot;] &#123;color: red;&#125;
+</code></pre></li>
 <li>根据多个具体属性选择<pre><code>a[href=&quot;http://www.w3school.com.cn/&quot;][title=&quot;W3School&quot;] &#123;color: red;&#125;
-</code></pre>
-</li>
+</code></pre></li>
 <li>选择 titile 属性包含单词 “flower” 的元素，并设置其样式：<pre><code>[title~=flower]
 &#123; 
     background-color:yellow;
 &#125;
 &lt;p title=&quot;flower nb&quot;&gt;添加成功&lt;/p&gt;
 &lt;p title=&quot;nb&quot;&gt;添加失败&lt;/p&gt;
-</code></pre>
-</li>
+</code></pre></li>
 <li>选择 lang 属性值以 “en” 开头的元素，并设置其样式：<pre><code>[lang|=en]
 &#123; 
 background-color:yellow;
 &#125;
-</code></pre>
-</li>
+</code></pre></li>
 <li>设置 class 属性值以 “test” 开头的所有 div 元素的背景色：<pre><code>div[class^=&quot;test&quot;]
 &#123;
 background:#ffff00;
 &#125;
-</code></pre>
-</li>
+</code></pre></li>
 <li>设置 class 属性值以 “test” 结尾的所有 div 元素的背景色：<pre><code>div[class$=&quot;test&quot;]
 &#123;
     background:#ffff00;
 &#125;
-</code></pre>
-</li>
+</code></pre></li>
 <li>设置 class 属性值包含 “test” 的所有 div 元素的背景色：<pre><code>div[class*=&quot;test&quot;]
 &#123;
     background:#ffff00;
 &#125;
-</code></pre>
+</code></pre><h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><blockquote>
+<p>优先级就是分配给指定的 CSS 声明的一个权重，它由匹配的选择器中的每一种选择器类型的数值决定。</p>
+</blockquote>
 </li>
 </ul>
 </li>
 </ol>
-<h2 id="优先级">优先级</h2>
-<blockquote>
-<p>优先级就是分配给指定的 CSS 声明的一个权重，它由匹配的选择器中的每一种选择器类型的数值决定。</p>
-</blockquote>
-<p>例如：a.name权重等于a标签权重加上name类名的权重和，<a target="_blank" rel="noopener" href="http://xn--6kqr4e1yj1wpzf4c.name">其权重大于.name</a>，所以两者同时存在时前者样式生效</p>
-<p><font color="red" size=3>权重相同，<b>后来者居上</b></font></p>
-<p><font size=4>!important提高到最高优先级</font></p>
-<pre><code>    div &#123;
-      color: blue !important;
-    &#125;
-    .demo &#123;
-      color: red;
-    &#125;
-    &lt;div class=&quot;demo&quot;&gt;这是一个测试内容.&lt;/div&gt; //最终的颜色为 blue
-</code></pre>
-<h2 id="层级选择器">层级选择器</h2>
-<h3 id="层级选择器-v2">层级选择器</h3>
-<pre><code>  &lt;div id=&quot;ancestor1&quot;&gt;
-    &lt;div id=&quot;parent1&quot;&gt;
-      &lt;div id=&quot;child11&quot;&gt;&lt;/div&gt;
-      &lt;div id=&quot;child12&quot;&gt;&lt;/div&gt; 
+<p>例如：a.name权重等于a标签权重加上name类名的权重和，其权重大于.name，所以两者同时存在时前者样式生效</p>
+<font color="red" size=3>权重相同，<b>后来者居上</b></font>
 
-    &lt;/div&gt;
-    &lt;div id=&quot;parent2&quot;&gt;
-      &lt;div id=&quot;child2&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div id=&quot;ancestor2&quot;&gt;&lt;/div&gt;
-</code></pre>
+<font size=4>!important提高到最高优先级</font>
+```
+    div {
+      color: blue !important;
+    }
+    .demo {
+      color: red;
+    }
+    <div class="demo">这是一个测试内容.</div> //最终的颜色为 blue
+```
+## 层级选择器
+### 层级选择器
+```
+  <div id="ancestor1">
+    <div id="parent1">
+      <div id="child11"></div>
+      <div id="child12"></div> 
+
+    </div>
+    <div id="parent2">
+      <div id="child2"></div>
+    </div>
+  </div>
+  <div id="ancestor2"></div>
+```
 <a target="_blank" rel="noopener" href="https://tva1.sinaimg.cn/large/832afe33ly1gainbqrpuuj21jj0qi763.jpg" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://tva1.sinaimg.cn/large/832afe33ly1gainbqrpuuj21jj0qi763.jpg" /></a>
-<ul>
-<li>兄弟元素：ancestor1 元素和 ancestor2 元素、parent1 元素和 parent2 元素，以及 child11 元素和 child12 元素。</li>
-<li>父级与子级元素：
-<ul>
-<li>如果 `` 元素是父级元素的话，那 ancestor1 元素和 ancestor2 元素就是子级元素。</li>
-<li>如果 ancestor1 元素是父级元素的话，那 parent1 元素和 parent2 元素就是子级元素。</li>
-<li>如果 parent1 元素是父级元素的话，那 child11 元素和 child12 元素就是子级元素。</li>
-</ul>
-</li>
-<li>祖先与后代元素：
-<ul>
-<li>如果 `` 元素是祖先元素的话，那其包含的所有元素都是后代元素。</li>
-<li>如果 ancestor1 元素是祖先元素的话，那其包含的所有元素都是后代元素。</li>
-<li>如果 parent1 元素是祖先元素的话，那其包含的所有元素都是后代元素。</li>
-</ul>
-</li>
-</ul>
-<h3 id="层级选择器种类">层级选择器种类</h3>
-<ul>
-<li>后代选择器<br>
-简单来说，该元素的所有后代元素。</li>
-</ul>
-<pre><code>div span &#123;
+* 兄弟元素：ancestor1 元素和 ancestor2 元素、parent1 元素和 parent2 元素，以及 child11 元素和 child12 元素。
+* 父级与子级元素：
+    * 如果 `` 元素是父级元素的话，那 ancestor1 元素和 ancestor2 元素就是子级元素。
+    * 如果 ancestor1 元素是父级元素的话，那 parent1 元素和 parent2 元素就是子级元素。
+    * 如果 parent1 元素是父级元素的话，那 child11 元素和 child12 元素就是子级元素。
+* 祖先与后代元素：
+    * 如果 `` 元素是祖先元素的话，那其包含的所有元素都是后代元素。
+    * 如果 ancestor1 元素是祖先元素的话，那其包含的所有元素都是后代元素。
+    * 如果 parent1 元素是祖先元素的话，那其包含的所有元素都是后代元素。
+### 层级选择器种类
+* 后代选择器
+简单来说，该元素的所有后代元素。
+```
+div span {
       background-color: lightcoral;
-    &#125;
-&lt;div&gt;
-    &lt;span&gt;Span 1.
-      &lt;span&gt;Span 2.&lt;/span&gt;
-    &lt;/span&gt;
-  &lt;/div&gt;
-&lt;span&gt;Span 3.&lt;/span&gt;
+    }
+<div>
+    <span>Span 1.
+      <span>Span 2.</span>
+    </span>
+  </div>
+<span>Span 3.</span>
 
 这样只会影响到div里的span标签，而div外的标签则不会受到影响
-</code></pre>
-<ul>
-<li>子级选择器<br>
-定位该元素的所有子级元素。并不会影响孙子级元素</li>
-</ul>
-<pre><code>&lt;style&gt;
-span&#123;
-	color: teal;
-&#125;
-div&gt;span&#123;
-	color: violet;
-&#125;
-&lt;/style&gt;
-</code></pre>
-<ul>
-<li>相邻兄弟选择器<br>
-定位与该目标元素拥有同一个父级元素的<strong>下一个</strong>指定元素 <font color="red">不包括当前元素，只包括后边的元素</font></li>
-</ul>
-<pre><code>    &lt;style&gt;
-    #a+li&#123;
+```
+* 子级选择器
+定位该元素的所有子级元素。并不会影响孙子级元素
+```
+<style>
+span{
+    color: teal;
+}
+div>span{
+    color: violet;
+}
+</style>
+```
+* 相邻兄弟选择器
+定位与该目标元素拥有同一个父级元素的**下一个**指定元素 <font color="red">不包括当前元素，只包括后边的元素</font>
+```
+    <style>
+    #a+li{
         color: red;
-    &#125;
-    &lt;/style&gt;
-    &lt;ul&gt;
-        &lt;li id=&quot;a&quot;&gt;1sadsada&lt;/li&gt; &lt;!-- 不会变色 --&gt;
-        &lt;li&gt;555555&lt;/li&gt;&lt;!-- 变色 --&gt;
-    &lt;/ul&gt;
-</code></pre>
-<ul>
-<li>普通兄弟选择器<br>
-简单来说就是 p~codep 元素之后的元素</li>
-</ul>
-<p>定位与该目标元素拥有同一个父级元素的之后任意指定元素</p>
-<pre><code>  &lt;style&gt;
-    span &#123;
+    }
+    </style>
+    <ul>
+        <li id="a">1sadsada</li> <!-- 不会变色 -->
+        <li>555555</li><!-- 变色 -->
+    </ul>
+```
+* 普通兄弟选择器
+简单来说就是 p~codep 元素之后的元素
+
+定位与该目标元素拥有同一个父级元素的之后任意指定元素
+```
+  <style>
+    span {
       background-color: lightgreen;
-    &#125;
+    }
 
-    p~code &#123;
+    p~code {
       background-color: lightcoral;
-    &#125;
-  &lt;/style&gt;
-  &lt;span&gt;This is not red.&lt;/span&gt;
-  &lt;p&gt;Here is a paragraph.&lt;/p&gt;
-  &lt;code&gt;Here is some code.&lt;/code&gt; 会变色
-  &lt;span&gt;And here is a span.&lt;/span&gt;
-</code></pre>
-<h2 id="组合选择器">组合选择器</h2>
-<h3 id="组合（并集）选择器">组合（并集）选择器</h3>
-<p><code>h1, h2, h3, h4, h5, h6 &#123; color:blue; &#125;</code> 同时定义多个标签的属性。</p>
-<h3 id="组合（交集）选择器">组合（交集）选择器</h3>
-<pre><code>p.cls &#123;
+    }
+  </style>
+  <span>This is not red.</span>
+  <p>Here is a paragraph.</p>
+  <code>Here is some code.</code> 会变色
+  <span>And here is a span.</span>
+```
+## 组合选择器
+### 组合（并集）选择器
+`h1, h2, h3, h4, h5, h6 { color:blue; }` 同时定义多个标签的属性。
+### 组合（交集）选择器
+```
+p.cls {
     color: blueviolet;
-&#125;
+}
 表示把所有class名为cls的p标签都设置成blueviolet颜色
-</code></pre>
-<h2 id="伪类选择器">伪类选择器</h2>
-<pre><code>/* 所有用户指针悬停的按钮 */
-button:hover &#123;
+```
+## 伪类选择器
+```
+/* 所有用户指针悬停的按钮 */
+button:hover {
   color: blue;
-&#125;
-</code></pre>
-<h3 id="否定伪类选择器">否定伪类选择器</h3>
-<blockquote>
-<p>:not(selector) {<br>
-属性 : 属性值;<br>
-}</p>
-</blockquote>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
+}
+```
+### 否定伪类选择器
+>:not(selector) {
+    属性 : 属性值;
+}
+```
+<!DOCTYPE html>
+<html lang="en">
 
-&lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
-  &lt;title&gt;否定伪类选择器&lt;/title&gt;
-  &lt;style&gt;
-    .fancy &#123;
+<head>
+  <meta charset="UTF-8">
+  <title>否定伪类选择器</title>
+  <style>
+    .fancy {
       text-shadow: 2px 2px 3px gold;
-    &#125;
+    }
 
-    p:not(.fancy) &#123; /*匹配class名不是fancy的p标签*/
+    p:not(.fancy) { /*匹配class名不是fancy的p标签*/
       color: green;
-    &#125;
+    }
 
-    body :not(p) &#123; /*匹配body中不是p标签的标签*/
+    body :not(p) { /*匹配body中不是p标签的标签*/
       text-decoration: underline;
-    &#125;
-  &lt;/style&gt;
-&lt;/head&gt;
+    }
+  </style>
+</head>
 
-&lt;body&gt;
-  &lt;p&gt;我是一个段落。&lt;/p&gt;
-  &lt;p class=&quot;fancy&quot;&gt;我好看极了！&lt;/p&gt;
-  &lt;div&gt;我不是一个段落。&lt;/div&gt;
-&lt;/body&gt;
+<body>
+  <p>我是一个段落。</p>
+  <p class="fancy">我好看极了！</p>
+  <div>我不是一个段落。</div>
+</body>
 
-&lt;/html&gt;
-</code></pre>
-<h2 id="伪元素选择器">伪元素选择器</h2>
-<pre><code>/* CSS3 语法 */
-选择器::伪元素 &#123;
+</html>
+```
+## 伪元素选择器
+```
+/* CSS3 语法 */
+选择器::伪元素 {
   属性 : 属性值;
-&#125;
+}
 /* CSS2 过时语法 (仅用来支持 IE8) */
-选择器:伪元素 &#123;
+选择器:伪元素 {
   属性 : 属性值;
-&#125;
-</code></pre>
-<p><b>伪元素选择器</b>的语法格式为 <code>::伪元素</code>，一定不要忘记 ::。伪元素选择器只能和基本选择器配合使用，并且一个选择器只能使用一个伪元素选择器，如果要为一个选择器增加多个伪元素选择器需要分别编写。</p>
-<h3 id="before-和-after">before 和 after</h3>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
-    &lt;title&gt;Document&lt;/title&gt;
-    &lt;style&gt;
-        a::after&#123;
-            content: &quot;→&quot;;
-        &#125;
-        a::before&#123;
-            content: &quot;♥&quot;;
-        &#125;
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div&gt;
-        &lt;a href=&quot;https://antmoe.com&quot;&gt;这是一个测试内容&lt;/a&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+}
+```
+<b>伪元素选择器</b>的语法格式为 `::伪元素`，一定不要忘记 ::。伪元素选择器只能和基本选择器配合使用，并且一个选择器只能使用一个伪元素选择器，如果要为一个选择器增加多个伪元素选择器需要分别编写。
+### before 和 after
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        a::after{
+            content: "→";
+        }
+        a::before{
+            content: "♥";
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <a target="_blank" rel="noopener" href="https://antmoe.com">这是一个测试内容</a>
+    </div>
+</body>
+</html>
+```
 <a target="_blank" rel="noopener" href="https://tva1.sinaimg.cn/large/832afe33ly1gaio8klqf7j20k50iadgw.jpg" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://tva1.sinaimg.cn/large/832afe33ly1gaio8klqf7j20k50iadgw.jpg" /></a>
-<h3 id="first-letter">first-letter</h3>
-<p><b>::first-letter</b> 伪元素的作用是为匹配元素的文本内容的第一个字母设置样式内容。 如下示例代码展示了 **::first-letter 伪元素 ** 的用法：</p>
-<pre><code>p::first-letter &#123;
+### first-letter
+<b>::first-letter</b> 伪元素的作用是为匹配元素的文本内容的第一个字母设置样式内容。 如下示例代码展示了 **::first-letter 伪元素 ** 的用法：
+```
+p::first-letter {
   font-size: 130%;
-&#125;
-</code></pre>
-<h3 id="first-line-伪元素">first-line 伪元素</h3>
-<p><b>::first-line</b> 伪元素的作用是为匹配 HTML 元素的文本内容的第一行设置样式内容。 如下示例代码展示了 **::first-line 伪元素 ** 的用法：</p>
-<pre><code>.line::first-line&#123;
+}
+```
+### first-line 伪元素
+<b>::first-line</b> 伪元素的作用是为匹配 HTML 元素的文本内容的第一行设置样式内容。 如下示例代码展示了 **::first-line 伪元素 ** 的用法：
+```
+.line::first-line{
             background-color: tomato;
-        &#125;
-</code></pre>
-<h3 id="selection-伪元素">::selection 伪元素</h3>
-<p><b>::selection</b> 伪元素的作用是匹配用户在 HTML 页面选中的文本内容（比如使用鼠标或其他选择设备选中的部分）设置高亮效果。如下示例代码展示了 **::selection 伪元素 ** 的用法：</p>
-<pre><code>p::selection &#123;
+        }
+```
+### ::selection 伪元素
+<b>::selection</b> 伪元素的作用是匹配用户在 HTML 页面选中的文本内容（比如使用鼠标或其他选择设备选中的部分）设置高亮效果。如下示例代码展示了 **::selection 伪元素 ** 的用法：
+```
+p::selection {
     color: gold;
     background-color: red;
-&#125;
-</code></pre>
+}
+```
 <a target="_blank" rel="noopener" href="https://tva1.sinaimg.cn/large/832afe33ly1gaiohh13mbg20ok0950su.gif" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://tva1.sinaimg.cn/large/832afe33ly1gaiohh13mbg20ok0950su.gif" /></a>
 <blockquote>
 <p>注意：&nbsp只有一小部分 CSS 属性可以用于::selection 伪元素：</p>
@@ -992,7 +966,7 @@ button:hover &#123;
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

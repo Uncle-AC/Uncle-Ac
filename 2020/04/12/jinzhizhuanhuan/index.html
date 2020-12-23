@@ -415,7 +415,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">437字</span>
+        <span class="post-count">469字</span>
       </span>
     </span>
 
@@ -442,8 +442,7 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="题目描述">题目描述</h2>
-<p>请你编一程序实现两种不同进制之间的数据转换。</p>
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>请你编一程序实现两种不同进制之间的数据转换。</p>
 <p>输入格式</p>
 <p>共三行，第一行是一个正整数，表示需要转换的数的进制n(2≤n≤16)n(2≤n≤16)n(2≤n≤16)，第二行是一个n进制数，若n&gt;10n&gt;10n&gt;10则用大写字母A−FA-FA−F表示数码10−1510-1510−15，并且该nnn进制数对应的十进制的值不超过100000000010000000001000000000，第三行也是一个正整数，表示转换之后的数的进制m(2≤m≤16)m(2≤m≤16)m(2≤m≤16)。</p>
 <p>输出格式</p>
@@ -455,12 +454,9 @@
 FF
 
 2
-</code></pre>
-<p>输出 #1</p>
+</code></pre><p>输出 #1</p>
 <pre><code>11111111
-</code></pre>
-<h2 id="代码：">代码：</h2>
-<pre><code>#include&lt;iostream&gt;
+</code></pre><h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code>#include&lt;iostream&gt;
 #include&lt;stdio.h&gt;
 #include&lt;algorithm&gt;
 #include&lt;string&gt;
@@ -468,21 +464,21 @@ FF
 #include&lt;vector&gt;
 using namespace std;
 int change(char ch)&#123;
-  if(ch=='A') return 10;
-  if(ch=='B') return 11;
-  if(ch=='C') return 12;
-  if(ch=='D') return 13;
-  if(ch=='E') return 14;
-  if(ch=='F') return 15;
+  if(ch==&#39;A&#39;) return 10;
+  if(ch==&#39;B&#39;) return 11;
+  if(ch==&#39;C&#39;) return 12;
+  if(ch==&#39;D&#39;) return 13;
+  if(ch==&#39;E&#39;) return 14;
+  if(ch==&#39;F&#39;) return 15;
 &#125;
 char judge(int a)&#123;
-  if(a&gt;=0&amp;&amp;a&lt;=9) return char(a+'0');
-  if(a==10) return 'A';
-  if(a==11) return 'B';
-  if(a==12) return 'C';
-  if(a==13) return 'D';
-  if(a==14) return 'E';
-  if(a==15) return 'F';
+  if(a&gt;=0&amp;&amp;a&lt;=9) return char(a+&#39;0&#39;);
+  if(a==10) return &#39;A&#39;;
+  if(a==11) return &#39;B&#39;;
+  if(a==12) return &#39;C&#39;;
+  if(a==13) return &#39;D&#39;;
+  if(a==14) return &#39;E&#39;;
+  if(a==15) return &#39;F&#39;;
 &#125;
 int main()
 &#123;
@@ -492,13 +488,13 @@ int main()
   string num;
   cin&gt;&gt;m&gt;&gt;num&gt;&gt;n;
   for(int i=num.size()-1;i&gt;=0;i--,cnt++)&#123;
-    if(num[i]&gt;='A'&amp;&amp;num[i]&lt;='F')&#123;
+    if(num[i]&gt;=&#39;A&#39;&amp;&amp;num[i]&lt;=&#39;F&#39;)&#123;
       int t=change(num[i]);
       sum+=t*pow(m,cnt);
     &#125;
-    else sum+=(num[i]-'0')*pow(m,cnt);	
+    else sum+=(num[i]-&#39;0&#39;)*pow(m,cnt);    
   &#125;
-//	cout&lt;&lt;sum&lt;&lt;endl;
+//    cout&lt;&lt;sum&lt;&lt;endl;
   if(n==10) cout&lt;&lt;sum&lt;&lt;endl;
   else if(n&gt;=2&amp;&amp;n&lt;10||n&gt;10&amp;&amp;n&lt;=16)&#123;
     string s=&quot;&quot;;
@@ -510,7 +506,6 @@ int main()
   &#125;
 &#125; 
 </code></pre>
-
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -714,7 +709,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

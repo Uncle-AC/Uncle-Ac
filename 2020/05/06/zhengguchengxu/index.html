@@ -415,7 +415,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">248字</span>
+        <span class="post-count">249字</span>
       </span>
     </span>
 
@@ -442,17 +442,9 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p>刚看了抖音上面的微信轰炸小程序，用VBS写的，我不会VBS，但是我会C，闲着没事就去网上查了一下，没想到用C也是这么简洁😀</p>
-<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/0.webp" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/0.webp" /></a>     
-<p>步骤：</p>
+          <p>刚看了抖音上面的微信轰炸小程序，用VBS写的，我不会VBS，但是我会C，闲着没事就去网上查了一下，没想到用C也是这么简洁:grinning:<br><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/0.webp" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/0.webp" /></a><br>步骤：</p>
 <blockquote>
-<p>1：编译此段代码<br>
-2：打开你要轰炸的联系人的聊天界面<br>
-3： 提前复制某段内容<br>
-4： 运行程序<br>
-5： 输入聊天好友的备注（窗口上面对应的名称）<br>
-6： 输入轰炸次数<br>
-7： Ending</p>
+<p>1：编译此段代码<br>2：打开你要轰炸的联系人的聊天界面<br>3： 提前复制某段内容<br>4： 运行程序<br>5： 输入聊天好友的备注（窗口上面对应的名称）<br>6： 输入轰炸次数<br>7： Ending</p>
 </blockquote>
 <p class='p center small'>来上代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
@@ -460,23 +452,22 @@
 #define time ?//更改发送消息间隔时间 
 int main()
 &#123;
-	int i;
-	char name[100];//使用前先复制要轰炸的内容 
-	printf(&quot;输入你要轰炸的对象的名称：&quot;);
-	scanf(&quot;%s&quot;,&amp;name,40);
-	printf(&quot;输入你要轰炸的次数：&quot;);
-	scanf(&quot;%d&quot;,&amp;i);
-	HWND H =FindWindow(0,name);//找到对话窗口 
-	while(i--&gt;0)&#123;
-		SendMessage(H,WM_PASTE,0,0);//粘贴内容 
-		SendMessage(H,WM_KEYDOWN,VK_RETURN,0);//回车发送
-		Sleep(time);
-	&#125;
-	return 0; 
-&#125; 
-</code></pre>
-<p><code>看看效果：</code></p>
-<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/0~1.webp" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/0~1.webp" /></a>
+    int i;
+    char name[100];//使用前先复制要轰炸的内容 
+    printf(&quot;输入你要轰炸的对象的名称：&quot;);
+    scanf(&quot;%s&quot;,&amp;name,40);
+    printf(&quot;输入你要轰炸的次数：&quot;);
+    scanf(&quot;%d&quot;,&amp;i);
+    HWND H =FindWindow(0,name);//找到对话窗口 
+    while(i--&gt;0)&#123;
+        SendMessage(H,WM_PASTE,0,0);//粘贴内容 
+        SendMessage(H,WM_KEYDOWN,VK_RETURN,0);//回车发送
+        Sleep(time);
+    &#125;
+    return 0; 
+&#125;
+</code></pre><p><code>看看效果：</code><br><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/0~1.webp" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/0~1.webp" /></a></p>
+
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -680,7 +671,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

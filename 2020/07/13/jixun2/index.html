@@ -445,21 +445,14 @@
           <blockquote>
 <p>自己找题，做课件，还得学习新的东西，不得不说确实挺费时间的，光找找题目就花了2个小时左右，还是因为自己的题量少的原因，只能去搜一些题目自己再做做，不过粘贴题目AC的感觉真的美妙🐷</p>
 </blockquote>
-<h2 id="Running-Medians">Running Medians</h2>
-<p>For this problem, you will write a program that reads in a sequence of 32-bit signed integers. After each <em>odd-indexed</em> value is read, output the median (middle value) of the elements received so far.</p>
+<h2 id="Running-Medians"><a href="#Running-Medians" class="headerlink" title="Running Medians"></a>Running Medians</h2><p>For this problem, you will write a program that reads in a sequence of 32-bit signed integers. After each <em>odd-indexed</em> value is read, output the median (middle value) of the elements received so far.</p>
 <blockquote>
 <p><strong>Input</strong></p>
-<p>The first line of input contains a single integer P, (1 ≤ P ≤ 1000), which is the number of data sets that follow. The first line of each data set contains the data set number, followed by a space, followed by an odd decimal integer M, (1 ≤ M ≤ 9999), giving the total number of signed integers to be processed.<br>
-The remaining line(s) in the dataset consists of the values, 10 per line, separated by a single space.<br>
-The last line in the dataset may contain less than 10 values.</p>
-</blockquote>
-<blockquote>
+<p>The first line of input contains a single integer P, (1 ≤ P ≤ 1000), which is the number of data sets that follow. The first line of each data set contains the data set number, followed by a space, followed by an odd decimal integer M, (1 ≤ M ≤ 9999), giving the total number of signed integers to be processed.<br>The remaining line(s) in the dataset consists of the values, 10 per line, separated by a single space.<br>The last line in the dataset may contain less than 10 values.</p>
 <p><strong>Output</strong></p>
 <p>For each data set the first line of output contains the data set number, a single space and the number of medians output (which should be one-half the number of input values plus one). The output medians will be on the following lines, 10 per line separated by a single space. The last line may have less than 10 elements, but at least 1 element. There should be no blank lines in the output.</p>
-</blockquote>
-<blockquote>
 <p><strong>Sample Input</strong></p>
-<pre><code class="language-c">3
+<pre><code class="lang-c">3
 1 9
 1 2 3 4 5 6 7 8 9
 2 9
@@ -469,10 +462,8 @@ The last line in the dataset may contain less than 10 values.</p>
 3 5 103 211 -311 -45 -67 -73 -81 -99
 -33 24 56
 </code></pre>
-</blockquote>
-<blockquote>
 <p>Sample Output</p>
-<pre><code class="language-c">1 5
+<pre><code class="lang-c">1 5
 1 2 3 4 5
 2 5
 9 8 7 6 5
@@ -481,10 +472,8 @@ The last line in the dataset may contain less than 10 values.</p>
 -7 -3
 </code></pre>
 </blockquote>
-<h3 id="分析">分析</h3>
-<p>一道对顶堆的典型例题，对顶堆是优先队列的一种典型使用方式，主要就是开辟两个优先队列，一个大根一个小根，动态维护它们的元素数量以及两个队列的队头大小关系，永远保证大根堆头比小根堆头小，从而使整个序列元素有序，因此每次进来一个新元素只要判断其是该放到哪一个堆就行了</p>
-<h3 id="CODE">CODE</h3>
-<pre><code class="language-c">#include&lt;bits/stdc++.h&gt;
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>一道对顶堆的典型例题，对顶堆是优先队列的一种典型使用方式，主要就是开辟两个优先队列，一个大根一个小根，动态维护它们的元素数量以及两个队列的队头大小关系，永远保证大根堆头比小根堆头小，从而使整个序列元素有序，因此每次进来一个新元素只要判断其是该放到哪一个堆就行了</p>
+<h3 id="CODE"><a href="#CODE" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 int T,n,m,a[50005];
 
@@ -525,52 +514,49 @@ int main()
     &#125;
 &#125;
 </code></pre>
-<h2 id="Constructing-the-Array">Constructing the Array</h2>
-<p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/382426#problem/I">题目链接</a></p>
-<h3 id="分析-v2">分析</h3>
-<p>这道题拿到手应该第一反应就是找规律，找规律是能做出来的，情况也就是那么多种，但是这道题更官方的做法是用优先队列来做，什么你问我怎么做？我们只要每一段连续0的字符串当作一个优先队列，定义一个结构体，装这对序列的最左面元素的下标和这段序列的长度，优先按长度从大到小排列，然后再按下标从小到大排列，每次将指定元素放到到指定位置时，以这个元素作为分割线从中间分开，之后就会出现两个队列，依次入队，每次重复这样的操作，直到放完所有的元素</p>
-<h3 id="CODE-v2">CODE</h3>
-<pre><code class="language-c">#include&lt;bits/stdc++.h&gt;
+<h2 id="Constructing-the-Array"><a href="#Constructing-the-Array" class="headerlink" title="Constructing the Array"></a>Constructing the Array</h2><p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/382426#problem/I">题目链接</a></p>
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>这道题拿到手应该第一反应就是找规律，找规律是能做出来的，情况也就是那么多种，但是这道题更官方的做法是用优先队列来做，什么你问我怎么做？我们只要每一段连续0的字符串当作一个优先队列，定义一个结构体，装这对序列的最左面元素的下标和这段序列的长度，优先按长度从大到小排列，然后再按下标从小到大排列，每次将指定元素放到到指定位置时，以这个元素作为分割线从中间分开，之后就会出现两个队列，依次入队，每次重复这样的操作，直到放完所有的元素</p>
+<h3 id="CODE-1"><a href="#CODE-1" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int N=2e5+100;
 struct node&#123;
-	int len,l,r;
-	bool operator &lt; (const node &amp;a) const&#123;
-		if(a.len==len) return l&gt;a.l;
-		else return len&lt;a.len;
-	&#125;
+    int len,l,r;
+    bool operator &lt; (const node &amp;a) const&#123;
+        if(a.len==len) return l&gt;a.l;
+        else return len&lt;a.len;
+    &#125;
 &#125;;
 priority_queue&lt;node&gt; pq;
 int ans[N];
 int main()
 &#123;
-	int t;
-	cin&gt;&gt;t;
-	while(t--)&#123;
-		int n;
-		cin&gt;&gt;n;
-		memset(ans,0,sizeof ans);
-		while(!pq.empty()) pq.pop();
-		pq.push((node)&#123;n,1,n&#125;);
-		int cnt=0,mid;
-		while(1)&#123;
-			node now=pq.top(); pq.pop();
-			if((now.r-now.l+1)&amp;1)&#123;
-				ans[(now.l+now.r)&gt;&gt;1]=++cnt;
-				mid=(now.l+now.r)&gt;&gt;1;
-			&#125;
-			else&#123;
-				ans[(now.l+now.r-1)&gt;&gt;1]=++cnt;
-				mid=(now.l+now.r-1)&gt;&gt;1;
-			&#125;
-			if(cnt==n) break;
-			if(mid-1&gt;=now.l) pq.push((node)&#123;mid-now.l,now.l,mid-1&#125;);
-			if(now.r&gt;=mid+1) pq.push((node)&#123;now.r-mid,mid+1,now.r&#125;);
-		&#125;
-		for(int i=1;i&lt;=n;i++) cout&lt;&lt;ans[i]&lt;&lt;' ';
-		cout&lt;&lt;'\n';
-	&#125;
-	return 0;
+    int t;
+    cin&gt;&gt;t;
+    while(t--)&#123;
+        int n;
+        cin&gt;&gt;n;
+        memset(ans,0,sizeof ans);
+        while(!pq.empty()) pq.pop();
+        pq.push((node)&#123;n,1,n&#125;);
+        int cnt=0,mid;
+        while(1)&#123;
+            node now=pq.top(); pq.pop();
+            if((now.r-now.l+1)&amp;1)&#123;
+                ans[(now.l+now.r)&gt;&gt;1]=++cnt;
+                mid=(now.l+now.r)&gt;&gt;1;
+            &#125;
+            else&#123;
+                ans[(now.l+now.r-1)&gt;&gt;1]=++cnt;
+                mid=(now.l+now.r-1)&gt;&gt;1;
+            &#125;
+            if(cnt==n) break;
+            if(mid-1&gt;=now.l) pq.push((node)&#123;mid-now.l,now.l,mid-1&#125;);
+            if(now.r&gt;=mid+1) pq.push((node)&#123;now.r-mid,mid+1,now.r&#125;);
+        &#125;
+        for(int i=1;i&lt;=n;i++) cout&lt;&lt;ans[i]&lt;&lt;&#39; &#39;;
+        cout&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
 &#125;
 </code></pre>
 
@@ -777,7 +763,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

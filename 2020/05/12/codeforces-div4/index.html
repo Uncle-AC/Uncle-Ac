@@ -442,15 +442,11 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <blockquote>
+          <p><blockquote>
 唯一一场每道题都有思路的比赛，感觉还行，虽然有思路不代表能AC，不过还是很开心的，因为除了E题的桶没想到外其他都是自力更生做出来的😊   
-</blockquote>
-<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/8~1.webp" data-fancybox="images" data-caption="name"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/8~1.webp" /></a>
-<h2 id="A-Sum-of-Round-Numbers">A Sum of Round Numbers</h2>
-<h3 id="分析">分析</h3>
-<p>签到题，就是遍历数的每一位，求出非0的位数有几位，然后int一个v=1，之后没走一个数v*=10，然后当一位数不等于0时就乘上v就行了，这道题用字符串应该更简单，但是我想试试用while，练练手</p>
-<h3 id="CODE">CODE</h3>
-<pre><code>#include&lt;stdio.h&gt;
+</blockquote><br><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/8~1.webp" data-fancybox="images" data-caption="name"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/8~1.webp" /></a></p>
+<h2 id="A-Sum-of-Round-Numbers"><a href="#A-Sum-of-Round-Numbers" class="headerlink" title="A Sum of Round Numbers"></a>A Sum of Round Numbers</h2><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>签到题，就是遍历数的每一位，求出非0的位数有几位，然后int一个v=1，之后没走一个数v*=10，然后当一位数不等于0时就乘上v就行了，这道题用字符串应该更简单，但是我想试试用while，练练手</p>
+<h3 id="CODE"><a href="#CODE" class="headerlink" title="CODE"></a>CODE</h3><pre><code>#include&lt;stdio.h&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
 #include&lt;string.h&gt;
@@ -459,33 +455,29 @@ using namespace std;
 const int MAXN=1e4+100;
 int main()
 &#123;
-	ios;
-	int t,k;
-	cin&gt;&gt;t;
-	while(t--)&#123;
-		cin&gt;&gt;k;
-		int cnt=0,x=k,v=1;
-		while(k/10)&#123;
-			int tt=k%10;
-			if(tt!=0) cnt++;
-			k/=10;
-		&#125;
-		cout&lt;&lt;cnt+1&lt;&lt;endl;
-		while(x/10)&#123;
-			int tt=x%10;
-			if(x/10&amp;&amp;tt!=0) cout&lt;&lt;tt*v&lt;&lt;&quot; &quot;;
-			x/=10; v*=10;
-		&#125;
-		cout&lt;&lt;(x%10)*v&lt;&lt;endl;
-	&#125;
-	return 0;
+    ios;
+    int t,k;
+    cin&gt;&gt;t;
+    while(t--)&#123;
+        cin&gt;&gt;k;
+        int cnt=0,x=k,v=1;
+        while(k/10)&#123;
+            int tt=k%10;
+            if(tt!=0) cnt++;
+            k/=10;
+        &#125;
+        cout&lt;&lt;cnt+1&lt;&lt;endl;
+        while(x/10)&#123;
+            int tt=x%10;
+            if(x/10&amp;&amp;tt!=0) cout&lt;&lt;tt*v&lt;&lt;&quot; &quot;;
+            x/=10; v*=10;
+        &#125;
+        cout&lt;&lt;(x%10)*v&lt;&lt;endl;
+    &#125;
+    return 0;
 &#125;
-</code></pre>
-<h2 id="B-Same-Parity-Summands">B - Same Parity Summands</h2>
-<h3 id="分析-v2">分析</h3>
-<p>这道题是给你一个a和b，让你用b个同为偶数或者奇数的数加起来等于a，输出这些数，刚开始我一直在找规律，感觉很麻烦，找了半小时也没涵盖所有情况，后来发现直接暴力枚举就行了，我们可以考虑极端，当都为奇数时，让除了最后一个数以外的数都是1，然后最后一个数=a-(b-1)，加起来正好等于a，同理都为偶数时，让除了最后一个数以外的数全部变成2，最后一个数为n-2*(k-1)，条件都不符合输出NO<s>想通这个就AC了</s></p>
-<h3 id="CODE-v2">CODE</h3>
-<pre><code>#include&lt;stdio.h&gt;
+</code></pre><h2 id="B-Same-Parity-Summands"><a href="#B-Same-Parity-Summands" class="headerlink" title="B - Same Parity Summands"></a>B - Same Parity Summands</h2><h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>这道题是给你一个a和b，让你用b个同为偶数或者奇数的数加起来等于a，输出这些数，刚开始我一直在找规律，感觉很麻烦，找了半小时也没涵盖所有情况，后来发现直接暴力枚举就行了，我们可以考虑极端，当都为奇数时，让除了最后一个数以外的数都是1，然后最后一个数=a-(b-1)，加起来正好等于a，同理都为偶数时，让除了最后一个数以外的数全部变成2，最后一个数为n-2*(k-1)，条件都不符合输出NO<del>想通这个就AC了</del></p>
+<h3 id="CODE-1"><a href="#CODE-1" class="headerlink" title="CODE"></a>CODE</h3><pre><code>#include&lt;stdio.h&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
 #include&lt;string.h&gt;
@@ -494,41 +486,37 @@ using namespace std;
 const int MAXN=1e4+100;
 int main()
 &#123;
-	ios;
-	int t,k,n;
-	cin&gt;&gt;t;
-	while(t--)&#123;
-		cin&gt;&gt;n&gt;&gt;k;
-		int m=n-(k-1);
-		if(m&gt;0&amp;&amp;m%2)&#123;
-			cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
-			for(int i=0;i&lt;k-1;i++)&#123;
-				cout&lt;&lt;1&lt;&lt;&quot; &quot;;
-			&#125;
-			cout&lt;&lt;m&lt;&lt;endl;
-			continue;
-		&#125;
-		m=n-2*(k-1);
-		if(m&gt;0&amp;&amp;m%2==0)&#123;
-			cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
-			for(int i=0;i&lt;k-1;i++)&#123;
-				cout&lt;&lt;2&lt;&lt;&quot; &quot;;
-			&#125;
-			cout&lt;&lt;m&lt;&lt;endl;
-			continue;
-		&#125;
-		cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
-		
-		
-	&#125;
-	return 0;
+    ios;
+    int t,k,n;
+    cin&gt;&gt;t;
+    while(t--)&#123;
+        cin&gt;&gt;n&gt;&gt;k;
+        int m=n-(k-1);
+        if(m&gt;0&amp;&amp;m%2)&#123;
+            cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
+            for(int i=0;i&lt;k-1;i++)&#123;
+                cout&lt;&lt;1&lt;&lt;&quot; &quot;;
+            &#125;
+            cout&lt;&lt;m&lt;&lt;endl;
+            continue;
+        &#125;
+        m=n-2*(k-1);
+        if(m&gt;0&amp;&amp;m%2==0)&#123;
+            cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
+            for(int i=0;i&lt;k-1;i++)&#123;
+                cout&lt;&lt;2&lt;&lt;&quot; &quot;;
+            &#125;
+            cout&lt;&lt;m&lt;&lt;endl;
+            continue;
+        &#125;
+        cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+
+
+    &#125;
+    return 0;
 &#125;
-</code></pre>
-<h2 id="C-K-th-Not-Divisible-by-n">C - K-th Not Divisible by n</h2>
-<h3 id="分析-v3">分析</h3>
-<p>看题目就知道大意，不被n整除的第K个数，首先我们清楚被N整除的数之间的数数量一定是相同的，比如能整除8的：8 16 24…数之间都相差8，那这就是一个找规律嘛，用“%”找到该数在一段区间的那个位置，然后用“/”找到在第几个区间就行了</p>
-<h3 id="CODE-v3">CODE</h3>
-<pre><code>#include&lt;stdio.h&gt;
+</code></pre><h2 id="C-K-th-Not-Divisible-by-n"><a href="#C-K-th-Not-Divisible-by-n" class="headerlink" title="C - K-th Not Divisible by n"></a>C - K-th Not Divisible by n</h2><h3 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h3><p>看题目就知道大意，不被n整除的第K个数，首先我们清楚被N整除的数之间的数数量一定是相同的，比如能整除8的：8 16 24…数之间都相差8，那这就是一个找规律嘛，用“%”找到该数在一段区间的那个位置，然后用“/”找到在第几个区间就行了</p>
+<h3 id="CODE-2"><a href="#CODE-2" class="headerlink" title="CODE"></a>CODE</h3><pre><code>#include&lt;stdio.h&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
 #include&lt;string.h&gt;
@@ -537,26 +525,22 @@ using namespace std;
 const int MAXN=1e4+100;
 int main()
 &#123;
-	ios;
-	int t,k,n;
-	cin&gt;&gt;t;
-	while(t--)&#123;
-		int a,b;
-		cin&gt;&gt;a&gt;&gt;b;
-		int k=b%(a-1);
-		if(k==0)&#123;
-			cout&lt;&lt;(b/(a-1)*a)-1&lt;&lt;endl;
-		&#125;
-		else cout&lt;&lt;(b/(a-1)*a)+k&lt;&lt;endl;
-	&#125;
-	return 0;
+    ios;
+    int t,k,n;
+    cin&gt;&gt;t;
+    while(t--)&#123;
+        int a,b;
+        cin&gt;&gt;a&gt;&gt;b;
+        int k=b%(a-1);
+        if(k==0)&#123;
+            cout&lt;&lt;(b/(a-1)*a)-1&lt;&lt;endl;
+        &#125;
+        else cout&lt;&lt;(b/(a-1)*a)+k&lt;&lt;endl;
+    &#125;
+    return 0;
 &#125;
-</code></pre>
-<h2 id="D-Alice-Bob-and-Candies">D. Alice, Bob and Candies</h2>
-<h3 id="分析-v4">分析</h3>
-<p>这道题好长啊，我第一眼就被吓住了，<s><span class='p red'>不战而屈人之兵</span></s>，不过狠下心来读一读，发现就是一个双向指针往中间合拢，<s>好像这叫双向队列</s>，再多定义几个变量记录每次每个人吃多少，每个人上次吃了多少，就是一个模拟，只要能写对条件，就能AC了</p>
-<h3 id="CODE-v4">CODE</h3>
-<pre><code>#include&lt;stdio.h&gt;
+</code></pre><h2 id="D-Alice-Bob-and-Candies"><a href="#D-Alice-Bob-and-Candies" class="headerlink" title="D. Alice, Bob and Candies"></a>D. Alice, Bob and Candies</h2><h3 id="分析-3"><a href="#分析-3" class="headerlink" title="分析"></a>分析</h3><p>这道题好长啊，我第一眼就被吓住了，<del><span class='p red'>不战而屈人之兵</span></del>，不过狠下心来读一读，发现就是一个双向指针往中间合拢，<del>好像这叫双向队列</del>，再多定义几个变量记录每次每个人吃多少，每个人上次吃了多少，就是一个模拟，只要能写对条件，就能AC了</p>
+<h3 id="CODE-3"><a href="#CODE-3" class="headerlink" title="CODE"></a>CODE</h3><pre><code>#include&lt;stdio.h&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
 #include&lt;string.h&gt;
@@ -566,48 +550,48 @@ const int MAXN=1e4;
 int val[MAXN];
 int main()
 &#123;
-	ios;
-	int t; cin&gt;&gt;t;
-	while(t--)&#123;
-		int n,pa=0,pb=0,flg=0;; cin&gt;&gt;n;
-		int sum=0;
-		for(int i=1;i&lt;=n;i++)&#123;
-			cin&gt;&gt;val[i];
-			sum+=val[i];
-		&#125;
-		int ea=0,eb=0,cnt=1,sa,sb,head=1,tail=n;
-		while(tail-head&gt;=0)&#123;
-			sa=0; sb=0;
-			if(flg==0&amp;&amp;sum-ea-eb&gt;pb)&#123;
-				while(sa&lt;=pb)&#123;
-					sa+=val[head];
-					ea+=val[head];
-					head++; 
-				&#125;
-				pa=sa; flg=1; cnt++;
-				continue;
-			&#125;
-			if(flg==1&amp;&amp;sum-ea-eb&gt;pa)&#123;
-				while(sb&lt;=pa)&#123;
-					sb+=val[tail];
-					eb+=val[tail];
-					tail--;
-				&#125;
-				pb=sb; flg=0; cnt++;
-				continue;
-			&#125;
-			cnt++;
-			if(flg==0)&#123;
-				ea+=sum-ea-eb;
-				break;
-			&#125;else&#123;
-				eb+=sum-ea-eb;
-				break;
-			&#125;
-		&#125;
-		cout&lt;&lt;cnt-1&lt;&lt;&quot; &quot;&lt;&lt;ea&lt;&lt;&quot; &quot;&lt;&lt;eb&lt;&lt;&quot; &quot;&lt;&lt;endl;
-	&#125; 
-	return 0;
+    ios;
+    int t; cin&gt;&gt;t;
+    while(t--)&#123;
+        int n,pa=0,pb=0,flg=0;; cin&gt;&gt;n;
+        int sum=0;
+        for(int i=1;i&lt;=n;i++)&#123;
+            cin&gt;&gt;val[i];
+            sum+=val[i];
+        &#125;
+        int ea=0,eb=0,cnt=1,sa,sb,head=1,tail=n;
+        while(tail-head&gt;=0)&#123;
+            sa=0; sb=0;
+            if(flg==0&amp;&amp;sum-ea-eb&gt;pb)&#123;
+                while(sa&lt;=pb)&#123;
+                    sa+=val[head];
+                    ea+=val[head];
+                    head++; 
+                &#125;
+                pa=sa; flg=1; cnt++;
+                continue;
+            &#125;
+            if(flg==1&amp;&amp;sum-ea-eb&gt;pa)&#123;
+                while(sb&lt;=pa)&#123;
+                    sb+=val[tail];
+                    eb+=val[tail];
+                    tail--;
+                &#125;
+                pb=sb; flg=0; cnt++;
+                continue;
+            &#125;
+            cnt++;
+            if(flg==0)&#123;
+                ea+=sum-ea-eb;
+                break;
+            &#125;else&#123;
+                eb+=sum-ea-eb;
+                break;
+            &#125;
+        &#125;
+        cout&lt;&lt;cnt-1&lt;&lt;&quot; &quot;&lt;&lt;ea&lt;&lt;&quot; &quot;&lt;&lt;eb&lt;&lt;&quot; &quot;&lt;&lt;endl;
+    &#125; 
+    return 0;
 &#125;
 双向队列超级简单，水题
 #include&lt;bits/stdc++.h&gt;
@@ -615,47 +599,43 @@ using namespace std;
 typedef long long ll;
 deque&lt;int&gt; dq;
 int main()
-&#123;	
-	int t;
-	cin&gt;&gt;t;
-	while(t--)&#123;
-		dq.clear();
-		int n; cin&gt;&gt;n;
-		for(int i=1;i&lt;=n;i++)&#123;
-			int temp; cin&gt;&gt;temp;
-			dq.push_back(temp);
-		&#125;
-		ll pa=0,pb=0,suma=0,sumb=0,res=1,ansa=0,ansb=0,cnt=0;
-		while(!dq.empty())&#123;
-			cnt++;
-			suma=sumb=0;
-			if(res&amp;1)&#123;
-				while(suma&lt;=pb&amp;&amp;!dq.empty())&#123;
-					suma+=dq.front();
-					dq.pop_front();
-				&#125;
-				ansa+=suma; 
-				pa=suma;
-			&#125;else&#123;
-				while(sumb&lt;=pa&amp;&amp;!dq.empty())&#123;
-					sumb+=dq.back();
-					dq.pop_back();
-				&#125;
-				ansb+=sumb;
-				pb=sumb;
-			&#125;
-			res++;
-		&#125;
-		cout&lt;&lt;cnt&lt;&lt;&quot; &quot;&lt;&lt;ansa&lt;&lt;&quot; &quot;&lt;&lt;ansb&lt;&lt;endl;
-	&#125;
-	return 0;
+&#123;    
+    int t;
+    cin&gt;&gt;t;
+    while(t--)&#123;
+        dq.clear();
+        int n; cin&gt;&gt;n;
+        for(int i=1;i&lt;=n;i++)&#123;
+            int temp; cin&gt;&gt;temp;
+            dq.push_back(temp);
+        &#125;
+        ll pa=0,pb=0,suma=0,sumb=0,res=1,ansa=0,ansb=0,cnt=0;
+        while(!dq.empty())&#123;
+            cnt++;
+            suma=sumb=0;
+            if(res&amp;1)&#123;
+                while(suma&lt;=pb&amp;&amp;!dq.empty())&#123;
+                    suma+=dq.front();
+                    dq.pop_front();
+                &#125;
+                ansa+=suma; 
+                pa=suma;
+            &#125;else&#123;
+                while(sumb&lt;=pa&amp;&amp;!dq.empty())&#123;
+                    sumb+=dq.back();
+                    dq.pop_back();
+                &#125;
+                ansb+=sumb;
+                pb=sumb;
+            &#125;
+            res++;
+        &#125;
+        cout&lt;&lt;cnt&lt;&lt;&quot; &quot;&lt;&lt;ansa&lt;&lt;&quot; &quot;&lt;&lt;ansb&lt;&lt;endl;
+    &#125;
+    return 0;
 &#125;
-</code></pre>
-<h2 id="E-Special-Elements">E. Special Elements</h2>
-<h3 id="分析-v5">分析</h3>
-<p>最好理解的一道题目🌝也是我唯一一道看了题解的题目😂一个前缀和，这道题数据量很小，只有8000，直接装进桶里就行了，而我就是没想到，一直在纠结怎么降低复杂度（好菜啊）求出每一个区间的和看看这个和对应的桶编号里面装没装数，<s>其实是道水题</s></p>
-<h3 id="CODE-v5">CODE</h3>
-<pre><code>#include&lt;stdio.h&gt;
+</code></pre><h2 id="E-Special-Elements"><a href="#E-Special-Elements" class="headerlink" title="E. Special Elements"></a>E. Special Elements</h2><h3 id="分析-4"><a href="#分析-4" class="headerlink" title="分析"></a>分析</h3><p>最好理解的一道题目🌝也是我唯一一道看了题解的题目😂一个前缀和，这道题数据量很小，只有8000，直接装进桶里就行了，而我就是没想到，一直在纠结怎么降低复杂度（好菜啊）求出每一个区间的和看看这个和对应的桶编号里面装没装数，<del>其实是道水题</del></p>
+<h3 id="CODE-4"><a href="#CODE-4" class="headerlink" title="CODE"></a>CODE</h3><pre><code>#include&lt;stdio.h&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
 #include&lt;string.h&gt;
@@ -665,38 +645,34 @@ const int MAXN=1e4;
 int val[MAXN],book[MAXN];
 int main()
 &#123;
-	ios;
-	int t; cin&gt;&gt;t;
-	while(t--)&#123;
-		memset(book,0,sizeof book);
-		memset(val,0,sizeof val);
-		int n; cin&gt;&gt;n;
-		for(int i=1;i&lt;=n;i++)&#123;
-			cin&gt;&gt;val[i];
-			book[val[i]]++;
-			val[i]+=val[i-1];
-		&#125;
-		int cnt=0;
-		for(int i=0;i&lt;n-1;i++)&#123;
-			for(int j=i+2;j&lt;=n;j++)&#123;
-				int sum=val[j]-val[i];
-//				cout&lt;&lt;sum&lt;&lt;' '&lt;&lt;book[sum]&lt;&lt;endl;
-				if(sum&lt;=n&amp;&amp;book[sum])&#123;
-					cnt+=book[sum]; 					
-					book[sum]=0;
-				&#125;
-			&#125;
-		&#125;
-		cout&lt;&lt;cnt&lt;&lt;endl;
-	&#125; 
-	return 0;
+    ios;
+    int t; cin&gt;&gt;t;
+    while(t--)&#123;
+        memset(book,0,sizeof book);
+        memset(val,0,sizeof val);
+        int n; cin&gt;&gt;n;
+        for(int i=1;i&lt;=n;i++)&#123;
+            cin&gt;&gt;val[i];
+            book[val[i]]++;
+            val[i]+=val[i-1];
+        &#125;
+        int cnt=0;
+        for(int i=0;i&lt;n-1;i++)&#123;
+            for(int j=i+2;j&lt;=n;j++)&#123;
+                int sum=val[j]-val[i];
+//                cout&lt;&lt;sum&lt;&lt;&#39; &#39;&lt;&lt;book[sum]&lt;&lt;endl;
+                if(sum&lt;=n&amp;&amp;book[sum])&#123;
+                    cnt+=book[sum];                     
+                    book[sum]=0;
+                &#125;
+            &#125;
+        &#125;
+        cout&lt;&lt;cnt&lt;&lt;endl;
+    &#125; 
+    return 0;
 &#125;
-</code></pre>
-<h2 id="F-Binary-String-Reconstruction">F - Binary String Reconstruction</h2>
-<h3 id="分析-v6">分析</h3>
-<p>又是思维题，给你一个n0,n1,n2让你构造一个二进制序列，这个序列子序列中00的个数为n0，01或10的个数为n1，11的个数为n2，首先n0和n2的序列容易构造，因为只包含一个数字，n1我们可以定义顺序为1010…n1=1:10 n1=2:101 n1=3:1010，每次增加一个数，单独构造容易，合起来难，三个序列合起来中间肯定会多出一些，所以只要在本上演算一下，再把多出的那一部分去掉就行了，然后我构造的序列顺序是n0n2n1，感觉这样构造简单🐶说实话我交代码时都没敢想能AC，因为感觉没考虑全，但是测试几组数据发现能过就抱着试一试的态度交上去了，结果A了😄</p>
-<h3 id="CODE-v6">CODE</h3>
-<pre><code>#include&lt;stdio.h&gt;
+</code></pre><h2 id="F-Binary-String-Reconstruction"><a href="#F-Binary-String-Reconstruction" class="headerlink" title="F - Binary String Reconstruction"></a>F - Binary String Reconstruction</h2><h3 id="分析-5"><a href="#分析-5" class="headerlink" title="分析"></a>分析</h3><p>又是思维题，给你一个n0,n1,n2让你构造一个二进制序列，这个序列子序列中00的个数为n0，01或10的个数为n1，11的个数为n2，首先n0和n2的序列容易构造，因为只包含一个数字，n1我们可以定义顺序为1010…n1=1:10 n1=2:101 n1=3:1010，每次增加一个数，单独构造容易，合起来难，三个序列合起来中间肯定会多出一些，所以只要在本上演算一下，再把多出的那一部分去掉就行了，然后我构造的序列顺序是n0n2n1，感觉这样构造简单🐶说实话我交代码时都没敢想能AC，因为感觉没考虑全，但是测试几组数据发现能过就抱着试一试的态度交上去了，结果A了:smile:</p>
+<h3 id="CODE-5"><a href="#CODE-5" class="headerlink" title="CODE"></a>CODE</h3><pre><code>#include&lt;stdio.h&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
 #include&lt;string&gt;
@@ -707,55 +683,36 @@ const int MAXN=1e4;
 int val[MAXN],book[MAXN];
 int main()
 &#123;
-	ios;
-	int t; cin&gt;&gt;t;
-	while(t--)&#123;
-		int n0,n1,n2;
-		string ans;
-		cin&gt;&gt;n0&gt;&gt;n1&gt;&gt;n2;
-		for(int i=1;i&lt;=n0+1;i++)&#123;
-			if(n1!=0||n1==0&amp;&amp;n2==0) ans+=&quot;0&quot;;
-		&#125;
-		for(int i=1;i&lt;=n2;i++)&#123;
-			ans+=&quot;1&quot;;
-		&#125;
-		for(int i=1;i&lt;=n1;i++)&#123;
-			if(i%2) ans+=&quot;1&quot;;
-			else ans+=&quot;0&quot;;
-		&#125;
-		if(n0==0&amp;&amp;n1==0) ans+=&quot;1&quot;;
-		cout&lt;&lt;ans&lt;&lt;endl;
-	&#125; 
-	return 0;
+    ios;
+    int t; cin&gt;&gt;t;
+    while(t--)&#123;
+        int n0,n1,n2;
+        string ans;
+        cin&gt;&gt;n0&gt;&gt;n1&gt;&gt;n2;
+        for(int i=1;i&lt;=n0+1;i++)&#123;
+            if(n1!=0||n1==0&amp;&amp;n2==0) ans+=&quot;0&quot;;
+        &#125;
+        for(int i=1;i&lt;=n2;i++)&#123;
+            ans+=&quot;1&quot;;
+        &#125;
+        for(int i=1;i&lt;=n1;i++)&#123;
+            if(i%2) ans+=&quot;1&quot;;
+            else ans+=&quot;0&quot;;
+        &#125;
+        if(n0==0&amp;&amp;n1==0) ans+=&quot;1&quot;;
+        cout&lt;&lt;ans&lt;&lt;endl;
+    &#125; 
+    return 0;
 &#125;
-</code></pre>
-<h2 id="G-Special-Permutation">G - Special Permutation</h2>
-<h3 id="分析-v7">分析</h3>
-<p>说实话我不知道这道题为啥放在最后，<s>感觉难度并不大，反而挺简单的</s>🌚就是让你构造一个相邻两个数之差的绝对值在2到4的区间内（闭区间），我们只要把奇偶分开就行了，但是我有一个疑问，我的思路是把偶数写在前面奇数的倒序列放在后面，例如：<br>
-8：2 4 6 8 7 5 3 1<br>
-很明显只有中间不符合条件，所以只动中间就行了，让7和5（奇数序列的前两个）交换：<br>
-8：2 4 6 8 5 7 3 1（满足条件）<br>
-再举个例子：<br>
-9：2 4 6 8 9 7 5 3 1<br>
-还是只动中间，因为9比8（奇数第一个和偶数最后一个）大所以让5跑到9中间（奇数第3个移动到奇数和偶数序列之间）：<br>
-9：2 4 6 8 5 9 7 3 1（满足条件）<br>
-这样的思路我仔细想了想感觉没毛病，就交了，结果wrong了？我不服气，发现中间可能是换行的问题，又交又wrong…</p>
-<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/5~1.webp" data-fancybox="images" data-caption="name"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/5~1.webp" /></a>    
-<p>我枯了，为啥？<br>
-后来换思路：<br>
-给2 4 1 3的序列两边添加数，先左后右轮换添加，例如：</p>
+</code></pre><h2 id="G-Special-Permutation"><a href="#G-Special-Permutation" class="headerlink" title="G - Special Permutation"></a>G - Special Permutation</h2><h3 id="分析-6"><a href="#分析-6" class="headerlink" title="分析"></a>分析</h3><p>说实话我不知道这道题为啥放在最后，<del>感觉难度并不大，反而挺简单的</del>🌚就是让你构造一个相邻两个数之差的绝对值在2到4的区间内（闭区间），我们只要把奇偶分开就行了，但是我有一个疑问，我的思路是把偶数写在前面奇数的倒序列放在后面，例如：<br>8：2 4 6 8 7 5 3 1<br>很明显只有中间不符合条件，所以只动中间就行了，让7和5（奇数序列的前两个）交换：<br>8：2 4 6 8 5 7 3 1（满足条件）<br>再举个例子：<br>9：2 4 6 8 9 7 5 3 1<br>还是只动中间，因为9比8（奇数第一个和偶数最后一个）大所以让5跑到9中间（奇数第3个移动到奇数和偶数序列之间）：<br>9：2 4 6 8 5 9 7 3 1（满足条件）<br>这样的思路我仔细想了想感觉没毛病，就交了，结果wrong了？我不服气，发现中间可能是换行的问题，又交又wrong…<br><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/5~1.webp" data-fancybox="images" data-caption="name"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/5~1.webp" /></a><br>我枯了，为啥？<br>后来换思路：<br>给2 4 1 3的序列两边添加数，先左后右轮换添加，例如：   </p>
 <ol>
-<li>8：2 4 1 3</li>
-<li>8：5 2 4 1 3</li>
-<li>8：5 2 4 1 3 6</li>
-<li>8：7 5 2 4 1 3 6</li>
-<li>8：7 5 2 4 1 3 6 8<br>
-完成~，交了AC了。。AC后看了测试数据发现我原来的代码测试数据1应该是对的啊！希望网友那位可以为我解惑（不胜感激）</li>
-</ol>
-<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/7~1.webp" data-fancybox="images" data-caption="name"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/7~1.webp" /></a>   
+<li>8：2 4 1 3  </li>
+<li>8：5 2 4 1 3  </li>
+<li>8：5 2 4 1 3 6  </li>
+<li>8：7 5 2 4 1 3 6  </li>
+<li>8：7 5 2 4 1 3 6 8<br>完成~，交了AC了。。AC后看了测试数据发现我原来的代码测试数据1应该是对的啊！希望网友那位可以为我解惑（不胜感激）  <a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/7~1.webp" data-fancybox="images" data-caption="name"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/7~1.webp" /></a>   
 <a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/6~1.webp" data-fancybox="images" data-caption="name"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/6~1.webp" /></a>
-<h3 id="wrong-CODE">wrong CODE</h3>
-<pre><code>#include&lt;stdio.h&gt;
+<h3 id="wrong-CODE"><a href="#wrong-CODE" class="headerlink" title="wrong CODE"></a>wrong CODE</h3><pre><code>#include&lt;stdio.h&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
 #include&lt;string&gt;
@@ -764,52 +721,50 @@ int main()
 using namespace std;
 const int MAXN=1e4;
 void swap(int &amp;a,int &amp;b)&#123;
-	int t=a;
-	a=b;
-	b=t;
+ int t=a;
+ a=b;
+ b=t;
 &#125;
 int val[MAXN],book[MAXN];
 int main()
 &#123;
-	ios;
-	int t; cin&gt;&gt;t;
-	while(t--)&#123;
-		memset(val,0,sizeof val); 
-		int n; cin&gt;&gt;n;
-		if(n==2||n==3)&#123;
-			cout&lt;&lt;-1&lt;&lt;endl;
-			continue;
-		&#125;
-		int tail=0;
-		for(int i=2;i&lt;=n;i+=2)&#123;
-			val[++tail]=i;
-		&#125;
-		int flag=tail;
-		int p=n%2?n:n-1;
-		for(int i=p;i&gt;=1;i-=2)&#123;
-			val[++tail]=i;
-		&#125;
-		if(val[flag+1]&lt;val[flag]) swap(val[flag+1],val[flag+2]);
-		else&#123;
-			for(int i=1;i&lt;=n;i++)&#123;
-				if(i==flag+1)&#123;
-					printf(&quot;%d%c&quot;,val[flag+3],i==n?'\n':' ');
-				&#125;
-				if(i==flag+3)&#123;
-					continue;
-				&#125;
-				printf(&quot;%d%c&quot;,val[i],i==n?'\n':' ');
-			&#125;
-			if(n==5) cout&lt;&lt;endl;
-			continue;
-		&#125;
-		for(int i=1;i&lt;=n;i++) printf(&quot;%d%c&quot;,val[i],i==n?'\n':' ');
-	&#125; 
-	return 0;
+ ios;
+ int t; cin&gt;&gt;t;
+ while(t--)&#123;
+     memset(val,0,sizeof val); 
+     int n; cin&gt;&gt;n;
+     if(n==2||n==3)&#123;
+         cout&lt;&lt;-1&lt;&lt;endl;
+         continue;
+     &#125;
+     int tail=0;
+     for(int i=2;i&lt;=n;i+=2)&#123;
+         val[++tail]=i;
+     &#125;
+     int flag=tail;
+     int p=n%2?n:n-1;
+     for(int i=p;i&gt;=1;i-=2)&#123;
+         val[++tail]=i;
+     &#125;
+     if(val[flag+1]&lt;val[flag]) swap(val[flag+1],val[flag+2]);
+     else&#123;
+         for(int i=1;i&lt;=n;i++)&#123;
+             if(i==flag+1)&#123;
+                 printf(&quot;%d%c&quot;,val[flag+3],i==n?&#39;\n&#39;:&#39; &#39;);
+             &#125;
+             if(i==flag+3)&#123;
+                 continue;
+             &#125;
+             printf(&quot;%d%c&quot;,val[i],i==n?&#39;\n&#39;:&#39; &#39;);
+         &#125;
+         if(n==5) cout&lt;&lt;endl;
+         continue;
+     &#125;
+     for(int i=1;i&lt;=n;i++) printf(&quot;%d%c&quot;,val[i],i==n?&#39;\n&#39;:&#39; &#39;);
+ &#125; 
+ return 0;
 &#125;
-</code></pre>
-<h3 id="AC-CODE">AC CODE</h3>
-<pre><code>#include&lt;stdio.h&gt;
+</code></pre><h3 id="AC-CODE"><a href="#AC-CODE" class="headerlink" title="AC CODE"></a>AC CODE</h3><pre><code>#include&lt;stdio.h&gt;
 #include&lt;string&gt;
 #include&lt;string.h&gt;
 #include&lt;algorithm&gt;
@@ -817,59 +772,59 @@ int main()
 using namespace std;
 string ans;
 void bd(int n)&#123;
-	if(n&lt;=9)&#123;
-		ans=(char)(n+'0')+ans;
-	&#125;else&#123;
-		while(n!=0)&#123;
-			char c=(char)(n%10+'0');
-			ans=c+ans;
-			n/=10;
-		&#125;
-	&#125;
+ if(n&lt;=9)&#123;
+     ans=(char)(n+&#39;0&#39;)+ans;
+ &#125;else&#123;
+     while(n!=0)&#123;
+         char c=(char)(n%10+&#39;0&#39;);
+         ans=c+ans;
+         n/=10;
+     &#125;
+ &#125;
 &#125;
 void pd(int n)&#123;
-		if(n&lt;=9)&#123;
-		ans+=(char)(n+'0');
-	&#125;else&#123;
-		char ch[2000];
-		int tail=0;
-		while(n!=0)&#123;
-			char c=(char)(n%10+'0');
-			ch[++tail]=c;
-			n/=10;
-		&#125;
-		for(int i=tail;i&gt;=1;i--)&#123;
-			ans+=ch[i];
-		&#125;
-	&#125;
+     if(n&lt;=9)&#123;
+     ans+=(char)(n+&#39;0&#39;);
+ &#125;else&#123;
+     char ch[2000];
+     int tail=0;
+     while(n!=0)&#123;
+         char c=(char)(n%10+&#39;0&#39;);
+         ch[++tail]=c;
+         n/=10;
+     &#125;
+     for(int i=tail;i&gt;=1;i--)&#123;
+         ans+=ch[i];
+     &#125;
+ &#125;
 &#125;
 int main()
 &#123;
-	int t; cin&gt;&gt;t;
-	while(t--)&#123;
-		ans.clear();
-		int n; cin&gt;&gt;n;
-		if(n&lt;=3)&#123;
-			puts(&quot;-1&quot;);
-			continue;
-		&#125;
-		ans+=&quot;2 4 1 3&quot;;
-		int flag=1;
-		for(int i=5;i&lt;=n;i++)&#123;
-			if(i%2)&#123;
-				ans=&quot; &quot;+ans;
-				bd(i);
-			&#125;
-			else&#123;
-				ans+=&quot; &quot;;
-				pd(i);
-			&#125;
-		&#125;
-		cout&lt;&lt;ans&lt;&lt;endl;
+ int t; cin&gt;&gt;t;
+ while(t--)&#123;
+     ans.clear();
+     int n; cin&gt;&gt;n;
+     if(n&lt;=3)&#123;
+         puts(&quot;-1&quot;);
+         continue;
+     &#125;
+     ans+=&quot;2 4 1 3&quot;;
+     int flag=1;
+     for(int i=5;i&lt;=n;i++)&#123;
+         if(i%2)&#123;
+             ans=&quot; &quot;+ans;
+             bd(i);
+         &#125;
+         else&#123;
+             ans+=&quot; &quot;;
+             pd(i);
+         &#125;
+     &#125;
+     cout&lt;&lt;ans&lt;&lt;endl;
 &#125;
-</code></pre>
-<p>Ending~撒花</p>
-<p class='p center logo large'>不要白嫖了，留下一个赞吧👍</p>
+</code></pre>Ending~撒花<p class='p center logo large'>不要白嫖了，留下一个赞吧👍</p></li>
+</ol>
+
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -1073,7 +1028,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

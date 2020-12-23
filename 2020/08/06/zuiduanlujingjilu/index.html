@@ -415,7 +415,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">689字</span>
+        <span class="post-count">695字</span>
       </span>
     </span>
 
@@ -442,8 +442,7 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="Dijkstra"><a target="_blank" rel="noopener" href="https://vjudge.net/problem/CodeForces-20C">Dijkstra?</a></h2>
-<p>You are given a weighted undirected graph. The vertices are enumerated from 1 to <em>n</em>. Your task is to find the shortest path between the vertex 1 and the vertex <em>n</em>.</p>
+          <h2 id="Dijkstra"><a href="#Dijkstra" class="headerlink" title="Dijkstra?"></a><a target="_blank" rel="noopener" href="https://vjudge.net/problem/CodeForces-20C">Dijkstra?</a></h2><p>You are given a weighted undirected graph. The vertices are enumerated from 1 to <em>n</em>. Your task is to find the shortest path between the vertex 1 and the vertex <em>n</em>.</p>
 <p><strong>Input</strong></p>
 <p>The first line contains two integers <em>n</em> and <em>m</em> (2 ≤ <em>n</em> ≤ 105, 0 ≤ <em>m</em> ≤ 105), where <em>n</em> is the number of vertices and <em>m</em> is the number of edges. Following <em>m</em> lines contain one edge each in form <em>a</em> <em>i</em>, <em>b</em> <em>i</em> and <em>w</em> <em>i</em> (1 ≤ <em>a</em> <em>i</em>, <em>b</em> <em>i</em> ≤ <em>n</em>, 1 ≤ <em>w</em> <em>i</em> ≤ 106), where <em>a</em> <em>i</em>, <em>b</em> <em>i</em> are edge endpoints and <em>w</em> <em>i</em> is the length of the edge.</p>
 <p>It is possible that the graph has loops and multiple edges between pair of vertices.</p>
@@ -458,11 +457,9 @@
 1 4 1
 4 3 3
 3 5 1
-</code></pre>
-<p>Output</p>
-<pre><code>1 4 3 5 
-</code></pre>
-<p>Input</p>
+</code></pre><p>Output</p>
+<pre><code>1 4 3 5
+</code></pre><p>Input</p>
 <pre><code>5 6
 1 2 2
 2 5 5
@@ -470,14 +467,10 @@
 1 4 1
 4 3 3
 3 5 1
-</code></pre>
-<p>Output</p>
-<pre><code>1 4 3 5 
-</code></pre>
-<h3 id="分析">分析</h3>
-<p>和最短路模板题目就差一点，这道题要你输出路径，那么每次更新最短路径时我们就可以记录更新当前点的那个点，因为更新就相当于两点之间添加线段，表明这是一条路径，这样一来，我们就可以知道每一个点到起点的最短路径的长度和路径本身</p>
-<h3 id="CODE">CODE</h3>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+</code></pre><p>Output</p>
+<pre><code>1 4 3 5
+</code></pre><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>和最短路模板题目就差一点，这道题要你输出路径，那么每次更新最短路径时我们就可以记录更新当前点的那个点，因为更新就相当于两点之间添加线段，表明这是一条路径，这样一来，我们就可以知道每一个点到起点的最短路径的长度和路径本身</p>
+<h3 id="CODE"><a href="#CODE" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include &lt;stdio.h&gt;
 #include &lt;iostream&gt;
 #include &lt;string.h&gt;
 #include &lt;vector&gt;
@@ -491,7 +484,7 @@ const int MAXN=1e5+100;
 struct node&#123;
     ll u,cost;
     bool operator &lt;(const node &amp;o)const&#123;
-	   return cost&gt;o.cost;
+       return cost&gt;o.cost;
     &#125;
 &#125;;
 int n,m,tail;
@@ -506,51 +499,51 @@ void init(int n)&#123;
     for(int i=0;i&lt;=n;i++) dis[i]=INF;
 &#125;
 void dij(int start)&#123;
-	while(!pq.empty()) pq.pop();
-	dis[start]=0;
-	pq.push(&#123;start,0&#125;);
-	while(!pq.empty())&#123;
-		node tmp=pq.top(); pq.pop();
-		int u=tmp.u;
-		if(vis[u]) continue;
-		vis[u]=1;
-		for(int i=0;i&lt;G[u].size();i++)&#123;
-			int v=G[u][i].u, w=G[u][i].cost;
-			if(vis[v]) continue;
-			if(dis[v]&gt;dis[u]+(ll)w)&#123;
-				pre[v]=u; //记录这个点的上一个点
-				dis[v]=dis[u]+w;
-				pq.push(&#123;v,dis[v]&#125;);
-			&#125;
-		&#125;
-	&#125;
+    while(!pq.empty()) pq.pop();
+    dis[start]=0;
+    pq.push(&#123;start,0&#125;);
+    while(!pq.empty())&#123;
+        node tmp=pq.top(); pq.pop();
+        int u=tmp.u;
+        if(vis[u]) continue;
+        vis[u]=1;
+        for(int i=0;i&lt;G[u].size();i++)&#123;
+            int v=G[u][i].u, w=G[u][i].cost;
+            if(vis[v]) continue;
+            if(dis[v]&gt;dis[u]+(ll)w)&#123;
+                pre[v]=u; //记录这个点的上一个点
+                dis[v]=dis[u]+w;
+                pq.push(&#123;v,dis[v]&#125;);
+            &#125;
+        &#125;
+    &#125;
 &#125;
 int main()
 &#123;
-	ios;
-	cin&gt;&gt;n&gt;&gt;m;
+    ios;
+    cin&gt;&gt;n&gt;&gt;m;
     init(n);
     for(int i=0;i&lt;m;i++)&#123;
-		int a,b,c;
-		cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;
+        int a,b,c;
+        cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;
         G[a].push_back(&#123;b,c&#125;);
         G[b].push_back(&#123;a,c&#125;);
     &#125;
     int s=1,e=n;
     dij(s);
-    if(dis[e]==INF) cout&lt;&lt;-1&lt;&lt;'\n';
+    if(dis[e]==INF) cout&lt;&lt;-1&lt;&lt;&#39;\n&#39;;
     else&#123;
-    	int cur=e; //知道了终点从终点开始往前走直到走到起点
-    	while(cur!=s)&#123;
-    		ans[++tail]=cur; //逆序
-    		cur=pre[cur];
-		&#125;
-		ans[++tail]=1;
-		for(int i=tail;i&gt;=1;i--)&#123;
-			if(i!=1) cout&lt;&lt;ans[i]&lt;&lt;' ';
-			else cout&lt;&lt;ans[i]&lt;&lt;'\n';
-		&#125;
-	&#125;
+        int cur=e; //知道了终点从终点开始往前走直到走到起点
+        while(cur!=s)&#123;
+            ans[++tail]=cur; //逆序
+            cur=pre[cur];
+        &#125;
+        ans[++tail]=1;
+        for(int i=tail;i&gt;=1;i--)&#123;
+            if(i!=1) cout&lt;&lt;ans[i]&lt;&lt;&#39; &#39;;
+            else cout&lt;&lt;ans[i]&lt;&lt;&#39;\n&#39;;
+        &#125;
+    &#125;
     return 0;
 &#125;
 </code></pre>
@@ -758,7 +751,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

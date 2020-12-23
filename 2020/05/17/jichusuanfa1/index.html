@@ -442,8 +442,7 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="A-前M大的数">A 前M大的数</h2>
-<p>暴力累加每两组数，再排序输出前M个</p>
+          <h2 id="A-前M大的数"><a href="#A-前M大的数" class="headerlink" title="A 前M大的数"></a>A 前M大的数</h2><p>暴力累加每两组数，再排序输出前M个</p>
 <pre><code>#include&lt;cstdio&gt;
 #include&lt;set&gt;
 #include&lt;iostream&gt;
@@ -454,28 +453,26 @@ const int MAXN=3e3+100;
 int v1[MAXN],v2[5000000];
 int main()
 &#123;
-//	ios;
+//    ios;
     int n,m;
-	while(scanf(&quot;%d %d&quot;,&amp;n,&amp;m)!=EOF)&#123;
-		for(int i=1;i&lt;=n;i++) cin&gt;&gt;v1[i];
-		int tail=0;
-		for(int i=1;i&lt;n;i++)&#123;
-			for(int j=i+1;j&lt;=n;j++)&#123;
-				v2[++tail]=v1[i]+v1[j];
-			&#125;
-		&#125;
-		sort(v2+1,v2+1+tail);
-		int len=tail-m;
-		for(int i=tail;i&gt;len;i--)&#123;
-			if(i!=len+1) cout&lt;&lt;v2[i]&lt;&lt;&quot; &quot;;
-			else cout&lt;&lt;v2[i]&lt;&lt;'\n';
-		&#125;
-	&#125; 
+    while(scanf(&quot;%d %d&quot;,&amp;n,&amp;m)!=EOF)&#123;
+        for(int i=1;i&lt;=n;i++) cin&gt;&gt;v1[i];
+        int tail=0;
+        for(int i=1;i&lt;n;i++)&#123;
+            for(int j=i+1;j&lt;=n;j++)&#123;
+                v2[++tail]=v1[i]+v1[j];
+            &#125;
+        &#125;
+        sort(v2+1,v2+1+tail);
+        int len=tail-m;
+        for(int i=tail;i&gt;len;i--)&#123;
+            if(i!=len+1) cout&lt;&lt;v2[i]&lt;&lt;&quot; &quot;;
+            else cout&lt;&lt;v2[i]&lt;&lt;&#39;\n&#39;;
+        &#125;
+    &#125; 
     return 0;
 &#125;
-</code></pre>
-<h2 id="B-稳定排序">B 稳定排序</h2>
-<p>注意sort不是稳定的，用stable_sort排再一一比较</p>
+</code></pre><h2 id="B-稳定排序"><a href="#B-稳定排序" class="headerlink" title="B 稳定排序"></a>B 稳定排序</h2><p>注意sort不是稳定的，用stable_sort排再一一比较</p>
 <pre><code>#include&lt;cstdio&gt;
 #include&lt;set&gt;
 #include&lt;iostream&gt;
@@ -486,53 +483,51 @@ int main()
 using namespace std;
 const int MAXN=3e3+100;
 struct node&#123;
-	int score;
-	string name;
+    int score;
+    string name;
 &#125;stu[400],stu2[400];
 bool cmp(node a,node b)&#123;
-	return a.score&gt;b.score;
+    return a.score&gt;b.score;
 &#125;
 int main()
 &#123;
-//	ios;
+//    ios;
     int n;
-	while(scanf(&quot;%d&quot;,&amp;n)!=EOF)&#123;
-		for(int i=1;i&lt;=n;i++) cin&gt;&gt;stu[i].name&gt;&gt;stu[i].score;
-		for(int i=1;i&lt;=n;i++) cin&gt;&gt;stu2[i].name&gt;&gt;stu2[i].score;
-		stable_sort(stu+1,stu+1+n,cmp);
-		int flag=0,book=0;
-		for(int i=1;i&lt;=n;i++)&#123;
-			if(stu[i].score!=stu2[i].score)&#123;
-				flag=1;
-				break;
-			&#125;
-		&#125;
-		for(int i=1;i&lt;=n;i++)&#123;
-			if(stu[i].name!=stu2[i].name)&#123;
-				book=1;
-				break;
-			&#125; 
-		&#125; 
-		if(flag==1)&#123;
-			cout&lt;&lt;&quot;Error&quot;&lt;&lt;endl;
-			for(int i=1;i&lt;=n;i++)&#123;
-				cout&lt;&lt;stu[i].name&lt;&lt;&quot; &quot;&lt;&lt;stu[i].score&lt;&lt;endl;
-			&#125;
-		&#125;
-		else&#123;
-			if(book==1)&#123;
-				cout&lt;&lt;&quot;Not Stable&quot;&lt;&lt;endl;
-				for(int i=1;i&lt;=n;i++)&#123;
-					cout&lt;&lt;stu[i].name&lt;&lt;&quot; &quot;&lt;&lt;stu[i].score&lt;&lt;endl;
-				&#125;
-			&#125;else cout&lt;&lt;&quot;Right&quot;&lt;&lt;endl;
-		&#125;
-	&#125; 
+    while(scanf(&quot;%d&quot;,&amp;n)!=EOF)&#123;
+        for(int i=1;i&lt;=n;i++) cin&gt;&gt;stu[i].name&gt;&gt;stu[i].score;
+        for(int i=1;i&lt;=n;i++) cin&gt;&gt;stu2[i].name&gt;&gt;stu2[i].score;
+        stable_sort(stu+1,stu+1+n,cmp);
+        int flag=0,book=0;
+        for(int i=1;i&lt;=n;i++)&#123;
+            if(stu[i].score!=stu2[i].score)&#123;
+                flag=1;
+                break;
+            &#125;
+        &#125;
+        for(int i=1;i&lt;=n;i++)&#123;
+            if(stu[i].name!=stu2[i].name)&#123;
+                book=1;
+                break;
+            &#125; 
+        &#125; 
+        if(flag==1)&#123;
+            cout&lt;&lt;&quot;Error&quot;&lt;&lt;endl;
+            for(int i=1;i&lt;=n;i++)&#123;
+                cout&lt;&lt;stu[i].name&lt;&lt;&quot; &quot;&lt;&lt;stu[i].score&lt;&lt;endl;
+            &#125;
+        &#125;
+        else&#123;
+            if(book==1)&#123;
+                cout&lt;&lt;&quot;Not Stable&quot;&lt;&lt;endl;
+                for(int i=1;i&lt;=n;i++)&#123;
+                    cout&lt;&lt;stu[i].name&lt;&lt;&quot; &quot;&lt;&lt;stu[i].score&lt;&lt;endl;
+                &#125;
+            &#125;else cout&lt;&lt;&quot;Right&quot;&lt;&lt;endl;
+        &#125;
+    &#125; 
     return 0;
 &#125;
-</code></pre>
-<h2 id="C-开门人和关门人">C 开门人和关门人</h2>
-<p>技巧在于时间可以用字符串来代替，因为时间长度都是一样的</p>
+</code></pre><h2 id="C-开门人和关门人"><a href="#C-开门人和关门人" class="headerlink" title="C 开门人和关门人"></a>C 开门人和关门人</h2><p>技巧在于时间可以用字符串来代替，因为时间长度都是一样的</p>
 <pre><code>#include&lt;cstdio&gt;
 #include&lt;set&gt;
 #include&lt;iostream&gt;
@@ -543,34 +538,32 @@ int main()
 using namespace std;
 const int MAXN=3e3+100;
 struct node&#123;
-	string name,qt,ht;
+    string name,qt,ht;
 &#125;stu[4000];
 bool cmp(node a,node b)&#123;
-	return a.qt&lt;b.qt;
+    return a.qt&lt;b.qt;
 &#125;
 bool cmp1(node a,node b)&#123;
-	return a.ht&gt;b.ht;
+    return a.ht&gt;b.ht;
 &#125;
 int main()
 &#123;
-//	ios;
+//    ios;
     int n;
-	cin&gt;&gt;n;
-	while(n--)&#123;
-		int m; cin&gt;&gt;m;
-		for(int i=1;i&lt;=m;i++)&#123;
-			cin&gt;&gt;stu[i].name&gt;&gt;stu[i].qt&gt;&gt;stu[i].ht;
-		&#125; 
-		sort(stu+1,stu+1+m,cmp);
-		cout&lt;&lt;stu[1].name&lt;&lt;&quot; &quot;;
-		sort(stu+1,stu+1+m,cmp1);
-		cout&lt;&lt;stu[1].name&lt;&lt;endl;
-	&#125;
+    cin&gt;&gt;n;
+    while(n--)&#123;
+        int m; cin&gt;&gt;m;
+        for(int i=1;i&lt;=m;i++)&#123;
+            cin&gt;&gt;stu[i].name&gt;&gt;stu[i].qt&gt;&gt;stu[i].ht;
+        &#125; 
+        sort(stu+1,stu+1+m,cmp);
+        cout&lt;&lt;stu[1].name&lt;&lt;&quot; &quot;;
+        sort(stu+1,stu+1+m,cmp1);
+        cout&lt;&lt;stu[1].name&lt;&lt;endl;
+    &#125;
     return 0;
 &#125;
-</code></pre>
-<h2 id="D-EXCEL排序">D EXCEL排序</h2>
-<p>注意字典序排序不是长的字符串大于短的字符串，而是一个个比较，遇到第一个不同的那个大那个字符串就大，当每个字符都一样则谁长谁大，strcmp也是如此</p>
+</code></pre><h2 id="D-EXCEL排序"><a href="#D-EXCEL排序" class="headerlink" title="D EXCEL排序"></a>D EXCEL排序</h2><p>注意字典序排序不是长的字符串大于短的字符串，而是一个个比较，遇到第一个不同的那个大那个字符串就大，当每个字符都一样则谁长谁大，strcmp也是如此</p>
 <pre><code>#include&lt;iostream&gt;
 #include&lt;stdio.h&gt;
 #include&lt;string&gt;
@@ -580,45 +573,43 @@ int main()
 using namespace std;
 const int MAXN=1e5+100;
 struct node&#123;
-	string name,id;
-	int score;
+    string name,id;
+    int score;
 &#125;stu[MAXN]; 
 bool cmp(node a,node b)&#123;
-	return a.id&lt;b.id;
+    return a.id&lt;b.id;
 &#125;
 bool cmp1(node a,node b)&#123;
-	if(a.name==b.name) return a.id&lt;b.id;
-	return a.name&lt;b.name;
+    if(a.name==b.name) return a.id&lt;b.id;
+    return a.name&lt;b.name;
 &#125;
 bool cmp2(node a,node b)&#123;
-	if(a.score==b.score) return a.id&lt;b.id;
-	return a.score&lt;b.score;
+    if(a.score==b.score) return a.id&lt;b.id;
+    return a.score&lt;b.score;
 &#125;
 int main()
 &#123;
-	int n,c,kase=0;
-	while(cin&gt;&gt;n&gt;&gt;c)&#123;
-		if(n==0) break;
-		for(int i=0;i&lt;n;i++)&#123;
-			stu[i].id.clear();
-			stu[i].name.clear();
-		&#125;
-		for(int i=0;i&lt;n;i++)&#123;
-			cin&gt;&gt;stu[i].id&gt;&gt;stu[i].name&gt;&gt;stu[i].score;
-		&#125;
-		if(c==1) sort(stu,stu+n,cmp);
-		if(c==2) sort(stu,stu+n,cmp1);
-		if(c==3) sort(stu,stu+n,cmp2);
-		printf(&quot;Case %d:\n&quot;,++kase);
-		for(int i=0;i&lt;n;i++)&#123;
-			cout&lt;&lt;stu[i].id&lt;&lt;&quot; &quot;&lt;&lt;stu[i].name&lt;&lt;&quot; &quot;&lt;&lt;stu[i].score&lt;&lt;endl;
-		&#125;
-	&#125;
-	return 0;
+    int n,c,kase=0;
+    while(cin&gt;&gt;n&gt;&gt;c)&#123;
+        if(n==0) break;
+        for(int i=0;i&lt;n;i++)&#123;
+            stu[i].id.clear();
+            stu[i].name.clear();
+        &#125;
+        for(int i=0;i&lt;n;i++)&#123;
+            cin&gt;&gt;stu[i].id&gt;&gt;stu[i].name&gt;&gt;stu[i].score;
+        &#125;
+        if(c==1) sort(stu,stu+n,cmp);
+        if(c==2) sort(stu,stu+n,cmp1);
+        if(c==3) sort(stu,stu+n,cmp2);
+        printf(&quot;Case %d:\n&quot;,++kase);
+        for(int i=0;i&lt;n;i++)&#123;
+            cout&lt;&lt;stu[i].id&lt;&lt;&quot; &quot;&lt;&lt;stu[i].name&lt;&lt;&quot; &quot;&lt;&lt;stu[i].score&lt;&lt;endl;
+        &#125;
+    &#125;
+    return 0;
 &#125;
-</code></pre>
-<h2 id="E-A-B">E - {A} + {B}</h2>
-<p>用一个set来存，或者用桶标记,或者用unique去重</p>
+</code></pre><h2 id="E-A-B"><a href="#E-A-B" class="headerlink" title="E - {A} + {B}"></a>E - {A} + {B}</h2><p>用一个set来存，或者用桶标记,或者用unique去重</p>
 <pre><code>#include&lt;cstdio&gt;
 #include&lt;set&gt;
 #include&lt;iostream&gt;
@@ -630,28 +621,26 @@ using namespace std;
 const int MAXN=1e5+100;
 int main()
 &#123;
-//	ios;
-	int n,m;
+//    ios;
+    int n,m;
     while(cin&gt;&gt;n&gt;&gt;m)&#123;
-    	set&lt;int&gt; st;
-    	for(int i=0;i&lt;n+m;i++)&#123;
-    		int t; cin&gt;&gt;t;
-    		st.insert(t);
-		&#125;
-		cout&lt;&lt;*st.begin();
-		st.erase(st.begin());
-		while(!st.empty())&#123;
-			cout&lt;&lt;&quot; &quot;&lt;&lt;*st.begin(); 
-			st.erase((st.begin()));
-		&#125;
-		cout&lt;&lt;endl;
-	&#125;
-    
+        set&lt;int&gt; st;
+        for(int i=0;i&lt;n+m;i++)&#123;
+            int t; cin&gt;&gt;t;
+            st.insert(t);
+        &#125;
+        cout&lt;&lt;*st.begin();
+        st.erase(st.begin());
+        while(!st.empty())&#123;
+            cout&lt;&lt;&quot; &quot;&lt;&lt;*st.begin(); 
+            st.erase((st.begin()));
+        &#125;
+        cout&lt;&lt;endl;
+    &#125;
+
     return 0;
 &#125;
-</code></pre>
-<h2 id="F-水果">F - 水果</h2>
-<p>因为这道题涉及到求和的问题，直接用数组来做的话我觉得非常难输出，用map挺简单的，就是不熟练</p>
+</code></pre><h2 id="F-水果"><a href="#F-水果" class="headerlink" title="F - 水果"></a>F - 水果</h2><p>因为这道题涉及到求和的问题，直接用数组来做的话我觉得非常难输出，用map挺简单的，就是不熟练</p>
 <pre><code>#include&lt;iostream&gt;
 #include&lt;stdio.h&gt;
 #include&lt;string&gt;
@@ -659,37 +648,35 @@ int main()
 #include&lt;map&gt;
 using namespace std;
 struct node&#123;
-	map&lt;string,int&gt; mp;
+    map&lt;string,int&gt; mp;
 &#125;; 
 int main()
 &#123;
-	map&lt;string,node&gt; ma;
-	map&lt;string,node&gt;::iterator it;
-	map&lt;string,int&gt;::iterator mpit;
-	string f,p;
-	int cnt;
-	int n,t;
-	cin&gt;&gt;t;
-	while(t--)&#123;
-		ma.clear();
-		cin&gt;&gt;n;
-		while(n--)&#123;
-			cin&gt;&gt;f&gt;&gt;p&gt;&gt;cnt;
-			ma[p].mp[f]+=cnt;
-		&#125;
-		for(it=ma.begin();it!=ma.end();it++)&#123;
-			cout&lt;&lt;it-&gt;first&lt;&lt;endl;
-			for(mpit=it-&gt;second.mp.begin();mpit!=it-&gt;second.mp.end();mpit++)&#123;
-				cout&lt;&lt;&quot;   |----&quot;&lt;&lt;mpit-&gt;first&lt;&lt;&quot;(&quot;&lt;&lt;mpit-&gt;second&lt;&lt;&quot;)&quot;&lt;&lt;endl;
-			&#125;
-		&#125;
-		if(t!=0) cout&lt;&lt;endl;
-	&#125;
-	return 0;
+    map&lt;string,node&gt; ma;
+    map&lt;string,node&gt;::iterator it;
+    map&lt;string,int&gt;::iterator mpit;
+    string f,p;
+    int cnt;
+    int n,t;
+    cin&gt;&gt;t;
+    while(t--)&#123;
+        ma.clear();
+        cin&gt;&gt;n;
+        while(n--)&#123;
+            cin&gt;&gt;f&gt;&gt;p&gt;&gt;cnt;
+            ma[p].mp[f]+=cnt;
+        &#125;
+        for(it=ma.begin();it!=ma.end();it++)&#123;
+            cout&lt;&lt;it-&gt;first&lt;&lt;endl;
+            for(mpit=it-&gt;second.mp.begin();mpit!=it-&gt;second.mp.end();mpit++)&#123;
+                cout&lt;&lt;&quot;   |----&quot;&lt;&lt;mpit-&gt;first&lt;&lt;&quot;(&quot;&lt;&lt;mpit-&gt;second&lt;&lt;&quot;)&quot;&lt;&lt;endl;
+            &#125;
+        &#125;
+        if(t!=0) cout&lt;&lt;endl;
+    &#125;
+    return 0;
 &#125;
-</code></pre>
-<h2 id="G-不重复数字">G - 不重复数字</h2>
-<p>用桶标记或者用map性质一样，都是桶标记的思想</p>
+</code></pre><h2 id="G-不重复数字"><a href="#G-不重复数字" class="headerlink" title="G - 不重复数字"></a>G - 不重复数字</h2><p>用桶标记或者用map性质一样，都是桶标记的思想</p>
 <pre><code>#include&lt;cstdio&gt;
 #include&lt;set&gt;
 #include&lt;iostream&gt;
@@ -703,62 +690,57 @@ const int MAXN=1e5+100;
 int val[MAXN];
 int main()
 &#123;
-//	ios;
-	int t;
-	cin&gt;&gt;t;
+//    ios;
+    int t;
+    cin&gt;&gt;t;
     while(t--)&#123;
-    	map&lt;int,int&gt; st;
-    	int n,maxx=-1e9,tail=0;
-    	cin&gt;&gt;n;
-    	for(int i=1;i&lt;=n;i++)&#123;
-    		int tt; cin&gt;&gt;tt;
-    		maxx=max(maxx,tt);
-    		val[++tail]=tt;
-    		st[tt]=1;
-		&#125;
-		cout&lt;&lt;val[1];
-		st[val[1]]=0;
-    	for(int i=2;i&lt;=tail;i++)&#123;
-    		if(st[val[i]])&#123;
-    			cout&lt;&lt;' '&lt;&lt;val[i];
-    			st[val[i]]=0;
-			&#125;
-		&#125;
-		cout&lt;&lt;endl;
-	&#125;
-    
+        map&lt;int,int&gt; st;
+        int n,maxx=-1e9,tail=0;
+        cin&gt;&gt;n;
+        for(int i=1;i&lt;=n;i++)&#123;
+            int tt; cin&gt;&gt;tt;
+            maxx=max(maxx,tt);
+            val[++tail]=tt;
+            st[tt]=1;
+        &#125;
+        cout&lt;&lt;val[1];
+        st[val[1]]=0;
+        for(int i=2;i&lt;=tail;i++)&#123;
+            if(st[val[i]])&#123;
+                cout&lt;&lt;&#39; &#39;&lt;&lt;val[i];
+                st[val[i]]=0;
+            &#125;
+        &#125;
+        cout&lt;&lt;endl;
+    &#125;
+
     return 0;
 &#125;
-</code></pre>
-<h2 id="H-表达式括号匹配">H - 表达式括号匹配</h2>
-<p>用栈遇到一个左括号就入栈，遇到一个右括号如果栈里有元素就出栈，最后看看栈是否为空<br>
-昨天代码写的有问题，有一点xiao bug，改了一下，这没问题了</p>
+</code></pre><h2 id="H-表达式括号匹配"><a href="#H-表达式括号匹配" class="headerlink" title="H - 表达式括号匹配"></a>H - 表达式括号匹配</h2><p>用栈遇到一个左括号就入栈，遇到一个右括号如果栈里有元素就出栈，最后看看栈是否为空<br>昨天代码写的有问题，有一点xiao bug，改了一下，这没问题了</p>
 <pre><code>#include&lt;bits/stdc++.h&gt;
 using namespace std;
 int main()
 &#123;
-	string sh;
-	cin&gt;&gt;sh;
-	stack&lt;char&gt; st;
-	for(int i=0;i&lt;sh.size();i++)&#123;
-		if(sh[i]=='(') st.push(sh[i]);
-		if(sh[i]==')')&#123;
-			if(st.empty())&#123;
-				cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
-				return 0;
-			&#125;else&#123;
-				st.pop();
-			&#125;
-		&#125;
-	&#125;
-	if(!st.empty()) cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
-	else cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
-	
-	return 0;
+    string sh;
+    cin&gt;&gt;sh;
+    stack&lt;char&gt; st;
+    for(int i=0;i&lt;sh.size();i++)&#123;
+        if(sh[i]==&#39;(&#39;) st.push(sh[i]);
+        if(sh[i]==&#39;)&#39;)&#123;
+            if(st.empty())&#123;
+                cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+                return 0;
+            &#125;else&#123;
+                st.pop();
+            &#125;
+        &#125;
+    &#125;
+    if(!st.empty()) cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+    else cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
+
+    return 0;
 &#125;
-</code></pre>
-<h2 id="I-合并果子">I - 合并果子</h2>
-<p>每次合并最小的两个代价最小，每次排序合并，直到最后剩一堆</p>
+</code></pre><h2 id="I-合并果子"><a href="#I-合并果子" class="headerlink" title="I - 合并果子"></a>I - 合并果子</h2><p>每次合并最小的两个代价最小，每次排序合并，直到最后剩一堆</p>
 <pre><code>#include&lt;iostream&gt;
 #include&lt;stdio.h&gt;
 #include&lt;algorithm&gt;
@@ -766,27 +748,25 @@ using namespace std;
 int a[1001];
 int main()
 &#123;
-	int t;
-	cin&gt;&gt;t;
-	while(t--)&#123;
-		int n;
-		cin&gt;&gt;n;
-		for(int i=0;i&lt;n;i++) cin&gt;&gt;a[i];
-		sort(a,a+n);
-		long long sum=0;
-		int head=0;
-		while(head+1&lt;n)&#123;
-			sum+=a[head]+a[head+1];
-			a[head+1]+=a[head];
-			if(a[head+1]&gt;a[head+2]) sort(a+head+1,a+n);
-			head++;
-		&#125;
-		cout&lt;&lt;sum&lt;&lt;endl;
-	&#125;
+    int t;
+    cin&gt;&gt;t;
+    while(t--)&#123;
+        int n;
+        cin&gt;&gt;n;
+        for(int i=0;i&lt;n;i++) cin&gt;&gt;a[i];
+        sort(a,a+n);
+        long long sum=0;
+        int head=0;
+        while(head+1&lt;n)&#123;
+            sum+=a[head]+a[head+1];
+            a[head+1]+=a[head];
+            if(a[head+1]&gt;a[head+2]) sort(a+head+1,a+n);
+            head++;
+        &#125;
+        cout&lt;&lt;sum&lt;&lt;endl;
+    &#125;
 &#125;
-</code></pre>
-<h2 id="J-Covered-Points-Count">J - Covered Points Count</h2>
-<p>这道题用了离散化和差分，我这里还不熟，俩星期前我专门做了几道这种题，当时明白了，过了俩星期又忘了，现在还有些迷</p>
+</code></pre><h2 id="J-Covered-Points-Count"><a href="#J-Covered-Points-Count" class="headerlink" title="J - Covered Points Count"></a>J - Covered Points Count</h2><p>这道题用了离散化和差分，我这里还不熟，俩星期前我专门做了几道这种题，当时明白了，过了俩星期又忘了，现在还有些迷</p>
 <pre><code>#include&lt;stdio.h&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -794,34 +774,32 @@ using namespace std;
 typedef long long ll;
 const int maxn=2e5+100;
 struct node&#123;
-	ll x,y;
+    ll x,y;
 &#125;p[maxn];
 ll a[maxn&lt;&lt;1],b[maxn&lt;&lt;1],c[maxn];
 int main()
 &#123;
-	ios::sync_with_stdio(false);
-	int n,tail=0; cin&gt;&gt;n;
-	for(int i=1;i&lt;=n;i++)&#123;
-		cin&gt;&gt;p[i].x&gt;&gt;p[i].y;
-		a[++tail]=p[i].x;
-		a[++tail]=p[i].y+1; 
-	&#125;
-	sort(a+1,a+1+tail);
-	int len=unique(a+1,a+1+tail)-a-1;
-	for(int i=1;i&lt;=n;i++)&#123;
-		int x=lower_bound(a+1,a+1+len,p[i].x)-a;
-		int y=lower_bound(a+1,a+1+len,p[i].y+1)-a;
-		b[x]++;b[y]--;
-	&#125;
-	for(int i=1;i&lt;=len;i++)&#123;
-		b[i]+=b[i-1];
-		c[b[i]]+=a[i+1]-a[i];
-	&#125;
-	for(int i=1;i&lt;=n;i++) printf(&quot;%lld%c&quot;,c[i],i==n?'\n':' ');
+    ios::sync_with_stdio(false);
+    int n,tail=0; cin&gt;&gt;n;
+    for(int i=1;i&lt;=n;i++)&#123;
+        cin&gt;&gt;p[i].x&gt;&gt;p[i].y;
+        a[++tail]=p[i].x;
+        a[++tail]=p[i].y+1; 
+    &#125;
+    sort(a+1,a+1+tail);
+    int len=unique(a+1,a+1+tail)-a-1;
+    for(int i=1;i&lt;=n;i++)&#123;
+        int x=lower_bound(a+1,a+1+len,p[i].x)-a;
+        int y=lower_bound(a+1,a+1+len,p[i].y+1)-a;
+        b[x]++;b[y]--;
+    &#125;
+    for(int i=1;i&lt;=len;i++)&#123;
+        b[i]+=b[i-1];
+        c[b[i]]+=a[i+1]-a[i];
+    &#125;
+    for(int i=1;i&lt;=n;i++) printf(&quot;%lld%c&quot;,c[i],i==n?&#39;\n&#39;:&#39; &#39;);
 &#125;
-</code></pre>
-<h2 id="K-Ignatius-and-the-Princess-IV">K - Ignatius and the Princess IV</h2>
-<p>非常水的题</p>
+</code></pre><h2 id="K-Ignatius-and-the-Princess-IV"><a href="#K-Ignatius-and-the-Princess-IV" class="headerlink" title="K - Ignatius and the Princess IV"></a>K - Ignatius and the Princess IV</h2><p>非常水的题</p>
 <pre><code>#include&lt;stdio.h&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -831,27 +809,25 @@ typedef long long ll;
 const int maxn=2e5+100;
 int main()
 &#123;
-	int n;
-	while(cin&gt;&gt;n)&#123;
-		map&lt;int,int&gt; mp;
-		int temp=n;
-		while(n--)&#123;
-			int t; cin&gt;&gt;t;
-			mp[t]++;
-		&#125;
-		map&lt;int,int&gt;::iterator it;
-		for(it=mp.begin();it!=mp.end();it++)&#123;
-			if(it-&gt;second&gt;=(temp+1)/2)&#123;
-				cout&lt;&lt;it-&gt;first&lt;&lt;endl;
-				break;
-			&#125;
-		&#125;
-	&#125;
-	return 0;
+    int n;
+    while(cin&gt;&gt;n)&#123;
+        map&lt;int,int&gt; mp;
+        int temp=n;
+        while(n--)&#123;
+            int t; cin&gt;&gt;t;
+            mp[t]++;
+        &#125;
+        map&lt;int,int&gt;::iterator it;
+        for(it=mp.begin();it!=mp.end();it++)&#123;
+            if(it-&gt;second&gt;=(temp+1)/2)&#123;
+                cout&lt;&lt;it-&gt;first&lt;&lt;endl;
+                break;
+            &#125;
+        &#125;
+    &#125;
+    return 0;
 &#125;
-</code></pre>
-<h2 id="L-Stones">L - Stones</h2>
-<p>这道题用优先队列模拟，主要是排列方式如何自定义，这个我今天才学，只会个基础</p>
+</code></pre><h2 id="L-Stones"><a href="#L-Stones" class="headerlink" title="L - Stones"></a>L - Stones</h2><p>这道题用优先队列模拟，主要是排列方式如何自定义，这个我今天才学，只会个基础</p>
 <pre><code>#include&lt;iostream&gt;
 #include&lt;algorithm&gt;
 #include&lt;set&gt;
@@ -860,45 +836,43 @@ using namespace std;
 typedef long long ll;
 typedef pair&lt;int,int&gt; pr;
 struct node&#123;
-	int pos,dis;
-	friend bool operator &lt;(const node a,const node b)&#123;
-		if(a.pos==b.pos) return a.dis&gt;b.dis;
-		return a.pos&gt;b.pos;
-	&#125;
+    int pos,dis;
+    friend bool operator &lt;(const node a,const node b)&#123;
+        if(a.pos==b.pos) return a.dis&gt;b.dis;
+        return a.pos&gt;b.pos;
+    &#125;
 &#125;;
 
 int main()
 &#123;
-	int t;
-	scanf(&quot;%d&quot;,&amp;t);
-	while(t--)&#123;
-		priority_queue&lt;node&gt; oq;
-		int n; 
-		scanf(&quot;%d&quot;,&amp;n);
-		for(int i=0;i&lt;n;i++)&#123;
-			node r;
-			scanf(&quot;%d %d&quot;,&amp;r.pos,&amp;r.dis);
-			oq.push(r);
-		&#125;
-		int cnt=1;
-		node y;
-		while(!oq.empty())&#123;
-			node x=oq.top();
-			oq.pop();
-			if(cnt&amp;1)&#123;
-				y.pos=x.pos+x.dis;;
-				y.dis=x.dis;
-				oq.push(y);
-			&#125;
-			cnt++;
-		&#125;
-		printf(&quot;%d\n&quot;,y.pos);
-	&#125;
+    int t;
+    scanf(&quot;%d&quot;,&amp;t);
+    while(t--)&#123;
+        priority_queue&lt;node&gt; oq;
+        int n; 
+        scanf(&quot;%d&quot;,&amp;n);
+        for(int i=0;i&lt;n;i++)&#123;
+            node r;
+            scanf(&quot;%d %d&quot;,&amp;r.pos,&amp;r.dis);
+            oq.push(r);
+        &#125;
+        int cnt=1;
+        node y;
+        while(!oq.empty())&#123;
+            node x=oq.top();
+            oq.pop();
+            if(cnt&amp;1)&#123;
+                y.pos=x.pos+x.dis;;
+                y.dis=x.dis;
+                oq.push(y);
+            &#125;
+            cnt++;
+        &#125;
+        printf(&quot;%d\n&quot;,y.pos);
+    &#125;
     return 0;
 &#125;
-</code></pre>
-<h2 id="M-SnowWolf’s-Wine-Shop">M - SnowWolf’s Wine Shop</h2>
-<p>做了无数遍的题</p>
+</code></pre><h2 id="M-SnowWolf’s-Wine-Shop"><a href="#M-SnowWolf’s-Wine-Shop" class="headerlink" title="M - SnowWolf’s Wine Shop"></a>M - SnowWolf’s Wine Shop</h2><p>做了无数遍的题</p>
 <pre><code>#include&lt;stdio.h&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -910,73 +884,70 @@ multiset&lt;int&gt; mt;
 
 int main()
 &#123;
-	int t; cin&gt;&gt;t; int kase=0;
-	while(t--)&#123;
-		mt.clear();
-		printf(&quot;Case %d:\n&quot;,++kase);
-		int n,q,y;
-		cin&gt;&gt;n&gt;&gt;q&gt;&gt;y;
-		for(int i=0;i&lt;n;i++)&#123;
-			int tt; cin&gt;&gt;tt;
-			mt.insert(tt);
-		&#125;
-		while(q--)&#123;
-			int v; cin&gt;&gt;v;
-			auto it=mt.lower_bound(v);
-			if(it==mt.end()||*it-y&gt;v) printf(&quot;-1\n&quot;);
-			else&#123;
-				printf(&quot;%d\n&quot;,*it);
-				mt.erase(it);
-			&#125;
-		&#125;
-	&#125;
-	return 0;
+    int t; cin&gt;&gt;t; int kase=0;
+    while(t--)&#123;
+        mt.clear();
+        printf(&quot;Case %d:\n&quot;,++kase);
+        int n,q,y;
+        cin&gt;&gt;n&gt;&gt;q&gt;&gt;y;
+        for(int i=0;i&lt;n;i++)&#123;
+            int tt; cin&gt;&gt;tt;
+            mt.insert(tt);
+        &#125;
+        while(q--)&#123;
+            int v; cin&gt;&gt;v;
+            auto it=mt.lower_bound(v);
+            if(it==mt.end()||*it-y&gt;v) printf(&quot;-1\n&quot;);
+            else&#123;
+                printf(&quot;%d\n&quot;,*it);
+                mt.erase(it);
+            &#125;
+        &#125;
+    &#125;
+    return 0;
 &#125;
-</code></pre>
-<h2 id="N-Alice-Bob-and-Candies">N - Alice, Bob and Candies</h2>
-<p>双指针模拟，以前不自信，总是不敢用STL，现在发现所谓STL也不过如此，加上我两分钟写好的双向队列代码🐷</p>
+</code></pre><h2 id="N-Alice-Bob-and-Candies"><a href="#N-Alice-Bob-and-Candies" class="headerlink" title="N - Alice, Bob and Candies"></a>N - Alice, Bob and Candies</h2><p>双指针模拟，以前不自信，总是不敢用STL，现在发现所谓STL也不过如此，加上我两分钟写好的双向队列代码🐷</p>
 <pre><code>#include&lt;bits/stdc++.h&gt;
 using namespace std;
 typedef long long ll;
 deque&lt;int&gt; dq;
 int main()
-&#123;	
-	int t;
-	cin&gt;&gt;t;
-	while(t--)&#123;
-		dq.clear();
-		int n; cin&gt;&gt;n;
-		for(int i=1;i&lt;=n;i++)&#123;
-			int temp; cin&gt;&gt;temp;
-			dq.push_back(temp);
-		&#125;
-		ll pa=0,pb=0,suma=0,sumb=0,res=1,ansa=0,ansb=0,cnt=0;
-		while(!dq.empty())&#123;
-			cnt++;
-			suma=sumb=0;
-			if(res&amp;1)&#123;
-				while(suma&lt;=pb&amp;&amp;!dq.empty())&#123;
-					suma+=dq.front();
-					dq.pop_front();
-				&#125;
-				ansa+=suma; 
-				pa=suma;
-			&#125;else&#123;
-				while(sumb&lt;=pa&amp;&amp;!dq.empty())&#123;
-					sumb+=dq.back();
-					dq.pop_back();
-				&#125;
-				ansb+=sumb;
-				pb=sumb;
-			&#125;
-			res++;
-		&#125;
-		cout&lt;&lt;cnt&lt;&lt;&quot; &quot;&lt;&lt;ansa&lt;&lt;&quot; &quot;&lt;&lt;ansb&lt;&lt;endl;
-	&#125;
-	return 0;
+&#123;    
+    int t;
+    cin&gt;&gt;t;
+    while(t--)&#123;
+        dq.clear();
+        int n; cin&gt;&gt;n;
+        for(int i=1;i&lt;=n;i++)&#123;
+            int temp; cin&gt;&gt;temp;
+            dq.push_back(temp);
+        &#125;
+        ll pa=0,pb=0,suma=0,sumb=0,res=1,ansa=0,ansb=0,cnt=0;
+        while(!dq.empty())&#123;
+            cnt++;
+            suma=sumb=0;
+            if(res&amp;1)&#123;
+                while(suma&lt;=pb&amp;&amp;!dq.empty())&#123;
+                    suma+=dq.front();
+                    dq.pop_front();
+                &#125;
+                ansa+=suma; 
+                pa=suma;
+            &#125;else&#123;
+                while(sumb&lt;=pa&amp;&amp;!dq.empty())&#123;
+                    sumb+=dq.back();
+                    dq.pop_back();
+                &#125;
+                ansb+=sumb;
+                pb=sumb;
+            &#125;
+            res++;
+        &#125;
+        cout&lt;&lt;cnt&lt;&lt;&quot; &quot;&lt;&lt;ansa&lt;&lt;&quot; &quot;&lt;&lt;ansb&lt;&lt;endl;
+    &#125;
+    return 0;
 &#125;
-</code></pre>
-<pre><code>#include&lt;stdio.h&gt;
+</code></pre><pre><code>#include&lt;stdio.h&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
 #include&lt;string.h&gt;
@@ -986,52 +957,50 @@ const int MAXN=1e4;
 int val[MAXN];
 int main()
 &#123;
-	ios;
-	int t; cin&gt;&gt;t;
-	while(t--)&#123;
-		int n,pa=0,pb=0,flg=0;; cin&gt;&gt;n;
-		int sum=0;
-		for(int i=1;i&lt;=n;i++)&#123;
-			cin&gt;&gt;val[i];
-			sum+=val[i];
-		&#125;
-		int ea=0,eb=0,cnt=1,sa,sb,head=1,tail=n;
-		while(tail-head&gt;=0)&#123;
-			sa=0; sb=0;
-			if(flg==0&amp;&amp;sum-ea-eb&gt;pb)&#123;
-				while(sa&lt;=pb)&#123;
-					sa+=val[head];
-					ea+=val[head];
-					head++; 
-				&#125;
-				pa=sa; flg=1; cnt++;
-				continue;
-			&#125;
-			if(flg==1&amp;&amp;sum-ea-eb&gt;pa)&#123;
-				while(sb&lt;=pa)&#123;
-					sb+=val[tail];
-					eb+=val[tail];
-					tail--;
-				&#125;
-				pb=sb; flg=0; cnt++;
-				continue;
-			&#125;
-			cnt++;
-			if(flg==0)&#123;
-				ea+=sum-ea-eb;
-				break;
-			&#125;else&#123;
-				eb+=sum-ea-eb;
-				break;
-			&#125;
-		&#125;
-		cout&lt;&lt;cnt-1&lt;&lt;&quot; &quot;&lt;&lt;ea&lt;&lt;&quot; &quot;&lt;&lt;eb&lt;&lt;&quot; &quot;&lt;&lt;endl;
-	&#125; 
-	return 0;
+    ios;
+    int t; cin&gt;&gt;t;
+    while(t--)&#123;
+        int n,pa=0,pb=0,flg=0;; cin&gt;&gt;n;
+        int sum=0;
+        for(int i=1;i&lt;=n;i++)&#123;
+            cin&gt;&gt;val[i];
+            sum+=val[i];
+        &#125;
+        int ea=0,eb=0,cnt=1,sa,sb,head=1,tail=n;
+        while(tail-head&gt;=0)&#123;
+            sa=0; sb=0;
+            if(flg==0&amp;&amp;sum-ea-eb&gt;pb)&#123;
+                while(sa&lt;=pb)&#123;
+                    sa+=val[head];
+                    ea+=val[head];
+                    head++; 
+                &#125;
+                pa=sa; flg=1; cnt++;
+                continue;
+            &#125;
+            if(flg==1&amp;&amp;sum-ea-eb&gt;pa)&#123;
+                while(sb&lt;=pa)&#123;
+                    sb+=val[tail];
+                    eb+=val[tail];
+                    tail--;
+                &#125;
+                pb=sb; flg=0; cnt++;
+                continue;
+            &#125;
+            cnt++;
+            if(flg==0)&#123;
+                ea+=sum-ea-eb;
+                break;
+            &#125;else&#123;
+                eb+=sum-ea-eb;
+                break;
+            &#125;
+        &#125;
+        cout&lt;&lt;cnt-1&lt;&lt;&quot; &quot;&lt;&lt;ea&lt;&lt;&quot; &quot;&lt;&lt;eb&lt;&lt;&quot; &quot;&lt;&lt;endl;
+    &#125; 
+    return 0;
 &#125;
-</code></pre>
-<h2 id="O-Special-Elements">O - Special Elements</h2>
-<p>div4的那道桶标记，用前缀和把复杂度将为O(1)，就做出来了</p>
+</code></pre><h2 id="O-Special-Elements"><a href="#O-Special-Elements" class="headerlink" title="O - Special Elements"></a>O - Special Elements</h2><p>div4的那道桶标记，用前缀和把复杂度将为O(1)，就做出来了</p>
 <pre><code>#include&lt;stdio.h&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -1042,35 +1011,33 @@ const int MAXN=1e4;
 int val[MAXN],book[MAXN];
 int main()
 &#123;
-	ios;
-	int t; cin&gt;&gt;t;
-	while(t--)&#123;
-		memset(book,0,sizeof book);
-		memset(val,0,sizeof val);
-		int n; cin&gt;&gt;n;
-		for(int i=1;i&lt;=n;i++)&#123;
-			cin&gt;&gt;val[i];
-			book[val[i]]++;
-			val[i]+=val[i-1];
-		&#125;
-		int cnt=0;
-		for(int i=0;i&lt;n-1;i++)&#123;
-			for(int j=i+2;j&lt;=n;j++)&#123;
-				int sum=val[j]-val[i];
-//				cout&lt;&lt;sum&lt;&lt;' '&lt;&lt;book[sum]&lt;&lt;endl;
-				if(sum&lt;=n&amp;&amp;book[sum])&#123;
-					cnt+=book[sum]; 					
-					book[sum]=0;
-				&#125;
-			&#125;
-		&#125;
-		cout&lt;&lt;cnt&lt;&lt;endl;
-	&#125; 
-	return 0;
+    ios;
+    int t; cin&gt;&gt;t;
+    while(t--)&#123;
+        memset(book,0,sizeof book);
+        memset(val,0,sizeof val);
+        int n; cin&gt;&gt;n;
+        for(int i=1;i&lt;=n;i++)&#123;
+            cin&gt;&gt;val[i];
+            book[val[i]]++;
+            val[i]+=val[i-1];
+        &#125;
+        int cnt=0;
+        for(int i=0;i&lt;n-1;i++)&#123;
+            for(int j=i+2;j&lt;=n;j++)&#123;
+                int sum=val[j]-val[i];
+//                cout&lt;&lt;sum&lt;&lt;&#39; &#39;&lt;&lt;book[sum]&lt;&lt;endl;
+                if(sum&lt;=n&amp;&amp;book[sum])&#123;
+                    cnt+=book[sum];                     
+                    book[sum]=0;
+                &#125;
+            &#125;
+        &#125;
+        cout&lt;&lt;cnt&lt;&lt;endl;
+    &#125; 
+    return 0;
 &#125;
-</code></pre>
-<h2 id="P-Max-Sum">P - Max Sum</h2>
-<p>这道题有点dp的味道，我觉得有点难，反正我没做出来，查了以前的代码才懂了，不过说实话这思路稍微把题目变一下我不知道还能做出来不能，这道题很坑的是用C++可以过，G++不行</p>
+</code></pre><h2 id="P-Max-Sum"><a href="#P-Max-Sum" class="headerlink" title="P - Max Sum"></a>P - Max Sum</h2><p>这道题有点dp的味道，我觉得有点难，反正我没做出来，查了以前的代码才懂了，不过说实话这思路稍微把题目变一下我不知道还能做出来不能，这道题很坑的是用C++可以过，G++不行</p>
 <pre><code>#include&lt;stdio.h&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -1081,36 +1048,34 @@ const int MAXN=1e5+100;
 int val[MAXN];
 int main()
 &#123;
-	ios;
-	int t,kase=0; cin&gt;&gt;t;
-	while(t--)&#123;
-		memset(val,0,sizeof val);
-		int n; cin&gt;&gt;n;
-		for(int i=1;i&lt;=n;i++) cin&gt;&gt;val[i];
-		int summax=-1e9,b=0,e=0,k=1,sum=0; 
-		for(int i=1;i&lt;=n;i++)&#123;
-			sum+=val[i];
-			if(sum&gt;summax)&#123;
-				b=k;
-				e=i;
-				summax=sum;
-			&#125;
-			if(sum&lt;0)&#123;
-				sum=0;
-				k=i+1;
-			&#125;
-		&#125;
-		printf(&quot;Case %d:\n&quot;,++kase);
-		cout&lt;&lt;summax&lt;&lt;&quot; &quot;&lt;&lt;b&lt;&lt;&quot; &quot;&lt;&lt;e&lt;&lt;endl;
-//		printf(&quot;Case %d:\n%d %d %d\n&quot;,++kase,summax,b,e);
-		if(t!=0) printf(&quot;\n&quot;);
-//		if(t!=0) cout&lt;&lt;endl; 
-	&#125; 
-	return 0;
+    ios;
+    int t,kase=0; cin&gt;&gt;t;
+    while(t--)&#123;
+        memset(val,0,sizeof val);
+        int n; cin&gt;&gt;n;
+        for(int i=1;i&lt;=n;i++) cin&gt;&gt;val[i];
+        int summax=-1e9,b=0,e=0,k=1,sum=0; 
+        for(int i=1;i&lt;=n;i++)&#123;
+            sum+=val[i];
+            if(sum&gt;summax)&#123;
+                b=k;
+                e=i;
+                summax=sum;
+            &#125;
+            if(sum&lt;0)&#123;
+                sum=0;
+                k=i+1;
+            &#125;
+        &#125;
+        printf(&quot;Case %d:\n&quot;,++kase);
+        cout&lt;&lt;summax&lt;&lt;&quot; &quot;&lt;&lt;b&lt;&lt;&quot; &quot;&lt;&lt;e&lt;&lt;endl;
+//        printf(&quot;Case %d:\n%d %d %d\n&quot;,++kase,summax,b,e);
+        if(t!=0) printf(&quot;\n&quot;);
+//        if(t!=0) cout&lt;&lt;endl; 
+    &#125; 
+    return 0;
 &#125;
-</code></pre>
-<h2 id="总结">总结</h2>
-<p>以后尽量都用scanf和printf吧，这两个最稳定，不会报稀奇古怪的错误，然后记得字典序比较不是长的大于短的，记得字典序的排列方式，当用容器时一定记得判断容器中有没有元素，有了再pop，sort是不稳定排序，cin和cout配套,scanf和printf配套，两者不要混用</p>
+</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以后尽量都用scanf和printf吧，这两个最稳定，不会报稀奇古怪的错误，然后记得字典序比较不是长的大于短的，记得字典序的排列方式，当用容器时一定记得判断容器中有没有元素，有了再pop，sort是不稳定排序，cin和cout配套,scanf和printf配套，两者不要混用</p>
 
         </div>
         <!-- .entry-content -->
@@ -1315,7 +1280,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

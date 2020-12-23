@@ -415,7 +415,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">407字</span>
+        <span class="post-count">415字</span>
       </span>
     </span>
 
@@ -442,47 +442,32 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="欧几里得定理">欧几里得定理</h2>
-<p>其实就是求gcd的辗转相除法，gcd(a,b)==gcd(a-b,b)，由此可以把a中的b全部拿掉，gcd(a,b)==gcd(a%b,b)， <sub>a是大于b的</sub><br>
-gcd(a,b)==gcd(b,a%b)</p>
-<h2 id="欧拉函数">欧拉函数</h2>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37493070/article/details/81988725">具体证明点击我</a><br>
-X(N)==N * (1/p1) * (1/p2) * (1/p3) *… *(1/pn)(pi为N的质因子)</p>
-<h3 id="性质">性质</h3>
-<ol>
-<li>
-<p><strong>对于任意一个质数 p ,φ(n)=n−1</strong><br>
-<font color="red">因为n为质数,与他互质的个数就是 n-1</font></p>
+          <h2 id="欧几里得定理"><a href="#欧几里得定理" class="headerlink" title="欧几里得定理"></a>欧几里得定理</h2><p>其实就是求gcd的辗转相除法，gcd(a,b)==gcd(a-b,b)，由此可以把a中的b全部拿掉，gcd(a,b)==gcd(a%b,b)， ~a是大于b的~<br>gcd(a,b)==gcd(b,a%b)</p>
+<h2 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37493070/article/details/81988725">具体证明点击我</a><br>X(N)==N <em> (1/p1) </em> (1/p2) <em> (1/p3) </em>… *(1/pn)(pi为N的质因子)   </p>
+<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><ol>
+<li><p><strong>对于任意一个质数 p ,φ(n)=n−1</strong></p>
+<font color="red">因为n为质数,与他互质的个数就是 n-1</font>
 </li>
-<li>
-<p><strong>当 gcd(n,m)=1时,φ(nm)=φ(n)φ(m)</strong><br>
-<font color="red">因为φ(n)是积性函数。 积性函数指对于所有互质的整数a和b有性质f(ab)=f(a)f(b)的数论函数。</font></p>
+<li><p><strong>当 gcd(n,m)=1时,φ(nm)=φ(n)φ(m)</strong></p>
+<font color="red">因为φ(n)是积性函数。 积性函数指对于所有互质的整数a和b有性质f(ab)=f(a)f(b)的数论函数。</font>
 </li>
-<li>
-<p><strong>若 n=p<sup>k</sup> 其中p为质数,则φ(n)=p<sup>k</sup>−p<sup>k−1</sup>=(p−1)p<sup>k−1</sup></strong><br>
-<font color="red">1→n中除了p的倍数，都与p<sup>k</sup>互质,1→n中p倍数的个数为 p<sup>k</sup>÷p=p<sup>k−1</sup></font></p>
+<li><p><strong>若 n=p^k^ 其中p为质数,则φ(n)=p^k^−p^k−1^=(p−1)p^k−1^</strong></p>
+<font color="red">1→n中除了p的倍数，都与p^k^互质,1→n中p倍数的个数为 p^k^÷p=p^k−1^</font>
 </li>
-<li>
-<p><strong>所有小于n与n互质个数的和sum=n × φ(n)/2</strong></p>
+<li><p><strong>所有小于n与n互质个数的和sum=n × φ(n)/2</strong></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/justPassBy/p/4489351.html">推导点击我</a></p>
 </li>
-<li>
-<p><strong>如果 i mod p=0,其中p为质数,则 φ(i ∗ p)=p ∗ φ(i),否则φ(i ∗ p)=(p−1)φ(i)</strong></p>
+<li><p><strong>如果 i mod p=0,其中p为质数,则 φ(i ∗ p)=p ∗ φ(i),否则φ(i ∗ p)=(p−1)φ(i)</strong></p>
 </li>
-<li>
-<p><strong>n=∑d|nφ(d) (d|n)指n是d的倍数</strong></p>
+<li><p><strong>n=∑d|nφ(d) (d|n)指n是d的倍数</strong></p>
 </li>
-<li>
-<p><strong>当 N &gt; 2 时，φ( N )是偶数</strong></p>
-</li>
+<li><p><strong>当 N &gt; 2 时，φ( N )是偶数</strong></p>
+<h2 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h2></li>
 </ol>
-<h2 id="欧拉定理">欧拉定理</h2>
-<p><strong>对于互质的整数a,m,有 a<sup>φ(m)</sup>≡1 (mod m)。</strong></p>
-<h2 id="费马小定理">费马小定理</h2>
-<p><strong>费马小定理(Fermat’s little theorem)是数论中的一个重要定理，在1636年提出。如果p是一个质数，而整数a不是p的倍数，则有a^（p-1）≡1（mod p）</strong></p>
+<p><strong>对于互质的整数a,m,有 a^φ(m)^≡1 (mod m)。</strong></p>
+<h2 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h2><p><strong>费马小定理(Fermat’s little theorem)是数论中的一个重要定理，在1636年提出。如果p是一个质数，而整数a不是p的倍数，则有a^（p-1）≡1（mod p）</strong></p>
 <p>主要应用于求高阶次幂对某个数求余数，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86/4776158?fr=aladdin">点击我</a></p>
-<h2 id="逆元">逆元</h2>
-<p><strong>a<sup>(m-1)</sup>=1(mod m), a * a<sup>(m-2)</sup>=1(mod m)，所以a的逆元是：a<sup>(m-2)</sup> ,当m与a互质时。</strong></p>
+<h2 id="逆元"><a href="#逆元" class="headerlink" title="逆元"></a>逆元</h2><p><strong>a^(m-1)^=1(mod m), a * a^(m-2)^=1(mod m)，所以a的逆元是：a^(m-2)^ ,当m与a互质时。</strong></p>
 
         </div>
         <!-- .entry-content -->
@@ -687,7 +672,7 @@ X(N)==N * (1/p1) * (1/p2) * (1/p3) *… *(1/pn)(pi为N的质因子)</p>
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

@@ -442,37 +442,33 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="筛选质因子">筛选质因子</h2>
-<pre><code class="language-c">  for(int i=2;i*i&lt;=k;i++)&#123;
+          <h2 id="筛选质因子"><a href="#筛选质因子" class="headerlink" title="筛选质因子"></a>筛选质因子</h2><pre><code class="lang-c">  for(int i=2;i*i&lt;=k;i++)&#123;
       if(k%i==0)&#123;
           p[++tail]=i;  //p就是储存质因子的数组
           while(k%i==0) k/=i;  //把k中所有i的质因子全部除去
       &#125;
-	&#125;
+    &#125;
     if(k&gt;1) p[++tail]=k;
 </code></pre>
-<h2 id="判断是否为质数">判断是否为质数</h2>
-<pre><code class="language-c">bool isp(int n)&#123;
-	if(n==1||n==0) return 0;
-	if(n==2||n==3) return 1;
-	if(n%6!=1&amp;&amp;n%6!=5) return 0;
-	for(int i=5;i*i&lt;=n;i+=6)&#123;
-		if(n%i==0||n%(i+2)==0) return 0;
-	&#125;
-	return 1;
+<h2 id="判断是否为质数"><a href="#判断是否为质数" class="headerlink" title="判断是否为质数"></a>判断是否为质数</h2><pre><code class="lang-c">bool isp(int n)&#123;
+    if(n==1||n==0) return 0;
+    if(n==2||n==3) return 1;
+    if(n%6!=1&amp;&amp;n%6!=5) return 0;
+    for(int i=5;i*i&lt;=n;i+=6)&#123;
+        if(n%i==0||n%(i+2)==0) return 0;
+    &#125;
+    return 1;
 &#125;
 </code></pre>
-<h2 id="容斥原理">容斥原理</h2>
-<p>前言：</p>
+<h2 id="容斥原理"><a href="#容斥原理" class="headerlink" title="容斥原理"></a>容斥原理</h2><p>前言：</p>
 <ol>
 <li>计算1-n中m的的倍数的数量时，直接n/m</li>
-<li>容斥原理是在互质的数的基础上实现的<br>
-公式：</li>
+<li>容斥原理是在互质的数的基础上实现的<br>公式：</li>
 </ol>
 <p>(A+B+C+D+E……)-(A<em>B+A</em>C+A<em>D……+B</em>C+B<em>D)+(A</em>B<em>C+B</em>C<em>D……)-(A</em>B<em>C</em>D+B<em>C</em>D*E……)……</p>
 <p>规律： 奇数相加，偶数相减</p>
 <p>代码：</p>
-<pre><code class="language-c">    p数组储存的是筛选的质因子
+<pre><code class="lang-c">    p数组储存的是筛选的质因子
     long long fun(long long x)&#123;
         long long res=0;  //res储存的是1-x中与K不互质的数量 
         for(int i=1;i&lt;(1&lt;&lt;tail);i++)&#123;  //这里的1&lt;&lt;tail是指2的tail次方，表示tail个质因子有多少种组合情况 
@@ -489,8 +485,7 @@
         return x-res;  //res储存的是1-x中与K不互质的数量，所以要用x-res得到互质的数量 
     &#125;
 </code></pre>
-<h2 id="欧拉筛">欧拉筛</h2>
-<pre><code class="language-c">int vis[maxn],p[maxn/10]; //质数密度不大，除以10可以减少空间浪费
+<h2 id="欧拉筛"><a href="#欧拉筛" class="headerlink" title="欧拉筛"></a>欧拉筛</h2><pre><code class="lang-c">int vis[maxn],p[maxn/10]; //质数密度不大，除以10可以减少空间浪费
 int cnt=0;
 void prime()
 &#123;
@@ -504,8 +499,7 @@ void prime()
     &#125;
 &#125;
 </code></pre>
-<h2 id="埃式筛">埃式筛</h2>
-<pre><code class="language-c">int p[1000]; //p数组用来存储质数
+<h2 id="埃式筛"><a href="#埃式筛" class="headerlink" title="埃式筛"></a>埃式筛</h2><pre><code class="lang-c">int p[1000]; //p数组用来存储质数
 void prime()
 &#123;
     vis[1]=1; //1不是质数
@@ -519,15 +513,13 @@ void prime()
     &#125;
 &#125;
 </code></pre>
-<h2 id="数学公式">数学公式</h2>
-<ul>
-<li>海伦公式<br>
-S=sqrt(p * (p-a) * (p-b) * (p-c))</li>
-</ul>
-<h2 id="快速幂">快速幂</h2>
-<font color="red">
+<h2 id="数学公式"><a href="#数学公式" class="headerlink" title="数学公式"></a>数学公式</h2><ul>
+<li>海伦公式<br>S=sqrt(p <em> (p-a) </em> (p-b) * (p-c))<h2 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h2><font color="red">
 非递归版本
 </font>
+
+</li>
+</ul>
 <pre><code>int p(int a,int b)&#123;
   int t,y;
   t=1; y=a;
@@ -538,11 +530,11 @@ S=sqrt(p * (p-a) * (p-b) * (p-c))</li>
   &#125;
   return t;
 &#125;
-</code></pre>
-<font color="red">
+</code></pre><font color="red">
 递归版本
 </font>
-<pre><code class="language-c">ll pow(ll a,ll i)&#123;
+
+<pre><code class="lang-c">ll pow(ll a,ll i)&#123;
   if (i==0) return 1;
   ll temp=pow(a,i&gt;&gt;1)%MOD;
   temp=temp*temp%MOD;
@@ -550,23 +542,20 @@ S=sqrt(p * (p-a) * (p-b) * (p-c))</li>
   return temp%MOD;
 &#125;
 </code></pre>
-<h2 id="龟速乘-快速幂BUG">龟速乘(快速幂BUG)</h2>
-<pre><code class="language-c">ll gsc(ll a,ll b)&#123;
-	ll ans=0;
-	while(b)&#123;
-		if(b&amp;1) ans=(ans+a)%MOD;
-		a=a*2%MOD;
-		b&gt;&gt;=1;
-	&#125;
-	return ans;
+<h2 id="龟速乘-快速幂BUG"><a href="#龟速乘-快速幂BUG" class="headerlink" title="龟速乘(快速幂BUG)"></a>龟速乘(快速幂BUG)</h2><pre><code class="lang-c">ll gsc(ll a,ll b)&#123;
+    ll ans=0;
+    while(b)&#123;
+        if(b&amp;1) ans=(ans+a)%MOD;
+        a=a*2%MOD;
+        b&gt;&gt;=1;
+    &#125;
+    return ans;
 &#125;
 </code></pre>
-<h2 id="快速乘-有误差">快速乘(有误差)</h2>
-<pre><code class="language-c">cin&gt;&gt;a&gt;&gt;b&gt;&gt;mod;
+<h2 id="快速乘-有误差"><a href="#快速乘-有误差" class="headerlink" title="快速乘(有误差)"></a>快速乘(有误差)</h2><pre><code class="lang-c">cin&gt;&gt;a&gt;&gt;b&gt;&gt;mod;
 cout&lt;&lt;((a*b-(long long)((long double)a*b/mod)*mod+mod)%mod);
 </code></pre>
-<h2 id="树状数组模板">树状数组模板</h2>
-<pre><code class="language-c">int lowbit(int n)&#123;
+<h2 id="树状数组模板"><a href="#树状数组模板" class="headerlink" title="树状数组模板"></a>树状数组模板</h2><pre><code class="lang-c">int lowbit(int n)&#123;
     return n&amp;-n;
 &#125;
 
@@ -582,8 +571,7 @@ int getsum(int x)&#123;
     return ans;
 &#125;
 </code></pre>
-<h2 id="查并集">查并集</h2>
-<pre><code class="language-c">void init(int n) &#123;
+<h2 id="查并集"><a href="#查并集" class="headerlink" title="查并集"></a>查并集</h2><pre><code class="lang-c">void init(int n) &#123;
     for(int i = 1; i &lt;= n; i++) &#123;
         f[i] = i;
     &#125;
@@ -604,39 +592,38 @@ void merge(int a, int b) &#123;
     &#125;
 &#125;
 </code></pre>
-<h2 id="快速排序">快速排序</h2>
-<pre><code class="language-c">//左右都是闭区间 
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><pre><code class="lang-c">//左右都是闭区间 
 int qsort(int l,int r,int *v)&#123;
-	int mid=(l+r)&gt;&gt;1;
-	int i=l,j=r;
-	int temp=v[mid];//基准值是会被交换的，必须备份 
-	while(i&lt;=j)&#123;//这里小于等于都行 
-		while(v[j]&gt;temp) j--;//找到第一个小于等于基准值的 
-		while(v[i]&lt;temp) i++;
-		if(i&lt;=j)&#123; //这里必须是小于等于,因为当只有两个数时，两个指针一定会重合 
-			swap(v[i],v[j]);
-			i++; j--;//这里必须，因为当交换的两个数有基准值时，若没有这一步，两个指针必然重合，然后会无限重复 
-		&#125;
-	&#125;
-	//i一定比j大，排序过后i左面都小于基准值，j右面都大于基准值就找到了基准值的位置  
-	if(i&lt;r) qsort(i,r,v);//再排基准值右面 
-	if(j&gt;l) qsort(l,j,v);//再排基准值左面 
+    int mid=(l+r)&gt;&gt;1;
+    int i=l,j=r;
+    int temp=v[mid];//基准值是会被交换的，必须备份 
+    while(i&lt;=j)&#123;//这里小于等于都行 
+        while(v[j]&gt;temp) j--;//找到第一个小于等于基准值的 
+        while(v[i]&lt;temp) i++;
+        if(i&lt;=j)&#123; //这里必须是小于等于,因为当只有两个数时，两个指针一定会重合 
+            swap(v[i],v[j]);
+            i++; j--;//这里必须，因为当交换的两个数有基准值时，若没有这一步，两个指针必然重合，然后会无限重复 
+        &#125;
+    &#125;
+    //i一定比j大，排序过后i左面都小于基准值，j右面都大于基准值就找到了基准值的位置  
+    if(i&lt;r) qsort(i,r,v);//再排基准值右面 
+    if(j&gt;l) qsort(l,j,v);//再排基准值左面 
  &#125;
 </code></pre>
-<h2 id="组合数打表-杨辉三角">组合数打表(杨辉三角)</h2>
-<font color="red">
+<h2 id="组合数打表-杨辉三角"><a href="#组合数打表-杨辉三角" class="headerlink" title="组合数打表(杨辉三角)"></a>组合数打表(杨辉三角)</h2><font color="red">
 int类型最多到33层，34层开始爆int，ll最多50层左右，打表最多1e3的量
 </font>
-<pre><code class="language-c">int c[50][50];
+
+<pre><code class="lang-c">int c[50][50];
 int zuhe()&#123;//下标从0开始
-	c[0][0]=1;
-	c[1][0]=1;c[1][1]=1;
-	for(int i=2;i&lt;=33;i++)&#123;
-		c[i][0]=1;
-		for(int j=1;j&lt;=i;j++)&#123;
-			c[i][j]=c[i-1][j-1]+c[i-1][j];
-		&#125;
-	&#125;
+    c[0][0]=1;
+    c[1][0]=1;c[1][1]=1;
+    for(int i=2;i&lt;=33;i++)&#123;
+        c[i][0]=1;
+        for(int j=1;j&lt;=i;j++)&#123;
+            c[i][j]=c[i-1][j-1]+c[i-1][j];
+        &#125;
+    &#125;
 &#125;
 </code></pre>
 <blockquote>
@@ -846,7 +833,7 @@ int zuhe()&#123;//下标从0开始
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

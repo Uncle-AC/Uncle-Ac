@@ -415,7 +415,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">868字</span>
+        <span class="post-count">880字</span>
       </span>
     </span>
 
@@ -442,32 +442,12 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1>题目</h1>
-<p><a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=2102">problem link</a><br>
-可怜的公主在一次次被魔王掳走一次次被骑士们救回来之后，而今，不幸的她再一次面临生命的考验。魔王已经发出消息说将在T时刻吃掉公主，因为他听信谣言说吃公主的肉也能长生不老。年迈的国王正是心急如焚，告招天下勇士来拯救公主。不过公主早已习以为常，她深信智勇的骑士LJ肯定能将她救出。<br>
-现据密探所报，公主被关在一个两层的迷宫里，迷宫的入口是S（0，0，0），公主的位置用P表示，时空传输机用#表示，墙用<em>表示，平地用.表示。骑士们一进入时空传输机就会被转到另一层的相对位置，但如果被转到的位置是墙的话，那骑士们就会被撞死。骑士们在一层中只能前后左右移动，每移动一格花1时刻。层间的移动只能通过时空传输机，且不需要任何时间。<br>
-<code>Input</code><br>
-输入的第一行C表示共有C个测试数据，每个测试数据的前一行有三个整数N，M，T。 N，M迷宫的大小NM（1 &lt;= N,M &lt;=10)。T如上所意。接下去的前NM表示迷宫的第一层的布置情况，后NM表示迷宫第二层的布置情况。<br>
-<code>Output</code><br>
-如果骑士们能够在T时刻能找到公主就输出“YES”，否则输出“NO”。<br>
-<code>Sample Input</code><br>
-1<br>
-5 5 14<br>
-S#</em>.<br>
-.#…<br>
-…<br>
-****.<br>
-…#.</p>
-<p>….P<br>
-#.…<br>
-**…<br>
-….<br>
-*.#…<br>
-<code>Sample Output</code><br>
-YES</p>
+          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=2102">problem link</a><br>可怜的公主在一次次被魔王掳走一次次被骑士们救回来之后，而今，不幸的她再一次面临生命的考验。魔王已经发出消息说将在T时刻吃掉公主，因为他听信谣言说吃公主的肉也能长生不老。年迈的国王正是心急如焚，告招天下勇士来拯救公主。不过公主早已习以为常，她深信智勇的骑士LJ肯定能将她救出。<br>现据密探所报，公主被关在一个两层的迷宫里，迷宫的入口是S（0，0，0），公主的位置用P表示，时空传输机用#表示，墙用<em>表示，平地用.表示。骑士们一进入时空传输机就会被转到另一层的相对位置，但如果被转到的位置是墙的话，那骑士们就会被撞死。骑士们在一层中只能前后左右移动，每移动一格花1时刻。层间的移动只能通过时空传输机，且不需要任何时间。<br><code>Input</code><br>输入的第一行C表示共有C个测试数据，每个测试数据的前一行有三个整数N，M，T。 N，M迷宫的大小NM（1 &lt;= N,M &lt;=10)。T如上所意。接下去的前NM表示迷宫的第一层的布置情况，后NM表示迷宫第二层的布置情况。<br><code>Output</code><br>如果骑士们能够在T时刻能找到公主就输出“YES”，否则输出“NO”。<br><code>Sample Input</code><br>1<br>5 5 14<br>S#</em>.<br>.#…<br>…<br><em>**</em>.<br>…#.   </p>
+<p>….P   </p>
+<h1 id="…"><a href="#…" class="headerlink" title=".…"></a>.…</h1><p><em>*…<br>….   
+</em>.#…<br><code>Sample Output</code><br>YES</p>
 <p>解题思路：类似于三维空间，但完全可以用二维数组做，标记一下在哪一层就可以了。注意两层同一位置都是传输机的情况，可能会造成无限循环。</p>
-<h1>Code</h1>
-<pre><code>#include&lt;iostream&gt;
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><pre><code>#include&lt;iostream&gt;
 #include&lt;cstring&gt;
 #include&lt;cmath&gt;
 using namespace std;
@@ -477,71 +457,70 @@ int d[4][2]=&#123;1,0,-1,0,0,-1,0,1&#125;;
 int vis[15][15][15];
 char a[15][15][15];
 void dfs(int x,int y,int z,int step)&#123;
-	if(flag) return ;
-	if(x==ex&amp;&amp;y==ey&amp;&amp;z==ez)&#123;
-		if(step&lt;=T)&#123;
-			flag=1;
-		&#125;
-		return ;
-	&#125;
-	if(step&gt;=T) return ;
-	for(int i=0;i&lt;4;i++)&#123;
-		int dx=x+d[i][0];
-		int dy=y+d[i][1];
-		int dz=z;
-		if(dx&gt;=0&amp;&amp;dx&lt;n&amp;&amp;dy&gt;=0&amp;&amp;dy&lt;m&amp;&amp;!vis[dz][dx][dy]&amp;&amp;a[dz][dx][dy]!='*')&#123;
-			vis[dz][dx][dy]=1;
-			if(a[dz][dx][dy]=='#')&#123;
-				vis[abs(dz-1)][dx][dy]=1;
-				dfs(dx,dy,abs(dz-1),step+1);
-				vis[abs(dz-1)][dx][dy]=0;
-			&#125;
-			else &#123;
-				dfs(dx,dy,dz,step+1);
-			&#125;
-			vis[dz][dx][dy]=0;
-		&#125;
-	&#125;
+    if(flag) return ;
+    if(x==ex&amp;&amp;y==ey&amp;&amp;z==ez)&#123;
+        if(step&lt;=T)&#123;
+            flag=1;
+        &#125;
+        return ;
+    &#125;
+    if(step&gt;=T) return ;
+    for(int i=0;i&lt;4;i++)&#123;
+        int dx=x+d[i][0];
+        int dy=y+d[i][1];
+        int dz=z;
+        if(dx&gt;=0&amp;&amp;dx&lt;n&amp;&amp;dy&gt;=0&amp;&amp;dy&lt;m&amp;&amp;!vis[dz][dx][dy]&amp;&amp;a[dz][dx][dy]!=&#39;*&#39;)&#123;
+            vis[dz][dx][dy]=1;
+            if(a[dz][dx][dy]==&#39;#&#39;)&#123;
+                vis[abs(dz-1)][dx][dy]=1;
+                dfs(dx,dy,abs(dz-1),step+1);
+                vis[abs(dz-1)][dx][dy]=0;
+            &#125;
+            else &#123;
+                dfs(dx,dy,dz,step+1);
+            &#125;
+            vis[dz][dx][dy]=0;
+        &#125;
+    &#125;
 &#125;
 int main()&#123;
-	int t;
-	cin&gt;&gt;t;
-	while(t--)&#123;
-		memset(vis,0,sizeof(vis));
-		flag=0;
-		cin&gt;&gt;n&gt;&gt;m&gt;&gt;T;
-		for(int i=0;i&lt;2;i++)&#123;
-			for(int j=0;j&lt;n;j++)&#123;
-				for(int k=0;k&lt;m;k++)&#123;
-					cin&gt;&gt;a[i][j][k];
-					if(a[i][j][k]=='P')&#123;
-						ex=j,ey=k,ez=i;
-					&#125;
-				&#125;
-			&#125;
-		&#125;
-		for(int i=0;i&lt;n;i++)&#123;
-			for(int j=0;j&lt;m;j++)&#123;
-				if(a[0][i][j]=='#'&amp;&amp;a[1][i][j]=='#')&#123;//两边都是#的情况 ，会造成无限循环 
-					vis[0][i][j]=vis[1][i][j]=1;
-				&#125;
-				if(a[0][i][j]=='*'&amp;&amp;a[1][i][j]=='#')&#123;
-					vis[0][i][j]=vis[1][i][j]=1;
-				&#125;
-				if(a[0][i][j]=='#'&amp;&amp;a[1][i][j]=='*')&#123;
-					vis[0][i][j]=vis[1][i][j]=1;
-				&#125;
-			&#125;
-		&#125;
-		dfs(0,0,0,0);
-		if(flag) cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
-		else cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
-	&#125;
-	
-	return 0;
+    int t;
+    cin&gt;&gt;t;
+    while(t--)&#123;
+        memset(vis,0,sizeof(vis));
+        flag=0;
+        cin&gt;&gt;n&gt;&gt;m&gt;&gt;T;
+        for(int i=0;i&lt;2;i++)&#123;
+            for(int j=0;j&lt;n;j++)&#123;
+                for(int k=0;k&lt;m;k++)&#123;
+                    cin&gt;&gt;a[i][j][k];
+                    if(a[i][j][k]==&#39;P&#39;)&#123;
+                        ex=j,ey=k,ez=i;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+        for(int i=0;i&lt;n;i++)&#123;
+            for(int j=0;j&lt;m;j++)&#123;
+                if(a[0][i][j]==&#39;#&#39;&amp;&amp;a[1][i][j]==&#39;#&#39;)&#123;//两边都是#的情况 ，会造成无限循环 
+                    vis[0][i][j]=vis[1][i][j]=1;
+                &#125;
+                if(a[0][i][j]==&#39;*&#39;&amp;&amp;a[1][i][j]==&#39;#&#39;)&#123;
+                    vis[0][i][j]=vis[1][i][j]=1;
+                &#125;
+                if(a[0][i][j]==&#39;#&#39;&amp;&amp;a[1][i][j]==&#39;*&#39;)&#123;
+                    vis[0][i][j]=vis[1][i][j]=1;
+                &#125;
+            &#125;
+        &#125;
+        dfs(0,0,0,0);
+        if(flag) cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
+        else cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+    &#125;
+
+    return 0;
 &#125;
 </code></pre>
-
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -745,7 +724,7 @@ int main()&#123;
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

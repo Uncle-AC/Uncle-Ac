@@ -442,82 +442,58 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="前言">前言</h2>
-<blockquote>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>我配置Valine时是尝试了两次的，第一次弄了一上午看了许多教程，因为当时不懂原理就跟着瞎琢磨，最后因为没有重启的原因没弄成，后来又搞了一次，重新开始最后偶然发现配置环境变量时有提醒说配置完环境变量后下一次部署后生效，我幡然醒悟，又去部署了一次果然成了，而且其他的教程都有点不对Valine的操作，比如原文档中说让在云引擎设置中部署代码，但是设置中没有部署页面，应该在云引擎部署页面中部署源码，可能是Valine更新页面了吧，在这里我记录一下（这个其实前几天就准备发的今天才开始），希望小白网友们可以少掉一些坑🙏</p>
 </blockquote>
-<p><font color="red" size=4> 现在Leancould对非标准版本的进行了限流，内部自唤醒已经行不通了，所以本教程最后的自唤醒请自行忽略，若想解决该问题请<a href="https://www.antmoe.com/posts/ff6aef7b/" target="_blank">点击我进行查看</a></font></p>
+<font color="red" size=4> 现在Leancould对非标准版本的进行了限流，内部自唤醒已经行不通了，所以本教程最后的自唤醒请自行忽略，若想解决该问题请<a href="https://www.antmoe.com/posts/ff6aef7b/" target="_blank">点击我进行查看</a></font>
+
 <p>如果你要使用第三方邮件提醒(你也不得不使用第三方因为Valine在1.4以后的已经不支持邮件提醒了)，最好是使用国际版，因为国内的需要备案，如果你不想徒增不必要的麻烦我劝你最好用国际版本，如果你已经用了国内的，趁着用的时间还不算太长趁早换成国际版本吧(来自过来人的提醒)</p>
-<h2 id="教程">教程</h2>
-<p>首先确定你的Valine的配置都是正常的，具体参考<a target="_blank" rel="noopener" href="https://valine.js.org/">Valine文档</a>，我看其他的教程有的说Valine说Valine是自带邮件提醒功能的，网友们不要被迷惑了<br>
-<font color="red" size=5>!!! 自带的邮件提醒功能将在v1.4.0发布时下线，请使用自带邮件提醒的用户注意更改为第三方邮件提醒<br>
-</font><br>
-Valine文档里面有这一句话，说Valine自带邮件提醒的都不知道是多久前的文章了！</p>
-<ul>
-<li><font size=4> 本文是基于博主zhaojun1998开发的Valine-Admin，感谢开发者🙏</font></li>
-</ul>
-<h3 id="部署源码">部署源码</h3>
-<p><font color="green" size=4> 特别注意，如今Leancloud已经不支持node.js 6.*的部署，所以理论上网上部署的zhaojun1998的教程已经过期了，但是之前部署过的是不会影响的</font></p>
-<p>进入<a target="_blank" rel="noopener" href="https://www.leancloud.cn/">Leancould</a>对应的Valine应用中<br>
-点击<code>云引擎-&gt;部署</code></p>
-<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/5.png" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/5.png" /></a>   
-<p>填上代码<code>https://github.com/BillChen2K/Valine-Admin</code>到代码库中并部署到master，最后在<code>日志</code>中看到部署成功就行了</p>
-<h3 id="环境配置项">环境配置项</h3>
-<p>进入<code>云引擎-&gt;设置</code>配置环境变量</p>
-<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/6.png" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/6.png" /></a>   
-<details ><summary> <p>参数介绍</p> </summary>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>首先确定你的Valine的配置都是正常的，具体参考<a target="_blank" rel="noopener" href="https://valine.js.org/">Valine文档</a>，我看其他的教程有的说Valine说Valine是自带邮件提醒功能的，网友们不要被迷惑了   </p>
+<font color="red" size=5>!!! 自带的邮件提醒功能将在v1.4.0发布时下线，请使用自带邮件提醒的用户注意更改为第三方邮件提醒   
+</font>
+Valine文档里面有这一句话，说Valine自带邮件提醒的都不知道是多久前的文章了！   
+
+* <font size=4> 本文是基于博主zhaojun1998开发的Valine-Admin，感谢开发者🙏</font>   
+
+<h3 id="部署源码"><a href="#部署源码" class="headerlink" title="部署源码"></a>部署源码</h3><font color="green" size=4> 特别注意，如今Leancloud已经不支持node.js 6.*的部署，所以理论上网上部署的zhaojun1998的教程已经过期了，但是之前部署过的是不会影响的</font>
+
+<p>进入<a target="_blank" rel="noopener" href="https://www.leancloud.cn/">Leancould</a>对应的Valine应用中<br>点击<code>云引擎-&gt;部署</code><br><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/5.png" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/5.png" /></a><br>填上代码<code>https://github.com/BillChen2K/Valine-Admin</code>到代码库中并部署到master，最后在<code>日志</code>中看到部署成功就行了  </p>
+<h3 id="环境配置项"><a href="#环境配置项" class="headerlink" title="环境配置项"></a>环境配置项</h3><p>进入<code>云引擎-&gt;设置</code>配置环境变量<br><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/6.png" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/6.png" /></a><br><details ><summary> <p>参数介绍</p> </summary>
               <div class='content'>
-              <p><code>SITE_NAME</code> : 网站名称<br><code>SITE_URL</code> : 网站地址, 最后不要加 /<br><code>SMTP_USER</code> : SMTP 服务用户名，一般为邮箱地址（例如QQ <a target="_blank" rel="noopener" href="http://xn--rprr44k.qq.com">账号.qq.com</a>）<br><code>SMTP_PASS</code> : SMTP 密码，一般为授权码，而不是邮箱的登陆密码，请自行查询对应邮件服务商的获取方式<br><code>SMTP_SERVICE</code> : 邮件服务提供商，支持 QQ、163、126、Gmail、“Yahoo”、… ，全部支持请参考<a target="_blank" rel="noopener" href="https://nodemailer.com/smtp/well-known/#supported-services"> Nodemailer Supported services</a> :  — 如这里没有你使用的邮件提供商，请查看<a target="_blank" rel="noopener" href="https://github.com/zhaojun1998/Valine-Admin/blob/master/%E9%AB%98%E7%BA%A7%E9%85%8D%E7%BD%AE.md#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8">自定义邮件服务器</a><br><code>SENDER_NAME</code> : 寄件人名称<br><code>SENDER_EMAIL</code> : 收件的邮箱地址<br><code>SMTP_HOST</code> : 提供邮件服务的支持方（例如QQ，<a target="_blank" rel="noopener" href="http://xn--smtp-k29gs52c.qq.com">就是smtp.qq.com</a>）<br><code>TEMPLATE_NAME</code> : 收到的邮件主题，不填则是默认，建议选rainbow效果在最后查看</p>
+              <p>  &lt;/p&gt;</p><p><code>SITE_NAME</code> : 网站名称<br><code>SITE_URL</code> : 网站地址, 最后不要加 /<br><code>SMTP_USER</code> : SMTP 服务用户名，一般为邮箱地址（例如QQ 账号.qq.com）<br><code>SMTP_PASS</code> : SMTP 密码，一般为授权码，而不是邮箱的登陆密码，请自行查询对应邮件服务商的获取方式<br><code>SMTP_SERVICE</code> : 邮件服务提供商，支持 QQ、163、126、Gmail、”Yahoo”、…… ，全部支持请参考<a target="_blank" rel="noopener" href="https://nodemailer.com/smtp/well-known/#supported-services"> Nodemailer Supported services</a> :  —- 如这里没有你使用的邮件提供商，请查看<a target="_blank" rel="noopener" href="https://github.com/zhaojun1998/Valine-Admin/blob/master/%E9%AB%98%E7%BA%A7%E9%85%8D%E7%BD%AE.md#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8">自定义邮件服务器</a><br><code>SENDER_NAME</code> : 寄件人名称<br><code>SENDER_EMAIL</code> : 收件的邮箱地址<br><code>SMTP_HOST</code> : 提供邮件服务的支持方（例如QQ，就是smtp.qq.com）<br><code>TEMPLATE_NAME</code> : 收到的邮件主题，不填则是默认，建议选rainbow效果在最后查看  </p>
               </div>
             </details>
-<p>需要说明如果你用的是QQ，需要开启SMTP服务</p>
-<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/7.png" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/7.png" /></a>  
-<p>SMTP密码就是上面弹出的验证码</p>
-<h3 id="设置邮件模板">设置邮件模板</h3>
-<p>进入<code>设置-&gt;邮件模板</code>填入以下代码，其中改掉相应的用户名为你自己的</p>
+<p>需要说明如果你用的是QQ，需要开启SMTP服务<br><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/7.png" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/7.png" /></a><br>SMTP密码就是上面弹出的验证码 </p>
+<h3 id="设置邮件模板"><a href="#设置邮件模板" class="headerlink" title="设置邮件模板"></a>设置邮件模板</h3><p>进入<code>设置-&gt;邮件模板</code>填入以下代码，其中改掉相应的用户名为你自己的  </p>
 <pre><code>&lt;p&gt;Hi, &#123;&#123;username&#125;&#125;&lt;/p&gt;
 &lt;p&gt;你在 &#123;&#123;appname&#125;&#125; 的评论收到了新的回复，请点击查看：&lt;/p&gt;
 &lt;p&gt;
 &lt;a href=&quot;https://cungudafa.gitee.io&quot; style=&quot;display: inline-block; padding: 10px 20px; border-radius: 4px; background-color: #3090e4; color: #fff; text-decoration: none;&quot;&gt;马上查看&lt;/a&gt;&lt;/p&gt;
-</code></pre>
-<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/8.png" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/8.png" /></a>   
-<p>OK，到这里基本就结束了，最后在在<code>云引擎-&gt;部署</code>中点击重启，<font color="red">我就是在这里栽跟头的😒</font><br>
-看一下效果：</p>
-<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/pinglun.webp" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/pinglun.webp" /></a>  
-<h3 id="休眠">休眠</h3>
-<p>需要说明的是：<br>
-<font color="green" size=4></p>
-<p>免费版的 LeanCloud 容器，是有强制性休眠策略的，不能 24 小时运行：</p>
-<ul>
-<li>每天必须休眠 6 个小时</li>
-<li>30 分钟内没有外部请求，则休眠。</li>
-<li>休眠后如果有新的外部请求实例则马上启动（但激活时此次发送邮件会失败）<br>
-</font></li>
-</ul>
+</code></pre><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/8.png" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/8.png" /></a>   
+<p>OK，到这里基本就结束了，最后在在<code>云引擎-&gt;部署</code>中点击重启，<font color="red">我就是在这里栽跟头的😒</font><br>看一下效果：<br><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/pinglun.webp" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/pinglun.webp" /></a>  </p>
+<h3 id="休眠"><a href="#休眠" class="headerlink" title="休眠"></a>休眠</h3><p>需要说明的是：</p>
+<font color="green" size=4>
+
+免费版的 LeanCloud 容器，是有强制性休眠策略的，不能 24 小时运行：
+* 每天必须休眠 6 个小时
+* 30 分钟内没有外部请求，则休眠。
+* 休眠后如果有新的外部请求实例则马上启动（但激活时此次发送邮件会失败）  
+</font>
+
 <p>如果不想付费的话，最佳使用方案就设置定时器，每天 7 - 23 点每 20 分钟访问一次，这样可以保持每天的绝大多数时间邮件服务是正常的。</p>
 <ol>
-<li>点击云引擎 - 定时任务，新增定时器，按照图片上填写：</li>
-</ol>
-<pre><code>0 0/20 7-23 * * ?
-</code></pre>
-<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/2020022516052988.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2N1bmd1ZGFmYQ==,size_16,color_FFFFFF,t_70" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://img-blog.csdnimg.cn/2020022516052988.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2N1bmd1ZGFmYQ==,size_16,color_FFFFFF,t_70" /></a>  
-<ol start="2">
-<li>在云引擎-设置-自定义环境变量中添加</li>
-</ol>
-<pre><code>ADMIN_URL:你的域名  
-</code></pre>
-<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200225160702506.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2N1bmd1ZGFmYQ==,size_16,color_FFFFFF,t_70" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://img-blog.csdnimg.cn/20200225160702506.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2N1bmd1ZGFmYQ==,size_16,color_FFFFFF,t_70" /></a>  
-<ol start="3">
+<li>点击云引擎 - 定时任务，新增定时器，按照图片上填写：  <pre><code>0 0/20 7-23 * * ?
+</code></pre><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/2020022516052988.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2N1bmd1ZGFmYQ==,size_16,color_FFFFFF,t_70" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://img-blog.csdnimg.cn/2020022516052988.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2N1bmd1ZGFmYQ==,size_16,color_FFFFFF,t_70" /></a>  </li>
+<li>在云引擎-设置-自定义环境变量中添加<pre><code>ADMIN_URL:你的域名
+</code></pre><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200225160702506.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2N1bmd1ZGFmYQ==,size_16,color_FFFFFF,t_70" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://img-blog.csdnimg.cn/20200225160702506.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2N1bmd1ZGFmYQ==,size_16,color_FFFFFF,t_70" /></a>  </li>
 <li>添加后要记得去部署中点击重新启用</li>
-<li>启用成功后，每 20 分钟在<code>云引擎的 - 应用日志</code>中可以看到提示：</li>
+<li>启用成功后，每 20 分钟在<code>云引擎的 - 应用日志</code>中可以看到提示：<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200225161126521.png" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://img-blog.csdnimg.cn/20200225161126521.png" /></a>  
+</li>
 </ol>
-<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200225161126521.png" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://img-blog.csdnimg.cn/20200225161126521.png" /></a>  
-<font color="red" size=5 style="center">
+<p><font color="red" size=5 style="center"></p>
 <center>Ending~撒花，不要白嫖了😗，点个赞👍留下您的评论吧</center>
-<h2 id="参考文档">参考文档</h2>
-<p><a href=""></a><br>
-<a target="_blank" rel="noopener" href="https://github.com/zhaojun1998/Valine-Admin">开发者文档</a><br>
-<a target="_blank" rel="noopener" href="https://cungudafa.gitee.io/post/cb8f.html#2-valine-admin%E6%A8%A1%E6%9D%BF">大佬程序媛</a></p>
+
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href=""></a><br><a target="_blank" rel="noopener" href="https://github.com/zhaojun1998/Valine-Admin">开发者文档</a><br><a target="_blank" rel="noopener" href="https://cungudafa.gitee.io/post/cb8f.html#2-valine-admin%E6%A8%A1%E6%9D%BF">大佬程序媛</a></p>
 
         </div>
         <!-- .entry-content -->
@@ -722,7 +698,7 @@ Valine文档里面有这一句话，说Valine自带邮件提醒的都不知道�
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

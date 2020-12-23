@@ -415,7 +415,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">569字</span>
+        <span class="post-count">543字</span>
       </span>
     </span>
 
@@ -424,7 +424,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
 </div>
@@ -442,9 +442,7 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1>STL next_permutation函数实现</h1>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/luruiyuan/p/5914909.html">原文链接</a><br>
-掌握了next_permutation函数的原理😄</p>
+          <h1 id="STL-next-permutation函数实现"><a href="#STL-next-permutation函数实现" class="headerlink" title="STL next_permutation函数实现"></a>STL next_permutation函数实现</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/luruiyuan/p/5914909.html">原文链接</a><br>掌握了next_permutation函数的原理:smile:   </p>
 <pre><code>void inline swap(char *s1,char *s2)&#123;
     char t=*s1;
     *s1=*s2;
@@ -461,57 +459,27 @@ bool next_permutation(char *start,char *end)&#123;
     char *cur = end-1, *pre=cur-1;
     while(cur&gt;start &amp;&amp; *pre&gt;=*cur)cur--,pre--;
     if(cur&lt;=start)return false;
-    
+
     for(cur=end-1;*cur&lt;=*pre;cur--);//找到逆序中大于*pre的元素的最小元素 
     swap(cur,pre);
     reverse(pre+1,end);//将尾部的逆序变成正序 
     return true;
 &#125;
-</code></pre>
-<p><code>prev_permutation只要将上面的cur和pre作比较的地方换一下位置就行了</code></p>
+</code></pre><p><code>prev_permutation只要将上面的cur和pre作比较的地方换一下位置就行了</code></p>
 <pre><code>bool prev_permutation(char *start,char *end)&#123;
     char *cur = end-1, *pre=cur-1;
     while(cur&gt;start &amp;&amp; *pre&lt;=*cur)cur--,pre--;//这里符号有变化 
     if(cur&lt;=start)return false;
-    
+
     for(cur=end-1;*cur&gt;=*pre;cur--);//这里符号有变化 
     swap(*cur,*pre);
     reverse(pre+1,end);
     return true;
 &#125;
-</code></pre>
-<h2 id="例题">例题</h2>
-<p>给出一个字符串S（可能有重复的字符），按照字典序从小到大，输出S包括的字符组成的所有排列。例如：S = “1312”，</p>
+</code></pre><h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p>给出一个字符串S（可能有重复的字符），按照字典序从小到大，输出S包括的字符组成的所有排列。例如：S = “1312”，</p>
 <p>输出为：</p>
-<p>1123<br>
-1132<br>
-1213<br>
-1231<br>
-1312<br>
-1321<br>
-2113<br>
-2131<br>
-2311<br>
-3112<br>
-3121<br>
-3211<br>
-Sample Input<br>
-1312<br>
-Sample Output<br>
-1123<br>
-1132<br>
-1213<br>
-1231<br>
-1312<br>
-1321<br>
-2113<br>
-2131<br>
-2311<br>
-3112<br>
-3121<br>
-3211</p>
-<h1>CODE</h1>
-<pre><code>#include&lt;cstdio&gt;
+<p>1123<br>1132<br>1213<br>1231<br>1312<br>1321<br>2113<br>2131<br>2311<br>3112<br>3121<br>3211<br>Sample Input<br>1312<br>Sample Output<br>1123<br>1132<br>1213<br>1231<br>1312<br>1321<br>2113<br>2131<br>2311<br>3112<br>3121<br>3211   </p>
+<h1 id="CODE"><a href="#CODE" class="headerlink" title="CODE"></a>CODE</h1><pre><code>#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;algorithm&gt;
 using namespace std;
@@ -519,7 +487,7 @@ bool next_permutation(char *start,char *end)&#123;
     char *cur = end-1, *pre=cur-1;
     while(cur&gt;start &amp;&amp; *pre&gt;=*cur)cur--,pre--;
     if(cur&lt;=start)return false;
-    
+
     for(cur=end-1;*cur&lt;=*pre;cur--);//找到逆序中大于*pre的元素的最小元素 
     swap(*cur,*pre);
     reverse(pre+1,end);//将尾部的逆序变成正序 
@@ -543,44 +511,43 @@ DFS
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
 #include&lt;cstring&gt;
- 
+
 using namespace std;
- 
+
 const int N = 10+5;
- 
+
 char ch[N];
 char ans[N];
 bool vis[N];
 int n;
- 
+
 void dfs(int x)&#123;
-	int i;
-	if(x == n)&#123; 
-		printf(&quot;%s\n&quot;,ans);
-	&#125;else&#123;
-		for(int i = 0; i &lt; n;i++)&#123;
-			if(vis[i] == false)&#123;
-				vis[i] = true;
-				ans[x] = ch[i];
-				dfs(x+1);
-				vis[i]=false;
-				//筛除重复数据 
-				while(i &lt; n-1 &amp;&amp; ch[i+1]==ch[i]) i++;
-			&#125;
-		&#125;
-	&#125;
+    int i;
+    if(x == n)&#123; 
+        printf(&quot;%s\n&quot;,ans);
+    &#125;else&#123;
+        for(int i = 0; i &lt; n;i++)&#123;
+            if(vis[i] == false)&#123;
+                vis[i] = true;
+                ans[x] = ch[i];
+                dfs(x+1);
+                vis[i]=false;
+                //筛除重复数据 
+                while(i &lt; n-1 &amp;&amp; ch[i+1]==ch[i]) i++;
+            &#125;
+        &#125;
+    &#125;
 &#125;
- 
+
 int main()
 &#123;
-	scanf(&quot;%s&quot;,&amp;ch);
-	n = strlen(ch);
-	sort(ch,ch+n);
-	dfs(0);
-	return 0;
+    scanf(&quot;%s&quot;,&amp;ch);
+    n = strlen(ch);
+    sort(ch,ch+n);
+    dfs(0);
+    return 0;
 &#125;
 </code></pre>
-
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -784,7 +751,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

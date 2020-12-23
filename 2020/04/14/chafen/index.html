@@ -442,47 +442,38 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1>题目</h1>
-<p>题目：</p>
-<p>输入一个长度为n的整数序列。<br>
-接下来输入m个操作，每个操作包含三个整数l, r, c，表示将序列中[l, r]之间的每个数加上c。<br>
-请你输出进行完所有操作后的序列。</p>
+          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>题目：</p>
+<p>输入一个长度为n的整数序列。<br>接下来输入m个操作，每个操作包含三个整数l, r, c，表示将序列中[l, r]之间的每个数加上c。<br>请你输出进行完所有操作后的序列。</p>
 <p>输入格式</p>
-<p>第一行包含两个整数n和m。<br>
-第二行包含n个整数，表示整数序列。<br>
-接下来m行，每行包含三个整数l，r，c，表示一个操作。</p>
+<p>第一行包含两个整数n和m。<br>第二行包含n个整数，表示整数序列。<br>接下来m行，每行包含三个整数l，r，c，表示一个操作。</p>
 <p>输出格式</p>
 <p>共一行，包含n个整数，表示最终序列。</p>
-<h2 id="思路">思路</h2>
-<p>对一个区间内的数加C，如果暴力加，会浪费很多时间，我们可以开一个新数组用于差分操作，数组下标就代表数轴上的每一个数，每次给定一个区间，把以区间左端点未下标的数组值加上C，而以（区间右端点+1）为下标的数组值减去C，进行m次操作后，再求一次前缀和并加上原来数组的值就是进行区间操作后的数组，参考下图：<br>
-<img src="%E5%B7%AE%E5%88%86/0.jpg" alt=""></p>
-<h2 id="Code">Code</h2>
-<pre><code>#include&lt;stdio.h&gt;
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>对一个区间内的数加C，如果暴力加，会浪费很多时间，我们可以开一个新数组用于差分操作，数组下标就代表数轴上的每一个数，每次给定一个区间，把以区间左端点未下标的数组值加上C，而以（区间右端点+1）为下标的数组值减去C，进行m次操作后，再求一次前缀和并加上原来数组的值就是进行区间操作后的数组，参考下图：<br><img src="差分/0.jpg" alt=""></p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><pre><code>#include&lt;stdio.h&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
 using namespace std;
 int a[100],b[100];  //例题，开的很小，你可以开大
 int main()
 &#123;
-//	freopen(&quot;test.txt&quot;,&quot;r&quot;,stdin); 
-	int n,m;
-	cin&gt;&gt;n&gt;&gt;m;
-	for(int i=1;i&lt;=n;i++)&#123;
-		cin&gt;&gt;a[i];
-//		b[i]+=a[i];
-//		b[i+1]-=a[i];  //也可以初始化b数组就加上a数组的值，如果这样做了，下面就不能加a数组的值了
-	&#125;
-	for(int i=1;i&lt;=m;i++)&#123;
-		int l,r,c;
-		cin&gt;&gt;l&gt;&gt;r&gt;&gt;c;
-		b[l]+=c;
-		b[r+1]-=c;
-	&#125;
-	for(int i=1;i&lt;=n;i++) b[i]+=b[i-1]; //前缀和
-	for(int i=1;i&lt;=n;i++) cout&lt;&lt;b[i]+a[i]&lt;&lt;&quot; &quot;;  //一定要记得加上原数组的值
+//    freopen(&quot;test.txt&quot;,&quot;r&quot;,stdin); 
+    int n,m;
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i=1;i&lt;=n;i++)&#123;
+        cin&gt;&gt;a[i];
+//        b[i]+=a[i];
+//        b[i+1]-=a[i];  //也可以初始化b数组就加上a数组的值，如果这样做了，下面就不能加a数组的值了
+    &#125;
+    for(int i=1;i&lt;=m;i++)&#123;
+        int l,r,c;
+        cin&gt;&gt;l&gt;&gt;r&gt;&gt;c;
+        b[l]+=c;
+        b[r+1]-=c;
+    &#125;
+    for(int i=1;i&lt;=n;i++) b[i]+=b[i-1]; //前缀和
+    for(int i=1;i&lt;=n;i++) cout&lt;&lt;b[i]+a[i]&lt;&lt;&quot; &quot;;  //一定要记得加上原数组的值
 &#125;
-</code></pre>
-<blockquote>
+</code></pre><blockquote>
 <p>复杂度： O(N)，小于1e8的数据量都可以过</p>
 </blockquote>
 <p>很简单的算法吧（owo）</p>
@@ -690,7 +681,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

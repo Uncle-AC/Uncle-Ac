@@ -444,192 +444,183 @@
         <div class="entry-content">
           <blockquote>
 <p>课程设计</p>
-<p><strong>问题描述:</strong>    用十字链表存储稀疏矩阵，实现两个可进行矩阵之间的乘法运算。</p>
+<p><strong>问题描述:</strong>    用十字链表存储稀疏矩阵，实现两个可进行矩阵之间的乘法运算。 </p>
 <p><strong>基本要求:</strong> （1）要对两个矩阵能否进行乘法进行判断。（2）对能够进行乘法运算的稀疏矩阵进行乘法运算并输出正确的结果。</p>
 </blockquote>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhuyi2654715/article/details/6729783"><strong>参考博客</strong></a></p>
-<h2 id="大致思路">大致思路</h2>
-<p>一般矩阵中会有很多值为0的元素，十字链表把这些值给忽略掉了，只存有值不为0的元素，每一行都是一个链表，每一列也是一个链表，用一个行指针、一个列指针指向它们，形成矩阵形式</p>
-<h2 id="数据类型">数据类型</h2>
-<pre><code class="language-c">typedef struct OLNode&#123;  //元素类型
-	int row,col;  //行列
-	ElemType val;  //数值
-	OLNode *right,*down;  //行指针、列指针
+<h2 id="大致思路"><a href="#大致思路" class="headerlink" title="大致思路"></a>大致思路</h2><p>一般矩阵中会有很多值为0的元素，十字链表把这些值给忽略掉了，只存有值不为0的元素，每一行都是一个链表，每一列也是一个链表，用一个行指针、一个列指针指向它们，形成矩阵形式</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><pre><code class="lang-c">typedef struct OLNode&#123;  //元素类型
+    int row,col;  //行列
+    ElemType val;  //数值
+    OLNode *right,*down;  //行指针、列指针
 &#125;*OLink; 
 struct CrossList&#123;  //矩阵结构
-	int n,m,num;
-	OLink *Rhead,*Chead;  //指向行链表、列链表的指针
+    int n,m,num;
+    OLink *Rhead,*Chead;  //指向行链表、列链表的指针
 &#125;;
 </code></pre>
-<h2 id="初始化指针">初始化指针</h2>
-<p>每次都要先把矩阵指针置为空</p>
-<pre><code class="language-c">void InitCrossList(CrossList &amp;CL)&#123;
-	CL.n=CL.m=CL.num=0;
-	CL.Rhead=CL.Chead=NULL;
+<h2 id="初始化指针"><a href="#初始化指针" class="headerlink" title="初始化指针"></a>初始化指针</h2><p>每次都要先把矩阵指针置为空</p>
+<pre><code class="lang-c">void InitCrossList(CrossList &amp;CL)&#123;
+    CL.n=CL.m=CL.num=0;
+    CL.Rhead=CL.Chead=NULL;
 &#125;
 </code></pre>
-<h2 id="销毁链表">销毁链表</h2>
-<pre><code class="language-c">void DestroyCrossList(CrossList CL)&#123;
-	int n=CL.n,m=CL.m;
-	OLink temp;
-	for(int i=1;i&lt;=n;i++)&#123;
-		OLink p=CL.Rhead[i];
-		while(p)&#123;
-			temp=p;
-			delete temp;
-			p=p-&gt;right;
-		&#125;
-	&#125;
-	delete CL.Rhead;
-	delete CL.Chead;
-	CL.Rhead=NULL;
-	CL.Chead=NULL;
-	CL.n=CL.m=CL.num=0;
+<h2 id="销毁链表"><a href="#销毁链表" class="headerlink" title="销毁链表"></a>销毁链表</h2><pre><code class="lang-c">void DestroyCrossList(CrossList CL)&#123;
+    int n=CL.n,m=CL.m;
+    OLink temp;
+    for(int i=1;i&lt;=n;i++)&#123;
+        OLink p=CL.Rhead[i];
+        while(p)&#123;
+            temp=p;
+            delete temp;
+            p=p-&gt;right;
+        &#125;
+    &#125;
+    delete CL.Rhead;
+    delete CL.Chead;
+    CL.Rhead=NULL;
+    CL.Chead=NULL;
+    CL.n=CL.m=CL.num=0;
 &#125;
 </code></pre>
-<h2 id="创建链表">创建链表</h2>
-<pre><code class="language-c">void CreateCrossList(CrossList &amp;CL)&#123;
-	if(CL.Rhead) DestroyCrossList(CL);  //矩阵不为空先销毁
-	cout&lt;&lt;&quot;请输入十字链表的行数、列数、非零元个数(空格隔开):\n&quot;;
-	int n,m,num;
-	while(cin&gt;&gt;n&gt;&gt;m&gt;&gt;num)&#123;  
-		if(n&gt;=1 &amp;&amp; m&gt;=1 &amp;&amp; num&gt;=1 &amp;&amp; num&lt;=n*m) break;  //行数列数不能小于1，非零元个数不能大于矩阵最大容纳量
-		cout&lt;&lt;&quot;输入有误，请重新输入:\n&quot;;
-	&#125;
-	CL.n=n; CL.m=m; CL.num=num;  //矩阵行数，列数，非零元个数
-	CL.Rhead=new OLink[m+1];  //给每一行分配链表
-	if(!CL.Rhead)&#123;
-		cout&lt;&lt;&quot;内存不足\n&quot;;
-		exit(-1);
-	&#125;
-	CL.Chead=new OLink[n+1];  //给每一列分配链表
-	if(!CL.Chead) &#123;
-		cout&lt;&lt;&quot;内存不足\n&quot;;
-		exit(-1);
-	&#125;
-	for(int i=1;i&lt;=n;i++) CL.Rhead[i]=NULL;  //初始化为空
-	for(int i=1;i&lt;=m;i++) CL.Chead[i]=NULL;
-	for(int i=0;i&lt;num;i++)&#123;
-		int row,col,val;
-		cout&lt;&lt;&quot;请输入第&quot;&lt;&lt;i+1&lt;&lt;&quot;个非零元的横坐标、纵坐标、不为0的值(空格隔开):\n&quot;;
-		while(cin&gt;&gt;row&gt;&gt;col&gt;&gt;val)&#123;
-			if(row&gt;=1 &amp;&amp; row&lt;=n &amp;&amp; col&gt;=1 &amp;&amp; col&lt;=m &amp;&amp; val) break;  //坐标不能超出矩阵，值不能为0
-			cout&lt;&lt;&quot;输入有误，请重新输入:\n&quot;;
-		&#125; 
-		OLink p=new OLNode;
-		if(!p)&#123;
-			cout&lt;&lt;&quot;内存不足\n&quot;;
-			exit(-1);
-		&#125;
-		p-&gt;row=row; p-&gt;col=col; p-&gt;val=val;
-		if(CL.Rhead[row]==NULL || CL.Rhead[row]-&gt;col&gt;col)&#123;
-			p-&gt;right=CL.Rhead[row];
-			CL.Rhead[row]=p;
-		&#125;
-		else&#123;
-			OLink j;
-			for(j=CL.Rhead[row];j-&gt;right &amp;&amp; j-&gt;right-&gt;col&lt;col;j=j-&gt;right);  //找到插入位置
-			if(j-&gt;col==col)&#123;  //当当前坐标有值时覆盖它
-				j-&gt;val=val;
-				continue;
-			&#125;
-			p-&gt;right=j-&gt;right;
-			j-&gt;right=p;
-		&#125;
-		if(CL.Chead[col]==NULL || CL.Chead[col]-&gt;row&gt;row)&#123;
-			p-&gt;down=CL.Chead[col];
-			CL.Chead[col]=p;
-		&#125;
-		else&#123;
-			OLink j;
-			for(j=CL.Chead[col];j-&gt;down &amp;&amp; j-&gt;down-&gt;row&lt;row;j=j-&gt;down);  //找到插入位置
-			p-&gt;down=j-&gt;down;
-			j-&gt;down=p;
-		&#125;
-	&#125;
+<h2 id="创建链表"><a href="#创建链表" class="headerlink" title="创建链表"></a>创建链表</h2><pre><code class="lang-c">void CreateCrossList(CrossList &amp;CL)&#123;
+    if(CL.Rhead) DestroyCrossList(CL);  //矩阵不为空先销毁
+    cout&lt;&lt;&quot;请输入十字链表的行数、列数、非零元个数(空格隔开):\n&quot;;
+    int n,m,num;
+    while(cin&gt;&gt;n&gt;&gt;m&gt;&gt;num)&#123;  
+        if(n&gt;=1 &amp;&amp; m&gt;=1 &amp;&amp; num&gt;=1 &amp;&amp; num&lt;=n*m) break;  //行数列数不能小于1，非零元个数不能大于矩阵最大容纳量
+        cout&lt;&lt;&quot;输入有误，请重新输入:\n&quot;;
+    &#125;
+    CL.n=n; CL.m=m; CL.num=num;  //矩阵行数，列数，非零元个数
+    CL.Rhead=new OLink[m+1];  //给每一行分配链表
+    if(!CL.Rhead)&#123;
+        cout&lt;&lt;&quot;内存不足\n&quot;;
+        exit(-1);
+    &#125;
+    CL.Chead=new OLink[n+1];  //给每一列分配链表
+    if(!CL.Chead) &#123;
+        cout&lt;&lt;&quot;内存不足\n&quot;;
+        exit(-1);
+    &#125;
+    for(int i=1;i&lt;=n;i++) CL.Rhead[i]=NULL;  //初始化为空
+    for(int i=1;i&lt;=m;i++) CL.Chead[i]=NULL;
+    for(int i=0;i&lt;num;i++)&#123;
+        int row,col,val;
+        cout&lt;&lt;&quot;请输入第&quot;&lt;&lt;i+1&lt;&lt;&quot;个非零元的横坐标、纵坐标、不为0的值(空格隔开):\n&quot;;
+        while(cin&gt;&gt;row&gt;&gt;col&gt;&gt;val)&#123;
+            if(row&gt;=1 &amp;&amp; row&lt;=n &amp;&amp; col&gt;=1 &amp;&amp; col&lt;=m &amp;&amp; val) break;  //坐标不能超出矩阵，值不能为0
+            cout&lt;&lt;&quot;输入有误，请重新输入:\n&quot;;
+        &#125; 
+        OLink p=new OLNode;
+        if(!p)&#123;
+            cout&lt;&lt;&quot;内存不足\n&quot;;
+            exit(-1);
+        &#125;
+        p-&gt;row=row; p-&gt;col=col; p-&gt;val=val;
+        if(CL.Rhead[row]==NULL || CL.Rhead[row]-&gt;col&gt;col)&#123;
+            p-&gt;right=CL.Rhead[row];
+            CL.Rhead[row]=p;
+        &#125;
+        else&#123;
+            OLink j;
+            for(j=CL.Rhead[row];j-&gt;right &amp;&amp; j-&gt;right-&gt;col&lt;col;j=j-&gt;right);  //找到插入位置
+            if(j-&gt;col==col)&#123;  //当当前坐标有值时覆盖它
+                j-&gt;val=val;
+                continue;
+            &#125;
+            p-&gt;right=j-&gt;right;
+            j-&gt;right=p;
+        &#125;
+        if(CL.Chead[col]==NULL || CL.Chead[col]-&gt;row&gt;row)&#123;
+            p-&gt;down=CL.Chead[col];
+            CL.Chead[col]=p;
+        &#125;
+        else&#123;
+            OLink j;
+            for(j=CL.Chead[col];j-&gt;down &amp;&amp; j-&gt;down-&gt;row&lt;row;j=j-&gt;down);  //找到插入位置
+            p-&gt;down=j-&gt;down;
+            j-&gt;down=p;
+        &#125;
+    &#125;
 &#125;
 </code></pre>
-<h2 id="打印链表">打印链表</h2>
-<pre><code class="language-c">void PrintCrossList(CrossList CL)&#123;
-	cout&lt;&lt;&quot;------------------------\n&quot;;
-	int n=CL.n,m=CL.m;
-	for(int i=1;i&lt;=n;i++)&#123;
-		cout&lt;&lt;&quot;第&quot;&lt;&lt;i&lt;&lt;&quot;行元素:  &quot;;
-		OLink p=CL.Rhead[i];
-		if(p)&#123;
-			while(p)&#123;
-				cout&lt;&lt;p-&gt;val&lt;&lt;&quot;(&quot;&lt;&lt;p-&gt;row&lt;&lt;&quot;,&quot;&lt;&lt;p-&gt;col&lt;&lt;&quot;)&quot;&lt;&lt;&quot;  &quot;;
-				p=p-&gt;right;
-			&#125;
-		&#125;
-		else cout&lt;&lt;&quot;空&quot;;
-		cout&lt;&lt;'\n';
-	&#125;
-	cout&lt;&lt;'\n';
-	for(int i=1;i&lt;=m;i++)&#123;
-		cout&lt;&lt;&quot;第&quot;&lt;&lt;i&lt;&lt;&quot;列元素:  &quot;;
-		OLink p=CL.Chead[i];
-		if(p)&#123;
-			while(p)&#123;
-				cout&lt;&lt;p-&gt;val&lt;&lt;&quot;(&quot;&lt;&lt;p-&gt;row&lt;&lt;&quot;,&quot;&lt;&lt;p-&gt;col&lt;&lt;&quot;)&quot;&lt;&lt;&quot;  &quot;;
-				p=p-&gt;down;
-			&#125;	
-		&#125;
-		else cout&lt;&lt;&quot;空&quot;;
-		cout&lt;&lt;'\n';
-	&#125;
-	cout&lt;&lt;&quot;------------------------\n&quot;;
+<h2 id="打印链表"><a href="#打印链表" class="headerlink" title="打印链表"></a>打印链表</h2><pre><code class="lang-c">void PrintCrossList(CrossList CL)&#123;
+    cout&lt;&lt;&quot;------------------------\n&quot;;
+    int n=CL.n,m=CL.m;
+    for(int i=1;i&lt;=n;i++)&#123;
+        cout&lt;&lt;&quot;第&quot;&lt;&lt;i&lt;&lt;&quot;行元素:  &quot;;
+        OLink p=CL.Rhead[i];
+        if(p)&#123;
+            while(p)&#123;
+                cout&lt;&lt;p-&gt;val&lt;&lt;&quot;(&quot;&lt;&lt;p-&gt;row&lt;&lt;&quot;,&quot;&lt;&lt;p-&gt;col&lt;&lt;&quot;)&quot;&lt;&lt;&quot;  &quot;;
+                p=p-&gt;right;
+            &#125;
+        &#125;
+        else cout&lt;&lt;&quot;空&quot;;
+        cout&lt;&lt;&#39;\n&#39;;
+    &#125;
+    cout&lt;&lt;&#39;\n&#39;;
+    for(int i=1;i&lt;=m;i++)&#123;
+        cout&lt;&lt;&quot;第&quot;&lt;&lt;i&lt;&lt;&quot;列元素:  &quot;;
+        OLink p=CL.Chead[i];
+        if(p)&#123;
+            while(p)&#123;
+                cout&lt;&lt;p-&gt;val&lt;&lt;&quot;(&quot;&lt;&lt;p-&gt;row&lt;&lt;&quot;,&quot;&lt;&lt;p-&gt;col&lt;&lt;&quot;)&quot;&lt;&lt;&quot;  &quot;;
+                p=p-&gt;down;
+            &#125;    
+        &#125;
+        else cout&lt;&lt;&quot;空&quot;;
+        cout&lt;&lt;&#39;\n&#39;;
+    &#125;
+    cout&lt;&lt;&quot;------------------------\n&quot;;
 &#125;
 </code></pre>
-<h2 id="矩阵相乘">矩阵相乘</h2>
-<p>这里用一个二维数组去存了</p>
-<pre><code class="language-c">void multiCrossList(CrossList CL1,CrossList CL2)&#123;
+<h2 id="矩阵相乘"><a href="#矩阵相乘" class="headerlink" title="矩阵相乘"></a>矩阵相乘</h2><p>这里用一个二维数组去存了</p>
+<pre><code class="lang-c">void multiCrossList(CrossList CL1,CrossList CL2)&#123;
     if(CL1.m!=CL2.n)&#123;
-    	cout&lt;&lt;&quot;矩阵无法相乘\n&quot;;
-    	return ;
-	&#125;
-	for(int i=1;i&lt;=CL1.n;i++)&#123;
-		for(int j=1;j&lt;=CL2.m;j++)&#123;
-			int num=0;
-			OLink p=CL1.Rhead[i];
-			while(p)&#123;
-				OLink q=CL2.Chead[j];
-				while(q &amp;&amp; q-&gt;row&lt;p-&gt;col)&#123;
-					q=q-&gt;down;
-				&#125;
-				if(q &amp;&amp; q-&gt;row==p-&gt;col)&#123;
-					cout&lt;&lt;p-&gt;val&lt;&lt;' '&lt;&lt;q-&gt;val&lt;&lt;'\n';
-					num+=p-&gt;val*q-&gt;val;
-				&#125;
-				p=p-&gt;right;
-			&#125; 
-			mat[i][j]=num;
-		&#125;
-	&#125;
-&#125; 
-</code></pre>
-<h2 id="主函数">主函数</h2>
-<pre><code class="language-c">int main()
-&#123;
-	CrossList CL1,CL2;
-	InitCrossList(CL1);
-	InitCrossList(CL2);
-	cout&lt;&lt;&quot;创建矩阵1:\n&quot;;
-	CreateCrossList(CL1); 
-	cout&lt;&lt;&quot;创建矩阵2:\n&quot;;
-	CreateCrossList(CL2);
-	cout&lt;&lt;&quot;\n创建矩阵1如下:\n&quot;;
-	PrintCrossList(CL1);
-	cout&lt;&lt;&quot;\n创建矩阵2如下:\n&quot;;
-	PrintCrossList(CL2);
-	multiCrossList(CL1,CL2);
-	cout&lt;&lt;&quot;\n相乘后矩阵:\n&quot;;
-	PrintResult();
-	return 0;
+        cout&lt;&lt;&quot;矩阵无法相乘\n&quot;;
+        return ;
+    &#125;
+    for(int i=1;i&lt;=CL1.n;i++)&#123;
+        for(int j=1;j&lt;=CL2.m;j++)&#123;
+            int num=0;
+            OLink p=CL1.Rhead[i];
+            while(p)&#123;
+                OLink q=CL2.Chead[j];
+                while(q &amp;&amp; q-&gt;row&lt;p-&gt;col)&#123;
+                    q=q-&gt;down;
+                &#125;
+                if(q &amp;&amp; q-&gt;row==p-&gt;col)&#123;
+                    cout&lt;&lt;p-&gt;val&lt;&lt;&#39; &#39;&lt;&lt;q-&gt;val&lt;&lt;&#39;\n&#39;;
+                    num+=p-&gt;val*q-&gt;val;
+                &#125;
+                p=p-&gt;right;
+            &#125; 
+            mat[i][j]=num;
+        &#125;
+    &#125;
 &#125;
 </code></pre>
-<h2 id="测试数据">测试数据</h2>
-<pre><code class="language-txt">2 2 2
+<h2 id="主函数"><a href="#主函数" class="headerlink" title="主函数"></a>主函数</h2><pre><code class="lang-c">int main()
+&#123;
+    CrossList CL1,CL2;
+    InitCrossList(CL1);
+    InitCrossList(CL2);
+    cout&lt;&lt;&quot;创建矩阵1:\n&quot;;
+    CreateCrossList(CL1); 
+    cout&lt;&lt;&quot;创建矩阵2:\n&quot;;
+    CreateCrossList(CL2);
+    cout&lt;&lt;&quot;\n创建矩阵1如下:\n&quot;;
+    PrintCrossList(CL1);
+    cout&lt;&lt;&quot;\n创建矩阵2如下:\n&quot;;
+    PrintCrossList(CL2);
+    multiCrossList(CL1,CL2);
+    cout&lt;&lt;&quot;\n相乘后矩阵:\n&quot;;
+    PrintResult();
+    return 0;
+&#125;
+</code></pre>
+<h2 id="测试数据"><a href="#测试数据" class="headerlink" title="测试数据"></a>测试数据</h2><pre><code class="lang-txt">2 2 2
 1 1 1
 2 2 2
 2 3 5
@@ -639,6 +630,7 @@ struct CrossList&#123;  //矩阵结构
 2 1 3
 2 3 -1
 </code></pre>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -653,6 +645,8 @@ struct CrossList&#123;  //矩阵结构
 </tr>
 </tbody>
 </table>
+</div>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -669,7 +663,9 @@ struct CrossList&#123;  //矩阵结构
 </tr>
 </tbody>
 </table>
+</div>
 <p>结果</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -686,6 +682,7 @@ struct CrossList&#123;  //矩阵结构
 </tr>
 </tbody>
 </table>
+</div>
 
         </div>
         <!-- .entry-content -->
@@ -890,7 +887,7 @@ struct CrossList&#123;  //矩阵结构
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

@@ -442,30 +442,25 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1>前言</h1>
-<blockquote>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
 <p>本文已经过期，说说已经更名为artitalk具体百度</p>
 </blockquote>
-<p>最近看了许多大佬的博客，终于明白了我到底有多弱😩,不过虽然我菜，但是Chinese还是能看懂的😁,直接按照教程往下走，感谢把我教会的<a target="_blank" rel="noopener" href="https://cungudafa.gitee.io/post/ec85.html">原文1</a>和<a target="_blank" rel="noopener" href="https://cndrew.cn/2019/09/11/shuoshuo/">原文2</a></p>
+<p>最近看了许多大佬的博客，终于明白了我到底有多弱:weary:,不过虽然我菜，但是Chinese还是能看懂的:grin:,直接按照教程往下走，感谢把我教会的<a target="_blank" rel="noopener" href="https://cungudafa.gitee.io/post/ec85.html">原文1</a>和<a target="_blank" rel="noopener" href="https://cndrew.cn/2019/09/11/shuoshuo/">原文2</a></p>
 <blockquote>
 <p>看看效果吧:</p>
 </blockquote>
 <a href="(https://img-blog.csdnimg.cn/20200703225932343.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FHTklORw==,size_16,color_FFFFFF,t_70" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="(https://img-blog.csdnimg.cn/20200703225932343.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FHTklORw==,size_16,color_FFFFFF,t_70" /></a>
-<p>这个和QQ空间里面的说说类似，用来记录自己的生活以及心情都挺好的，请忽略内容里面的表情符号😴我太菜了，这些原本是要被转成表情的，但说说页面好像不支持，/手动流汗/，如果哪位大佬看到了这篇文章，祈求您留言指教我</p>
+<p>这个和QQ空间里面的说说类似，用来记录自己的生活以及心情都挺好的，请忽略内容里面的表情符号:sleeping:我太菜了，这些原本是要被转成表情的，但说说页面好像不支持，/手动流汗/，如果哪位大佬看到了这篇文章，祈求您留言指教我</p>
 <p>好了，废话少说，正文开始：</p>
-<h1>步骤</h1>
-<p>1.在<strong>themes\sakura\languages\zh-cn.yml</strong>中增添定义：</p>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>1.在<strong>themes\sakura\languages\zh-cn.yml</strong>中增添定义：</p>
 <pre><code>shuoshuo: 说说
-</code></pre>
-<p>2.修改导航栏，位置：themes\sakura_config.yml增添：</p>
+</code></pre><p>2.修改导航栏，位置：themes\sakura_config.yml增添：</p>
 <pre><code>说说: &#123;path: /shuoshuo/, fa: fa-commenting-o fa-commenting &#125;
-</code></pre>
-<p>这里需要注意的是如果你的说说是添加在导航栏的子页面的，比如说在归档里面，那么需要在最后添加逗号( , )</p>
+</code></pre><p>这里需要注意的是如果你的说说是添加在导航栏的子页面的，比如说在归档里面，那么需要在最后添加逗号( , )</p>
 <p>3.在博客主目录下新建目录：</p>
 <pre><code>hexo new page shuoshuo
-</code></pre>
-<p>路径<strong>Users/用户名/博客文件夹/source</strong>文件夹里就会出现刚刚新建的文件夹shuoshuo，打开文件shuoshuo，删除index文件夹，还有一个index.md文件,待会再来修改它。</p>
-<p>4.Myblog\source\shuoshuo\ ，新建文件夹 <strong>shuoshuo.css</strong></p>
+</code></pre><p>路径<strong>Users/用户名/博客文件夹/source</strong>文件夹里就会出现刚刚新建的文件夹shuoshuo，打开文件shuoshuo，删除index文件夹，还有一个index.md文件,待会再来修改它。</p>
+<p>4.Myblog\source\shuoshuo ，新建文件夹 <strong>shuoshuo.css</strong></p>
 <p><strong>shuoshuo.css</strong>样式文件：</p>
 <pre><code>#shuoshuo_content &#123;
     background-color: #fff;
@@ -473,19 +468,19 @@
     min-height: 500px;
 &#125;
 /* shuo */
- 
+
 body.theme-dark .cbp_tmtimeline::before &#123;
     background: RGBA(255, 255, 255, 0.06);
 &#125;
- 
+
 ul.cbp_tmtimeline &#123;
     padding: 0;
 &#125;
- 
+
 div class.cdp_tmlabel &gt; li .cbp_tmlabel &#123;
     margin-bottom: 0;
 &#125;
- 
+
 .cbp_tmtimeline &#123;
     margin: 30px 0 0 0;
     padding: 0;
@@ -493,9 +488,9 @@ div class.cdp_tmlabel &gt; li .cbp_tmlabel &#123;
     position: relative;
 &#125;
 /* The line */
- 
+
 .cbp_tmtimeline:before &#123;
-    content: '';
+    content: &#39;&#39;;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -505,7 +500,7 @@ div class.cdp_tmlabel &gt; li .cbp_tmlabel &#123;
     margin-left: 10px;
 &#125;
 /* The date/time */
- 
+
 .cbp_tmtimeline &gt; li .cbp_tmtime &#123;
     display: block;
     /* width: 29%; */
@@ -513,31 +508,31 @@ div class.cdp_tmlabel &gt; li .cbp_tmlabel &#123;
     max-width: 70px;
     position: absolute;
 &#125;
- 
+
 .cbp_tmtimeline &gt; li .cbp_tmtime span &#123;
     display: block;
     text-align: right;
 &#125;
- 
+
 .cbp_tmtimeline &gt; li .cbp_tmtime span:first-child &#123;
     font-size: 0.9em;
     color: #bdd0db;
 &#125;
- 
+
 .cbp_tmtimeline &gt; li .cbp_tmtime span:last-child &#123;
     font-size: 1.2em;
     color: #9BCD9B;
 &#125;
- 
+
 .cbp_tmtimeline &gt; li:nth-child(odd) .cbp_tmtime span:last-child &#123;
     color: RGBA(255, 125, 73, 0.75);
 &#125;
- 
+
 div.cbp_tmlabel &gt; p &#123;
     margin-bottom: 0;
 &#125;
 /* Right content */
- 
+
 .cbp_tmtimeline &gt; li .cbp_tmlabel &#123;
     margin: 0 0 45px 65px;
     background: #9BCD9B;
@@ -553,19 +548,19 @@ div.cbp_tmlabel &gt; p &#123;
     cursor: pointer;
     display: block;
 &#125;
- 
+
 .cbp_tmlabel:hover &#123;
     /* transform:scale(1.05); */
     transform: translateY(-3px);
     z-index: 1;
     box-shadow: 0 15px 32px rgba(0, 0, 0, 0.15) !important
 &#125;
- 
+
 .cbp_tmtimeline &gt; li:nth-child(odd) .cbp_tmlabel &#123;
     background: RGBA(255, 125, 73, 0.75);
 &#125;
 /* The triangle */
- 
+
 .cbp_tmtimeline &gt; li .cbp_tmlabel:after &#123;
     right: 100%;
     border: solid transparent;
@@ -578,24 +573,24 @@ div.cbp_tmlabel &gt; p &#123;
     border-width: 10px;
     top: 4px;
 &#125;
- 
+
 .cbp_tmtimeline &gt; li:nth-child(odd) .cbp_tmlabel:after &#123;
     border-right-color: RGBA(255, 125, 73, 0.75);
 &#125;
- 
+
 p.shuoshuo_time &#123;
     margin-top: 10px;
     border-top: 1px dashed #fff;
     padding-top: 5px;
 &#125;
 /* Media */
- 
+
 @media screen and (max-width: 65.375em) &#123;
     .cbp_tmtimeline &gt; li .cbp_tmtime span:last-child &#123;
         font-size: 1.2em;
     &#125;
 &#125;
- 
+
 .shuoshuo_author_img img &#123;
     border: 1px solid #ddd;
     padding: 2px;
@@ -603,7 +598,7 @@ p.shuoshuo_time &#123;
     border-radius: 64px;
     transition: all 1.0s;
 &#125;
- 
+
 .avatar &#123;
     border-radius: 100% !important;
     -moz-border-radius: 100% !important;
@@ -614,23 +609,22 @@ p.shuoshuo_time &#123;
     transition: transform 0.4s ease-out;
     -moz-transition: -moz-transform 0.4s ease-out;
 &#125;
- 
+
 .zhuan &#123;
     transform: rotateZ(720deg);
     -webkit-transform: rotateZ(720deg);
     -moz-transform: rotateZ(720deg);
 &#125;
 /* end */
-</code></pre>
-<p>主页面：</p>
+</code></pre><p>主页面：</p>
 <pre><code>---
 title: shuoshuo
 type: shuoshuo
-noDate: 'true'
-comments: 'false'
+noDate: &#39;true&#39;
+comments: &#39;false&#39;
 ---
 &lt;link rel=&quot;stylesheet&quot; href=&quot;./shuoshuo.css&quot;&gt;
- 
+
 &lt;div id=&quot;primary&quot; class=&quot;content-area&quot; style=&quot;&quot;&gt;
     &lt;main id=&quot;main&quot; class=&quot;site-main&quot; role=&quot;main&quot;&gt;
         &lt;div id=&quot;shuoshuo_content&quot;&gt;
@@ -685,8 +679,7 @@ comments: 'false'
         &#125;)
     &#125;)
 &lt;/script&gt;
-</code></pre>
-<p>只会报别人代码的我再次像大佬们深深鞠一躬(orz)</p>
+</code></pre><p>只会报别人代码的我再次像大佬们深深鞠一躬(orz)</p>
 
         </div>
         <!-- .entry-content -->
@@ -891,7 +884,7 @@ comments: 'false'
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

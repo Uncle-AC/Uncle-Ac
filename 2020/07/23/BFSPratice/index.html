@@ -424,7 +424,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">30分</span>
+        <span class="post-count">31分</span>
       </span>
     </span>
 </div>
@@ -442,21 +442,16 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="A-Red-and-Black">A - Red and Black</h2>
-<blockquote>
+          <h2 id="A-Red-and-Black"><a href="#A-Red-and-Black" class="headerlink" title="A - Red and Black"></a>A - Red and Black</h2><blockquote>
 <p>There is a rectangular room, covered with square tiles. Each tile is colored either red or black. A man is standing on a black tile. From a tile, he can move to one of four adjacent tiles. But he can’t move on red tiles, he can move only on black tiles.</p>
 <p>Write a program to count the number of black tiles which he can reach by repeating the moves described above.</p>
 <p><strong>Input</strong></p>
 <p>The input consists of multiple data sets. A data set starts with a line containing two positive integers W and H; W and H are the numbers of tiles in the x- and y- directions, respectively. W and H are not more than 20.</p>
 <p>There are H more lines in the data set, each of which includes W characters. Each character represents the color of a tile as follows.</p>
-<p>‘.’ - a black tile<br>
-‘#’ - a red tile<br>
-‘@’ - a man on a black tile(appears exactly once in a data set)</p>
+<p>‘.’ - a black tile<br>‘#’ - a red tile<br>‘@’ - a man on a black tile(appears exactly once in a data set)</p>
 <p>The input consists of multiple data sets. A data set starts with a line containing two positive integers W and H; W and H are the numbers of tiles in the x- and y- directions, respectively. W and H are not more than 20.</p>
 <p>There are H more lines in the data set, each of which includes W characters. Each character represents the color of a tile as follows.</p>
-<p>‘.’ - a black tile<br>
-‘#’ - a red tile<br>
-‘@’ - a man on a black tile(appears exactly once in a data set)</p>
+<p>‘.’ - a black tile<br>‘#’ - a red tile<br>‘@’ - a man on a black tile(appears exactly once in a data set)</p>
 <p><strong>Output</strong></p>
 <p>For each data set, your program should output a line which contains the number of tiles he can reach from the initial tile (including itself).</p>
 <p><strong>Sample Input</strong></p>
@@ -496,18 +491,14 @@
 ..#.#..
 ..#.#..
 0 0
-</code></pre>
-<p><strong>Sample Output</strong></p>
+</code></pre><p><strong>Sample Output</strong></p>
 <pre><code>45
 59
 6
 13
-</code></pre>
-</blockquote>
-<h3 id="分析">分析</h3>
-<p>模板题，没有任何需要注意的地方</p>
-<h3 id="CODE">CODE</h3>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+</code></pre></blockquote>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>模板题，没有任何需要注意的地方</p>
+<h3 id="CODE"><a href="#CODE" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include &lt;stdio.h&gt;
 #include &lt;iostream&gt;
 #include &lt;string&gt;
 #include &lt;string.h&gt;
@@ -527,55 +518,54 @@ const int MOD = 1e9;
 const double eps = 1e-5;
 const int INF = 0x3f3f3f;
 struct node&#123;
-	int x,y,step;
+    int x,y,step;
 &#125;;
 int n,m;
 char Map[N][N];
 bool vis[N][N];
 int dir[4][2]=&#123;1,0,0,1,-1,0,0,-1&#125;;
 int bfs(int sx,int sy)&#123;
-	int cnt=0;
-	node s=&#123;sx,sy,0&#125;;
-	queue&lt;node&gt; q;
-	q.push(s);
-	vis[sx][sy]=1;
-	while(!q.empty())&#123;
-		node fr=q.front();q.pop();
-		cnt++;
-		for(int i=0;i&lt;4;i++)&#123;
-			node next=&#123;fr.x+dir[i][0],fr.y+dir[i][1],fr.step+1&#125;;
-			if(next.x&lt;1||next.x&gt;n||next.y&gt;m||next.y&lt;1) continue;
-			if(vis[next.x][next.y]||Map[next.x][next.y]=='#') continue;
-			vis[next.x][next.y]=1;
-			q.push(next);
-		&#125;
-	&#125;
-	return cnt;
+    int cnt=0;
+    node s=&#123;sx,sy,0&#125;;
+    queue&lt;node&gt; q;
+    q.push(s);
+    vis[sx][sy]=1;
+    while(!q.empty())&#123;
+        node fr=q.front();q.pop();
+        cnt++;
+        for(int i=0;i&lt;4;i++)&#123;
+            node next=&#123;fr.x+dir[i][0],fr.y+dir[i][1],fr.step+1&#125;;
+            if(next.x&lt;1||next.x&gt;n||next.y&gt;m||next.y&lt;1) continue;
+            if(vis[next.x][next.y]||Map[next.x][next.y]==&#39;#&#39;) continue;
+            vis[next.x][next.y]=1;
+            q.push(next);
+        &#125;
+    &#125;
+    return cnt;
 &#125;
 int main()&#123;
-	ios;
-	while(cin&gt;&gt;m&gt;&gt;n)&#123;
-		if(m==0&amp;n==0) break;
-		memset(vis,0,sizeof vis);
-		int sx,sy;
-		for(int i=1;i&lt;=n;i++)&#123;
-			for(int j=1;j&lt;=m;j++)&#123;
-				cin&gt;&gt;Map[i][j];
-				if(Map[i][j]=='@')&#123;
-					sx=i;
-					sy=j;
-				&#125;
-			&#125;
-		&#125;
-		int ans=bfs(sx,sy);
-		if(ans!=-1) cout&lt;&lt;ans&lt;&lt;'\n';
-		else cout&lt;&lt;&quot;oop!&quot;&lt;&lt;'\n';
-	&#125;
-	return 0;
+    ios;
+    while(cin&gt;&gt;m&gt;&gt;n)&#123;
+        if(m==0&amp;n==0) break;
+        memset(vis,0,sizeof vis);
+        int sx,sy;
+        for(int i=1;i&lt;=n;i++)&#123;
+            for(int j=1;j&lt;=m;j++)&#123;
+                cin&gt;&gt;Map[i][j];
+                if(Map[i][j]==&#39;@&#39;)&#123;
+                    sx=i;
+                    sy=j;
+                &#125;
+            &#125;
+        &#125;
+        int ans=bfs(sx,sy);
+        if(ans!=-1) cout&lt;&lt;ans&lt;&lt;&#39;\n&#39;;
+        else cout&lt;&lt;&quot;oop!&quot;&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
 &#125;
 </code></pre>
-<h2 id="B-Rescue">B - Rescue</h2>
-<blockquote>
+<h2 id="B-Rescue"><a href="#B-Rescue" class="headerlink" title="B - Rescue"></a>B - Rescue</h2><blockquote>
 <p>Angel was caught by the MOLIGPY! He was put in prison by Moligpy. The prison is described as a N * M (N, M &lt;= 200) matrix. There are WALLs, ROADs, and GUARDs in the prison.</p>
 <p>Angel’s friends want to save Angel. Their task is: approach Angel. We assume that “approach Angel” is to get to the position where Angel stays. When there’s a guard in the grid, we must kill him (or her?) to move into the grid. We assume that we moving up, down, right, left takes us 1 unit time, and killing a guard takes 1 unit time, too. And we are strong enough to kill all the guards.</p>
 <p>You have to calculate the minimal time to approach Angel. (We can move only UP, DOWN, LEFT and RIGHT, to the neighbor grid within bound, of course.)</p>
@@ -594,14 +584,11 @@ int main()&#123;
 #...##..
 .#......
 ........
-</code></pre>
-<p><strong>Sample Output</strong></p>
+</code></pre><p><strong>Sample Output</strong></p>
 <pre><code>13
-</code></pre>
-</blockquote>
-<h3 id="分析-v2">分析</h3>
-<p>小小的升级，在x处步数加一，问到a处最少步数，用优先队列就行了，把步数靠前的放前面</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+</code></pre></blockquote>
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>小小的升级，在x处步数加一，问到a处最少步数，用优先队列就行了，把步数靠前的放前面</p>
+<pre><code class="lang-c">#include &lt;stdio.h&gt;
 #include &lt;iostream&gt;
 #include &lt;string&gt;
 #include &lt;string.h&gt;
@@ -621,59 +608,58 @@ const int MOD = 1e9;
 const double eps = 1e-5;
 const int INF = 0x3f3f3f;
 struct node&#123;
-	int x,y,time;
-	bool operator &lt; (const node &amp;o) const &#123;
-		return o.time&lt;time;
-	&#125;
+    int x,y,time;
+    bool operator &lt; (const node &amp;o) const &#123;
+        return o.time&lt;time;
+    &#125;
 &#125;;
 int n,m;
 char Map[N][N];
 bool vis[N][N];
 int dir[4][2]=&#123;1,0,0,1,-1,0,0,-1&#125;;
 int bfs(int sx,int sy)&#123;
-	node s=&#123;sx,sy,0&#125;;
-	priority_queue&lt;node&gt; q;
-	q.push(s);
-	vis[sx][sy]=1;
-	while(!q.empty())&#123;
-		node fr=q.top();q.pop();
-		for(int i=0;i&lt;4;i++)&#123;
-			node next=&#123;fr.x+dir[i][0],fr.y+dir[i][1],fr.time+1&#125;;
-			if(next.x&lt;1||next.x&gt;n||next.y&gt;m||next.y&lt;1) continue;
-			if(vis[next.x][next.y]||Map[next.x][next.y]=='#') continue;
-			if(Map[next.x][next.y]=='x') next.time++;
-			if(Map[next.x][next.y]=='a')&#123;
-				return next.time;
-			&#125;
-			vis[next.x][next.y]=1;
-			q.push(next);
-		&#125;
-	&#125;
-	return INF;
+    node s=&#123;sx,sy,0&#125;;
+    priority_queue&lt;node&gt; q;
+    q.push(s);
+    vis[sx][sy]=1;
+    while(!q.empty())&#123;
+        node fr=q.top();q.pop();
+        for(int i=0;i&lt;4;i++)&#123;
+            node next=&#123;fr.x+dir[i][0],fr.y+dir[i][1],fr.time+1&#125;;
+            if(next.x&lt;1||next.x&gt;n||next.y&gt;m||next.y&lt;1) continue;
+            if(vis[next.x][next.y]||Map[next.x][next.y]==&#39;#&#39;) continue;
+            if(Map[next.x][next.y]==&#39;x&#39;) next.time++;
+            if(Map[next.x][next.y]==&#39;a&#39;)&#123;
+                return next.time;
+            &#125;
+            vis[next.x][next.y]=1;
+            q.push(next);
+        &#125;
+    &#125;
+    return INF;
 &#125;
 int main()&#123;
-	ios;
-	while(cin&gt;&gt;n&gt;&gt;m)&#123;
-		memset(vis,0,sizeof vis);
-		int sx,sy;
-		for(int i=1;i&lt;=n;i++)&#123;
-			for(int j=1;j&lt;=m;j++)&#123;
-				cin&gt;&gt;Map[i][j];
-				if(Map[i][j]=='r')&#123;
-					sx=i;
-					sy=j;
-				&#125;
-			&#125;
-		&#125;
-		int ans=bfs(sx,sy);
-		if(ans!=INF) cout&lt;&lt;ans&lt;&lt;'\n';
-		else cout&lt;&lt;&quot;Poor ANGEL has to stay in the prison all his life.&quot;&lt;&lt;'\n';
-	&#125;
-	return 0;
+    ios;
+    while(cin&gt;&gt;n&gt;&gt;m)&#123;
+        memset(vis,0,sizeof vis);
+        int sx,sy;
+        for(int i=1;i&lt;=n;i++)&#123;
+            for(int j=1;j&lt;=m;j++)&#123;
+                cin&gt;&gt;Map[i][j];
+                if(Map[i][j]==&#39;r&#39;)&#123;
+                    sx=i;
+                    sy=j;
+                &#125;
+            &#125;
+        &#125;
+        int ans=bfs(sx,sy);
+        if(ans!=INF) cout&lt;&lt;ans&lt;&lt;&#39;\n&#39;;
+        else cout&lt;&lt;&quot;Poor ANGEL has to stay in the prison all his life.&quot;&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
 &#125;
 </code></pre>
-<h2 id="C-Battle-City">C - Battle City</h2>
-<blockquote>
+<h2 id="C-Battle-City"><a href="#C-Battle-City" class="headerlink" title="C - Battle City"></a>C - Battle City</h2><blockquote>
 <p>Many of us had played the game “Battle city” in our childhood, and some people (like me) even often play it on computer now.</p>
 <p>What we are discussing is a simple edition of this game. Given a map that consists of empty spaces, rivers, steel walls and brick walls only. Your task is to get a bonus as soon as possible suppose that no enemies will disturb you (See the following picture).</p>
 <p>Your tank can’t move through rivers or walls, but it can destroy brick walls by shooting. A brick wall will be turned into empty spaces when you hit it, however, if your shot hit a steel wall, there will be no damage to the wall. In each of your turns, you can choose to move to a neighboring (4 directions, not 8) empty space, or shoot in one of the four directions without a move. The shot will go ahead in that direction, until it go out of the map or hit a wall. If the shot hits a brick wall, the wall will disappear (i.e., in this turn). Well, given the description of a map, the positions of your tank and the target, how many turns will you take at least to arrive there?</p>
@@ -687,15 +673,11 @@ YBEB
 EERE
 SSTE
 0 0
-</code></pre>
-<p><strong>Sample Output</strong></p>
+</code></pre><p><strong>Sample Output</strong></p>
 <pre><code>8
-</code></pre>
-</blockquote>
-<h3 id="分析-v3">分析</h3>
-<p>经典坦克大战，R(河流)S(钢铁)过不去，B(砖块)可以过去但是需要多花一秒，于是这个和上一道就是一道题了，只不过多了一条河不能过而已</p>
-<h3 id="CODE-v2">CODE</h3>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+</code></pre></blockquote>
+<h3 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h3><p>经典坦克大战，R(河流)S(钢铁)过不去，B(砖块)可以过去但是需要多花一秒，于是这个和上一道就是一道题了，只不过多了一条河不能过而已</p>
+<h3 id="CODE-1"><a href="#CODE-1" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include &lt;stdio.h&gt;
 #include &lt;iostream&gt;
 #include &lt;string&gt;
 #include &lt;string.h&gt;
@@ -715,72 +697,67 @@ const int MOD = 1e9;
 const double eps = 1e-5;
 const int INF = 0x3f3f3f;
 struct node&#123;
-	int x,y,time;
-	bool operator &lt; (const node &amp;o) const &#123;
-		return o.time&lt;time;
-	&#125;
+    int x,y,time;
+    bool operator &lt; (const node &amp;o) const &#123;
+        return o.time&lt;time;
+    &#125;
 &#125;;
 int n,m;
 char Map[N][N];
 bool vis[N][N];
 int dir[4][2]=&#123;1,0,0,1,-1,0,0,-1&#125;;
 int bfs(int sx,int sy)&#123;
-	node s=&#123;sx,sy,0&#125;;
-	priority_queue&lt;node&gt; q;
-	q.push(s);
-	vis[sx][sy]=1;
-	while(!q.empty())&#123;
-		node fr=q.top();q.pop();
-		for(int i=0;i&lt;4;i++)&#123;
-			node next=&#123;fr.x+dir[i][0],fr.y+dir[i][1],fr.time+1&#125;;
-			if(next.x&lt;1||next.x&gt;n||next.y&gt;m||next.y&lt;1) continue;
-			if(vis[next.x][next.y]||Map[next.x][next.y]=='S'||Map[next.x][next.y]=='R') continue;
-			if(Map[next.x][next.y]=='B') next.time++;
-			if(Map[next.x][next.y]=='T')&#123;
-				return next.time;
-			&#125;
-			vis[next.x][next.y]=1;
-			q.push(next);
-		&#125;
-	&#125;
-	return -1;
+    node s=&#123;sx,sy,0&#125;;
+    priority_queue&lt;node&gt; q;
+    q.push(s);
+    vis[sx][sy]=1;
+    while(!q.empty())&#123;
+        node fr=q.top();q.pop();
+        for(int i=0;i&lt;4;i++)&#123;
+            node next=&#123;fr.x+dir[i][0],fr.y+dir[i][1],fr.time+1&#125;;
+            if(next.x&lt;1||next.x&gt;n||next.y&gt;m||next.y&lt;1) continue;
+            if(vis[next.x][next.y]||Map[next.x][next.y]==&#39;S&#39;||Map[next.x][next.y]==&#39;R&#39;) continue;
+            if(Map[next.x][next.y]==&#39;B&#39;) next.time++;
+            if(Map[next.x][next.y]==&#39;T&#39;)&#123;
+                return next.time;
+            &#125;
+            vis[next.x][next.y]=1;
+            q.push(next);
+        &#125;
+    &#125;
+    return -1;
 &#125;
 int main()&#123;
-	ios;
-	while(cin&gt;&gt;n&gt;&gt;m)&#123;
-		if(n==0&amp;&amp;m==0) break;
-		memset(vis,0,sizeof vis);
-		int sx,sy;
-		for(int i=1;i&lt;=n;i++)&#123;
-			for(int j=1;j&lt;=m;j++)&#123;
-				cin&gt;&gt;Map[i][j];
-				if(Map[i][j]=='Y')&#123;
-					sx=i;
-					sy=j;
-				&#125;
-			&#125;
-		&#125;
-		int ans=bfs(sx,sy);
-		cout&lt;&lt;ans&lt;&lt;'\n';
-	&#125;
-	return 0;
+    ios;
+    while(cin&gt;&gt;n&gt;&gt;m)&#123;
+        if(n==0&amp;&amp;m==0) break;
+        memset(vis,0,sizeof vis);
+        int sx,sy;
+        for(int i=1;i&lt;=n;i++)&#123;
+            for(int j=1;j&lt;=m;j++)&#123;
+                cin&gt;&gt;Map[i][j];
+                if(Map[i][j]==&#39;Y&#39;)&#123;
+                    sx=i;
+                    sy=j;
+                &#125;
+            &#125;
+        &#125;
+        int ans=bfs(sx,sy);
+        cout&lt;&lt;ans&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
 &#125;
 </code></pre>
-<h2 id="Dungeon-Master">Dungeon Master</h2>
-<blockquote>
+<h2 id="Dungeon-Master"><a href="#Dungeon-Master" class="headerlink" title="Dungeon Master"></a>Dungeon Master</h2><blockquote>
 <p>You are trapped in a 3D dungeon and need to find the quickest way out! The dungeon is composed of unit cubes which may or may not be filled with rock. It takes one minute to move one unit north, south, east, west, up or down. You cannot move diagonally and the maze is surrounded by solid rock on all sides.</p>
 <p>Is an escape possible? If yes, how long will it take?</p>
 <p><strong>Input</strong></p>
-<p>The input consists of a number of dungeons. Each dungeon description starts with a line containing three integers L, R and C (all limited to 30 in size).<br>
-L is the number of levels making up the dungeon.<br>
-R and C are the number of rows and columns making up the plan of each level.<br>
-Then there will follow L blocks of R lines each containing C characters. Each character describes one cell of the dungeon. A cell full of rock is indicated by a ‘#’ and empty cells are represented by a ‘.’. Your starting position is indicated by ‘S’ and the exit by the letter ‘E’. There’s a single blank line after each level. Input is terminated by three zeroes for L, R and C.</p>
+<p>The input consists of a number of dungeons. Each dungeon description starts with a line containing three integers L, R and C (all limited to 30 in size).<br>L is the number of levels making up the dungeon.<br>R and C are the number of rows and columns making up the plan of each level.<br>Then there will follow L blocks of R lines each containing C characters. Each character describes one cell of the dungeon. A cell full of rock is indicated by a ‘#’ and empty cells are represented by a ‘.’. Your starting position is indicated by ‘S’ and the exit by the letter ‘E’. There’s a single blank line after each level. Input is terminated by three zeroes for L, R and C.</p>
 <p><strong>Output</strong></p>
 <p>Each maze generates one line of output. If it is possible to reach the exit, print a line of the form</p>
-<p>​	Escaped in x minute(s).</p>
-<p>where x is replaced by the shortest time it takes to escape.<br>
-If it is not possible to escape, print the line</p>
-<p>​	Trapped!</p>
+<p>​    Escaped in x minute(s).</p>
+<p>where x is replaced by the shortest time it takes to escape.<br>If it is not possible to escape, print the line</p>
+<p>​    Trapped!</p>
 <p><strong>Sample Input</strong></p>
 <pre><code>3 4 5
 S....
@@ -804,16 +781,12 @@ S##
 ###
 
 0 0 0
-</code></pre>
-<p><strong>Sample Output</strong></p>
+</code></pre><p><strong>Sample Output</strong></p>
 <pre><code>Escaped in 11 minute(s).
 Trapped!
-</code></pre>
-</blockquote>
-<h3 id="分析-v4">分析</h3>
-<p>这个题有点意思，是一个三维空间的BFS，一维二维都会了，三维自然是手到擒来了，按着模板写，添加一维就行了</p>
-<h3 id="CODE-v3">CODE</h3>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+</code></pre></blockquote>
+<h3 id="分析-3"><a href="#分析-3" class="headerlink" title="分析"></a>分析</h3><p>这个题有点意思，是一个三维空间的BFS，一维二维都会了，三维自然是手到擒来了，按着模板写，添加一维就行了</p>
+<h3 id="CODE-2"><a href="#CODE-2" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include &lt;stdio.h&gt;
 #include &lt;iostream&gt;
 #include &lt;string&gt;
 #include &lt;string.h&gt;
@@ -833,66 +806,64 @@ const int MOD = 1e9;
 const double eps = 1e-5;
 const int INF = 0x3f3f3f;
 struct node&#123;
-	int x,y,z,time;
+    int x,y,z,time;
 &#125;;
 int l,n,m;
 char Map[N][N][N];
 bool vis[N][N][N];
 int dir[6][3]=&#123;&#123;1,0,0&#125;,&#123;-1,0,0&#125;,&#123;0,1,0&#125;,&#123;0,-1,0&#125;,&#123;0,0,1&#125;,&#123;0,0,-1&#125;&#125;;
 bool check(node next)&#123;
-	if(next.x&lt;1||next.x&gt;n||next.y&gt;m||next.y&lt;1||next.z&lt;1||next.z&gt;l) return 0;
-	else return 1;
+    if(next.x&lt;1||next.x&gt;n||next.y&gt;m||next.y&lt;1||next.z&lt;1||next.z&gt;l) return 0;
+    else return 1;
 &#125;
 int bfs(int sx,int sy,int sz)&#123;
-	node s=&#123;sx,sy,sz,0&#125;;
-	queue&lt;node&gt; q;
-	q.push(s);
-	vis[sz][sx][sy]=1;
-	while(!q.empty())&#123;
-		node fr=q.front();q.pop();
-		for(int i=0;i&lt;6;i++)&#123;
-			node next=&#123;fr.x+dir[i][0],fr.y+dir[i][1],fr.z+dir[i][2],fr.time+1&#125;;
-			if(!check(next)) continue;
-			if(vis[next.z][next.x][next.y]||Map[next.z][next.x][next.y]=='#') continue;
-			if(Map[next.z][next.x][next.y]=='E')&#123;
-				return next.time;
-			&#125;
-			vis[next.z][next.x][next.y]=1;
-			q.push(next);
-		&#125;
-	&#125;
-	return -1;
+    node s=&#123;sx,sy,sz,0&#125;;
+    queue&lt;node&gt; q;
+    q.push(s);
+    vis[sz][sx][sy]=1;
+    while(!q.empty())&#123;
+        node fr=q.front();q.pop();
+        for(int i=0;i&lt;6;i++)&#123;
+            node next=&#123;fr.x+dir[i][0],fr.y+dir[i][1],fr.z+dir[i][2],fr.time+1&#125;;
+            if(!check(next)) continue;
+            if(vis[next.z][next.x][next.y]||Map[next.z][next.x][next.y]==&#39;#&#39;) continue;
+            if(Map[next.z][next.x][next.y]==&#39;E&#39;)&#123;
+                return next.time;
+            &#125;
+            vis[next.z][next.x][next.y]=1;
+            q.push(next);
+        &#125;
+    &#125;
+    return -1;
 &#125;
 int main()&#123;
-//	ios;
-	while(cin&gt;&gt;l&gt;&gt;n&gt;&gt;m)&#123;
-		if(l==0&amp;&amp;n==0&amp;&amp;m==0) break;
-		memset(vis,0,sizeof vis);
-		int sx,sy,sz;
-		for(int k=1;k&lt;=l;k++)&#123;
-			for(int i=1;i&lt;=n;i++)&#123;
-				for(int j=1;j&lt;=m;j++)&#123;
-					cin&gt;&gt;Map[k][i][j];
-					if(Map[k][i][j]=='S')&#123;
-						sx=i;
-						sy=j;
-						sz=k;
-					&#125;
-				&#125;
-			&#125;
-		&#125;
-		int ans=bfs(sx,sy,sz);
-		if(ans!=-1) cout&lt;&lt;&quot;Escaped in &quot;&lt;&lt;ans&lt;&lt;&quot; minute(s).&quot;&lt;&lt;'\n';
-		else cout&lt;&lt;&quot;Trapped!&quot;&lt;&lt;'\n';
-	&#125;
-	return 0;
+//    ios;
+    while(cin&gt;&gt;l&gt;&gt;n&gt;&gt;m)&#123;
+        if(l==0&amp;&amp;n==0&amp;&amp;m==0) break;
+        memset(vis,0,sizeof vis);
+        int sx,sy,sz;
+        for(int k=1;k&lt;=l;k++)&#123;
+            for(int i=1;i&lt;=n;i++)&#123;
+                for(int j=1;j&lt;=m;j++)&#123;
+                    cin&gt;&gt;Map[k][i][j];
+                    if(Map[k][i][j]==&#39;S&#39;)&#123;
+                        sx=i;
+                        sy=j;
+                        sz=k;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+        int ans=bfs(sx,sy,sz);
+        if(ans!=-1) cout&lt;&lt;&quot;Escaped in &quot;&lt;&lt;ans&lt;&lt;&quot; minute(s).&quot;&lt;&lt;&#39;\n&#39;;
+        else cout&lt;&lt;&quot;Trapped!&quot;&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
 &#125;
 </code></pre>
-<h2 id="Catch-That-Cow">Catch That Cow</h2>
-<blockquote>
+<h2 id="Catch-That-Cow"><a href="#Catch-That-Cow" class="headerlink" title="Catch That Cow"></a>Catch That Cow</h2><blockquote>
 <p>Farmer John has been informed of the location of a fugitive cow and wants to catch her immediately. He starts at a point <em>N</em> (0 ≤ <em>N</em> ≤ 100,000) on a number line and the cow is at a point <em>K</em> (0 ≤ <em>K</em> ≤ 100,000) on the same number line. Farmer John has two modes of transportation: walking and teleporting.</p>
-<p>* Walking: FJ can move from any point <em>X</em> to the points <em>X</em> - 1 or <em>X</em> + 1 in a single minute<br>
-* Teleporting: FJ can move from any point <em>X</em> to the point 2 × <em>X</em> in a single minute.</p>
+<p>* Walking: FJ can move from any point <em>X</em> to the points <em>X</em> - 1 or <em>X</em> + 1 in a single minute<br>* Teleporting: FJ can move from any point <em>X</em> to the point 2 × <em>X</em> in a single minute.</p>
 <p>If the cow, unaware of its pursuit, does not move at all, how long does it take for Farmer John to retrieve it?</p>
 <p><strong>Input</strong></p>
 <p>Line 1: Two space-separated integers: <em>N</em> and <em>K</em></p>
@@ -900,56 +871,51 @@ int main()&#123;
 <p>Line 1: The least amount of time, in minutes, it takes for Farmer John to catch the fugitive cow.</p>
 <p><strong>Sample Input</strong></p>
 <pre><code>5 17
-</code></pre>
-<p><strong>Sample Output</strong></p>
+</code></pre><p><strong>Sample Output</strong></p>
 <pre><code>4
-</code></pre>
-</blockquote>
-<h3 id="分析-v5">分析</h3>
-<p>毒瘤的一道题目，没什么难度，就是感觉评测机器有问题，同样两段代码，放到函数和写在main函数里面不一样的结果。。。不信你可以试试</p>
-<h3 id="CODE-v4">CODE</h3>
-<pre><code class="language-c">#include&lt;cstdio&gt;
+</code></pre></blockquote>
+<h3 id="分析-4"><a href="#分析-4" class="headerlink" title="分析"></a>分析</h3><p>毒瘤的一道题目，没什么难度，就是感觉评测机器有问题，同样两段代码，放到函数和写在main函数里面不一样的结果。。。不信你可以试试</p>
+<h3 id="CODE-3"><a href="#CODE-3" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;queue&gt;
 #include&lt;iostream&gt;
 using namespace std;
 int vis[1000001];
 struct node&#123;
-	int wei;
-	int time;
+    int wei;
+    int time;
 &#125;;
 int main()
 &#123;
-	int n,k;
-	cin&gt;&gt;n&gt;&gt;k;
-	node start=&#123;n,0&#125;;
-	vis[n]=1;
-	queue&lt;node&gt;q;
-	q.push(start);
-	while(!q.empty())&#123;
-		node tmp=q.front(); q.pop(); 
-		if(tmp.wei==k)&#123;
-			cout&lt;&lt;tmp.time&lt;&lt;'\n';
-			break;
-		&#125;
-		for(int i=0;i&lt;3;i++)&#123;
-			node nx;
-			if(i==0) nx=&#123;tmp.wei+1,tmp.time+1&#125;;
-			else if(i==1) nx=&#123;tmp.wei-1,tmp.time+1&#125;;
-			else nx=&#123;tmp.wei*2,tmp.time+1&#125;;
-			if(nx.wei&lt;0||nx.wei&gt;100000||vis[nx.wei]) continue;
-			vis[nx.wei]=1;
-			q.push(nx);
-		&#125;
-	&#125;
-	return 0;
+    int n,k;
+    cin&gt;&gt;n&gt;&gt;k;
+    node start=&#123;n,0&#125;;
+    vis[n]=1;
+    queue&lt;node&gt;q;
+    q.push(start);
+    while(!q.empty())&#123;
+        node tmp=q.front(); q.pop(); 
+        if(tmp.wei==k)&#123;
+            cout&lt;&lt;tmp.time&lt;&lt;&#39;\n&#39;;
+            break;
+        &#125;
+        for(int i=0;i&lt;3;i++)&#123;
+            node nx;
+            if(i==0) nx=&#123;tmp.wei+1,tmp.time+1&#125;;
+            else if(i==1) nx=&#123;tmp.wei-1,tmp.time+1&#125;;
+            else nx=&#123;tmp.wei*2,tmp.time+1&#125;;
+            if(nx.wei&lt;0||nx.wei&gt;100000||vis[nx.wei]) continue;
+            vis[nx.wei]=1;
+            q.push(nx);
+        &#125;
+    &#125;
+    return 0;
 &#125;
 </code></pre>
-<h2 id="Number-Transformation">Number Transformation</h2>
-<blockquote>
+<h2 id="Number-Transformation"><a href="#Number-Transformation" class="headerlink" title="Number Transformation"></a>Number Transformation</h2><blockquote>
 <p>In this problem, you are given an integer number <strong>s</strong>. You can transform any integer number <strong>A</strong> to another integer number <strong>B</strong> by adding <strong>x</strong> to <strong>A</strong>. This <strong>x</strong> is an integer number which is a prime factor of <strong>A</strong> (please note that 1 and <strong>A</strong> are not being considered as a factor of <strong>A</strong>). Now, your task is to find the minimum number of transformations required to transform <strong>s</strong> to another integer number <strong>t</strong>.</p>
 <p><strong>Input</strong></p>
-<p>Input starts with an integer <strong>T (****≤ 500)</strong>, denoting the number of test cases.</p>
+<p>Input starts with an integer <strong>T (**</strong>≤ 500)**, denoting the number of test cases.</p>
 <p>Each case contains two integers: <strong>s (1 ≤ s ≤ 100)</strong> and <strong>t (1 ≤ t ≤ 1000)</strong>.</p>
 <p><strong>Output</strong></p>
 <p>For each case, print the case number and the minimum number of transformations needed. If it’s impossible, then print <strong>-1</strong>.</p>
@@ -959,17 +925,13 @@ int main()
 6 12
 
 6 13
-</code></pre>
-<p><strong>Sample Output</strong></p>
+</code></pre><p><strong>Sample Output</strong></p>
 <pre><code>Case 1: 2
 
 Case 2: -1
-</code></pre>
-</blockquote>
-<h3 id="分析-v6">分析</h3>
-<p>有意思的一道题目，给你两个数a和b，让你不断通过加a的质因子直到和b相等，有意思在哪里？这个质因子不是不变的，当a改变后，a的质因子也会发生改变，所以有两种做法，一个是每次增加都进行一次质因子分解，这也是很快的，根本不会超时，1000以内的任何一个数的质因子数量都是不超过10个的，第二种是开一个二维数组，打一个表，因为这里的b是小于1000的，我们可以开这么大的数组，存储某一个数的质因子，这里用了第二种做法，其实题目也不难，就是题目难以理解</p>
-<h3 id="CODE-v5">CODE</h3>
-<pre><code class="language-c">#include&lt;stdio.h&gt;
+</code></pre></blockquote>
+<h3 id="分析-5"><a href="#分析-5" class="headerlink" title="分析"></a>分析</h3><p>有意思的一道题目，给你两个数a和b，让你不断通过加a的质因子直到和b相等，有意思在哪里？这个质因子不是不变的，当a改变后，a的质因子也会发生改变，所以有两种做法，一个是每次增加都进行一次质因子分解，这也是很快的，根本不会超时，1000以内的任何一个数的质因子数量都是不超过10个的，第二种是开一个二维数组，打一个表，因为这里的b是小于1000的，我们可以开这么大的数组，存储某一个数的质因子，这里用了第二种做法，其实题目也不难，就是题目难以理解</p>
+<h3 id="CODE-4"><a href="#CODE-4" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include&lt;stdio.h&gt;
 #include&lt;math.h&gt;
 #include&lt;string.h&gt;
 #include&lt;vector&gt;
@@ -984,63 +946,61 @@ int vis[MAX];
 vector&lt;int&gt; vt[MAX];
 
 struct node&#123;
-	int x,step;
+    int x,step;
 &#125;;
 bool check(int n)&#123;
-	if(n==2||n==3) return 1;
-	if(n==1||n%6!=1&amp;&amp;n%6!=5) return 0;
-	for(int i=5;i*i&lt;=n;i++)&#123;
-		if(n%i==0||n%(i+2)==0) return 0;
-	&#125;
-	return 1;
+    if(n==2||n==3) return 1;
+    if(n==1||n%6!=1&amp;&amp;n%6!=5) return 0;
+    for(int i=5;i*i&lt;=n;i++)&#123;
+        if(n%i==0||n%(i+2)==0) return 0;
+    &#125;
+    return 1;
 &#125;
 void prime()&#123;
-	for(int i=2;i&lt;MAX;i++)&#123;
-		for(int j=2;j&lt;i;j++)&#123;
-			if(i%j==0&amp;&amp;check(j)) vt[i].push_back(j);
-		&#125;
-	&#125;
+    for(int i=2;i&lt;MAX;i++)&#123;
+        for(int j=2;j&lt;i;j++)&#123;
+            if(i%j==0&amp;&amp;check(j)) vt[i].push_back(j);
+        &#125;
+    &#125;
 &#125;
 int bfs()&#123;
-	queue&lt;node&gt; q;
-	vis[s]=1;
-	node start;
-	start.x=s; start.step=0;
-	q.push(start);
-	while(!q.empty())&#123;
-		node tmp=q.front(); q.pop();
-		if(tmp.x==t) return tmp.step;
-		int len=vt[tmp.x].size();
-		for(int i=0;i&lt;len;i++)&#123;
-			node nx;
-			nx.x=tmp.x+vt[tmp.x][i];
-			nx.step=tmp.step+1;
-			if(nx.x&gt;t||vis[nx.x]) continue;
-			vis[nx.x]=1;
-			q.push(nx);
-		&#125;
-	&#125;
-	return -1;
+    queue&lt;node&gt; q;
+    vis[s]=1;
+    node start;
+    start.x=s; start.step=0;
+    q.push(start);
+    while(!q.empty())&#123;
+        node tmp=q.front(); q.pop();
+        if(tmp.x==t) return tmp.step;
+        int len=vt[tmp.x].size();
+        for(int i=0;i&lt;len;i++)&#123;
+            node nx;
+            nx.x=tmp.x+vt[tmp.x][i];
+            nx.step=tmp.step+1;
+            if(nx.x&gt;t||vis[nx.x]) continue;
+            vis[nx.x]=1;
+            q.push(nx);
+        &#125;
+    &#125;
+    return -1;
 &#125;
 int main()
 &#123;
-	prime();
-	cin&gt;&gt;T;
-	int kase=0;
-	while(T--)&#123;
-		memset(vis,0,sizeof(vis));
-		scanf(&quot;%d%d&quot;,&amp;s,&amp;t);
-		int ans=INF;
-		ans=bfs();
-		printf(&quot;Case %d: %d\n&quot;,++kase,ans);
-	&#125;
-	return 0;
+    prime();
+    cin&gt;&gt;T;
+    int kase=0;
+    while(T--)&#123;
+        memset(vis,0,sizeof(vis));
+        scanf(&quot;%d%d&quot;,&amp;s,&amp;t);
+        int ans=INF;
+        ans=bfs();
+        printf(&quot;Case %d: %d\n&quot;,++kase,ans);
+    &#125;
+    return 0;
 &#125;
 </code></pre>
-<h2 id="G-Knight-Moves">G - Knight Moves</h2>
-<blockquote>
-<p>A friend of you is doing research on the Traveling Knight Problem (TKP) where you are to find the shortest closed tour of knight moves that visits each square of a given set of n squares on a chessboard exactly once. He thinks that the most difficult part of the problem is determining the smallest number of knight moves between two given squares and that, once you have accomplished this, finding the tour would be easy.<br>
-Of course you know that it is vice versa. So you offer him to write a program that solves the “difficult” part.</p>
+<h2 id="G-Knight-Moves"><a href="#G-Knight-Moves" class="headerlink" title="G - Knight Moves"></a>G - Knight Moves</h2><blockquote>
+<p>A friend of you is doing research on the Traveling Knight Problem (TKP) where you are to find the shortest closed tour of knight moves that visits each square of a given set of n squares on a chessboard exactly once. He thinks that the most difficult part of the problem is determining the smallest number of knight moves between two given squares and that, once you have accomplished this, finding the tour would be easy.<br>Of course you know that it is vice versa. So you offer him to write a program that solves the “difficult” part.</p>
 <p>Your job is to write a program that takes two squares a and b as input and then determines the number of knight moves on a shortest route from a to b.</p>
 <p><strong>Input</strong></p>
 <p>The input file will contain one or more test cases. Each test case consists of one line containing two squares separated by one space. A square is a string consisting of a letter (a-h) representing the column and a digit (1-8) representing the row on the chessboard.</p>
@@ -1055,8 +1015,7 @@ a1 h7
 h8 a1
 b1 c3
 f6 f6
-</code></pre>
-<p><strong>Sample Output</strong></p>
+</code></pre><p><strong>Sample Output</strong></p>
 <pre><code>To get from e2 to e4 takes 2 knight moves.
 To get from a1 to b2 takes 4 knight moves.
 To get from b2 to c3 takes 2 knight moves.
@@ -1065,12 +1024,9 @@ To get from a1 to h7 takes 5 knight moves.
 To get from h8 to a1 takes 6 knight moves.
 To get from b1 to c3 takes 1 knight moves.
 To get from f6 to f6 takes 0 knight moves.
-</code></pre>
-</blockquote>
-<h3 id="分析-v7">分析</h3>
-<p>只是把上下左右换成了马的走法而已</p>
-<h3 id="CODE-v6">CODE</h3>
-<pre><code class="language-c">#include&lt;string.h&gt;
+</code></pre></blockquote>
+<h3 id="分析-6"><a href="#分析-6" class="headerlink" title="分析"></a>分析</h3><p>只是把上下左右换成了马的走法而已</p>
+<h3 id="CODE-5"><a href="#CODE-5" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include&lt;string.h&gt;
 #include&lt;iostream&gt;
 #include&lt;queue&gt;
 using namespace std;
@@ -1083,42 +1039,41 @@ struct node&#123;
 void bfs()&#123;
     queue&lt;node&gt; q;
     node s;
-    s.row=ch1[1]-'1';
-    s.col=ch1[0]-'a';
+    s.row=ch1[1]-&#39;1&#39;;
+    s.col=ch1[0]-&#39;a&#39;;
     s.step=0;
     vis[s.row][s.col]=1;
     q.push(s);
     while(!q.empty())&#123;
         node tmp=q.front(); q.pop();
-        if(tmp.row==(ch2[1]-'1')&amp;&amp;tmp.col==(ch2[0]-'a'))&#123;
+        if(tmp.row==(ch2[1]-&#39;1&#39;)&amp;&amp;tmp.col==(ch2[0]-&#39;a&#39;))&#123;
             if(tmp.step&lt;ans) ans=tmp.step;
             return;
         &#125;
-       	for(int i=0;i&lt;8;i++)&#123;
-           	node nx;
-    		nx.row=tmp.row+dir[i][0];
-    		nx.col=tmp.col+dir[i][1];
-        	if(!vis[nx.row][nx.col]&amp;&amp;nx.row&gt;=0&amp;&amp;nx.row&lt;8&amp;&amp;nx.col&gt;=0&amp;&amp;nx.col&lt;8)&#123;
-	            vis[nx.row][nx.col]=1;
-	            nx.step=tmp.step+1;
-	            q.push(nx);
-        	&#125;  
-       	&#125;
+           for(int i=0;i&lt;8;i++)&#123;
+               node nx;
+            nx.row=tmp.row+dir[i][0];
+            nx.col=tmp.col+dir[i][1];
+            if(!vis[nx.row][nx.col]&amp;&amp;nx.row&gt;=0&amp;&amp;nx.row&lt;8&amp;&amp;nx.col&gt;=0&amp;&amp;nx.col&lt;8)&#123;
+                vis[nx.row][nx.col]=1;
+                nx.step=tmp.step+1;
+                q.push(nx);
+            &#125;  
+           &#125;
     &#125;
 &#125;
 int main()
 &#123;
     while(cin&gt;&gt;ch1&gt;&gt;ch2)&#123;
         ans=1e9;
-	    memset(vis,0,sizeof(vis));
-	    bfs();
-	    cout&lt;&lt;&quot;To get from &quot;&lt;&lt;ch1&lt;&lt;&quot; to &quot;&lt;&lt;ch2&lt;&lt;&quot; takes &quot;&lt;&lt;ans&lt;&lt;&quot; knight moves.&quot;&lt;&lt;'\n';
+        memset(vis,0,sizeof(vis));
+        bfs();
+        cout&lt;&lt;&quot;To get from &quot;&lt;&lt;ch1&lt;&lt;&quot; to &quot;&lt;&lt;ch2&lt;&lt;&quot; takes &quot;&lt;&lt;ans&lt;&lt;&quot; knight moves.&quot;&lt;&lt;&#39;\n&#39;;
     &#125;
     return 0;
 &#125;
 </code></pre>
-<h2 id="噩梦">噩梦</h2>
-<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/179/">题目链接</a></p>
+<h2 id="噩梦"><a href="#噩梦" class="headerlink" title="噩梦"></a>噩梦</h2><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/179/">题目链接</a></p>
 <blockquote>
 <p>给定一张N*M的地图，地图中有1个男孩，1个女孩和2个鬼。</p>
 <p>字符“.”表示道路，字符“X”表示墙，字符“M”表示男孩的位置，字符“G”表示女孩的位置，字符“Z”表示鬼的位置。</p>
@@ -1126,18 +1081,14 @@ int main()
 <p>每个鬼占据的区域每秒可以向四周扩张2个单位距离，并且无视墙的阻挡，也就是在第k秒后所有与鬼的曼哈顿距离不超过2k的位置都会被鬼占领。</p>
 <p><strong>注意：</strong> 每一秒鬼会先扩展，扩展完毕后男孩和女孩才可以移动。</p>
 <p>求在不进入鬼的占领区的前提下，男孩和女孩能否会合，若能会合，求出最短会合时间。</p>
-<h4 id="输入格式">输入格式</h4>
-<p>第一行包含整数T，表示共有T组测试用例。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数T，表示共有T组测试用例。</p>
 <p>每组测试用例第一行包含两个整数N和M，表示地图的尺寸。</p>
 <p>接下来N行每行M个字符，用来描绘整张地图的状况。（注意：地图中一定有且仅有1个男孩，1个女孩和2个鬼）</p>
-<h4 id="输出格式">输出格式</h4>
-<p>每个测试用例输出一个整数S，表示最短会合时间。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>每个测试用例输出一个整数S，表示最短会合时间。</p>
 <p>如果无法会合则输出-1。</p>
 <p>每个结果占一行。</p>
-<h4 id="数据范围">数据范围</h4>
-<p>1&lt;n,m&lt;8001&lt;n,m&lt;800</p>
-<h4 id="输入样例：">输入样例：</h4>
-<pre><code>3
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>1&lt;n,m&lt;8001&lt;n,m&lt;800</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><pre><code>3
 5 6
 XXXXXX
 XZ..ZX
@@ -1161,17 +1112,12 @@ X.........
 X....G...X
 ...ZX.X...
 ...Z..X..X
-</code></pre>
-<h4 id="输出样例：">输出样例：</h4>
-<pre><code>1
+</code></pre><h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><pre><code>1
 1
 -1
-</code></pre>
-</blockquote>
-<h3 id="分析-v8">分析</h3>
-<p>双向BFS，男孩和女孩轮流BFS，直到两者轨迹有交叉</p>
-<h3 id="CODE-v7">CODE</h3>
-<pre><code class="language-c">#include&lt;bits/stdc++.h&gt;
+</code></pre></blockquote>
+<h3 id="分析-7"><a href="#分析-7" class="headerlink" title="分析"></a>分析</h3><p>双向BFS，男孩和女孩轮流BFS，直到两者轨迹有交叉</p>
+<h3 id="CODE-6"><a href="#CODE-6" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int N=810;
 typedef pair&lt;int,int&gt; pii;
@@ -1180,7 +1126,7 @@ pii boy,girl,ghost[2];
 int vis[N][N],dx[4]=&#123;1,0,-1,0&#125;,dy[4]=&#123;0,1,0,-1&#125;;
 char g[N][N];
 bool check(int x,int y,int k)&#123;
-    if(x&lt;1||x&gt;n||y&lt;1||y&gt;m||g[x][y]=='X') return false; 
+    if(x&lt;1||x&gt;n||y&lt;1||y&gt;m||g[x][y]==&#39;X&#39;) return false; 
     for(int i=0;i&lt;2;i++)&#123;   
         if(abs(x-ghost[i].first)+abs(y-ghost[i].second)&lt;=2*k) return false;
     &#125;
@@ -1191,67 +1137,67 @@ int bfs()&#123;
     qb.push(boy); qg.push(girl);
     int step=0;
     while(!qb.empty()||!qg.empty())&#123;
-    	step++;
-    	for(int k=0;k&lt;3;k++)&#123;
-    		for(int j=0,len=qb.size();j&lt;len;j++)&#123;
-    			int x=qb.front().first;
-    			int y=qb.front().second;
-    			qb.pop();
-    			if(!check(x,y,step)) continue;
-    			for(int i=0;i&lt;4;i++)&#123;
-    				int nx=x+dx[i];
-    				int ny=y+dy[i];
-    				if(!check(nx,ny,step)) continue;
-					if(vis[nx][ny]==2) return step;
-    				if(!vis[nx][ny])&#123;
-    					vis[nx][ny]=1;
-    					qb.push(&#123;nx,ny&#125;);
-					&#125;
-				&#125;
-			&#125;
-		&#125;
-		for(int k=0;k&lt;1;k++)&#123;
-			for(int j=0,len=qg.size();j&lt;len;j++)&#123;
-				int x=qg.front().first;
-				int y=qg.front().second;
-				qg.pop();
-				if(!check(x,y,step)) continue;
-				for(int i=0;i&lt;4;i++)&#123;
-					int nx=x+dx[i];
-					int ny=y+dy[i];
-					if(!check(nx,ny,step)) continue;
-					if(vis[nx][ny]==1) return step;
-					if(!vis[nx][ny])&#123;
-						vis[nx][ny]=2;
-						qg.push(&#123;nx,ny&#125;);
-					&#125;
-					
-				&#125;
-			&#125;	
-		&#125;
-	&#125;
+        step++;
+        for(int k=0;k&lt;3;k++)&#123;
+            for(int j=0,len=qb.size();j&lt;len;j++)&#123;
+                int x=qb.front().first;
+                int y=qb.front().second;
+                qb.pop();
+                if(!check(x,y,step)) continue;
+                for(int i=0;i&lt;4;i++)&#123;
+                    int nx=x+dx[i];
+                    int ny=y+dy[i];
+                    if(!check(nx,ny,step)) continue;
+                    if(vis[nx][ny]==2) return step;
+                    if(!vis[nx][ny])&#123;
+                        vis[nx][ny]=1;
+                        qb.push(&#123;nx,ny&#125;);
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+        for(int k=0;k&lt;1;k++)&#123;
+            for(int j=0,len=qg.size();j&lt;len;j++)&#123;
+                int x=qg.front().first;
+                int y=qg.front().second;
+                qg.pop();
+                if(!check(x,y,step)) continue;
+                for(int i=0;i&lt;4;i++)&#123;
+                    int nx=x+dx[i];
+                    int ny=y+dy[i];
+                    if(!check(nx,ny,step)) continue;
+                    if(vis[nx][ny]==1) return step;
+                    if(!vis[nx][ny])&#123;
+                        vis[nx][ny]=2;
+                        qg.push(&#123;nx,ny&#125;);
+                    &#125;
+
+                &#125;
+            &#125;    
+        &#125;
+    &#125;
     return -1;
 &#125;
 int main()
 &#123;
-	int t;
-	cin&gt;&gt;t;
-	while(t--)&#123;
-		memset(vis,0,sizeof vis);
-		cin&gt;&gt;n&gt;&gt;m;
-		int cnt=0;
-		for(int i=1;i&lt;=n;i++)&#123;
-			for(int j=1;j&lt;=m;j++)&#123;
-				cin&gt;&gt;g[i][j];
-				if(g[i][j]=='M') boy=&#123;i,j&#125;;
-				if(g[i][j]=='G') girl=&#123;i,j&#125;;
-				if(g[i][j]=='Z') ghost[cnt++]=&#123;i,j&#125;;
-			&#125;
-		&#125;
-		cout&lt;&lt;bfs()&lt;&lt;'\n';
-	&#125;	
-	return 0;
- &#125; 
+    int t;
+    cin&gt;&gt;t;
+    while(t--)&#123;
+        memset(vis,0,sizeof vis);
+        cin&gt;&gt;n&gt;&gt;m;
+        int cnt=0;
+        for(int i=1;i&lt;=n;i++)&#123;
+            for(int j=1;j&lt;=m;j++)&#123;
+                cin&gt;&gt;g[i][j];
+                if(g[i][j]==&#39;M&#39;) boy=&#123;i,j&#125;;
+                if(g[i][j]==&#39;G&#39;) girl=&#123;i,j&#125;;
+                if(g[i][j]==&#39;Z&#39;) ghost[cnt++]=&#123;i,j&#125;;
+            &#125;
+        &#125;
+        cout&lt;&lt;bfs()&lt;&lt;&#39;\n&#39;;
+    &#125;    
+    return 0;
+ &#125;
 </code></pre>
 
         </div>
@@ -1457,7 +1403,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

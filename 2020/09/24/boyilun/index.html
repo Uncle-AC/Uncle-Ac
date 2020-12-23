@@ -415,7 +415,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">2.2k字</span>
+        <span class="post-count">2.3k字</span>
       </span>
     </span>
 
@@ -447,16 +447,10 @@
 <li>必胜状态后继节点一定有必败</li>
 <li>必败状态后继都是必胜</li>
 </ol>
-<h2 id="巴什博弈">巴什博弈</h2>
-<blockquote>
-<p>数上博弈	<br>
-<strong>俩人轮流取数，一次可以取走1到m个数，假如有m+1个数，则第一个人怎么取第二个人都可以一次取走，</strong><br>
-<strong>第二个人就赢了，现在有x个数，这x个数可能是m+1的倍数，也可能不是，假设不是，那么那么第一个人</strong><br>
-<strong>就可以第一次取s个数，把m+1这个必败状态给对方，假如是，则自己就是必败了</strong><br>
-<code>x=n*(m+1)+s</code></p>
+<h2 id="巴什博弈"><a href="#巴什博弈" class="headerlink" title="巴什博弈"></a>巴什博弈</h2><blockquote>
+<p>数上博弈<br><strong>俩人轮流取数，一次可以取走1到m个数，假如有m+1个数，则第一个人怎么取第二个人都可以一次取走，</strong><br><strong>第二个人就赢了，现在有x个数，这x个数可能是m+1的倍数，也可能不是，假设不是，那么那么第一个人</strong><br><strong>就可以第一次取s个数，把m+1这个必败状态给对方，假如是，则自己就是必败了</strong><br><code>x=n*(m+1)+s</code></p>
 </blockquote>
-<h3 id="Brave-game-HDU1846">Brave game (HDU1846)</h3>
-<pre><code class="language-c">#include &lt;bits/stdc++.h&gt;
+<h3 id="Brave-game-HDU1846"><a href="#Brave-game-HDU1846" class="headerlink" title="Brave game (HDU1846)"></a>Brave game (HDU1846)</h3><pre><code class="lang-c">#include &lt;bits/stdc++.h&gt;
 using namespace std;
 int main()&#123;
     int t;
@@ -465,14 +459,13 @@ int main()&#123;
         int a,b;
         cin&gt;&gt;a&gt;&gt;b;
         int mod=a%(b+1);
-        if(mod&gt;=1) cout&lt;&lt;&quot;first&quot;&lt;&lt;'\n';
-        else cout&lt;&lt;&quot;second&quot;&lt;&lt;'\n';
+        if(mod&gt;=1) cout&lt;&lt;&quot;first&quot;&lt;&lt;&#39;\n&#39;;
+        else cout&lt;&lt;&quot;second&quot;&lt;&lt;&#39;\n&#39;;
     &#125;
     return 0;
-&#125; 
+&#125;
 </code></pre>
-<h3 id="Public-Sale-HDU2149">Public Sale (HDU2149)</h3>
-<pre><code class="language-c">#include &lt;bits/stdc++.h&gt;
+<h3 id="Public-Sale-HDU2149"><a href="#Public-Sale-HDU2149" class="headerlink" title="Public Sale (HDU2149)"></a>Public Sale (HDU2149)</h3><pre><code class="lang-c">#include &lt;bits/stdc++.h&gt;
 using namespace std;
 int main()&#123;
     int a,b;
@@ -480,16 +473,16 @@ int main()&#123;
         int mod=b%(a+1);
         if(a&gt;=b)&#123;
             for(int i=b;i&lt;=a;i++)&#123;
-                if(i!=a) cout&lt;&lt;i&lt;&lt;' ';
-                else cout&lt;&lt;i&lt;&lt;'\n';
+                if(i!=a) cout&lt;&lt;i&lt;&lt;&#39; &#39;;
+                else cout&lt;&lt;i&lt;&lt;&#39;\n&#39;;
             &#125;
             continue;
         &#125; 
-        if(mod&gt;=1) cout&lt;&lt;mod&lt;&lt;'\n';
-        else cout&lt;&lt;&quot;none&quot;&lt;&lt;'\n';
+        if(mod&gt;=1) cout&lt;&lt;mod&lt;&lt;&#39;\n&#39;;
+        else cout&lt;&lt;&quot;none&quot;&lt;&lt;&#39;\n&#39;;
     &#125;
     return 0;
-&#125; 
+&#125;
 </code></pre>
 <blockquote>
 <p>图上巴什博弈问题，终结点为必败点，由终结点去推其他店直到推出起点的属性，最后找规律</p>
@@ -497,111 +490,99 @@ int main()&#123;
 <li><strong>只能走到必胜点的是必败点</strong></li>
 <li><strong>可以走到必败点的是必胜点</strong></li>
 </ol>
-<p>**注意：**这里的必败必胜表示的是从这个点开始走的属性而不是走到这个点的属性</p>
+<p><strong>注意：</strong>这里的必败必胜表示的是从这个点开始走的属性而不是走到这个点的属性</p>
 </blockquote>
-<h3 id="kiki’s-game-HDU2147">kiki’s game (HDU2147)</h3>
-<p><img src="https://img-blog.csdn.net/20140429205410484?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSUFjY2VwdGVk/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
+<h3 id="kiki’s-game-HDU2147"><a href="#kiki’s-game-HDU2147" class="headerlink" title="kiki’s game (HDU2147)"></a>kiki’s game (HDU2147)</h3><p><img src="https://img-blog.csdn.net/20140429205410484?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSUFjY2VwdGVk/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
 <p>这道题只要n或者m有一个偶数则起点就是必胜点</p>
-<pre><code class="language-c">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-c">#include &lt;bits/stdc++.h&gt;
 using namespace std;
 int main()&#123;
-	int n,m;
-	while(cin&gt;&gt;n&gt;&gt;m)&#123;
-		if(n==0 &amp;&amp; m==0) break;
-		if(!(n&amp;1) || !(m&amp;1)) cout&lt;&lt;&quot;Wonderful!&quot;&lt;&lt;'\n';
-		else cout&lt;&lt;&quot;What a pity!&quot;&lt;&lt;'\n';
-	&#125;
-	return 0;
-&#125; 
+    int n,m;
+    while(cin&gt;&gt;n&gt;&gt;m)&#123;
+        if(n==0 &amp;&amp; m==0) break;
+        if(!(n&amp;1) || !(m&amp;1)) cout&lt;&lt;&quot;Wonderful!&quot;&lt;&lt;&#39;\n&#39;;
+        else cout&lt;&lt;&quot;What a pity!&quot;&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
+&#125;
 </code></pre>
-<h2 id="斐波那契博弈">斐波那契博弈</h2>
-<p>当n是一个斐波那契数的时候必胜或者必输，所以对于一道题可以从小推个十来个数，看看必胜或者必输的点如果正好符合斐波那契数列则可以尝试用这种方法</p>
-<h3 id="取石子游戏-HDU2516">取石子游戏 (HDU2516)</h3>
-<pre><code class="language-c">#include &lt;bits/stdc++.h&gt;
+<h2 id="斐波那契博弈"><a href="#斐波那契博弈" class="headerlink" title="斐波那契博弈"></a>斐波那契博弈</h2><p>当n是一个斐波那契数的时候必胜或者必输，所以对于一道题可以从小推个十来个数，看看必胜或者必输的点如果正好符合斐波那契数列则可以尝试用这种方法</p>
+<h3 id="取石子游戏-HDU2516"><a href="#取石子游戏-HDU2516" class="headerlink" title="取石子游戏 (HDU2516)"></a>取石子游戏 (HDU2516)</h3><pre><code class="lang-c">#include &lt;bits/stdc++.h&gt;
 using namespace std;
 typedef long long ll;
 int fbi[51];
 int main()&#123;
-	fbi[1]=2;
-	fbi[2]=3;
-	for(int i=3;i&lt;=44;i++) fbi[i]=fbi[i-1]+fbi[i-2]; //注意用二分的话必须尺寸必须正好后面不能有0
-	int n;
-	while(cin&gt;&gt;n)&#123;
-		if(n==0) break;
-		int x=lower_bound(fbi+1,fbi+1+44,n)-fbi;
-		if(fbi[x]==n) cout&lt;&lt;&quot;Second win&quot;&lt;&lt;'\n';
-		else cout&lt;&lt;&quot;First win&quot;&lt;&lt;'\n';
-	&#125;
-	return 0;
-&#125; 
+    fbi[1]=2;
+    fbi[2]=3;
+    for(int i=3;i&lt;=44;i++) fbi[i]=fbi[i-1]+fbi[i-2]; //注意用二分的话必须尺寸必须正好后面不能有0
+    int n;
+    while(cin&gt;&gt;n)&#123;
+        if(n==0) break;
+        int x=lower_bound(fbi+1,fbi+1+44,n)-fbi;
+        if(fbi[x]==n) cout&lt;&lt;&quot;Second win&quot;&lt;&lt;&#39;\n&#39;;
+        else cout&lt;&lt;&quot;First win&quot;&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
+&#125;
 </code></pre>
-<h2 id="威佐夫博弈">威佐夫博弈</h2>
-<p>这个博弈的证明是非常非常复杂的，而且没啥用，所以只需要记住结论会判断哪一个状态是奇异状态，也就是必败状态就可以了</p>
-<p>结论：(判断一个状态是否为奇异状态)<br>
-$$<br>
-\frac{(\sqrt{5}+1)}{2}*(y-x)=x<br>
-$$<br>
-满足上面等式则该状态是奇异状态</p>
-<h3 id="取石子游戏">取石子游戏</h3>
-<p>两堆石子，每次可以从两堆石子取走相等数量的石子，或者从一堆中取走任意数量的石子，谁最后没有石子取谁就输了</p>
-<pre><code class="language-c">#include &lt;bits/stdc++.h&gt;
+<h2 id="威佐夫博弈"><a href="#威佐夫博弈" class="headerlink" title="威佐夫博弈"></a>威佐夫博弈</h2><p>这个博弈的证明是非常非常复杂的，而且没啥用，所以只需要记住结论会判断哪一个状态是奇异状态，也就是必败状态就可以了</p>
+<p>结论：(判断一个状态是否为奇异状态) </p>
+<script type="math/tex; mode=display">
+\frac{(\sqrt{5}+1)}{2}*(y-x)=x</script><p>满足上面等式则该状态是奇异状态</p>
+<h3 id="取石子游戏"><a href="#取石子游戏" class="headerlink" title="取石子游戏"></a>取石子游戏</h3><p>两堆石子，每次可以从两堆石子取走相等数量的石子，或者从一堆中取走任意数量的石子，谁最后没有石子取谁就输了</p>
+<pre><code class="lang-c">#include &lt;bits/stdc++.h&gt;
 using namespace std;
 bool check(int a,int b)&#123;
-	int x=(b-a)*(sqrt(5)+1)/2;
-	if(x==a) return 1;
-	return 0;
+    int x=(b-a)*(sqrt(5)+1)/2;
+    if(x==a) return 1;
+    return 0;
 &#125;
 int main()
 &#123;
-	int a,b;
-	while(cin&gt;&gt;a&gt;&gt;b)&#123;
-		if(a&gt;b) swap(a,b);
-		if(check(a,b)) cout&lt;&lt;0&lt;&lt;'\n';
-		else cout&lt;&lt;1&lt;&lt;'\n';
-	&#125;
-	return 0;
+    int a,b;
+    while(cin&gt;&gt;a&gt;&gt;b)&#123;
+        if(a&gt;b) swap(a,b);
+        if(check(a,b)) cout&lt;&lt;0&lt;&lt;&#39;\n&#39;;
+        else cout&lt;&lt;1&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
 &#125;
 </code></pre>
-<h2 id="Nim游戏">Nim游戏</h2>
-<h3 id="Being-a-Good-Boy-in-Spring-Festival（HDU1850）">Being a Good Boy in Spring Festival（HDU1850）</h3>
-<p>有n堆扑克牌，每堆扑克牌数量为ai，两个人轮流取，每个人可以取走一堆中任意数量的扑克牌，最后没人有牌取就输了</p>
-<p>典型nim游戏，奇异局势为当前剩下的所有扑克牌每一堆的数量的异或等于0，即<br>
-$$<br>
-a1 \oplus a2 \oplus a3 \oplus a4 …=0(n&gt;=i&gt;=1)<br>
-$$<br>
-计算第一步有多少中方式转化为奇异局势，就是用异或和去和a数组中每一个数一一进行异或，就相当于减去了这个数，然后判断得数是否小于a[i]，当小于a[i]则表示可以把a[i]通过异或转变成为除了这个数以外其他数的异或和，就变成了奇异局势</p>
-<pre><code class="language-c">#include &lt;bits/stdc++.h&gt;
+<h2 id="Nim游戏"><a href="#Nim游戏" class="headerlink" title="Nim游戏"></a>Nim游戏</h2><h3 id="Being-a-Good-Boy-in-Spring-Festival（HDU1850）"><a href="#Being-a-Good-Boy-in-Spring-Festival（HDU1850）" class="headerlink" title="Being a Good Boy in Spring Festival（HDU1850）"></a>Being a Good Boy in Spring Festival（HDU1850）</h3><p>有n堆扑克牌，每堆扑克牌数量为ai，两个人轮流取，每个人可以取走一堆中任意数量的扑克牌，最后没人有牌取就输了</p>
+<p>典型nim游戏，奇异局势为当前剩下的所有扑克牌每一堆的数量的异或等于0，即</p>
+<script type="math/tex; mode=display">
+a1 \oplus a2 \oplus a3 \oplus a4 ...=0(n>=i>=1)</script><p>计算第一步有多少中方式转化为奇异局势，就是用异或和去和a数组中每一个数一一进行异或，就相当于减去了这个数，然后判断得数是否小于a[i]，当小于a[i]则表示可以把a[i]通过异或转变成为除了这个数以外其他数的异或和，就变成了奇异局势</p>
+<pre><code class="lang-c">#include &lt;bits/stdc++.h&gt;
 using namespace std;
 int a[1000100];
 int main()
 &#123;
-	int n;
-	while(cin&gt;&gt;n)&#123;
-		if(n==0) break;
-		int nim=0;
-		for(int i=1;i&lt;=n;i++)&#123;
-			cin&gt;&gt;a[i];
-			nim^=a[i];
-		&#125;
-		if(nim==0)&#123;
-			puts(&quot;0&quot;);
-			continue;
-		&#125;
-		int cnt=0;
-		for(int i=1;i&lt;=n;i++)&#123;
-			int k=nim^a[i];
-			if(k&lt;a[i]) cnt++;
-		&#125;
-		cout&lt;&lt;cnt&lt;&lt;'\n';
-	&#125;
-	return 0;
+    int n;
+    while(cin&gt;&gt;n)&#123;
+        if(n==0) break;
+        int nim=0;
+        for(int i=1;i&lt;=n;i++)&#123;
+            cin&gt;&gt;a[i];
+            nim^=a[i];
+        &#125;
+        if(nim==0)&#123;
+            puts(&quot;0&quot;);
+            continue;
+        &#125;
+        int cnt=0;
+        for(int i=1;i&lt;=n;i++)&#123;
+            int k=nim^a[i];
+            if(k&lt;a[i]) cnt++;
+        &#125;
+        cout&lt;&lt;cnt&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
 &#125;
 </code></pre>
-<h2 id="SG函数">SG函数</h2>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/DWVictor/p/10235851.html"><strong>参考文章</strong></a></p>
+<h2 id="SG函数"><a href="#SG函数" class="headerlink" title="SG函数"></a>SG函数</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/DWVictor/p/10235851.html"><strong>参考文章</strong></a></p>
 <p>所谓SG函数其实本质上就是打表，算出每一个点是否为必败情况</p>
-<p>首先定义mex(minimal excludant)运算，这是施加于一个集合的运算，表示最小的不属于这个集合的非负整数。例如mex{0,1,2,4}=3、mex{2,3,5}=0、mex{}=0。</p>
-<p>对于任意状态 x ， 定义 SG(x) = mex(S),其中 S 是 x 后继状态的SG函数值的集合。如 x 有三个后继状态分别为 SG(a),SG(b),SG©，那么SG(x) = mex{SG(a),SG(b),SG©}。 这样 集合S 的终态必然是空集，所以SG函数的终态为 SG(x) = 0,当且仅当 x 为必败点P时。</p>
+<p> 首先定义mex(minimal excludant)运算，这是施加于一个集合的运算，表示最小的不属于这个集合的非负整数。例如mex{0,1,2,4}=3、mex{2,3,5}=0、mex{}=0。</p>
+<p> 对于任意状态 x ， 定义 SG(x) = mex(S),其中 S 是 x 后继状态的SG函数值的集合。如 x 有三个后继状态分别为 SG(a),SG(b),SG(c)，那么SG(x) = mex{SG(a),SG(b),SG(c)}。 这样 集合S 的终态必然是空集，所以SG函数的终态为 SG(x) = 0,当且仅当 x 为必败点P时。</p>
 <p><strong>【实例】取石子问题</strong></p>
 <p>有1堆n个的石子，每次只能取{ 1, 3, 4 }个石子，先取完石子者胜利，那么各个数的SG值为多少？</p>
 <p>SG[0]=0，f[]={1,3,4},</p>
@@ -610,16 +591,16 @@ int main()
 <p>x=3 时，可以取走3 - f{1,3}个石子，剩余{2,0}个，所以 SG[3] = mex{SG[2],SG[0]} = mex{0,0} =1;</p>
 <p>x=4 时，可以取走4-  f{1,3,4}个石子，剩余{3,1,0}个，所以 SG[4] = mex{SG[3],SG[1],SG[0]} = mex{1,1,0} = 2;</p>
 <p>x=5 时，可以取走5 - f{1,3,4}个石子，剩余{4,2,1}个，所以SG[5] = mex{SG[4],SG[2],SG[1]} =mex{2,0,1} = 3;</p>
-<p>以此类推…</p>
-<p>x    0 1 2 3 4 5 6 7 8…</p>
-<p>SG[x]  0 1 0 1 2 3 2 0 1…</p>
+<p>以此类推…..</p>
+<p>  x    0 1 2 3 4 5 6 7 8….</p>
+<p>SG[x]  0 1 0 1 2 3 2 0 1….</p>
 <p>由上述实例我们就可以得到SG函数值求解步骤，那么计算1~n的SG函数值步骤如下：</p>
 <p>1、使用 数组f 将 可改变当前状态 的方式记录下来。</p>
 <p>2、然后我们使用 另一个数组 将当前状态x 的后继状态标记。</p>
 <p>3、最后模拟mex运算，也就是我们在标记值中 搜索 未被标记值 的最小值，将其赋值给SG(x)。</p>
 <p>4、我们不断的重复 2 - 3 的步骤，就完成了 计算1~n 的函数值。</p>
 <p>代码：</p>
-<pre><code class="language-c">//f[N]:可改变当前状态的方式，N为方式的种类，f[N]要在getSG之前先预处理
+<pre><code class="lang-c">//f[N]:可改变当前状态的方式，N为方式的种类，f[N]要在getSG之前先预处理
 //SG[]:0~n的SG函数值
 //S[]:为x后继状态的集合
 int f[N],SG[MAXN],S[MAXN];
@@ -639,52 +620,52 @@ void  getSG(int n)&#123;
     &#125;
 &#125;
 </code></pre>
-<p>一道题如果会打SG表这道题就做出来了，<s>但是就是打不出来😭</s>，就算空间不够，不能纯打SG表也可以根据SG表求规律的，给你那么多的数据总不会求不出来巴</p>
+<p>一道题如果会打SG表这道题就做出来了，<del>但是就是打不出来😭</del>，就算空间不够，不能纯打SG表也可以根据SG表求规律的，给你那么多的数据总不会求不出来巴</p>
 <p>再看一道经典例题：<a target="_blank" rel="noopener" href="https://vjudge.net/contest/396428#problem/H">Nim or not Nim?</a></p>
-<pre><code class="language-c">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-c">#include &lt;bits/stdc++.h&gt;
 using namespace std;
 #define MAXN 1000 + 10
 //int sg[MAXN];
 //bool vis[MAXN];
 //void init(int n)&#123;
-//	sg[0]=0;
-//	sg[1]=1;
-//	for(int i=2;i&lt;=n;i++)&#123;
-//		memset(vis,0,sizeof vis);
-//		for(int j=1;j&lt;=i;j++)&#123;
-//			vis[sg[i-j]]=1;
-//			if(j!=i) vis[sg[i-j]^sg[j]]=1;
-//		&#125;
-//		for(int j=0;;j++)&#123;
-//			if(!vis[j])&#123;
-//				sg[i]=j;
-//				break;
-//			&#125;
-//		&#125;
-//	&#125;
+//    sg[0]=0;
+//    sg[1]=1;
+//    for(int i=2;i&lt;=n;i++)&#123;
+//        memset(vis,0,sizeof vis);
+//        for(int j=1;j&lt;=i;j++)&#123;
+//            vis[sg[i-j]]=1;
+//            if(j!=i) vis[sg[i-j]^sg[j]]=1;
+//        &#125;
+//        for(int j=0;;j++)&#123;
+//            if(!vis[j])&#123;
+//                sg[i]=j;
+//                break;
+//            &#125;
+//        &#125;
+//    &#125;
 //&#125;
 int sg(int x)&#123;
-	if(x%4==0) return x-1;
-	if(x%4==3) return x+1;
-	return x;
+    if(x%4==0) return x-1;
+    if(x%4==3) return x+1;
+    return x;
 &#125;
 int main()&#123;
-	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); 
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); 
 //    init(100);
     int t;
     cin&gt;&gt;t;
     while(t--)&#123;
-    	int n;
-    	cin&gt;&gt;n;
-    	int c=0;
-    	for(int i=1;i&lt;=n;i++)&#123;
-			int tmp;
-			cin&gt;&gt;tmp;
-			c^=sg(tmp); 
-		&#125; 
-		if(c==0) cout&lt;&lt;&quot;Bob&quot;&lt;&lt;'\n';
-		else cout&lt;&lt;&quot;Alice&quot;&lt;&lt;'\n';
-	&#125;
+        int n;
+        cin&gt;&gt;n;
+        int c=0;
+        for(int i=1;i&lt;=n;i++)&#123;
+            int tmp;
+            cin&gt;&gt;tmp;
+            c^=sg(tmp); 
+        &#125; 
+        if(c==0) cout&lt;&lt;&quot;Bob&quot;&lt;&lt;&#39;\n&#39;;
+        else cout&lt;&lt;&quot;Alice&quot;&lt;&lt;&#39;\n&#39;;
+    &#125;
     return 0;
 &#125;
 </code></pre>
@@ -892,7 +873,7 @@ int main()&#123;
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

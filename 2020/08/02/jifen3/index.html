@@ -415,7 +415,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">5.9k字</span>
+        <span class="post-count">6k字</span>
       </span>
     </span>
 
@@ -445,8 +445,7 @@
           <blockquote>
 <p>学习了最短路后，感觉自己理解真的很一般，只会一些模板题目，稍微变一下就死了，而且发现我的思维很死，只会写套路题，做那些稍微灵活一点的题目感觉就很吃力，希望以后能有好转</p>
 </blockquote>
-<h2 id="B-张仙女的愧疚">B 张仙女的愧疚</h2>
-<blockquote>
+<h2 id="B-张仙女的愧疚"><a href="#B-张仙女的愧疚" class="headerlink" title="B 张仙女的愧疚"></a>B 张仙女的愧疚</h2><blockquote>
 <p>张仙女最近痴迷于游戏，可是他每周都得为学弟们准备一场积分赛。但，不是谁都能成为</p>
 <p>时间管理大师。在游戏的诱惑下，他不小心出了几道难题，导致学弟们的心态可能爆炸，终于</p>
 <p>他感到了深深的愧疚。决定这次一定友好一点。</p>
@@ -467,44 +466,42 @@
 <p><strong>样例输出</strong></p>
 <p>3</p>
 </blockquote>
-<h3 id="分析">分析</h3>
-<p>题意很简单求数组里面有多少对数满足数值和等于下标差，列出等式a[i]+a[j]==j-i，这道题就是一个简单的思维题，说简单，我还是没想出来，真的菜死了，这个式子可以变一下形把含i的弄到一边，这样a[i]+i==j-a[j]，这样一来我们只要遍历一遍看看数值等于a[i]+i的有多少个数，用map存下来，再遍历一遍，看看map下标等于j-a[j]的有多少个就行了</p>
-<pre><code class="language-c">#include&lt;bits/stdc++.h&gt;
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>题意很简单求数组里面有多少对数满足数值和等于下标差，列出等式a[i]+a[j]==j-i，这道题就是一个简单的思维题，说简单，我还是没想出来，真的菜死了，这个式子可以变一下形把含i的弄到一边，这样a[i]+i==j-a[j]，这样一来我们只要遍历一遍看看数值等于a[i]+i的有多少个数，用map存下来，再遍历一遍，看看map下标等于j-a[j]的有多少个就行了</p>
+<pre><code class="lang-c">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int N= 200010;
 int arr[N];
 map&lt;int,int&gt; mp;
 int main()
 &#123;
-	int n;
-	cin&gt;&gt;n;
-	for(int i=1;i&lt;=n;i++)&#123;
-		cin&gt;&gt;arr[i];
-		mp[i+arr[i]]++;
-	&#125;
-	long long cnt=0;
-	for(int i=1;i&lt;=n;i++)&#123;
-		if(mp[i-arr[i]]) cnt+=mp[i-arr[i]];
-	&#125;
-	cout&lt;&lt;cnt&lt;&lt;'\n';
-	return 0;
- &#125; 
+    int n;
+    cin&gt;&gt;n;
+    for(int i=1;i&lt;=n;i++)&#123;
+        cin&gt;&gt;arr[i];
+        mp[i+arr[i]]++;
+    &#125;
+    long long cnt=0;
+    for(int i=1;i&lt;=n;i++)&#123;
+        if(mp[i-arr[i]]) cnt+=mp[i-arr[i]];
+    &#125;
+    cout&lt;&lt;cnt&lt;&lt;&#39;\n&#39;;
+    return 0;
+ &#125;
 </code></pre>
-<h2 id="C-何仙女的回文串">C 何仙女的回文串</h2>
-<blockquote>
+<h2 id="C-何仙女的回文串"><a href="#C-何仙女的回文串" class="headerlink" title="C 何仙女的回文串"></a>C 何仙女的回文串</h2><blockquote>
 <p>在一个遥远的国度里，有一个女儿国，里面住着很多很多的小仙女。某一天，一位英俊的</p>
 <p>剑士前来寻求对象。国王告诉他，只要能回答出来一个问题，他就能娶走其中的何仙女；</p>
-<p>现在有一个字符串S，S为所有仙女名字的首字母集合，国王命令他找出最长的字符串<strong>T</strong>，</p>
-<p>T满足以下条件:</p>
+<p>现在有一个字符串S，S为所有仙女名字的首字母集合，国王命令他找出最长的字符串<strong>T</strong>， </p>
+<p>T满足以下条件: </p>
 <p>• T的长度不超过S的长度</p>
 <p>• T是回文串</p>
-<p>• 存在两个字符串A,B（可能为空），使得 T=A+B (’+'表示连接两个字符串)，其中A是S的</p>
+<p>• 存在两个字符串A,B（可能为空），使得 T=A+B (‘+’表示连接两个字符串)，其中A是S的</p>
 <p>前缀字符串，B是S的后缀字符串</p>
 <p>剑士听后心头一颤，不知所措，暗地里告诉了你字符串S，希望没有对象的你能尽快告诉</p>
 <p>他满足条件的字符串T是多少；</p>
 <p><strong>输入数据</strong></p>
 <p>第一行是一个整数<em>T</em>(1 ⩽ <em>t</em> ⩽ 1000)，表示样例的个数。</p>
-<p>以后每个样例一行，是一个字符串S。</p>
+<p>以后每个样例一行，是一个字符串S。 </p>
 <p>(数据确保所有字符串长度不超过5000)</p>
 <p><strong>输出数据</strong></p>
 <p>对于每个测试用例，输出满足上述条件的最长字符串T。如果存在多个可能的解决方案，输</p>
@@ -523,43 +520,41 @@ int main()
 <p>codeedoc</p>
 <p>abba</p>
 </blockquote>
-<h3 id="分析-v2">分析</h3>
-<p>其实这道题也不是很难的，我没做这道题很大的原因其实就是这道题没多少人AC，心理就有些抵触。。我把大量精力都放到了F，其实F是一道很难的题目，但是AC的人多我就去做了。。这道题既然要找最长回文串，还要求前后是源字符串的前缀和后缀，我们就可以从前后找，来一个双指针，找到第一个不同的字符然后找中间最长的回文串，把三段拼接在一起就行了</p>
-<pre><code class="language-c">#include &lt;bits/stdc++.h&gt;
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>其实这道题也不是很难的，我没做这道题很大的原因其实就是这道题没多少人AC，心理就有些抵触。。我把大量精力都放到了F，其实F是一道很难的题目，但是AC的人多我就去做了。。这道题既然要找最长回文串，还要求前后是源字符串的前缀和后缀，我们就可以从前后找，来一个双指针，找到第一个不同的字符然后找中间最长的回文串，把三段拼接在一起就行了</p>
+<pre><code class="lang-c">#include &lt;bits/stdc++.h&gt;
 using namespace std;
 typedef long long ll;
 const int mod=998244353;
 string s,ans;
 bool check(int l,int r)&#123;  
-	while(l&lt;r)&#123;
-		if(s[l]!=s[r]) return 0;
-		l++,r--;
-	&#125;
-	return 1;
+    while(l&lt;r)&#123;
+        if(s[l]!=s[r]) return 0;
+        l++,r--;
+    &#125;
+    return 1;
 &#125;
 int main()
 &#123;
-	int t; cin&gt;&gt;t;
-	while(t--)&#123;
-		ans.clear();
-		cin&gt;&gt;s;
-		int l=0,r=s.size()-1;
-		while(l&lt;r&amp;&amp;s[l]==s[r]) l++,r--;
-		int i,j;
-		for(i=l;i&lt;=r;i++) if(check(i,r)) break;
-		for(j=r;j&gt;=l;j--) if(check(l,j)) break;
-		int ll,rr;
-		if(r-i&gt;j-l) rr=r,ll=i;
-		else rr=j,ll=l;
-		for(int i=0;i&lt;l;i++) ans+=s[i];
-		for(int i=ll;i&lt;=rr;i++) ans+=s[i];
-		for(int i=r+1;i&lt;s.size();i++) ans+=s[i];
-		cout&lt;&lt;ans&lt;&lt;'\n';
-	&#125;
+    int t; cin&gt;&gt;t;
+    while(t--)&#123;
+        ans.clear();
+        cin&gt;&gt;s;
+        int l=0,r=s.size()-1;
+        while(l&lt;r&amp;&amp;s[l]==s[r]) l++,r--;
+        int i,j;
+        for(i=l;i&lt;=r;i++) if(check(i,r)) break;
+        for(j=r;j&gt;=l;j--) if(check(l,j)) break;
+        int ll,rr;
+        if(r-i&gt;j-l) rr=r,ll=i;
+        else rr=j,ll=l;
+        for(int i=0;i&lt;l;i++) ans+=s[i];
+        for(int i=ll;i&lt;=rr;i++) ans+=s[i];
+        for(int i=r+1;i&lt;s.size();i++) ans+=s[i];
+        cout&lt;&lt;ans&lt;&lt;&#39;\n&#39;;
+    &#125;
 &#125;
 </code></pre>
-<h2 id="E-拯救李仙女">E 拯救李仙女</h2>
-<blockquote>
+<h2 id="E-拯救李仙女"><a href="#E-拯救李仙女" class="headerlink" title="E 拯救李仙女"></a>E 拯救李仙女</h2><blockquote>
 <p>大魔王因为抓来的公主被勇士救走后很是不甘心，于是他将魔爪伸向了李仙女，这次为了</p>
 <p>不再让强大的勇士阻止自己，他选择化身美男子让小仙女爱上自己，年轻的小仙女果不其然上</p>
 <p>当了，她将不顾危险的来到大魔王的城堡中。</p>
@@ -578,7 +573,7 @@ int main()
 <p>中。</p>
 <p>不可能见过即指小仙女一定不会遇到的人。</p>
 <p><strong>输入数据</strong></p>
-<p>第一行有两个整数<em>n m w</em>(1 ⩽ <em>n</em> ⩽ 100000*,* 1 ⩽ <em>m</em> ⩽ 200000*,* 1 ⩽ <em>w</em> ⩽ 1<em>e</em>9)，分别代表路口</p>
+<p>第一行有两个整数<em>n m w</em>(1 ⩽ <em>n</em> ⩽ 100000<em>,</em> 1 ⩽ <em>m</em> ⩽ 200000<em>,</em> 1 ⩽ <em>w</em> ⩽ 1<em>e</em>9)，分别代表路口</p>
 <p>数和道路数以及小仙女的初始爱慕值。</p>
 <p>第二行有<em>n</em>个整数<em>a</em>1 <em>· · ·</em> <em>a**n</em>(1 ⩽ <em>a**i</em> ⩽ <em>w</em>)，<em>a**i</em>是第<em>i</em>个人的影响力。接下来的<em>m</em>行每行有两个</p>
 <p>整数<em>i, j</em>(1 ⩽ <em>i, j</em> ⩽ <em>n</em>)，代表着第<em>i</em>号路口与第<em>j</em>号路口有一条路。（所给图不保证连通，当然不</p>
@@ -608,11 +603,9 @@ int main()
 <p><strong>样例输出2</strong></p>
 <p>-1</p>
 </blockquote>
-<h3 id="分析-v3">分析</h3>
-<p>题意是公主爱上了大魔王，魔法师要劝她，安排了n个人在n个路口劝阻公主，公主有一个爱慕值，她会挑一个最短路去找大魔王，最短路指的是减少爱慕值最少的一条路，如果公主走到了大魔王前，大法师就会出现，如果此时爱慕值是十二的倍数，那么大法师就会召集所有非最短路径的人一起来劝阻公主，最短路径可能有多条</p>
+<h3 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h3><p>题意是公主爱上了大魔王，魔法师要劝她，安排了n个人在n个路口劝阻公主，公主有一个爱慕值，她会挑一个最短路去找大魔王，最短路指的是减少爱慕值最少的一条路，如果公主走到了大魔王前，大法师就会出现，如果此时爱慕值是十二的倍数，那么大法师就会召集所有非最短路径的人一起来劝阻公主，最短路径可能有多条</p>
 <p>所以这道题就是首先从起点跑一遍迪杰斯特拉算法，找到最短路，判断是否爱慕值是十二的倍数，是的话就再标记所有最短路，难的就是标记最短路，具体看代码注释吧</p>
-<h3 id="CODE">CODE</h3>
-<pre><code>#include&lt;bits/stdc++.h&gt;
+<h3 id="CODE"><a href="#CODE" class="headerlink" title="CODE"></a>CODE</h3><pre><code>#include&lt;bits/stdc++.h&gt;
 using namespace std;
 typedef long long ll;
 const ll N=100100;
@@ -622,113 +615,111 @@ ll arr[M];
 ll val[N];
 bool vis2[N];
 struct node&#123; //链式前向星
-	ll pos; //这条边到达的结点
-	ll cost; //这条边的权值
-	ll next; //这条边的相邻边
-	bool operator &lt; (const node &amp;o) const&#123; //重载运算符
-		return cost&gt;o.cost;
-	&#125;
+    ll pos; //这条边到达的结点
+    ll cost; //这条边的权值
+    ll next; //这条边的相邻边
+    bool operator &lt; (const node &amp;o) const&#123; //重载运算符
+        return cost&gt;o.cost;
+    &#125;
 &#125;edge[M]; //链式前向星的边数组
 ll head[M]; //链式前向星的head数组，表示的是以u结点开始的最后一条边的编号
 ll size; //边的编号
 void add(ll u,ll v,ll w)&#123;
-	edge[size].cost=w; //这条边的权值
-	edge[size].pos=v; //这条边到达的结点
-	edge[size].next=head[u]; //这条边的邻边就是上次以这个节点开始的最后一条边的编号
-	head[u]=size++;//更新以这条边开始的最后一条边的编号，同时编号++
+    edge[size].cost=w; //这条边的权值
+    edge[size].pos=v; //这条边到达的结点
+    edge[size].next=head[u]; //这条边的邻边就是上次以这个节点开始的最后一条边的编号
+    head[u]=size++;//更新以这条边开始的最后一条边的编号，同时编号++
 &#125;
 priority_queue&lt;node&gt; pq; //跑堆优化的迪杰斯特拉用的优先队列
 ll dis[N]; //存的是每一个点到起点的最短距离
 bool vis[N]; //记录是否确定了某一个点到起点的最短距离
 void init(ll n)&#123; //初始化函数
-	size=0; //边的序号更新为0
-	memset(head,-1,sizeof head); //head初始化为-1，也可以初始化为0，那样的话size就要从1开始
-	while(!pq.empty()) pq.pop(); //队列清空
-	memset(vis,0,sizeof vis); //vis重置
-	memset(dis,0x3f,sizeof dis); //memset以字节赋值longlong也可以使用这种方法
+    size=0; //边的序号更新为0
+    memset(head,-1,sizeof head); //head初始化为-1，也可以初始化为0，那样的话size就要从1开始
+    while(!pq.empty()) pq.pop(); //队列清空
+    memset(vis,0,sizeof vis); //vis重置
+    memset(dis,0x3f,sizeof dis); //memset以字节赋值longlong也可以使用这种方法
 &#125;
 void dij(ll s)&#123; //mlog(n)的复杂度
-	dis[s]=arr[s]; //起点的距离应该初始化为1结点的劝阻值
-	pq.push(&#123;s,arr[s]&#125;); //放进去起点
-	while(!pq.empty())&#123;
-		node x=pq.top(); pq.pop();
-		ll u=x.pos; //当前所有点离起点最近的
-		if(vis[u]) continue;
-		vis[u]=1; //这个点的最短路径就确定了，标记
-		for(ll e=head[u];e!=-1;e=edge[e].next)&#123; //找到以这个结点开始的最后一条边的编号，从这条边开始遍历邻边
-			ll v=edge[e].pos; //找到u结点所有邻接点
-			if(vis[v]) continue; //如果这个点的最短路径确定了continue
-			if(dis[v]&gt;dis[u]+edge[e].cost)&#123; //否则更新其到起点的最短距离
-				dis[v]=dis[u]+edge[e].cost;
-				pq.push(&#123;v,dis[v]&#125;); //放进队列，因为每次都是用所有结点离起点最近的点去更新每一个点的最短距离的
-			&#125;
-		&#125;
-	&#125;
+    dis[s]=arr[s]; //起点的距离应该初始化为1结点的劝阻值
+    pq.push(&#123;s,arr[s]&#125;); //放进去起点
+    while(!pq.empty())&#123;
+        node x=pq.top(); pq.pop();
+        ll u=x.pos; //当前所有点离起点最近的
+        if(vis[u]) continue;
+        vis[u]=1; //这个点的最短路径就确定了，标记
+        for(ll e=head[u];e!=-1;e=edge[e].next)&#123; //找到以这个结点开始的最后一条边的编号，从这条边开始遍历邻边
+            ll v=edge[e].pos; //找到u结点所有邻接点
+            if(vis[v]) continue; //如果这个点的最短路径确定了continue
+            if(dis[v]&gt;dis[u]+edge[e].cost)&#123; //否则更新其到起点的最短距离
+                dis[v]=dis[u]+edge[e].cost;
+                pq.push(&#123;v,dis[v]&#125;); //放进队列，因为每次都是用所有结点离起点最近的点去更新每一个点的最短距离的
+            &#125;
+        &#125;
+    &#125;
 &#125;
 void dfs(ll pos,ll d)&#123;
-	if(pos==1) return ; //到了起点退出
-	if(vis2[pos]) return ; //如果往回搜了退出
-	vis2[pos]=1; //标记父亲结点，防止往后走
-	for(ll e=head[pos];e!=-1;e=edge[e].next)&#123; //遍历当前点的邻接点
-		ll v=edge[e].pos; //邻接点
-		if(d==dis[v])&#123; //如果(当前点)减去(邻接点到当前点的那条边的权值)后等于(邻接点到起点的最短距离)，则说明当前点是由这个邻接点过来的，则这个邻接点一定是从起点到终点的最短路径中的一条
-			vis[v]=1; //标记该点
-			dfs(v,dis[v]-arr[v]); //从该点开始找
-		&#125;
-	&#125;
-	vis2[pos]=0; //其实这句在这里没有用，是恢复现场的，一条路撞到南墙了回来后每一个点都恢复原来的状态，加上这一句后其实不用再手动初始化vis2了
+    if(pos==1) return ; //到了起点退出
+    if(vis2[pos]) return ; //如果往回搜了退出
+    vis2[pos]=1; //标记父亲结点，防止往后走
+    for(ll e=head[pos];e!=-1;e=edge[e].next)&#123; //遍历当前点的邻接点
+        ll v=edge[e].pos; //邻接点
+        if(d==dis[v])&#123; //如果(当前点)减去(邻接点到当前点的那条边的权值)后等于(邻接点到起点的最短距离)，则说明当前点是由这个邻接点过来的，则这个邻接点一定是从起点到终点的最短路径中的一条
+            vis[v]=1; //标记该点
+            dfs(v,dis[v]-arr[v]); //从该点开始找
+        &#125;
+    &#125;
+    vis2[pos]=0; //其实这句在这里没有用，是恢复现场的，一条路撞到南墙了回来后每一个点都恢复原来的状态，加上这一句后其实不用再手动初始化vis2了
 &#125;
 int main()
 &#123;
-	scanf(&quot;%lld%lld%lld&quot;,&amp;n,&amp;m,&amp;w); //n个结点，m条边，爱慕值
-	init(n); //初始化
-	for(ll i=1;i&lt;=n;i++)&#123; //输入每一个结点的人劝阻值
-		scanf(&quot;%lld&quot;,&amp;arr[i]);
-	&#125;
-	while(m--)&#123;
-		ll u,v;
-		scanf(&quot;%lld%d&quot;,&amp;u,&amp;v);
-		add(u,v,arr[v]); //这里用一条边的终点的劝阻值作为这条边的权值
-		add(v,u,arr[u]); //无向边，但是权值不一样，但是不会有其他影响
-	&#125;
-	dij(1); //1起点，n终点
-	ll cost=dis[n]; //记录到n点的最少花费
-	
-	if(cost&gt;=w) printf(&quot;0\n&quot;); //如果公主到不了n点直接不用召唤了，输出0
-	else&#123;
-		if((w-cost)%12!=0) printf(&quot;-1\n&quot;);// 如果这时的爱慕值不是十二的倍数，则公主与大魔王相遇
-		else&#123;
-			memset(vis2,0,sizeof vis2); //dfs时不走回头路，这里其实不用初始化，因为dfs回朔已经全部恢复成0了，这里是一组数据，多组数据时就不用memset了，小优化
-			memset(vis,0,sizeof vis); //vis标记最短路
-			memset(val,0,sizeof val); //存非最短路的劝阻值
-			int tail=0; //非最短路的结点数量
-			vis[n]=1; //必须手动标记起点(dfs的起点)，因为直接就从起点的邻接点开始了
-			dfs(n,cost-arr[n]);//这里应该倒着去找，从n开始往前遍历
-			for(int i=1;i&lt;=n;i++)&#123; //遍历每一个结点，找到不是最短路径的点
-				if(!vis[i]) val[++tail]=arr[i];
-			&#125;
-			sort(val+1,val+1+tail,greater&lt;ll&gt;()); //从大到小排序，因为要输出最少召唤次数
-			ll cnt=0;
-			for(int i=1;i&lt;=tail;i++)&#123; //每次召唤最大的，使得召唤次数最少
-				if(w&lt;=cost) break;
-				w-=val[i];
-				cnt++;
-			&#125;
-			if(cost&gt;=w) printf(&quot;%lld\n&quot;,cnt);
-			else printf(&quot;-1\n&quot;);
-		&#125;
-	&#125;
-	return 0;
- &#125; 
-</code></pre>
-<h2 id="F-黄仙女的生日">F 黄仙女的生日</h2>
-<blockquote>
+    scanf(&quot;%lld%lld%lld&quot;,&amp;n,&amp;m,&amp;w); //n个结点，m条边，爱慕值
+    init(n); //初始化
+    for(ll i=1;i&lt;=n;i++)&#123; //输入每一个结点的人劝阻值
+        scanf(&quot;%lld&quot;,&amp;arr[i]);
+    &#125;
+    while(m--)&#123;
+        ll u,v;
+        scanf(&quot;%lld%d&quot;,&amp;u,&amp;v);
+        add(u,v,arr[v]); //这里用一条边的终点的劝阻值作为这条边的权值
+        add(v,u,arr[u]); //无向边，但是权值不一样，但是不会有其他影响
+    &#125;
+    dij(1); //1起点，n终点
+    ll cost=dis[n]; //记录到n点的最少花费
+
+    if(cost&gt;=w) printf(&quot;0\n&quot;); //如果公主到不了n点直接不用召唤了，输出0
+    else&#123;
+        if((w-cost)%12!=0) printf(&quot;-1\n&quot;);// 如果这时的爱慕值不是十二的倍数，则公主与大魔王相遇
+        else&#123;
+            memset(vis2,0,sizeof vis2); //dfs时不走回头路，这里其实不用初始化，因为dfs回朔已经全部恢复成0了，这里是一组数据，多组数据时就不用memset了，小优化
+            memset(vis,0,sizeof vis); //vis标记最短路
+            memset(val,0,sizeof val); //存非最短路的劝阻值
+            int tail=0; //非最短路的结点数量
+            vis[n]=1; //必须手动标记起点(dfs的起点)，因为直接就从起点的邻接点开始了
+            dfs(n,cost-arr[n]);//这里应该倒着去找，从n开始往前遍历
+            for(int i=1;i&lt;=n;i++)&#123; //遍历每一个结点，找到不是最短路径的点
+                if(!vis[i]) val[++tail]=arr[i];
+            &#125;
+            sort(val+1,val+1+tail,greater&lt;ll&gt;()); //从大到小排序，因为要输出最少召唤次数
+            ll cnt=0;
+            for(int i=1;i&lt;=tail;i++)&#123; //每次召唤最大的，使得召唤次数最少
+                if(w&lt;=cost) break;
+                w-=val[i];
+                cnt++;
+            &#125;
+            if(cost&gt;=w) printf(&quot;%lld\n&quot;,cnt);
+            else printf(&quot;-1\n&quot;);
+        &#125;
+    &#125;
+    return 0;
+ &#125;
+</code></pre><h2 id="F-黄仙女的生日"><a href="#F-黄仙女的生日" class="headerlink" title="F 黄仙女的生日"></a>F 黄仙女的生日</h2><blockquote>
 <p>今天是黄仙女的生日，她妈妈给她买了一块很大很大的蛋糕，在吃蛋糕的时候需要把蛋糕</p>
 <p>切开，黄仙女会法术，她每用一次法术就可以在蛋糕内任意选一点，发出两道激光（可以看作</p>
 <p>同一点发出两道射线）把蛋糕切开。这两条激光不能重合，不在一条直线上。她想知道如果</p>
-<p>用n次法术的话，最多可以把蛋糕分成多少块。（规定只能在蛋糕内选一点）</p>
+<p>用n次法术的话，最多可以把蛋糕分成多少块。（规定只能在蛋糕内选一点）    </p>
 <p><strong>输入数据</strong></p>
-<p>第一行是一个整数<em>T</em>(<em>T</em> ⩽ 1000)，表示测试实例的个数,然后是T行，每行有一个数字<em>n</em>(0 ⩽</p>
+<p>第一行是一个整数<em>T</em>(<em>T</em> ⩽ 1000)，表示测试实例的个数,然后是T行，每行有一个数字<em>n</em>(0 ⩽ </p>
 <p><em>n</em> ⩽ 104)表示用n次法术</p>
 <p><strong>输出数据</strong></p>
 <p>T行数字，最多可以分多少块</p>
@@ -740,32 +731,29 @@ int main()
 <p><strong>样例输出</strong></p>
 <p>1</p>
 <p>2</p>
-<p>7</p>
+<p>7 </p>
 </blockquote>
-<h3 id="分析-v4">分析</h3>
-<p>这道题明明这么难，竟然做出来的人这么多！！！可能是我真的太菜了，我现在这道题都没理解为什么这么画块最多，这道题不讲了</p>
-<h3 id="CODE-v2">CODE</h3>
-<pre><code class="language-c">#include&lt;bits/stdc++.h&gt;
+<h3 id="分析-3"><a href="#分析-3" class="headerlink" title="分析"></a>分析</h3><p>这道题明明这么难，竟然做出来的人这么多！！！可能是我真的太菜了，我现在这道题都没理解为什么这么画块最多，这道题不讲了</p>
+<h3 id="CODE-1"><a href="#CODE-1" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int N=10001;
 int dp[10001]=&#123;1,2&#125;;
 int main()
 &#123;
-	for(int i=2;i&lt;10001;i++)&#123;
-		dp[i]=dp[i-1]+i*4-3;
-	&#125;
-	int t;
-	cin&gt;&gt;t;
-	while(t--)&#123;
-		int n;
-		cin&gt;&gt;n;
-		cout&lt;&lt;dp[n]&lt;&lt;'\n';
-	&#125;
-	return 0;
- &#125; 
+    for(int i=2;i&lt;10001;i++)&#123;
+        dp[i]=dp[i-1]+i*4-3;
+    &#125;
+    int t;
+    cin&gt;&gt;t;
+    while(t--)&#123;
+        int n;
+        cin&gt;&gt;n;
+        cout&lt;&lt;dp[n]&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
+ &#125;
 </code></pre>
-<h2 id="G-小仙女的树">G 小仙女的树</h2>
-<blockquote>
+<h2 id="G-小仙女的树"><a href="#G-小仙女的树" class="headerlink" title="G 小仙女的树"></a>G 小仙女的树</h2><blockquote>
 <p>小仙女在天上飞的时候，突然听到地面上有两个人争吵，Ayush和Ashish他们邀请小仙女</p>
 <p>给他们做裁判，他们有一个无根树，每个人每一次都可以取一个叶子节点，树上有一个特殊节</p>
 <p>点，问最后谁能取走特殊的节点。</p>
@@ -783,48 +771,44 @@ int main()
 <p><strong>样例输出</strong></p>
 <p>Ashish</p>
 </blockquote>
-<h3 id="分析-v5">分析</h3>
-<p>少有的签到题目，可我还是很粗心，画图我想当然得看到x结点裸漏在外面就认为能取走了，其实它的度数是大于1的！！！</p>
-<h3 id="CODE-v3">CODE</h3>
-<pre><code>#include&lt;bits/stdc++.h&gt;
+<h3 id="分析-4"><a href="#分析-4" class="headerlink" title="分析"></a>分析</h3><p>少有的签到题目，可我还是很粗心，画图我想当然得看到x结点裸漏在外面就认为能取走了，其实它的度数是大于1的！！！</p>
+<h3 id="CODE-2"><a href="#CODE-2" class="headerlink" title="CODE"></a>CODE</h3><pre><code>#include&lt;bits/stdc++.h&gt;
 using namespace std;
 typedef long long ll;
 const ll MOD= 998244353;
 ll degree[1100];
 int main()
 &#123;
-	int t;
-	cin&gt;&gt;t;
-	while(t--)&#123;
-		int n,x;
-		cin&gt;&gt;n&gt;&gt;x;
-		n--;
-		while(n--)&#123;
-			int a,b;
-			cin&gt;&gt;a&gt;&gt;b;
-			degree[a]++;
-			degree[b]++;
-		&#125;
-		if(degree[x]==1||degree[x]==0)&#123;
-			cout&lt;&lt;&quot;Ayush&quot;&lt;&lt;'\n';
-			continue;
-		&#125;
-		else&#123;
-			if(n==3) cout&lt;&lt;&quot;Ashish&quot;&lt;&lt;'\n';
-			else if((n-3)&amp;1) cout&lt;&lt;&quot;Ayush&quot;&lt;&lt;'\n';
-			else cout&lt;&lt;&quot;Ashish&quot;&lt;&lt;'\n';
-		&#125;
-	&#125;
-	return 0;
- &#125; 
-</code></pre>
-<h2 id="H-仙女们的高数又双叒叕挂了">H 仙女们的高数又双叒叕挂了</h2>
-<blockquote>
+    int t;
+    cin&gt;&gt;t;
+    while(t--)&#123;
+        int n,x;
+        cin&gt;&gt;n&gt;&gt;x;
+        n--;
+        while(n--)&#123;
+            int a,b;
+            cin&gt;&gt;a&gt;&gt;b;
+            degree[a]++;
+            degree[b]++;
+        &#125;
+        if(degree[x]==1||degree[x]==0)&#123;
+            cout&lt;&lt;&quot;Ayush&quot;&lt;&lt;&#39;\n&#39;;
+            continue;
+        &#125;
+        else&#123;
+            if(n==3) cout&lt;&lt;&quot;Ashish&quot;&lt;&lt;&#39;\n&#39;;
+            else if((n-3)&amp;1) cout&lt;&lt;&quot;Ayush&quot;&lt;&lt;&#39;\n&#39;;
+            else cout&lt;&lt;&quot;Ashish&quot;&lt;&lt;&#39;\n&#39;;
+        &#125;
+    &#125;
+    return 0;
+ &#125;
+</code></pre><h2 id="H-仙女们的高数又双叒叕挂了"><a href="#H-仙女们的高数又双叒叕挂了" class="headerlink" title="H 仙女们的高数又双叒叕挂了"></a>H 仙女们的高数又双叒叕挂了</h2><blockquote>
 <p>话说有棵树，挂了很多人，其中也不乏众多仙女。其中有道题目是这样的</p>
-<p>从-1到1对(1-x<sup>2</sup>)<sup>n</sup>积分</p>
+<p>从-1到1对(1-x^2^)^n^积分</p>
 <p>给定n，求得上式的值</p>
 <p><strong>输入数据</strong></p>
-<p>输入包含多组测试，以文件结尾结束。每组测试包含一个整数n</p>
+<p>输入包含多组测试，以文件结尾结束。每组测试包含一个整数n </p>
 <p>1 <em>&lt;</em>= <em>n &lt;</em>= 1<em>e</em>6</p>
 <p>样例总数不超过1<em>e</em>5</p>
 <p><strong>输出数据</strong></p>
@@ -841,80 +825,75 @@ int main()
 <p>32/35</p>
 <p>622707799/502563857</p>
 </blockquote>
-<h3 id="分析-v6">分析</h3>
-<p>这道题我真的不信有人第一次就能手推出数学公式！！！不去网上查我是真的不信的！！！当然大神除外，不讲了，纯数学推导</p>
-<h3 id="CODE-v4">CODE</h3>
-<pre><code class="language-c">#include&lt;bits/stdc++.h&gt;
+<h3 id="分析-5"><a href="#分析-5" class="headerlink" title="分析"></a>分析</h3><p>这道题我真的不信有人第一次就能手推出数学公式！！！不去网上查我是真的不信的！！！当然大神除外，不讲了，纯数学推导</p>
+<h3 id="CODE-3"><a href="#CODE-3" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 typedef long long ll;
 const ll MOD= 998244353;
 const ll maxn=1e6+7;
 ll fac[maxn*2+100];
 ll ksm(ll a,ll b)&#123;
-	ll ans=1;
-	while(b)&#123;
-		if(b&amp;1) ans=ans*a%MOD;
-		a=a*a%MOD;
-		b&gt;&gt;=1;
-	&#125;
-	return ans;
+    ll ans=1;
+    while(b)&#123;
+        if(b&amp;1) ans=ans*a%MOD;
+        a=a*a%MOD;
+        b&gt;&gt;=1;
+    &#125;
+    return ans;
 &#125;
 ll solve(ll n)&#123;
-	ll ans=1;
-	for(int i=1;i&lt;=n;i++)&#123;
-		ans=ans*i%MOD;
-	&#125;
-	return ans;
+    ll ans=1;
+    for(int i=1;i&lt;=n;i++)&#123;
+        ans=ans*i%MOD;
+    &#125;
+    return ans;
 &#125;
 void init()&#123;
-	fac[0]=1;
-	for(ll i=1;i&lt;=maxn*2;i++) fac[i]=fac[i-1]*i%MOD;
-	return ;
+    fac[0]=1;
+    for(ll i=1;i&lt;=maxn*2;i++) fac[i]=fac[i-1]*i%MOD;
+    return ;
 &#125;
 int main()
 &#123;
-	ios::sync_with_stdio(false);
-	cin.tie(0); cout.tie(0);
-	init();
-	int n;
-	while(cin&gt;&gt;n)&#123;
-		ll x=ksm(fac[n],2)*ksm(2,2*n+1)%MOD;
-		ll y=fac[2*n+1]%MOD;
-		ll tmp=__gcd(x,y);
-		cout&lt;&lt;x/tmp&lt;&lt;'/'&lt;&lt;y/tmp&lt;&lt;'\n';
-	&#125;
-	return 0;
- &#125; 
+    ios::sync_with_stdio(false);
+    cin.tie(0); cout.tie(0);
+    init();
+    int n;
+    while(cin&gt;&gt;n)&#123;
+        ll x=ksm(fac[n],2)*ksm(2,2*n+1)%MOD;
+        ll y=fac[2*n+1]%MOD;
+        ll tmp=__gcd(x,y);
+        cout&lt;&lt;x/tmp&lt;&lt;&#39;/&#39;&lt;&lt;y/tmp&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
+ &#125;
 </code></pre>
-<h2 id="I-小仙女的善心">I  小仙女的善心</h2>
-<p>求两个矩形的覆盖面积</p>
-<h3 id="CODE-v5">CODE</h3>
-<pre><code class="language-c">#include&lt;bits/stdc++.h&gt;
+<h2 id="I-小仙女的善心"><a href="#I-小仙女的善心" class="headerlink" title="I  小仙女的善心"></a>I  小仙女的善心</h2><p>求两个矩形的覆盖面积</p>
+<h3 id="CODE-4"><a href="#CODE-4" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 typedef long long ll;
 const ll MOD= 998244353;
 int main()
 &#123;
-	ll a,b,c,d,e,f,g,h;
-	cin&gt;&gt;a&gt;&gt;b&gt;&gt;c&gt;&gt;d&gt;&gt;e&gt;&gt;f&gt;&gt;g&gt;&gt;h;
-	ll s1=(c-a)*(d-b);
-	ll s2=(g-e)*(h-f);
-	if(g&lt;=a||e&gt;=c||h&lt;=b||f&gt;=d)&#123;
-		cout&lt;&lt;s1+s2&lt;&lt;'\n';
-		return 0;
-	&#125;
-	ll x1,y1,x2,y2;
-	x1=max(a,e);
-	y1=max(b,f);
-	x2=min(c,g);
-	y2=min(d,h);
-	ll mid=(x2-x1)*(y2-y1);
-	cout&lt;&lt;s2+s1-mid&lt;&lt;'\n';
-	return 0;
- &#125; 
+    ll a,b,c,d,e,f,g,h;
+    cin&gt;&gt;a&gt;&gt;b&gt;&gt;c&gt;&gt;d&gt;&gt;e&gt;&gt;f&gt;&gt;g&gt;&gt;h;
+    ll s1=(c-a)*(d-b);
+    ll s2=(g-e)*(h-f);
+    if(g&lt;=a||e&gt;=c||h&lt;=b||f&gt;=d)&#123;
+        cout&lt;&lt;s1+s2&lt;&lt;&#39;\n&#39;;
+        return 0;
+    &#125;
+    ll x1,y1,x2,y2;
+    x1=max(a,e);
+    y1=max(b,f);
+    x2=min(c,g);
+    y2=min(d,h);
+    ll mid=(x2-x1)*(y2-y1);
+    cout&lt;&lt;s2+s1-mid&lt;&lt;&#39;\n&#39;;
+    return 0;
+ &#125;
 </code></pre>
-<h2 id="J-林仙女的选美大赛">J 林仙女的选美大赛</h2>
-<blockquote>
+<h2 id="J-林仙女的选美大赛"><a href="#J-林仙女的选美大赛" class="headerlink" title="J 林仙女的选美大赛"></a>J 林仙女的选美大赛</h2><blockquote>
 <p>在马卡拉卡山脉的最深处，住着一群小仙女。最近，林仙女举办了一场选美大赛。有n名</p>
 <p>小仙女参加了比赛。比赛现场有m名裁判仙女，每个裁判仙女会表达一个自己的观点。比如裁</p>
 <p>判A说：“1=2”表示裁判A认为1号仙女和2号仙女一样美。选美比赛结束了，但是裁判仙女们</p>
@@ -944,23 +923,21 @@ int main()
 <p>CONFLICT</p>
 <p>UNCERTAIN</p>
 </blockquote>
-<h3 id="分析-v7">分析</h3>
-<p>这是一道原题，虽然那道题当时删了，但还好我做了，这道题是用并查集去缩点，把所有=关系的点缩成一个，让它们的祖先代表他们，然后拓扑排序，看看是否有环</p>
-<h3 id="CODE-v6">CODE</h3>
-<pre><code class="language-c">#include&lt;bits/stdc++.h&gt;
+<h3 id="分析-6"><a href="#分析-6" class="headerlink" title="分析"></a>分析</h3><p>这是一道原题，虽然那道题当时删了，但还好我做了，这道题是用并查集去缩点，把所有=关系的点缩成一个，让它们的祖先代表他们，然后拓扑排序，看看是否有环</p>
+<h3 id="CODE-5"><a href="#CODE-5" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 typedef long long ll;
 const int N=10100;
 const int M=20100;
 const ll MOD= 998244353;
 struct node&#123;
-	int to;
-	ll cost;
-	int next;
+    int to;
+    ll cost;
+    int next;
 &#125;edge[M];
 struct b&#123;
-	int u,v;
-	char c;
+    int u,v;
+    char c;
 &#125;arr[M];
 bool vis[N];
 ll dis[N];
@@ -968,80 +945,80 @@ int head[M],fa[N],in[N];
 int size=0,n,m,flag1,flag2,cnt;
 queue&lt;int&gt; q;
 void add(int u,int v,int w)&#123;
-	edge[size].to=v;
-	edge[size].cost=w;
-	edge[size].next=head[u];
-	head[u]=size++;
+    edge[size].to=v;
+    edge[size].cost=w;
+    edge[size].next=head[u];
+    head[u]=size++;
 &#125;
 void init(int n)&#123;
-	size=0; flag1=0; flag2=0; cnt=n;
-	while(!q.empty()) q.pop();
-	for(int i=0;i&lt;=n;i++) head[i]=-1;
-	for(int i=0;i&lt;=n;i++) fa[i]=i;
-	memset(in,0,sizeof in);
+    size=0; flag1=0; flag2=0; cnt=n;
+    while(!q.empty()) q.pop();
+    for(int i=0;i&lt;=n;i++) head[i]=-1;
+    for(int i=0;i&lt;=n;i++) fa[i]=i;
+    memset(in,0,sizeof in);
 &#125;
 int find(int x)&#123;
-	if(x==fa[x]) return x;
-	return fa[x]=find(fa[x]);
+    if(x==fa[x]) return x;
+    return fa[x]=find(fa[x]);
 &#125;
 void merge(int a,int b)&#123;
-	int x=find(a);
-	int y=find(b);
-	if(x!=y) fa[y]=x;
+    int x=find(a);
+    int y=find(b);
+    if(x!=y) fa[y]=x;
 &#125;
 void tuo()&#123;
-	for(int i=1;i&lt;=n;i++)&#123;
-		if(fa[i]==i&amp;&amp;!in[i])&#123; //祖先是自己并且入度为零
-			q.push(i);
-		&#125;
-	&#125;
-	while(!q.empty())&#123;
-		int u=q.front(); q.pop();
-		if(q.size()) flag2=1; //如果当前入度为0的点不止一个，则说明有两个点无法比较，Uncertain，这里还有一个很骚的操作，可以直接反向建图，直接在开始时候判断是否入度为0的点大于1个
-		cnt--; //计数看看能拓扑排序的点有多少个
-		for(int e=head[u];e!=-1;e=edge[e].next)&#123;
-			int v=edge[e].to;
-			in[v]--;
-			if(!in[v]) q.push(v);
-		&#125;
-	&#125;
+    for(int i=1;i&lt;=n;i++)&#123;
+        if(fa[i]==i&amp;&amp;!in[i])&#123; //祖先是自己并且入度为零
+            q.push(i);
+        &#125;
+    &#125;
+    while(!q.empty())&#123;
+        int u=q.front(); q.pop();
+        if(q.size()) flag2=1; //如果当前入度为0的点不止一个，则说明有两个点无法比较，Uncertain，这里还有一个很骚的操作，可以直接反向建图，直接在开始时候判断是否入度为0的点大于1个
+        cnt--; //计数看看能拓扑排序的点有多少个
+        for(int e=head[u];e!=-1;e=edge[e].next)&#123;
+            int v=edge[e].to;
+            in[v]--;
+            if(!in[v]) q.push(v);
+        &#125;
+    &#125;
 &#125;
 int main()
 &#123;
-	while(cin&gt;&gt;n&gt;&gt;m)&#123;
-		init(n);
-		for(int i=1;i&lt;=m;i++)&#123;
-			cin&gt;&gt;arr[i].u&gt;&gt;arr[i].c&gt;&gt;arr[i].v;
-			if(arr[i].c=='=')&#123; //把等于关系的两个点并到一个集合，即缩点
-				merge(arr[i].u,arr[i].v);
-				cnt--; //cnt记录缩点后有几个点
-			&#125;
-		&#125;
-		for(int i=1;i&lt;=m;i++)&#123;
-			char ch=arr[i].c;
-			int u=find(arr[i].u), v=find(arr[i].v);//没缩点的点祖先就是自己
-			if(ch=='=') continue;
-			if(u==v) flag1=1; //矛盾
-			if(ch=='&gt;')&#123;
-				add(u,v,0);
-				in[v]++; 
-			&#125; 
-			if(ch=='&lt;')&#123;
-				add(v,u,0);
-				in[u]++;
-			&#125;
-		&#125;
-		if(flag1)&#123;
-			cout&lt;&lt;&quot;CONFLICT&quot;&lt;&lt;'\n';
-			continue;
-		&#125;
-		tuo(); //拓扑排序
-		if(cnt&gt;0||flag1) cout&lt;&lt;&quot;CONFLICT&quot;&lt;&lt;'\n';
-		else if(flag2) cout&lt;&lt;&quot;UNCERTAIN&quot;&lt;&lt;'\n';
-		else cout&lt;&lt;&quot;OK&quot;&lt;&lt;'\n';
-	&#125;
-	return 0;
- &#125; 
+    while(cin&gt;&gt;n&gt;&gt;m)&#123;
+        init(n);
+        for(int i=1;i&lt;=m;i++)&#123;
+            cin&gt;&gt;arr[i].u&gt;&gt;arr[i].c&gt;&gt;arr[i].v;
+            if(arr[i].c==&#39;=&#39;)&#123; //把等于关系的两个点并到一个集合，即缩点
+                merge(arr[i].u,arr[i].v);
+                cnt--; //cnt记录缩点后有几个点
+            &#125;
+        &#125;
+        for(int i=1;i&lt;=m;i++)&#123;
+            char ch=arr[i].c;
+            int u=find(arr[i].u), v=find(arr[i].v);//没缩点的点祖先就是自己
+            if(ch==&#39;=&#39;) continue;
+            if(u==v) flag1=1; //矛盾
+            if(ch==&#39;&gt;&#39;)&#123;
+                add(u,v,0);
+                in[v]++; 
+            &#125; 
+            if(ch==&#39;&lt;&#39;)&#123;
+                add(v,u,0);
+                in[u]++;
+            &#125;
+        &#125;
+        if(flag1)&#123;
+            cout&lt;&lt;&quot;CONFLICT&quot;&lt;&lt;&#39;\n&#39;;
+            continue;
+        &#125;
+        tuo(); //拓扑排序
+        if(cnt&gt;0||flag1) cout&lt;&lt;&quot;CONFLICT&quot;&lt;&lt;&#39;\n&#39;;
+        else if(flag2) cout&lt;&lt;&quot;UNCERTAIN&quot;&lt;&lt;&#39;\n&#39;;
+        else cout&lt;&lt;&quot;OK&quot;&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
+ &#125;
 </code></pre>
 
         </div>
@@ -1247,7 +1224,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

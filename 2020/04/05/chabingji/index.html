@@ -442,18 +442,10 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p>查并集也是一种比较常用的算法，有必要掌握<br>
-下面文章转载于CSDN上的一篇博客，我觉得写的很详细，就把它贴出来吧<br>
-地址：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Hacker_ZhiDian/article/details/60965556">https://blog.csdn.net/Hacker_ZhiDian/article/details/60965556</a></p>
+          <p>查并集也是一种比较常用的算法，有必要掌握<br>下面文章转载于CSDN上的一篇博客，我觉得写的很详细，就把它贴出来吧<br>地址：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Hacker_ZhiDian/article/details/60965556">https://blog.csdn.net/Hacker_ZhiDian/article/details/60965556</a></p>
 <p>基础</p>
 <p>对于今天要总结的算法，我想先通过一道题目来看一下：</p>
-<p>假设现在我有一个任务交给你：要求你查看 id 为 x 和 id 为 y 的两个人是不是朋友，<br>
-在一开始我会在第一行中输入 3 个数字 n、m 、k。<br>
-n 是代表总人数。<br>
-接下来 m 行，每一行我会输入两个数字： Xi 、 Yi， 代表 id 为 Xi 和 id 为 Yi 的两个人是朋友（注意：朋友的朋友也是朋友），<br>
-接下来 k 行，每一行我也会输入两个数字： a 和 b ，代表我要你查询 id 为 a 和 id 为 b 的两个人是不是朋友，<br>
-如果这两个人是朋友，那么在一行中输出“yes”否则在一行中输出“no”。<br>
-数据约束：0 &lt; n, m, k &lt; 10000， 所有人的 id 都是正整数，并且 id 不会超过 n</p>
+<p>假设现在我有一个任务交给你：要求你查看 id 为 x 和 id 为 y 的两个人是不是朋友，<br>在一开始我会在第一行中输入 3 个数字 n、m 、k。<br>n 是代表总人数。<br>接下来 m 行，每一行我会输入两个数字： Xi 、 Yi， 代表 id 为 Xi 和 id 为 Yi 的两个人是朋友（注意：朋友的朋友也是朋友），<br> 接下来 k 行，每一行我也会输入两个数字： a 和 b ，代表我要你查询 id 为 a 和 id 为 b 的两个人是不是朋友，<br> 如果这两个人是朋友，那么在一行中输出“yes”否则在一行中输出“no”。<br> 数据约束：0 &lt; n, m, k &lt; 10000， 所有人的 id 都是正整数，并且 id 不会超过 n </p>
 <p>样例输入：</p>
 <pre><code>7 5 4
 1 3 
@@ -465,14 +457,12 @@ n 是代表总人数。<br>
 2 3
 2 5
 6 7
-</code></pre>
-<p>样例输出：</p>
+</code></pre><p>样例输出：</p>
 <pre><code>yes
 yes
 no
 no
-</code></pre>
-<p>在上面的题目中，如果没有说“朋友的朋友也是朋友”这句话，那么就好办了，我们直接用一个二维数组来记录每一组朋友的信息，然后进行筛选就行了。但是有了这句话，我们就不能简单的用二维数组来解决了。那么怎么解决呢？</p>
+</code></pre><p>在上面的题目中，如果没有说“朋友的朋友也是朋友”这句话，那么就好办了，我们直接用一个二维数组来记录每一组朋友的信息，然后进行筛选就行了。但是有了这句话，我们就不能简单的用二维数组来解决了。那么怎么解决呢？</p>
 <p>首先，我们可以这样想，我们先把所有的人看成独立的群体，也就是说每个人的朋友只有他自己，那么这样的话一开始就有 n 个朋友圈，之后当题目数据输入的时候我们将输入的 id 所代表的的两个人所在的两个朋友圈合并成一个大的朋友圈，那么在这个合并之后的朋友圈中，所有的人两两都是朋友（朋友的朋友也是朋友），不断重复上面的合并过程，直到题目中给的 m 行的朋友对数据全部都合并完成。之后要判断两个人是不是朋友只需要判断他们是不是在同一个朋友圈里面就可以了。</p>
 <p>我们用题目中给出的数据来模拟这个过程，先看代码：</p>
 <pre><code>#include &lt;iostream&gt;
@@ -539,11 +529,9 @@ int main() &#123;
 
     return 0;
 &#125; 
-</code></pre>
-<p>用图来模拟这一过程：</p>
+</code></pre><p>用图来模拟这一过程：</p>
 <a target="_blank" rel="noopener" href="https://img-blog.csdn.net/20170309180913015?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSGFja2VyX1poaURpYW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://img-blog.csdn.net/20170309180913015?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSGFja2VyX1poaURpYW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" /></a>
-<p>如果不能理解可以把例题数据带进去代码中自己模拟一遍就知道了，最后我们来看一下运行结果：</p>
-<a target="_blank" rel="noopener" href="https://img-blog.csdn.net/20170309184447706?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSGFja2VyX1poaURpYW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://img-blog.csdn.net/20170309184447706?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSGFja2VyX1poaURpYW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" /></a>
+<p>如果不能理解可以把例题数据带进去代码中自己模拟一遍就知道了，最后我们来看一下运行结果：<br><a target="_blank" rel="noopener" href="https://img-blog.csdn.net/20170309184447706?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSGFja2VyX1poaURpYW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://img-blog.csdn.net/20170309184447706?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSGFja2VyX1poaURpYW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" /></a></p>
 <p>我们可以加一段代码来输出合并之后的数组情况：</p>
 <pre><code>#include &lt;iostream&gt;
 using namespace std;
@@ -622,14 +610,11 @@ int main() &#123;
     return 0;
 
 &#125; 
-</code></pre>
-<p>结果：</p>
+</code></pre><p>结果：</p>
 <a target="_blank" rel="noopener" href="https://img-blog.csdn.net/20170309185244123?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSGFja2VyX1poaURpYW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://img-blog.csdn.net/20170309185244123?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSGFja2VyX1poaURpYW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" /></a>
-<p>和我们在纸上模拟的结果一样，一共有三个朋友圈。<br>
-这个时候当数组某个位置的值等于其所在下标的时候，id 等于这个值的人就是这个朋友圈的“朋友祖先”， 有多少个“朋友祖先”就有多少个朋友圈。</p>
+<p>和我们在纸上模拟的结果一样，一共有三个朋友圈。<br>这个时候当数组某个位置的值等于其所在下标的时候，id 等于这个值的人就是这个朋友圈的“朋友祖先”， 有多少个“朋友祖先”就有多少个朋友圈。</p>
 <p>Ok，其实上面说的这种算法思想就是查并集，其标准的描述也是通过树和森林来定义的：在一个森林中有很多棵不同的树，我们通过一些信息来将一些不同的分开的树合并成一棵大的树。在这道题目中，一开始森林中有 7 棵不同根节点的树，树的根节点在这道题目中就相当于“朋友祖先”（7 个朋友圈，每个朋友圈中只有一个人，即为他自己，也是每个朋友圈的“朋友祖先”），通过题中所给的信息不断合并朋友圈（合并森林中不同的树），合并结束之后森林中树的棵树或者不同的树的根节点的个数（“朋友祖先”的个数）就是朋友圈的个数。</p>
-<p>好了，查并集的基本思想就总结到这里了，如果你想更深入的了解其优化，那么请往下看：<br>
-优化</p>
+<p>好了，查并集的基本思想就总结到这里了，如果你想更深入的了解其优化，那么请往下看：<br>优化</p>
 <p>我们在刚刚合并两个不同的朋友圈为一个大朋友圈的时候，我们制定了一个“靠左原则”，即为将右边的朋友圈作为子圈合并到左边那个朋友圈中，那么现在假设我们有这么两个朋友圈：</p>
 <a target="_blank" rel="noopener" href="https://img-blog.csdn.net/20180305120413608?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSGFja2VyX1poaURpYW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://img-blog.csdn.net/20180305120413608?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSGFja2VyX1poaURpYW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" /></a>
 <p>如果说现在我们要 合并下标为 1 的人所在的朋友圈 和 下标为 2 的人所在的朋友圈，按照我们刚刚定制的 “靠左原则”，此时我们应该把 朋友圈2 作为朋友圈1 的子圈并且合并到 朋友圈1 中。也就是执行一次我们上面代码中的 merge(1, 2) ，对那么合并之后的朋友圈就是：</p>
@@ -666,9 +651,7 @@ void merge(int a, int b) &#123;
 &#125;
 
 // 省略其他代码......
-</code></pre>
-<p>为了方便，我就只给出 merge 函数，因为只有 merge 函数改变了，其它函数都没变。<br>
-merge 函数里面有一句注释：// 如果当前两个朋友圈的高度相等，那么合并之后的朋友圈高度要加一 。这句话可能会有点难理解，看一幅图就知道了：</p>
+</code></pre><p>为了方便，我就只给出 merge 函数，因为只有 merge 函数改变了，其它函数都没变。<br>merge 函数里面有一句注释：// 如果当前两个朋友圈的高度相等，那么合并之后的朋友圈高度要加一 。这句话可能会有点难理解，看一幅图就知道了：</p>
 <a target="_blank" rel="noopener" href="https://img-blog.csdn.net/20180305125346468?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSGFja2VyX1poaURpYW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://img-blog.csdn.net/20180305125346468?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSGFja2VyX1poaURpYW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" /></a>
 <p>因为代码中设定的每个朋友圈初始高度为 0，,所以为了统一，图中也设置只有一个人的朋友圈高度为 0，这里注意一下。经过这样优化之后，我们的查并集的效率就很高了。</p>
 <p>最后，我们来看一下程序的运行结果：</p>
@@ -764,18 +747,13 @@ int main() &#123;
     return 0;
 
 &#125; 
-</code></pre>
-<h2 id="模板题">模板题</h2>
-<p>地址：<a target="_blank" rel="noopener" href="https://nanti.jisuanke.com/t/T1260">https://nanti.jisuanke.com/t/T1260</a></p>
+</code></pre><h2 id="模板题"><a href="#模板题" class="headerlink" title="模板题"></a>模板题</h2><p>地址：<a target="_blank" rel="noopener" href="https://nanti.jisuanke.com/t/T1260">https://nanti.jisuanke.com/t/T1260</a></p>
 <p>宗教信仰</p>
-<p>世界上有许多宗教，你感兴趣的是你学校里的同学信仰多少种宗教。你的学校有 nnn 名学生（0&lt;n≤500000 &lt; n \le 500000&lt;n≤50000），你不太可能询问每个人的宗教信仰，因为他们不太愿意透露。但是当你同时找到 222 名学生，他们却愿意告诉你他们是否信仰同一宗教，你可以通过很多这样的询问估算学校里的宗教数目的上限。你可以认为每名学生只会信仰最多一种宗教。<br>
-输入格式</p>
+<p>世界上有许多宗教，你感兴趣的是你学校里的同学信仰多少种宗教。你的学校有 nnn 名学生（0&lt;n≤500000 &lt; n \le 500000&lt;n≤50000），你不太可能询问每个人的宗教信仰，因为他们不太愿意透露。但是当你同时找到 222 名学生，他们却愿意告诉你他们是否信仰同一宗教，你可以通过很多这样的询问估算学校里的宗教数目的上限。你可以认为每名学生只会信仰最多一种宗教。<br>输入格式</p>
 <p>输入包括多组数据。每组数据的第一行包括 nnn 和 mmm，0≤m≤n(n−1)/20 \le m \le n(n-1)/20≤m≤n(n−1)/2，其后 mmm 行每行包括两个数字 iii 和 jjj，表示学生 iii 和学生 jjj 信仰同一宗教，学生被标号为 111 至 nnn。</p>
-<p>输入以一行 n=m=0n = m = 0n=m=0 作为结束。<br>
-输出格式</p>
+<p>输入以一行 n=m=0n = m = 0n=m=0 作为结束。<br>输出格式</p>
 <p>对于每组数据，先输出它的编号（从 111 开始），接着输出学生信仰的不同宗教的数目上限。</p>
-<p>输出时每行末尾的多余空格，不影响答案正确性<br>
-样例输入</p>
+<p>输出时每行末尾的多余空格，不影响答案正确性<br>样例输入</p>
 <pre><code>10 9
 1 2
 1 3
@@ -792,12 +770,10 @@ int main() &#123;
 4 8
 5 8
 0 0
-</code></pre>
-<p>样例输出</p>
+</code></pre><p>样例输出</p>
 <pre><code>Case 1: 1
 Case 2: 7
-</code></pre>
-<p>AC代码：</p>
+</code></pre><p>AC代码：</p>
 <pre><code>#include&lt;iostream&gt;
 using namespace std;
 const int N=50010;
@@ -813,7 +789,7 @@ int getfriend(int v)&#123;
     else return f[v]=getfriend(f[v]);
 &#125;
 void merge(int a,int b)&#123;
-    
+
     int x=getfriend(a);
     int y=getfriend(b);
     if(x!=y)&#123;
@@ -835,13 +811,12 @@ int main()
             merge(x,y);
         &#125;
         cout&lt;&lt;&quot;Case &quot;&lt;&lt;k&lt;&lt;&quot;: &quot;;
-        cout&lt;&lt;n-res&lt;&lt;endl;		
+        cout&lt;&lt;n-res&lt;&lt;endl;        
     &#125;
-    
+
     return 0;
 &#125;
-</code></pre>
-<blockquote>
+</code></pre><blockquote>
 <p>制作不易，您的赞助是我最大的动力，谢谢观看（owo）</p>
 </blockquote>
 
@@ -1048,7 +1023,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

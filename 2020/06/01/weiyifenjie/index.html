@@ -415,7 +415,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">758字</span>
+        <span class="post-count">798字</span>
       </span>
     </span>
 
@@ -444,74 +444,46 @@
         <div class="entry-content">
           <blockquote>
 <p>唯一分解定理是数论里面非常重要的一部分，必须要熟练掌握💪</p>
-</blockquote>
-<h2 id="一、定义">一、定义</h2>
-<p>唯一分解定理又称算术基本定理，指：一个大于一的正整数N都可以唯一分解成有限个质数的乘积， N=p1<sup>a1</sup> * p2<sup>a2</sup> * p3<sup>a3</sup> * … * pn<sup>an</sup>，这里p1&lt; p2&lt; p3 &lt;…&lt; pn均为质数，ai均为正整数.这样的式子成为N的标准分解式</p>
-<h2 id="二、证明">二、证明</h2>
-<p>一个数肯定是由合数和质数构成的，合数又可以分解成质数和合数，最后递归下去就会变成质数的乘积<br>
-例如： 36==4 * 9||6 * 6==2 * 3 * 2 * 3==2<sup>2</sup> * 3<sup>2</sup><br>
-详细可以看<a target="_blank" rel="noopener" href="https://www.cnblogs.com/shandongs1/p/7759748.html">具体严谨证明</a></p>
-<h2 id="三、应用">三、应用</h2>
-<h3 id="1-求出数n的因子个数">1.求出数n的因子个数</h3>
-<p>个数==（1+a1）* (1+a2) * (1+a3) * (1+a4)…*(1+an) 这里的ai表示N的标准分解式的幂次数<br>
-因为当我的a1=3时那我n的因子肯定会有  p1<sup>0</sup>  p1<sup>1</sup> p1<sup>2</sup> p1<sup>3</sup> 这四个数<br>
-然后再和p2的个数搭配起来就是两个数的因子数相乘了   p1<sup>x</sup>  可以与  p2<sup>y</sup>  随意搭配，所以进行乘法<br>
-就比如上面的36：</p>
-<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200601102307624.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FHTklORw==,size_16,color_FFFFFF,t_70#pic_center" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://img-blog.csdnimg.cn/20200601102307624.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FHTklORw==,size_16,color_FFFFFF,t_70#pic_center" /></a> 
-<p>图上很容易看出来一个数的因子一定可以表示成其质因子的乘积形式，所以就有了第二个应用</p>
-<h3 id="2-求所有的因子之和">2.求所有的因子之和</h3>
-<p>还是上面的图，所有因子和就是上面的9个数的和，而这9个数是由左面的两竖列两两相乘得到的，所以就有：<br>
-1+3+9+2+6+18+4+12+36==(1+2+4) * (1+3+9)==(2<sup>0</sup>+2<sup>1</sup>+2<sup>3</sup>) * (3<sup>0</sup>+3<sup>1</sup>+3<sup>2</sup>)<br>
-公式:（q1<sup>0</sup>+q1<sup>1</sup>+q1<sup>2</sup>…q1<sup>a1</sup>）* (q2<sup>0</sup>+q2<sup>1</sup>+q2<sup>2</sup>…q2<sup>a2</sup>) * …*（qn<sup>0</sup>+qn<sup>n</sup>+qn<sup>2</sup>…qn<sup>an</sup>）</p>
-<h3 id="3-求gcd和lcm">3.求gcd和lcm</h3>
-<p>给你两个数如何用唯一分解定理求其gcd和lcm，假设两个数是a和b则：<br>
-a==p1<sup>a1</sup> * p2<sup>a2</sup> * p3<sup>a3</sup> * … * pn<sup>an</sup><br>
-b==p1<sup>b1</sup> * p2<sup>b2</sup> * p3<sup>b3</sup> * … * pn<sup>bn</sup><br>
-两者<br>
-gcd==p1<sup>min(a1,b1)</sup> * p2<sup>min(a2,b2)</sup> * p3<sup>min(a3,b3)</sup> * … * pn<sup>min(an,bn)</sup><br>
-反之求lcm就是把上面得min全部换成max<br>
-例如：<br>
-4==2^2<br>
-6==2*3<br>
-gcd(4,6)==2<sup>min(2,1)</sup> * 3<sup>min(0,1)</sup>==2<br>
-lcm(4,6)==2<sup>max(2,1)</sup> * 3<sup>max(0,1)</sup>==12</p>
-<h2 id="补充">补充</h2>
-<p>一个数的标准分解式不会太长，因为1，2，3，5，7，11，13，17，19，23就这几个数乘积就超过1e8了</p>
-<h2 id="代码">代码</h2>
-<pre><code>#include&lt;bits/stdc++.h&gt;
+<h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><p>唯一分解定理又称算术基本定理，指：一个大于一的正整数N都可以唯一分解成有限个质数的乘积， N=p1^a1^ <em> p2^a2^ </em> p3^a3^ <em> … </em> pn^an^，这里p1&lt; p2&lt; p3 &lt;…&lt; pn均为质数，ai均为正整数.这样的式子成为N的标准分解式</p>
+<h2 id="二、证明"><a href="#二、证明" class="headerlink" title="二、证明"></a>二、证明</h2><p>一个数肯定是由合数和质数构成的，合数又可以分解成质数和合数，最后递归下去就会变成质数的乘积<br>例如： 36==4 <em> 9||6 </em> 6==2 <em> 3 </em> 2 <em> 3==2^2^ </em> 3^2^<br>详细可以看<a target="_blank" rel="noopener" href="https://www.cnblogs.com/shandongs1/p/7759748.html">具体严谨证明</a>  </p>
+<h2 id="三、应用"><a href="#三、应用" class="headerlink" title="三、应用"></a>三、应用</h2><h3 id="1-求出数n的因子个数"><a href="#1-求出数n的因子个数" class="headerlink" title="1.求出数n的因子个数"></a>1.求出数n的因子个数</h3><p>个数==（1+a1）<em> (1+a2) </em> (1+a3) <em> (1+a4)……</em>(1+an) 这里的ai表示N的标准分解式的幂次数<br>因为当我的a1=3时那我n的因子肯定会有  p1^0^  p1^1^ p1^2^ p1^3^ 这四个数<br>然后再和p2的个数搭配起来就是两个数的因子数相乘了   p1^x^  可以与  p2^y^  随意搭配，所以进行乘法<br>就比如上面的36：<br><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200601102307624.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FHTklORw==,size_16,color_FFFFFF,t_70#pic_center" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://img-blog.csdnimg.cn/20200601102307624.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FHTklORw==,size_16,color_FFFFFF,t_70#pic_center" /></a><br>图上很容易看出来一个数的因子一定可以表示成其质因子的乘积形式，所以就有了第二个应用</p>
+<h3 id="2-求所有的因子之和"><a href="#2-求所有的因子之和" class="headerlink" title="2.求所有的因子之和"></a>2.求所有的因子之和</h3><p>还是上面的图，所有因子和就是上面的9个数的和，而这9个数是由左面的两竖列两两相乘得到的，所以就有：<br>1+3+9+2+6+18+4+12+36==(1+2+4) <em> (1+3+9)==(2^0^+2^1^+2^3^) </em> (3^0^+3^1^+3^2^)<br>公式:（q1^0^+q1^1^+q1^2^…..q1^a1^）<em> (q2^0^+q2^1^+q2^2^…..q2^a2^) </em> ……..*（qn^0^+qn^n^+qn^2^…..qn^an^） </p>
+<h3 id="3-求gcd和lcm"><a href="#3-求gcd和lcm" class="headerlink" title="3.求gcd和lcm"></a>3.求gcd和lcm</h3><p>给你两个数如何用唯一分解定理求其gcd和lcm，假设两个数是a和b则：<br>a==p1^a1^ <em> p2^a2^ </em> p3^a3^ <em> … </em> pn^an^<br>b==p1^b1^ <em> p2^b2^ </em> p3^b3^ <em> … </em> pn^bn^<br>两者<br>gcd==p1^min(a1,b1)^ <em> p2^min(a2,b2)^ </em> p3^min(a3,b3)^ <em> … </em> pn^min(an,bn)^<br>反之求lcm就是把上面得min全部换成max<br>例如：<br>4==2^2<br>6==2<em>3<br>gcd(4,6)==2^min(2,1)^ </em> 3^min(0,1)^==2<br>lcm(4,6)==2^max(2,1)^ * 3^max(0,1)^==12</p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>一个数的标准分解式不会太长，因为1，2，3，5，7，11，13，17，19，23就这几个数乘积就超过1e8了</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code>#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int MAXN=1e5;
 int isprime(int n)&#123;
-	if(n==1) return 0;
-	for(int i=2;i*i&lt;=n;i++)&#123;
-		if(n%i==0) return 0;
-	&#125;
-	return 1;
+    if(n==1) return 0;
+    for(int i=2;i*i&lt;=n;i++)&#123;
+        if(n%i==0) return 0;
+    &#125;
+    return 1;
 &#125;
 int pr[50],cnt;
 int main()
 &#123;
-	int n;
-	cin&gt;&gt;n;
-	for(int i=2;i&lt;=50;i++)&#123; //筛选出50以内的所有指数
-		if(isprime(i))&#123;
-			pr[++cnt]=i;
-		&#125;
-	&#125;
-	for(int i=1;i&lt;=cnt&amp;&amp;pr[i]*pr[i]&lt;=n;i++)&#123;//注意这里有优化pr[i]*pr[i]&lt;=n
-		if(n%pr[i]==0)&#123;
-			int e=0;
-			while(n%pr[i]==0)&#123;
-				e++;
-				n/=pr[i];
-			&#125;
-			cout&lt;&lt;pr[i]&lt;&lt;&quot;^&quot;&lt;&lt;e&lt;&lt;endl;
-		&#125;
-	&#125;
-	if(n&gt;1) cout&lt;&lt;n&lt;&lt;&quot;^&quot;&lt;&lt;1&lt;&lt;endl;//当n&gt;1时n一定也是质数且其一定大于sqrt(n)所以其指数一定为1
-	return 0;
+    int n;
+    cin&gt;&gt;n;
+    for(int i=2;i&lt;=50;i++)&#123; //筛选出50以内的所有指数
+        if(isprime(i))&#123;
+            pr[++cnt]=i;
+        &#125;
+    &#125;
+    for(int i=1;i&lt;=cnt&amp;&amp;pr[i]*pr[i]&lt;=n;i++)&#123;//注意这里有优化pr[i]*pr[i]&lt;=n
+        if(n%pr[i]==0)&#123;
+            int e=0;
+            while(n%pr[i]==0)&#123;
+                e++;
+                n/=pr[i];
+            &#125;
+            cout&lt;&lt;pr[i]&lt;&lt;&quot;^&quot;&lt;&lt;e&lt;&lt;endl;
+        &#125;
+    &#125;
+    if(n&gt;1) cout&lt;&lt;n&lt;&lt;&quot;^&quot;&lt;&lt;1&lt;&lt;endl;//当n&gt;1时n一定也是质数且其一定大于sqrt(n)所以其指数一定为1
+    return 0;
 &#125;
-</code></pre>
+</code></pre></blockquote>
 
         </div>
         <!-- .entry-content -->
@@ -716,7 +688,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

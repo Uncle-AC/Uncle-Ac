@@ -460,39 +460,38 @@ int Min=99999,m,n,tx,ty;
 int next[4][2]=&#123;&#123;1,0&#125; , &#123;0,1&#125; , &#123;-1,0&#125; , &#123;0,-1&#125;&#125;,a[100][100];
 int vis[100][100];
 void dfs(int x,int y,int step)&#123;
-	int temp_x=x,temp_y=y;
-	if(x==tx&amp;&amp;y==ty)&#123;
-		if(step&lt;Min) Min=step;
-		return ;
-	&#125;
-	for(int i=0;i&lt;=3;i++)&#123;
-		x=temp_x+next[i][0];
-		y=temp_y+next[i][1];
-		if(x&lt;1||y&lt;1||x&gt;m||y&gt;n) continue;
-		if(!a[x][y]&amp;&amp;!vis[x][y])&#123;
-			vis[x][y]=1;
-			dfs(x,y,step+1);
-			vis[x][y]=0;
-		&#125;
-	&#125;
-	return;
+    int temp_x=x,temp_y=y;
+    if(x==tx&amp;&amp;y==ty)&#123;
+        if(step&lt;Min) Min=step;
+        return ;
+    &#125;
+    for(int i=0;i&lt;=3;i++)&#123;
+        x=temp_x+next[i][0];
+        y=temp_y+next[i][1];
+        if(x&lt;1||y&lt;1||x&gt;m||y&gt;n) continue;
+        if(!a[x][y]&amp;&amp;!vis[x][y])&#123;
+            vis[x][y]=1;
+            dfs(x,y,step+1);
+            vis[x][y]=0;
+        &#125;
+    &#125;
+    return;
 &#125;
 int main()
 &#123;
-	cin&gt;&gt;m&gt;&gt;n;
-	int sx,sy;
-	for(int i=1;i&lt;=m;i++)&#123;
-		for(int j=1;j&lt;=n;j++)&#123;
-			cin&gt;&gt;a[i][j];
-		&#125;
-	&#125;
-	cin&gt;&gt;sx&gt;&gt;sy&gt;&gt;tx&gt;&gt;ty;
-	vis[sx][sy]=1;
-	dfs(sx,sy,0);
-	cout&lt;&lt;Min&lt;&lt;endl;
+    cin&gt;&gt;m&gt;&gt;n;
+    int sx,sy;
+    for(int i=1;i&lt;=m;i++)&#123;
+        for(int j=1;j&lt;=n;j++)&#123;
+            cin&gt;&gt;a[i][j];
+        &#125;
+    &#125;
+    cin&gt;&gt;sx&gt;&gt;sy&gt;&gt;tx&gt;&gt;ty;
+    vis[sx][sy]=1;
+    dfs(sx,sy,0);
+    cout&lt;&lt;Min&lt;&lt;endl;
 &#125;
 </code></pre>
-
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -696,7 +695,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

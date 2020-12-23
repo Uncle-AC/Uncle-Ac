@@ -442,39 +442,36 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="题目">题目</h2>
-<p>题目描述</p>
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>题目描述</p>
 <p>数独是根据9×9盘面上的已知数字，推理出所有剩余空格的数字，并满足每一行、每一列、每一个粗线宫内的数字均含1-9，不重复。每一道合格的数独谜题都有且仅有唯一答案，推理方法也以此为基础，任何无解或多解的题目都是不合格的。</p>
 <p>芬兰一位数学家号称设计出全球最难的“数独游戏”，并刊登在报纸上，让大家去挑战。</p>
 <p>这位数学家说，他相信只有“智慧最顶尖”的人才有可能破解这个“数独之谜”。</p>
-<p>据介绍，目前数独游戏的难度的等级有一道五级，一是入门等级，五则比较难。不过这位数学家说，他所设计的数独游戏难度等级是十一，可以说是所以数独游戏中，难度最高的等级他还表示，他目前还没遇到解不出来的数独游戏，因此他认为“最具挑战性”的数独游戏并没有出现。<br>
-输入格式</p>
+<p>据介绍，目前数独游戏的难度的等级有一道五级，一是入门等级，五则比较难。不过这位数学家说，他所设计的数独游戏难度等级是十一，可以说是所以数独游戏中，难度最高的等级他还表示，他目前还没遇到解不出来的数独游戏，因此他认为“最具挑战性”的数独游戏并没有出现。<br>输入格式</p>
 <p>一个未填的数独</p>
 <p>输出格式</p>
 <p>填好的数独</p>
 <p>输入输出样例</p>
 <p>输入 #1</p>
-<p>8 0 0 0 0 0 0 0 0</p>
-<p>0 0 3 6 0 0 0 0 0</p>
-<p>0 7 0 0 9 0 2 0 0</p>
-<p>0 5 0 0 0 7 0 0 0</p>
-<p>0 0 0 0 4 5 7 0 0</p>
-<p>0 0 0 1 0 0 0 3 0</p>
-<p>0 0 1 0 0 0 0 6 8</p>
-<p>0 0 8 5 0 0 0 1 0</p>
+<p>8 0 0 0 0 0 0 0 0 </p>
+<p>0 0 3 6 0 0 0 0 0 </p>
+<p>0 7 0 0 9 0 2 0 0 </p>
+<p>0 5 0 0 0 7 0 0 0 </p>
+<p>0 0 0 0 4 5 7 0 0 </p>
+<p>0 0 0 1 0 0 0 3 0 </p>
+<p>0 0 1 0 0 0 0 6 8 </p>
+<p>0 0 8 5 0 0 0 1 0 </p>
 <p>0 9 0 0 0 0 4 0 0</p>
 <p>输出 #1</p>
-<p>8 1 2 7 5 3 6 4 9</p>
-<p>9 4 3 6 8 2 1 7 5</p>
-<p>6 7 5 4 9 1 2 8 3</p>
-<p>1 5 4 2 3 7 8 9 6</p>
-<p>3 6 9 8 4 5 7 2 1</p>
-<p>2 8 7 1 6 9 5 3 4</p>
-<p>5 2 1 9 7 4 3 6 8</p>
-<p>4 3 8 5 2 6 9 1 7</p>
+<p>8 1 2 7 5 3 6 4 9 </p>
+<p>9 4 3 6 8 2 1 7 5 </p>
+<p>6 7 5 4 9 1 2 8 3 </p>
+<p>1 5 4 2 3 7 8 9 6 </p>
+<p>3 6 9 8 4 5 7 2 1 </p>
+<p>2 8 7 1 6 9 5 3 4 </p>
+<p>5 2 1 9 7 4 3 6 8 </p>
+<p>4 3 8 5 2 6 9 1 7 </p>
 <p>7 9 6 3 1 8 4 5 2</p>
-<h2 id="Code：">Code：</h2>
-<pre><code>#include&lt;cstdio&gt;
+<h2 id="Code："><a href="#Code：" class="headerlink" title="Code："></a>Code：</h2><pre><code>#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;cstdlib&gt;
 #include&lt;iostream&gt;
@@ -541,9 +538,7 @@ int main()
     dfs(1,1);
     return 0;
 &#125;
-</code></pre>
-<h2 id="教训">教训</h2>
-<p>一定明白一个概念递归不是之后的代码就不执行了，在dfs函数中调用dfs之后后面的代码还是会执行的！dfs输出一定要写在出口那里，不能写在main函数中，注意3*3的格子中也要符合1到9唯一性</p>
+</code></pre><h2 id="教训"><a href="#教训" class="headerlink" title="教训"></a>教训</h2><p>一定明白一个概念递归不是之后的代码就不执行了，在dfs函数中调用dfs之后后面的代码还是会执行的！dfs输出一定要写在出口那里，不能写在main函数中，注意3*3的格子中也要符合1到9唯一性</p>
 
         </div>
         <!-- .entry-content -->
@@ -748,7 +743,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

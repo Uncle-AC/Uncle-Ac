@@ -445,56 +445,53 @@
           <blockquote>
 <p>集训开始了对矩阵快速幂的讲解，但是讲解的非常不好，基本没讲，这导致我这个之前就不知道矩阵快速幂的蒟蒻不得不自己乖乖的去网上查资料学习，找到了两个比较不错的视频讲解，具体可以看<strong>清单</strong>里面的<strong>转载</strong>，我来记录一下矩阵快速幂的基本用法🐷</p>
 </blockquote>
-<h2 id="矩阵乘法">矩阵乘法</h2>
-<p>学习过线性代数或者离散数学的应该都知道矩阵之间的乘法怎么做，知道的可以跳过，矩阵相乘有一个前提条件，就是前一个矩阵的列数必须等于后一个矩阵的行数两个矩阵才能做乘法运算，这是因为矩阵是不满足交换律的，他们相乘得到的矩阵的元素等于这个元素所在的行对应第一个矩阵的行元素依次乘以这个得到的矩阵元素列数对应第二个矩阵的列元素，很绕口，举个例子，假如两个矩阵相乘后得到了新的矩阵，这个矩阵的第一个元素是在第一行第一列对吧，那么这个元素就是第一个矩阵的第一行和第二个矩阵的第二列元素依次相乘再累加的结果，这样你就知道为什么第一个矩阵的列数必须和第二个矩阵行数相同了吧。</p>
+<h2 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h2><p>学习过线性代数或者离散数学的应该都知道矩阵之间的乘法怎么做，知道的可以跳过，矩阵相乘有一个前提条件，就是前一个矩阵的列数必须等于后一个矩阵的行数两个矩阵才能做乘法运算，这是因为矩阵是不满足交换律的，他们相乘得到的矩阵的元素等于这个元素所在的行对应第一个矩阵的行元素依次乘以这个得到的矩阵元素列数对应第二个矩阵的列元素，很绕口，举个例子，假如两个矩阵相乘后得到了新的矩阵，这个矩阵的第一个元素是在第一行第一列对吧，那么这个元素就是第一个矩阵的第一行和第二个矩阵的第二列元素依次相乘再累加的结果，这样你就知道为什么第一个矩阵的列数必须和第二个矩阵行数相同了吧。</p>
 <p>那在纸上你肯定会算了，怎么把它转化成代码呢？</p>
-<h3 id="CODE">CODE</h3>
-<pre><code class="language-c">struct mat&#123;
-	ll m[20][20]; //定义了一个20*20的矩阵
+<h3 id="CODE"><a href="#CODE" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">struct mat&#123;
+    ll m[20][20]; //定义了一个20*20的矩阵
 &#125;;
 int n;//n为相乘的矩阵的维数，一般长和宽是相同的
 mat operator * (mat a,mat b)&#123; //重载了*运算符，使得两个结构体可以做乘法
-	mat ans;
-	for(int i=1;i&lt;=n;i++)&#123;
-		for(int j=1;j&lt;=n;j++)&#123;
-			ll x=0;
-			for(int k=1;k&lt;=n;k++)&#123;
-				x+=a.m[i][k]*b.m[k][j]%MOD;
-			&#125;
-			ans.m[i][j]=x;
-		&#125;
-	&#125;
-	return ans; //ans储存结果
+    mat ans;
+    for(int i=1;i&lt;=n;i++)&#123;
+        for(int j=1;j&lt;=n;j++)&#123;
+            ll x=0;
+            for(int k=1;k&lt;=n;k++)&#123;
+                x+=a.m[i][k]*b.m[k][j]%MOD;
+            &#125;
+            ans.m[i][j]=x;
+        &#125;
+    &#125;
+    return ans; //ans储存结果
 &#125;
 mat mul(mat a,mat b)&#123; //也可以写一个相乘的函数和重载效果一样
     mat ans;
     for(int i=0; i&lt;n; i++)&#123;
-		for(int j=0; j&lt;n; j++)&#123;
-			ll x=0;
-			for(int k=0; k&lt;n; k++)&#123;
-            	x=(x+a.m[i][k]*b.m[k][j]%MOD)%MOD;
-			&#125;
-			ans.m[i][j]=x;
-		&#125;
-	&#125;
+        for(int j=0; j&lt;n; j++)&#123;
+            ll x=0;
+            for(int k=0; k&lt;n; k++)&#123;
+                x=(x+a.m[i][k]*b.m[k][j]%MOD)%MOD;
+            &#125;
+            ans.m[i][j]=x;
+        &#125;
+    &#125;
     return ans;
 &#125;
 </code></pre>
-<h2 id="矩阵快速幂">矩阵快速幂</h2>
-<p>OK，知道了矩阵乘法，我们就可以开始矩阵快速幂的学习了，加入给你了一个矩阵让你算这个矩阵的N次幂，你怎么算呢？一个一个乘吗？那时间复杂度就是O(n)了，有没有办法降一下呢？学了快速幂的你一定会说可以的，快速幂不仅仅限制于实数上的乘法，它是广义的！来看看广义快速幂：</p>
+<h2 id="矩阵快速幂"><a href="#矩阵快速幂" class="headerlink" title="矩阵快速幂"></a>矩阵快速幂</h2><p>OK，知道了矩阵乘法，我们就可以开始矩阵快速幂的学习了，加入给你了一个矩阵让你算这个矩阵的N次幂，你怎么算呢？一个一个乘吗？那时间复杂度就是O(n)了，有没有办法降一下呢？学了快速幂的你一定会说可以的，快速幂不仅仅限制于实数上的乘法，它是广义的！来看看广义快速幂：</p>
 <a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/9.png" data-fancybox="images" data-caption="主人没有描述我哦~"><img src="https://cdn.jsdelivr.net/gh/uncleacc/Sucai/9.png" /></a>
 <p>很明显矩阵的乘法也是满足广义快速幂的要求的，而矩阵快速幂的幺元其实就是单位矩阵也就是左对角线为1其他全为0的矩阵，这样的单位矩阵乘以任何矩阵都不会改变这个矩阵结果，其意义就相当于实数运算中的“1”。明白了这个就可以直接上代码了</p>
-<pre><code class="language-c">mat mul(mat a,mat b)&#123; //自定义矩阵相乘函数
+<pre><code class="lang-c">mat mul(mat a,mat b)&#123; //自定义矩阵相乘函数
     mat ans;
     for(int i=0; i&lt;n; i++)&#123;
-		for(int j=0; j&lt;n; j++)&#123;
-			ll x=0;
-			for(int k=0; k&lt;n; k++)&#123;
-            	x=(x+a.m[i][k]*b.m[k][j]%MOD)%MOD;
-			&#125;
-			ans.m[i][j]=x;
-		&#125;
-	&#125;
+        for(int j=0; j&lt;n; j++)&#123;
+            ll x=0;
+            for(int k=0; k&lt;n; k++)&#123;
+                x=(x+a.m[i][k]*b.m[k][j]%MOD)%MOD;
+            &#125;
+            ans.m[i][j]=x;
+        &#125;
+    &#125;
     return ans;
 &#125;
 mat ksm(mat a,ll b)&#123; //矩阵快速幂
@@ -502,18 +499,18 @@ mat ksm(mat a,ll b)&#123; //矩阵快速幂
     memset(ans.m,0,sizeof ans.m); //定义矩阵快速幂的幺元
     for(int i=0; i&lt;n; i++) ans.m[i][i]=1; //左对角线都为1
     while(b)&#123;
-    	if(n&amp;1) ans=mul(a,ans);
-    	a=mul(a,a);
-    	b&gt;&gt;=1;
-	&#125;
+        if(n&amp;1) ans=mul(a,ans);
+        a=mul(a,a);
+        b&gt;&gt;=1;
+    &#125;
     return ans; //ans即为这个a矩阵的n次幂
 &#125;
 </code></pre>
 <p>以上操作其实不难理解，仔细想一想很简单的，接下来重点来了！！！</p>
-<p><font color="red" size=4>我学了这个有什么用呢？</font></p>
+<font color="red" size=4>我学了这个有什么用呢？</font>
+
 <p>难道只是为了解一下矩阵的乘法？当然不是的！！！它可以大大加快递推的速度</p>
-<h2 id="加快递推">加快递推</h2>
-<p>什么叫递推？比如十分经典的斐波那契数列，我现在要求你算出第n项是多少，那你肯定要从前往后一步一步算，不可能跳步的，因为后面的结果必须由前面的元素决定！如果你不知道矩阵快速幂，那时间复杂度是O(N)的，假如我就很难为你，把数据量开到1e9，绝对不能单纯的递推了对吧，这时我们的矩阵快速幂就派上用场了，我们可以定义这样的一个矩阵：</p>
+<h2 id="加快递推"><a href="#加快递推" class="headerlink" title="加快递推"></a>加快递推</h2><p>什么叫递推？比如十分经典的斐波那契数列，我现在要求你算出第n项是多少，那你肯定要从前往后一步一步算，不可能跳步的，因为后面的结果必须由前面的元素决定！如果你不知道矩阵快速幂，那时间复杂度是O(N)的，假如我就很难为你，把数据量开到1e9，绝对不能单纯的递推了对吧，这时我们的矩阵快速幂就派上用场了，我们可以定义这样的一个矩阵：</p>
 <p>|   f(n)  |</p>
 <p>|  f(n-1)|                     为什么要这样定义呢？因为这一个矩阵包含了推出f(n+1)的所有元素，也就是包含了推出下一个矩阵的所有元素！而这个矩阵也等于：</p>
 <p>| f(n-1)+f(n-2) |</p>
@@ -521,12 +518,11 @@ mat ksm(mat a,ll b)&#123; //矩阵快速幂
 <p>| 1 1 |             | f(n-1) |</p>
 <p>| 1 0 |  乘上    | f(n-2) |  ，由此我们发现了矩阵前后的关系</p>
 <p>|   f(n)  |          | 1 1 |          | f(n-1) |</p>
-<p>|  f(n-1)|   =    | 1 0 |    *    | f(n-2) |  ，这像不像一个等比数列，an=x * an-1，那么我们就可以直接转换成</p>
+<p>|  f(n-1)|   =    | 1 0 |    <em>    | f(n-2) |  ，这像不像一个等比数列，an=x </em> an-1，那么我们就可以直接转换成</p>
 <p>|   f(n)  |          | 1 1 |(n-2)   |  f(2)    |</p>
 <p>|  f(n-1)| =      | 1  0|   *      |  f(1)    | ，式子的第二个矩阵就是需要套用快速幂的矩阵，其n-2次方乘以式子第三个矩阵就是式子第一个矩阵，OK，到这里我们就成功把递推式子转换成为了快速幂的式子，套一下快速幂的模板就解出来了</p>
 <p>可以是试着做这道题目： <a target="_blank" rel="noopener" href="https://vjudge.net/contest/383066#problem/A">题目链接</a> 密码：hpucam</p>
-<h3 id="AC-CODE">AC-CODE</h3>
-<pre><code class="language-c">#include&lt;stdio.h&gt;
+<h3 id="AC-CODE"><a href="#AC-CODE" class="headerlink" title="AC-CODE"></a>AC-CODE</h3><pre><code class="lang-c">#include&lt;stdio.h&gt;
 #include&lt;iostream&gt;
 #include&lt;string.h&gt;
 using namespace std;
@@ -534,49 +530,49 @@ typedef long long ll;
 const int MAXN=100;
 const int MOD=10000;
 struct mat&#123;
-	ll m[3][3];
+    ll m[3][3];
 &#125;;
 int n;
 mat operator * (mat a,mat b)&#123;
-	mat ans;
-	for(int i=1;i&lt;=2;i++)&#123;
-		for(int j=1;j&lt;=2;j++)&#123;
-			ll x=0;
-			for(int k=1;k&lt;=2;k++)&#123;
-				x+=a.m[i][k]*b.m[k][j]%MOD;
-			&#125;
-			ans.m[i][j]=x;
-		&#125;
-	&#125;
-	return ans;
+    mat ans;
+    for(int i=1;i&lt;=2;i++)&#123;
+        for(int j=1;j&lt;=2;j++)&#123;
+            ll x=0;
+            for(int k=1;k&lt;=2;k++)&#123;
+                x+=a.m[i][k]*b.m[k][j]%MOD;
+            &#125;
+            ans.m[i][j]=x;
+        &#125;
+    &#125;
+    return ans;
 &#125;
 mat ksm(mat a,int b)&#123;
-	mat ans;
-	memset(ans.m,0,sizeof ans.m);
-	for(int i=1;i&lt;=2;i++) ans.m[i][i]=1;
-	while(b)&#123;
-		if(b&amp;1) ans=ans*a;
-		a=a*a;
-		b&gt;&gt;=1;
-	&#125;
-	return ans;
+    mat ans;
+    memset(ans.m,0,sizeof ans.m);
+    for(int i=1;i&lt;=2;i++) ans.m[i][i]=1;
+    while(b)&#123;
+        if(b&amp;1) ans=ans*a;
+        a=a*a;
+        b&gt;&gt;=1;
+    &#125;
+    return ans;
 &#125;
 int main()
 &#123;
-	int n;
-	while(scanf(&quot;%d&quot;,&amp;n),n!=-1)&#123;
-		mat a,ans;
-		a.m[1][1]=a.m[1][2]=a.m[2][1]=1;
-		a.m[2][2]=0;
-		ans=ksm(a,n);
-		cout&lt;&lt;ans.m[2][1]%MOD&lt;&lt;'\n';
-	&#125;
-	return 0;
+    int n;
+    while(scanf(&quot;%d&quot;,&amp;n),n!=-1)&#123;
+        mat a,ans;
+        a.m[1][1]=a.m[1][2]=a.m[2][1]=1;
+        a.m[2][2]=0;
+        ans=ksm(a,n);
+        cout&lt;&lt;ans.m[2][1]%MOD&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
 &#125;
 </code></pre>
-<p><font color="red" size=5>终于完了，帮助到您的话留下一句鼓励的话吧👍</font></p>
-<p><font color="green" size=5>Ending</font></p>
+<font color="red" size=5>终于完了，帮助到您的话留下一句鼓励的话吧👍</font>
 
+<font color="green" size=5>Ending</font>
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -780,7 +776,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

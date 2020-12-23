@@ -415,7 +415,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.3k字</span>
+        <span class="post-count">588字</span>
       </span>
     </span>
 
@@ -424,7 +424,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
 </div>
@@ -445,11 +445,9 @@
           <blockquote>
 <p>紧张刺激而又枯燥的集训开始了🐷</p>
 </blockquote>
-<h2 id="problem1">problem1</h2>
-<p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/382262#problem/D">题目链接</a></p>
+<h2 id="problem1"><a href="#problem1" class="headerlink" title="problem1"></a>problem1</h2><p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/382262#problem/D">题目链接</a></p>
 <p>一道思维题，很容易想到从大往小减，这是一个误区，可以这样思考，任意两个数如果差为偶数一定是满足题目要求的，当这两个数高度相同时就可以看成一棵树了，再让这个数去和其他的数比较，当差又是偶数时便又满足题目要求，便可以得出规律，只要给定序列任意两个数相差为偶数便满足题意</p>
-<h3 id="CODE">CODE</h3>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<h3 id="CODE"><a href="#CODE" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include &lt;stdio.h&gt;
 #include &lt;iostream&gt;
 #include &lt;string&gt;
 #include &lt;string.h&gt;
@@ -469,74 +467,70 @@ const int MOD = 1e9;
 int h[MAXN];
 int main()
 &#123;
-	ios;
+    ios;
     int t;
     cin&gt;&gt;t;
     while(t--)&#123;
-    	int n;
-    	cin&gt;&gt;n;
-    	for(int i=1;i&lt;=n;i++) cin&gt;&gt;h[i];
-		int flag=0;
-		for(int i=2;i&lt;=n;i++)&#123;
-			if((h[i]-h[i-1])%2)&#123;
-				flag=1;
-				break;
-			&#125;
-		&#125;
-		if(flag) cout&lt;&lt;&quot;no&quot;&lt;&lt;'\n';
-		else cout&lt;&lt;&quot;yes&quot;&lt;&lt;'\n';
-	&#125;
-	return 0;
-&#125; 
+        int n;
+        cin&gt;&gt;n;
+        for(int i=1;i&lt;=n;i++) cin&gt;&gt;h[i];
+        int flag=0;
+        for(int i=2;i&lt;=n;i++)&#123;
+            if((h[i]-h[i-1])%2)&#123;
+                flag=1;
+                break;
+            &#125;
+        &#125;
+        if(flag) cout&lt;&lt;&quot;no&quot;&lt;&lt;&#39;\n&#39;;
+        else cout&lt;&lt;&quot;yes&quot;&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
+&#125;
 </code></pre>
-<h2 id="Problem2">Problem2</h2>
-<p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/382262#problem/G">题目链接</a></p>
+<h2 id="Problem2"><a href="#Problem2" class="headerlink" title="Problem2"></a>Problem2</h2><p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/382262#problem/G">题目链接</a></p>
 <p>英文不好真的读不懂题。。。这道题意思是机器人从原点出发，经过一系列走法之后到达一点，问能不能删除这一系列走法中的字串，使得终点不变而删除的字串长度最小</p>
-<p>不难看出当走到以前经过的一点时，这中间的序列一定是可以删除的，那么我们可以每一点上一次走到这里花费的步数(注意不是最小步数因为我们要求的是删除的字串长度最小)，当再次走到该点时用此时的步数减去上一次走到该点的步数得到的就是可以删除的字串长度，若该长度最小那么更新答案便可以了，这里如何记录一个点是否走过呢？假设用数组来存就需要二维数组，里面大多数点都是没用的，就很浪费空间，这道题开不了这么大的空间，可以用map来存，map&lt;pair&lt;int,int&gt;,int&gt;</p>
-<h3 id="CODE-v2">CODE</h3>
-<pre><code class="language-c">#include&lt;bits/stdc++.h&gt;
+<p>不难看出当走到以前经过的一点时，这中间的序列一定是可以删除的，那么我们可以每一点上一次走到这里花费的步数(注意不是最小步数因为我们要求的是删除的字串长度最小)，当再次走到该点时用此时的步数减去上一次走到该点的步数得到的就是可以删除的字串长度，若该长度最小那么更新答案便可以了，这里如何记录一个点是否走过呢？假设用数组来存就需要二维数组，里面大多数点都是没用的，就很浪费空间，这道题开不了这么大的空间，可以用map来存，map<pair<int,int>,int&gt;</p>
+<h3 id="CODE-1"><a href="#CODE-1" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include&lt;bits/stdc++.h&gt;
 #define ll long long
 using namespace std;
 map&lt;pair&lt;int,int&gt;,int&gt; mp;
 string s;
 int main()
 &#123;
-	int t;
-	cin&gt;&gt;t;
-	while(t--)&#123;
-		mp.clear();
-		int n,maxn=1e9;
-		cin&gt;&gt;n&gt;&gt;s;
-		s=' '+s;
-		int l,r,x=0,y=0;
-		int len=s.size();
-		mp[make_pair(x,y)]=-1;
-		for(int i=1;i&lt;len;i++)&#123;
-			if(s[i]=='L') x--;
-			if(s[i]=='R') x++;
-			if(s[i]=='D') y--;
-			if(s[i]=='U') y++;
-			int m=mp[make_pair(x,y)];
-			if(m!=0)&#123;
-				if(m==-1) m=0;
-				if(i-m&lt;maxn)&#123;
-					maxn=i-m;
-					l=m+1; r=i;
-				&#125;
-			&#125;
-			mp[make_pair(x,y)]=i;
-		&#125;
-		if(maxn==1e9) cout&lt;&lt;-1&lt;&lt;'\n';
-		else cout&lt;&lt;l&lt;&lt;' '&lt;&lt;r&lt;&lt;'\n';
-	&#125;
-	return 0;
+    int t;
+    cin&gt;&gt;t;
+    while(t--)&#123;
+        mp.clear();
+        int n,maxn=1e9;
+        cin&gt;&gt;n&gt;&gt;s;
+        s=&#39; &#39;+s;
+        int l,r,x=0,y=0;
+        int len=s.size();
+        mp[make_pair(x,y)]=-1;
+        for(int i=1;i&lt;len;i++)&#123;
+            if(s[i]==&#39;L&#39;) x--;
+            if(s[i]==&#39;R&#39;) x++;
+            if(s[i]==&#39;D&#39;) y--;
+            if(s[i]==&#39;U&#39;) y++;
+            int m=mp[make_pair(x,y)];
+            if(m!=0)&#123;
+                if(m==-1) m=0;
+                if(i-m&lt;maxn)&#123;
+                    maxn=i-m;
+                    l=m+1; r=i;
+                &#125;
+            &#125;
+            mp[make_pair(x,y)]=i;
+        &#125;
+        if(maxn==1e9) cout&lt;&lt;-1&lt;&lt;&#39;\n&#39;;
+        else cout&lt;&lt;l&lt;&lt;&#39; &#39;&lt;&lt;r&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
 &#125;
 </code></pre>
-<h2 id="problem3">problem3</h2>
-<p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/382262#problem/K">题目链接</a></p>
-<p>这道题我想错方向了，我在想把两个字符串连接后转化成新数，然后这个问题就转换成了从1到a，从1到b挑出两个数满足题意，这样我最多就能想出二分优化成NlogN，但是数据量1e9，指定过不了，就在这可了很久很久，原来这道题两个数连接不是让用字符串连接的，是让你用a10<sup>(b的位数)+b来连接的，这样一来原来的a+b+ab==a10</sup>(b的位数)+b，两边消去b，然后等式都除以a，就把a消去了，然后就能算出来b的公式，b=10^(b的位数)-1，啊！这道题其实不难，就是方向错了，难受😫</p>
-<h3 id="CODE-v3">CODE</h3>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<h2 id="problem3"><a href="#problem3" class="headerlink" title="problem3"></a>problem3</h2><p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/382262#problem/K">题目链接</a></p>
+<p>这道题我想错方向了，我在想把两个字符串连接后转化成新数，然后这个问题就转换成了从1到a，从1到b挑出两个数满足题意，这样我最多就能想出二分优化成NlogN，但是数据量1e9，指定过不了，就在这可了很久很久，原来这道题两个数连接不是让用字符串连接的，是让你用a10^(b的位数)+b来连接的，这样一来原来的a+b+ab==a10^(b的位数)+b，两边消去b，然后等式都除以a，就把a消去了，然后就能算出来b的公式，b=10^(b的位数)-1，啊！这道题其实不难，就是方向错了，难受😫</p>
+<h3 id="CODE-2"><a href="#CODE-2" class="headerlink" title="CODE"></a>CODE</h3><pre><code class="lang-c">#include &lt;stdio.h&gt;
 #include &lt;algorithm&gt;
 #include &lt;iostream&gt; 
 using namespace std;
@@ -561,16 +555,15 @@ int main(void)&#123;
             temp/=10;
             cnt++;
         &#125;
-        if(check(b)) cout&lt;&lt;a*cnt&lt;&lt;'\n';
-        else cout&lt;&lt;a*(cnt-1)&lt;&lt;'\n';
+        if(check(b)) cout&lt;&lt;a*cnt&lt;&lt;&#39;\n&#39;;
+        else cout&lt;&lt;a*(cnt-1)&lt;&lt;&#39;\n&#39;;
     &#125;
     return 0;
 &#125;
 </code></pre>
-<h2 id="Problem4">Problem4</h2>
-<p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/382262#problem/J">题目链接</a></p>
+<h2 id="Problem4"><a href="#Problem4" class="headerlink" title="Problem4"></a>Problem4</h2><p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/382262#problem/J">题目链接</a></p>
 <p>这道题也算是一道思维题吧，要想让数最大，一定是数的位数优先，两位数肯定比一位数大对吧，想通了这再举几个例子就能看出来这是一个递归的过程，递归出口就是2和3</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<pre><code class="lang-c">#include &lt;stdio.h&gt;
 #include &lt;iostream&gt;
 #include &lt;string&gt;
 #include &lt;string.h&gt;
@@ -590,25 +583,25 @@ const int MOD = 1e9;
 int h[MAXN];
 int main()
 &#123;
-	ios;
+    ios;
     int t;
     cin&gt;&gt;t;
     while(t--)&#123;
-    	int n;
-    	cin&gt;&gt;n;
-    	for(int i=1;i&lt;=n;i++) cin&gt;&gt;h[i];
-		int flag=0;
-		for(int i=2;i&lt;=n;i++)&#123;
-			if((h[i]-h[i-1])%2)&#123;
-				flag=1;
-				break;
-			&#125;
-		&#125;
-		if(flag) cout&lt;&lt;&quot;no&quot;&lt;&lt;'\n';
-		else cout&lt;&lt;&quot;yes&quot;&lt;&lt;'\n';
-	&#125;
-	return 0;
-&#125; 
+        int n;
+        cin&gt;&gt;n;
+        for(int i=1;i&lt;=n;i++) cin&gt;&gt;h[i];
+        int flag=0;
+        for(int i=2;i&lt;=n;i++)&#123;
+            if((h[i]-h[i-1])%2)&#123;
+                flag=1;
+                break;
+            &#125;
+        &#125;
+        if(flag) cout&lt;&lt;&quot;no&quot;&lt;&lt;&#39;\n&#39;;
+        else cout&lt;&lt;&quot;yes&quot;&lt;&lt;&#39;\n&#39;;
+    &#125;
+    return 0;
+&#125;
 </code></pre>
 
         </div>
@@ -814,7 +807,7 @@ int main()
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 

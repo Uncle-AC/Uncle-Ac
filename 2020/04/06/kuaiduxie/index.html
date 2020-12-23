@@ -415,7 +415,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">324字</span>
+        <span class="post-count">340字</span>
       </span>
     </span>
 
@@ -442,32 +442,27 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="应用">应用</h2>
-<p>一些题目需要读取的数据量十分庞大，很可能读取数据次数高达几十万次，而这时用cin或者scanf时间上就有了一些差距（scanf比cin要快），当输入数据更加庞大，scanf时间上也有些乏力，毕竟有些题目就是考你会不会快读快写，C语言输入输出字符时是要比数字输出的快的，我们可以利用这一点来把数字转化成字符来输出</p>
+          <h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>一些题目需要读取的数据量十分庞大，很可能读取数据次数高达几十万次，而这时用cin或者scanf时间上就有了一些差距（scanf比cin要快），当输入数据更加庞大，scanf时间上也有些乏力，毕竟有些题目就是考你会不会快读快写，C语言输入输出字符时是要比数字输出的快的，我们可以利用这一点来把数字转化成字符来输出</p>
 <p>下面的inline是内联函数的意思，小伙伴可以看 <a target="_blank" rel="noopener" href="https://blog.csdn.net/hyqsong/article/details/51857833">https://blog.csdn.net/hyqsong/article/details/51857833</a> 了解一下</p>
-<h2 id="快读代码">快读代码</h2>
-<pre><code>inline int read()&#123;
+<h2 id="快读代码"><a href="#快读代码" class="headerlink" title="快读代码"></a>快读代码</h2><pre><code>inline int read()&#123;
     int x=1,y=0;
     char ch=getchar();
-    while(ch&lt;'0'||ch&gt;'9')&#123;
-        if(ch=='-') x=-1; ch=getchar(); //这里的循环是为了避免输入数字之前的空格造成影响
+    while(ch&lt;&#39;0&#39;||ch&gt;&#39;9&#39;)&#123;
+        if(ch==&#39;-&#39;) x=-1; ch=getchar(); //这里的循环是为了避免输入数字之前的空格造成影响
     &#125;
-    while(ch&gt;='0'&amp;&amp;ch&lt;='9')&#123;
-        y=y*10+ch-'0';
+    while(ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)&#123;
+        y=y*10+ch-&#39;0&#39;;
         ch=getchar();
     &#125;
     return x*y;
 &#125;
-</code></pre>
-<p>需要注意的是每次循环最后都要加一句getchar()</p>
-<h2 id="快写代码">快写代码</h2>
-<pre><code>inline void write(int n)&#123;
-    if(n&lt;0) putchar('-'),n*=-1;
+</code></pre><p>需要注意的是每次循环最后都要加一句getchar()</p>
+<h2 id="快写代码"><a href="#快写代码" class="headerlink" title="快写代码"></a>快写代码</h2><pre><code>inline void write(int n)&#123;
+    if(n&lt;0) putchar(&#39;-&#39;),n*=-1;
     if(n&gt;9) write(n/10);
-    putchar(n%10+'0');
+    putchar(n%10+&#39;0&#39;);
 &#125;
-</code></pre>
-<p>代码比较好理解，注意puchar()里面的n%10</p>
+</code></pre><p>代码比较好理解，注意puchar()里面的n%10</p>
 <blockquote>
 <p>制作不易，您的赞助是我最大动力，点击下面的赏，快来赞助我吧</p>
 </blockquote>
@@ -676,7 +671,7 @@
     <span class="badge-subject">PV</span><span class="badge-value bg-orange" id="busuanzi_value_site_pv" target="_blank" title="本站浏览量"></span>
   </div>
   <div class="github-badge">
-    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">128.2k</span>
+    <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet post-count" target="_blank" title="全站字数">125.9k</span>
   </div>
   <img src="https://cdn.jsdelivr.net/gh/drew233/cdn//20191003172815.webp" style="position: relative; top: 80px;" alt="">
 
